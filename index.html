@@ -4,9 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Quint — Branding & Social für KMU, die auffallen wollen</title>
-<meta name="description" content="Quint ist die Agentur für Mittelständler, die nicht aussehen wollen wie alle anderen. Branding mit Haltung. Social ohne Beige. Aus Münster, für KMU im DACH-Raum." />
+<meta name="description" content="Branding & Social Media für Praxen, Sportvereine und inhabergeführte Dienstleister im DACH-Raum. Wir bauen Marken, die nicht aussehen wie alle anderen. Aus Münster." />
 <meta name="author" content="Aric Brämswig, Rania Landwehrmeyer" />
-<meta name="keywords" content="Branding Agentur Münster, Social Media KMU, Markenstrategie Mittelstand, Branding DACH" />
+<meta name="keywords" content="Branding Praxis, Branding Sportverein, Branding Steuerberater, Branding Anwaltskanzlei, Markenagentur Münster, Social Media Praxis, Health Beauty Branding, Markenstrategie Mittelstand DACH" />
 <meta name="theme-color" content="#143C6B" />
 <link rel="canonical" href="https://abraemswig-wq.github.io/quint-marketing-preview/" />
 
@@ -67,8 +67,25 @@
     { "@type": "Country", "name": "Österreich" },
     { "@type": "Country", "name": "Schweiz" }
   ],
-  "knowsAbout": ["Branding", "Markenstrategie", "Social Media", "Markenidentität", "Positionierung", "Content-Strategie"],
-  "serviceType": ["Branding", "Markenstrategie", "Social Media Management"]
+  "knowsAbout": ["Branding", "Markenstrategie", "Social Media", "Markenidentität", "Positionierung", "Content-Strategie", "Branding für Praxen", "Branding für Sportvereine", "Branding für Kanzleien"],
+  "serviceType": ["Branding", "Markenstrategie", "Social Media Management"],
+  "audience": [
+    {
+      "@type": "BusinessAudience",
+      "name": "Health & Beauty",
+      "audienceType": "Inhabergeführte Praxen, Studios und Optiker"
+    },
+    {
+      "@type": "BusinessAudience",
+      "name": "Sport & Vereine",
+      "audienceType": "Sportvereine, Verbände und Sportstätten"
+    },
+    {
+      "@type": "BusinessAudience",
+      "name": "Inhabergeführte Dienstleister",
+      "audienceType": "Kanzleien, Steuerberater und Beratungen"
+    }
+  ]
 }
 </script>
 
@@ -481,6 +498,84 @@
   .case-small p { color: rgba(255,255,255,0.7); margin-bottom: 32px; font-size: 15px; line-height: 1.55; }
   .case-small .case-tag { background: rgba(232,155,177,0.15); color: var(--pink); }
 
+  /* AUDIENCE / ICP */
+  .audience-block {
+    padding: 160px 0;
+    background: var(--navy-deep);
+    position: relative;
+  }
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+  }
+  @media (max-width: 1000px) { .audience-grid { grid-template-columns: 1fr; } }
+  .audience-card {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 28px;
+    padding: 48px 36px;
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1), border-color 0.3s, background 0.3s;
+    position: relative;
+  }
+  .audience-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--pink);
+    background: rgba(232,155,177,0.06);
+  }
+  .audience-icon {
+    width: 64px; height: 64px;
+    border-radius: 18px;
+    background: rgba(232,155,177,0.15);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 28px;
+    color: var(--pink);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .audience-card:hover .audience-icon {
+    background: var(--pink);
+    color: var(--navy);
+    transform: rotate(-6deg) scale(1.06);
+  }
+  .audience-icon svg { width: 30px; height: 30px; }
+  .audience-num {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    color: var(--pink);
+    font-size: 16px;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+  .audience-card h3 {
+    font-size: clamp(24px, 2.4vw, 30px);
+    margin-bottom: 12px;
+    line-height: 1.1;
+    font-weight: 700;
+  }
+  .audience-sub {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--pink-soft);
+    margin-bottom: 20px;
+    line-height: 1.35;
+  }
+  .audience-card p {
+    color: rgba(255,255,255,0.72);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .audience-foot {
+    margin-top: 32px;
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    color: var(--pink);
+    font-size: 16px;
+    text-align: center;
+    opacity: 0.75;
+  }
+
   /* TEAM */
   .team-block { padding: 160px 0; background: var(--navy); }
   .team-grid {
@@ -656,6 +751,7 @@
       <a href="#leistungen">Leistungen</a>
       <a href="#methode">Methode</a>
       <a href="#arbeit">Arbeit</a>
+      <a href="#fuer-wen">Für wen</a>
       <a href="#team">Team</a>
       <a href="#manifest">Manifest</a>
     </div>
@@ -666,12 +762,12 @@
 <header class="hero" id="top">
   <div class="wrap">
     <div class="hero-content">
-      <div class="eyebrow">Branding + Social für KMU</div>
+      <div class="eyebrow">Branding + Social für Praxen, Vereine, Kanzleien</div>
       <h1>
         Wir jagen den Ball.<br/>
         Andere reden <span class="accent">über die Wiese.</span>
       </h1>
-      <p class="lead">Quint ist die Agentur für Mittelständler, die nicht aussehen wollen wie alle anderen Mittelständler. Branding mit Haltung. Social ohne Beige.</p>
+      <p class="lead">Quint baut Marken für Praxen, Sportvereine und inhabergeführte Dienstleister, die nicht aussehen wollen wie alle anderen in ihrer Branche. Branding mit Haltung. Social ohne Beige.</p>
       <div class="hero-ctas">
         <a class="btn-primary" href="#kontakt">Erstgespräch buchen <span class="arrow">→</span></a>
         <a class="btn-ghost" href="#arbeit">Unsere Arbeit ansehen</a>
@@ -846,6 +942,58 @@
         <a class="btn-primary" style="align-self: flex-start;" href="#kontakt">Erstgespräch <span class="arrow">→</span></a>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="audience-block" id="fuer-wen">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Für wen wir bauen</div>
+      <h2>Drei Welten.<br/><span class="italic">Eine Handschrift.</span></h2>
+      <p class="lead">Wir bauen keine Marken für alle. Wir bauen Marken für Inhaberinnen und Inhaber, die ihren Beruf ernst meinen — in drei Welten, in denen wir zuhause sind.</p>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card reveal">
+        <div class="audience-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <div class="audience-num">01.</div>
+        <h3>Health & Beauty</h3>
+        <div class="audience-sub">Praxen, Studios, Optiker.</div>
+        <p>Inhabergeführte Praxen und Studios, die Premium-Qualität liefern — und endlich auch so aussehen wollen. Unsere Heimat seit REHAB FIVE.</p>
+      </div>
+
+      <div class="audience-card reveal">
+        <div class="audience-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+            <path d="M2 12h20"/>
+          </svg>
+        </div>
+        <div class="audience-num">02.</div>
+        <h3>Sport & Vereine</h3>
+        <div class="audience-sub">Clubs, Verbände, Sportstätten.</div>
+        <p>Vereine und Sportmarken, die mehr sind als ihr Logo auf dem Trikot. Wir kennen die Branche — wir arbeiten mit DRV, USC und UBC Münster seit Jahren.</p>
+      </div>
+
+      <div class="audience-card reveal">
+        <div class="audience-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="7" width="18" height="13" rx="2"/>
+            <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            <line x1="12" y1="12" x2="12" y2="16"/>
+          </svg>
+        </div>
+        <div class="audience-num">03.</div>
+        <h3>Inhabergeführte Dienstleister</h3>
+        <div class="audience-sub">Kanzleien, Beratungen, Steuerbüros.</div>
+        <p>Anwaltskanzleien, Steuerbüros, Beratungen, die merken: Mandanten googeln vor dem ersten Anruf. Wir machen aus Expertise eine Marke, die das auch ausstrahlt.</p>
+      </div>
+    </div>
+    <p class="audience-foot reveal">Du siehst deine Welt nicht? Schreib uns trotzdem — wenn die Haltung passt, passt der Rest.</p>
   </div>
 </section>
 
