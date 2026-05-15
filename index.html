@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quint — Branding & Social für KMU</title>
+<style>
+  :root {
+    --navy: #143C6B;
+    --navy-deep: #0E2D52;
+    --pink: #E89BB1;
+    --pink-strong: #D87A95;
+    --white: #ffffff;
+    --cream: #F6F1EA;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Inter", sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--navy);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 0;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 8px;
+    font-weight: 800; font-size: 24px; letter-spacing: -0.02em;
+  }
+  .logo .dot { color: var(--pink); }
+  .nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 500; }
+  .nav-links a { opacity: 0.7; transition: opacity 0.2s; }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta {
+    background: var(--pink); color: var(--navy);
+    padding: 10px 18px; border-radius: 999px;
+    font-size: 13px; font-weight: 700;
+    transition: transform 0.2s;
+  }
+  .nav-cta:hover { transform: translateY(-2px); }
+
+  /* HERO */
+  .hero { padding: 80px 0 120px; position: relative; }
+  .hero-tag {
+    display: inline-block;
+    color: var(--pink);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.15em;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(48px, 8vw, 104px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    max-width: 1000px;
+    margin-bottom: 32px;
+  }
+  .hero h1 .accent { color: var(--pink); font-style: italic; }
+  .hero p.lead {
+    font-size: clamp(18px, 1.8vw, 22px);
+    max-width: 640px;
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 40px;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--pink); color: var(--navy);
+    padding: 16px 28px; border-radius: 999px;
+    font-weight: 700; font-size: 15px;
+    transition: transform 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-ghost {
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 16px 28px; border-radius: 999px;
+    font-weight: 600; font-size: 15px;
+    transition: border-color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--pink); }
+
+  .hero-dog {
+    position: absolute;
+    right: -80px;
+    bottom: 20px;
+    width: 620px;
+    pointer-events: none;
+    mix-blend-mode: normal;
+  }
+  @media (max-width: 1100px) { .hero-dog { width: 420px; right: -40px; bottom: 60px; opacity: 0.55; } }
+  @media (max-width: 700px) { .hero-dog { width: 280px; right: -30px; bottom: 100px; opacity: 0.35; } }
+
+  /* MARQUEE */
+  .marquee {
+    background: var(--navy-deep);
+    overflow: hidden;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .marquee-track {
+    display: flex; gap: 64px; white-space: nowrap;
+    animation: scroll 30s linear infinite;
+    font-size: 14px; letter-spacing: 0.2em; font-weight: 600;
+    color: rgba(255,255,255,0.5);
+  }
+  .marquee-track span::after { content: "•"; margin-left: 64px; color: var(--pink); }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTIONS */
+  section.block { padding: 120px 0; }
+  .section-tag {
+    color: var(--pink);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.15em;
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800; line-height: 1.05;
+    letter-spacing: -0.025em;
+    max-width: 900px;
+    margin-bottom: 24px;
+  }
+  h2 .accent { color: var(--pink); font-style: italic; }
+  p.section-lead {
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    max-width: 640px;
+    margin-bottom: 64px;
+  }
+
+  /* WHAT WE DO */
+  .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 800px) { .pillars { grid-template-columns: 1fr; } }
+  .pillar {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 40px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .pillar:hover { background: rgba(232,155,177,0.08); border-color: var(--pink); }
+  .pillar-num {
+    color: var(--pink); font-weight: 800; font-size: 14px;
+    letter-spacing: 0.1em; margin-bottom: 24px;
+  }
+  .pillar h3 {
+    font-size: 32px; font-weight: 800;
+    letter-spacing: -0.02em; margin-bottom: 12px;
+  }
+  .pillar p { color: rgba(255,255,255,0.72); margin-bottom: 24px; font-size: 16px; }
+  .pillar ul { list-style: none; }
+  .pillar li {
+    padding: 10px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+  }
+  .pillar li::before {
+    content: "—"; color: var(--pink); margin-right: 12px; font-weight: 700;
+  }
+
+  /* METHOD */
+  .method-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  @media (max-width: 900px) { .method-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .method-grid { grid-template-columns: 1fr; } }
+  .step {
+    border-top: 2px solid var(--pink);
+    padding-top: 24px;
+  }
+  .step-num {
+    color: var(--pink); font-weight: 800; font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .step h4 {
+    font-size: 22px; font-weight: 700; margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .step p { font-size: 14px; color: rgba(255,255,255,0.7); }
+
+  /* CASE */
+  .cases { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+  @media (max-width: 900px) { .cases { grid-template-columns: 1fr; } }
+  .case {
+    background: var(--cream);
+    color: var(--navy);
+    border-radius: 24px;
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+    min-height: 360px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .case.small { background: rgba(255,255,255,0.05); color: var(--white); border: 1px dashed rgba(255,255,255,0.2); }
+  .case .case-tag {
+    display: inline-block;
+    background: var(--pink); color: var(--navy);
+    padding: 6px 12px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    align-self: flex-start;
+  }
+  .case h3 {
+    font-size: 36px; font-weight: 800;
+    letter-spacing: -0.02em; margin: 24px 0 12px;
+  }
+  .case p { font-size: 15px; opacity: 0.75; }
+  .case-stats { display: flex; gap: 32px; margin-top: 32px; }
+  .case-stat-num { font-size: 32px; font-weight: 800; color: var(--pink-strong); }
+  .case-stat-label { font-size: 12px; opacity: 0.7; }
+
+  /* MANIFESTO */
+  .manifesto {
+    background: var(--pink);
+    color: var(--navy);
+    padding: 120px 0;
+  }
+  .manifesto h2 {
+    font-size: clamp(36px, 5vw, 64px);
+    max-width: 900px;
+  }
+  .manifesto p.section-lead {
+    color: rgba(20,60,107,0.75);
+    font-size: 20px;
+    max-width: 720px;
+  }
+  .manifesto .section-tag { color: var(--navy); }
+  .manifesto-list {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 32px; margin-top: 48px;
+  }
+  @media (max-width: 800px) { .manifesto-list { grid-template-columns: 1fr; } }
+  .manifesto-item {
+    border-top: 2px solid var(--navy);
+    padding-top: 16px;
+  }
+  .manifesto-item h4 {
+    font-size: 22px; font-weight: 800; margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .manifesto-item p { font-size: 15px; color: rgba(20,60,107,0.78); }
+
+  /* CTA */
+  .cta-block {
+    text-align: center;
+    padding: 140px 0;
+    background: var(--navy-deep);
+  }
+  .cta-block h2 { margin: 0 auto 24px; }
+  .cta-block p { color: rgba(255,255,255,0.7); margin-bottom: 40px; font-size: 18px; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 40px 0;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+  }
+  .foot-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-inner">
+    <div class="logo">Quint<span class="dot">.</span></div>
+    <div class="nav-links">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#methode">Methode</a>
+      <a href="#arbeit">Arbeit</a>
+      <a href="#ueber">Über uns</a>
+    </div>
+    <a class="nav-cta" href="#kontakt">Ball ins Rollen bringen</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-tag">BRANDING + SOCIAL FÜR KMU</div>
+    <h1>Wir jagen den Ball.<br/>Andere reden <span class="accent">über die Wiese.</span></h1>
+    <p class="lead">Quint ist die Agentur für Mittelständler, die nicht aussehen wollen wie alle anderen Mittelständler. Branding mit Haltung, Social ohne Beige.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#kontakt">Erstgespräch buchen →</a>
+      <a class="btn-ghost" href="#arbeit">Was wir bisher gebaut haben</a>
+    </div>
+  </div>
+
+  <!-- Echtes Logo aus quint-dog.pdf -->
+  <img class="hero-dog" src="quint-logo.png" alt="Quint — Chasing the Ball" />
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>BRANDING</span><span>SOCIAL MEDIA</span><span>POSITIONIERUNG</span><span>CONTENT</span><span>STRATEGIE</span><span>IDENTITY</span>
+    <span>BRANDING</span><span>SOCIAL MEDIA</span><span>POSITIONIERUNG</span><span>CONTENT</span><span>STRATEGIE</span><span>IDENTITY</span>
+  </div>
+</div>
+
+<!-- WHAT WE DO -->
+<section class="block" id="leistungen">
+  <div class="wrap">
+    <div class="section-tag">WAS WIR MACHEN</div>
+    <h2>Zwei Dinge. <span class="accent">Beide richtig.</span></h2>
+    <p class="section-lead">Wir sind keine Full-Service-Bude, die alles ein bisschen macht. Wir sind die zwei Pfoten, die zählen, wenn ein Mittelständler endlich wie sich selbst aussehen will.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <h3>Branding</h3>
+        <p>Vom strategischen Fundament bis zum letzten Pixel. Wir bauen Marken, die ihre Branche nicht kopieren, sondern verändern.</p>
+        <ul>
+          <li>Positionierung & Markenstrategie</li>
+          <li>Naming & Tonalität</li>
+          <li>Visuelle Identität & Design-System</li>
+          <li>Webdesign & Launch</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <h3>Social Media</h3>
+        <p>Kein Posting-Kalender-Theater. Wir bauen Social-Auftritte, die deine Marke erweitern — statt sie zu verwässern.</p>
+        <ul>
+          <li>Content-Strategie & -Format</li>
+          <li>Visuelles Konzept & Vorlagen</li>
+          <li>Redaktion & Produktion</li>
+          <li>Performance & Community</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="block" id="methode" style="background: var(--navy-deep);">
+  <div class="wrap">
+    <div class="section-tag">WIE WIR DENKEN</div>
+    <h2>Erst der Ball. <span class="accent">Dann das Rennen.</span></h2>
+    <p class="section-lead">Die meisten Agenturen liefern Output. Wir liefern Richtung. Bevor wir auch nur einen Beitrag gestalten, wissen wir, warum.</p>
+
+    <div class="method-grid">
+      <div class="step">
+        <div class="step-num">01 / HALTUNG</div>
+        <h4>Worauf wir zielen</h4>
+        <p>Klären, was deine Marke eigentlich behaupten soll — und was sie konsequent ablehnt.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02 / HANDWERK</div>
+        <h4>Wie wir es bauen</h4>
+        <p>Design, Copy, Video — alles aus einer Hand, alles nach dem gleichen Maßstab gefertigt.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03 / HANDSCHRIFT</div>
+        <h4>Woran man uns erkennt</h4>
+        <p>Jede Marke, die wir bauen, sieht wie sich selbst aus. Nie wie wir. Nie wie alle anderen.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04 / HINGABE</div>
+        <h4>Was uns trägt</h4>
+        <p>Wir arbeiten mit wenigen Kunden, aber für jeden, als wäre er der einzige.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="block" id="arbeit">
+  <div class="wrap">
+    <div class="section-tag">WAS WIR GEBAUT HABEN</div>
+    <h2>Marken, die <span class="accent">stehen bleiben.</span></h2>
+    <p class="section-lead">Wir reden gerne über das, was wir gemacht haben. Aber lieber über das, was es für unsere Kunden bewegt hat.</p>
+
+    <div class="cases">
+      <div class="case">
+        <div class="case-tag">CASE STUDY</div>
+        <div>
+          <h3>REHAB FIVE</h3>
+          <p>Physiotherapie, die nicht aussieht wie Physiotherapie. Premium-Positionierung in einer konservativen Branche — neu gedacht, neu gebrandet, in zwei Städten skaliert.</p>
+        </div>
+        <div class="case-stats">
+          <div>
+            <div class="case-stat-num">2x</div>
+            <div class="case-stat-label">Standorte in Münster</div>
+          </div>
+          <div>
+            <div class="case-stat-num">5</div>
+            <div class="case-stat-label">Säulen-Modell</div>
+          </div>
+          <div>
+            <div class="case-stat-num">DRV</div>
+            <div class="case-stat-label">Markenpartner</div>
+          </div>
+        </div>
+      </div>
+      <div class="case small">
+        <div>
+          <div class="case-tag" style="background: rgba(232,155,177,0.2); color: var(--pink);">DEMNÄCHST</div>
+          <h3 style="font-size: 24px;">Dein Projekt?</h3>
+          <p>Du hast eine Marke, die mehr verdient als das, was sie gerade ausstrahlt? Dann lass uns reden.</p>
+        </div>
+        <a class="btn-primary" style="align-self: flex-start;" href="#kontakt">Erstgespräch →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="wrap">
+    <div class="section-tag">WAS UNS UNTERSCHEIDET</div>
+    <h2>Wir glauben das hier. Und liefern danach.</h2>
+    <p class="section-lead">Die meisten Mittelstands-Agenturen versprechen Großes und liefern Mittelmaß. Wir versprechen wenig — und meinen es ernst.</p>
+    <div class="manifesto-list">
+      <div class="manifesto-item">
+        <h4>Wenige Kunden, volle Aufmerksamkeit.</h4>
+        <p>Wir nehmen keine 30 Etats an, um quartalsweise zu liefern. Wir nehmen wenige, und liefern dafür wöchentlich.</p>
+      </div>
+      <div class="manifesto-item">
+        <h4>Keine PowerPoint-Theater.</h4>
+        <p>Bei uns gibt es keine 80-seitigen Strategie-Decks. Sondern ein Dokument, das du nach dem Lesen verstanden hast.</p>
+      </div>
+      <div class="manifesto-item">
+        <h4>Branding ist keine Optik.</h4>
+        <p>Wir gestalten zuerst die Haltung. Dann das Logo. In dieser Reihenfolge, immer.</p>
+      </div>
+      <div class="manifesto-item">
+        <h4>Social ist kein Hobby.</h4>
+        <p>Wir behandeln Social Media wie das, was es ist: dein wichtigstes Schaufenster. Nicht dein Praktikanten-Spielplatz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-block" id="kontakt">
+  <div class="wrap">
+    <h2 style="margin: 0 auto 24px;">Bereit, den Ball ins <span class="accent">Rollen zu bringen?</span></h2>
+    <p>30 Minuten, kostenlos, ohne Bullshit. Wir hören zu, du hörst zu, danach wissen wir beide, ob wir zusammenpassen.</p>
+    <a class="btn-primary" href="mailto:hallo@quint-marketing.de">hallo@quint-marketing.de →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-inner">
+    <div>© 2026 Quint Marketing — Münster</div>
+    <div style="display: flex; gap: 24px;">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
