@@ -172,7 +172,13 @@
   @media (max-width: 800px) { .nav-links { display: none; } }
 
   /* HERO */
-  .hero { padding: 100px 0 140px; position: relative; overflow: hidden; }
+  .hero {
+    padding: 100px 0 140px;
+    position: relative;
+    overflow: hidden;
+    perspective: 1400px;
+    perspective-origin: 50% 40%;
+  }
   .hero-content { position: relative; z-index: 2; max-width: 1080px; }
   .hero h1 {
     font-size: clamp(56px, 9vw, 132px);
@@ -210,18 +216,34 @@
     transition: border-color 0.25s, background 0.25s;
   }
   .btn-ghost:hover { border-color: var(--pink); background: rgba(232,155,177,0.06); }
-  .hero-dackel {
-    position: absolute; right: -60px; bottom: 0;
-    width: 540px; pointer-events: none;
-    animation: dackelFloat 6s ease-in-out infinite;
+  .hero-dackel-wrap {
+    position: absolute;
+    right: -60px;
+    bottom: 0;
+    width: 540px;
+    pointer-events: none;
     z-index: 1;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
+  }
+  .hero-dackel {
+    width: 100%;
+    display: block;
+    animation: dackelFloat 6s ease-in-out infinite;
+    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.35));
+    will-change: transform, filter;
   }
   @keyframes dackelFloat {
     0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-12px) rotate(-1deg); }
+    50% { transform: translateY(-14px) rotate(-1deg); }
   }
-  @media (max-width: 1100px) { .hero-dackel { width: 380px; opacity: 0.55; right: -80px; } }
-  @media (max-width: 700px) { .hero-dackel { width: 260px; opacity: 0.3; right: -60px; } }
+  @media (max-width: 1100px) { .hero-dackel-wrap { width: 380px; opacity: 0.6; right: -80px; } }
+  @media (max-width: 700px) { .hero-dackel-wrap { width: 260px; opacity: 0.35; right: -60px; } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-dackel { animation: none; }
+    .hero-dackel-wrap { transition: none; }
+  }
   .hero-ball {
     position: absolute; width: 28px; height: 28px;
     background: var(--pink); border-radius: 50%;
@@ -774,7 +796,9 @@
       </div>
     </div>
   </div>
-  <img class="hero-dackel" src="quint-logo.png" alt="" aria-hidden="true" />
+  <div class="hero-dackel-wrap" id="heroDackel" aria-hidden="true">
+    <img class="hero-dackel" src="quint-logo.png" alt="" />
+  </div>
   <div class="hero-ball" aria-hidden="true"></div>
 </header>
 
@@ -1078,6 +1102,7 @@
 </footer>
 
 <script>
+  // Scroll-Reveals
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -1087,6 +1112,73 @@
     });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Pseudo-3D-Parallax für den Hero-Dackel
+  // Respektiert prefers-reduced-motion und überspringt Touch-Geräte
+  (function() {
+    const dackel = document.getElementById('heroDackel');
+    if (!dackel) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouch = window.matchMedia('(hover: none)').matches;
+    if (reduceMotion) return;
+
+    let mouseX = 0, mouseY = 0;
+    let scrollY = 0;
+    let targetRotX = 0, targetRotY = 0, targetTransY = 0;
+    let currentRotX = 0, currentRotY = 0, currentTransY = 0;
+    let ticking = false;
+
+    // Mouse-Parallax: max ±6° Rotation auf X- und Y-Achse
+    if (!isTouch) {
+      window.addEventListener('mousemove', (e) => {
+        // -1 ... +1, jeweils zentriert auf Viewport
+        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+        targetRotY = mouseX * 6;          // Rotation Y, je nach horizontaler Mausposition
+        targetRotX = -mouseY * 4;         // Rotation X, je nach vertikaler Mausposition
+        requestUpdate();
+      }, { passive: true });
+    }
+
+    // Scroll-Parallax: Dackel bewegt sich 30% langsamer als der Rest = Tiefen-Effekt
+    window.addEventListener('scroll', () => {
+      scrollY = window.scrollY;
+      targetTransY = Math.min(scrollY * 0.3, 200);
+      requestUpdate();
+    }, { passive: true });
+
+    function requestUpdate() {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    function update() {
+      // Easing: aktuell folgt mit 12% pro Frame dem Ziel → smooth
+      currentRotX += (targetRotX - currentRotX) * 0.12;
+      currentRotY += (targetRotY - currentRotY) * 0.12;
+      currentTransY += (targetTransY - currentTransY) * 0.12;
+
+      dackel.style.transform =
+        `translateY(${currentTransY}px) ` +
+        `rotateX(${currentRotX.toFixed(2)}deg) ` +
+        `rotateY(${currentRotY.toFixed(2)}deg)`;
+
+      // Weiter animieren, falls noch nicht am Ziel
+      const stillMoving =
+        Math.abs(targetRotX - currentRotX) > 0.05 ||
+        Math.abs(targetRotY - currentRotY) > 0.05 ||
+        Math.abs(targetTransY - currentTransY) > 0.5;
+
+      if (stillMoving) {
+        requestAnimationFrame(update);
+      } else {
+        ticking = false;
+      }
+    }
+  })();
 </script>
 
 </body>
