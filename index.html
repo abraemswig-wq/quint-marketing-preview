@@ -192,6 +192,28 @@
     margin-bottom: 44px;
     line-height: 1.45;
   }
+  .hero-authority {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.62);
+    margin-bottom: 36px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.03);
+  }
+  .hero-authority-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--pink);
+    animation: pulse 2.4s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  .hero-authority-meta { color: rgba(255,255,255,0.42); }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
   .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
   .btn-primary {
     background: var(--pink); color: var(--navy);
@@ -286,6 +308,17 @@
   .statement.cream h2 .italic { color: var(--navy); font-style: italic; }
   .statement .small-eyebrow { margin-bottom: 32px; }
   .statement.cream .small-eyebrow { color: var(--pink-strong); }
+  .statement-tail {
+    margin-top: 44px;
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-size: clamp(20px, 2.2vw, 30px);
+    color: var(--pink-soft);
+    line-height: 1.35;
+    max-width: 720px;
+    margin-left: auto; margin-right: auto;
+  }
+  .statement.cream .statement-tail { color: var(--pink-strong); }
 
   /* PILLARS */
   section.pillars-block { padding: 140px 0; }
@@ -513,6 +546,27 @@
     color: rgba(255,255,255,0.82);
     max-width: 520px;
     line-height: 1.55;
+  }
+  .case-quote {
+    position: relative;
+    border-left: 3px solid rgba(255,255,255,0.45);
+    padding: 4px 0 4px 20px;
+    margin-top: 28px;
+    max-width: 520px;
+  }
+  .case-quote p {
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-size: clamp(16px, 1.5vw, 19px);
+    color: rgba(255,255,255,0.92);
+    line-height: 1.45;
+  }
+  .case-quote-mark {
+    position: absolute; left: -2px; top: -28px;
+    font-family: "Fraunces", serif;
+    font-size: 64px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1;
   }
   .case-stats { display: flex; gap: 48px; margin-top: 44px; flex-wrap: wrap; }
   .case-stat-num {
@@ -757,6 +811,26 @@
     transition: background 0.3s, color 0.3s;
   }
   .cta-block .cta-email:hover { background: var(--pink); color: var(--navy); }
+  .cta-reassurance {
+    list-style: none;
+    margin: 48px auto 0;
+    max-width: 600px;
+    display: flex; flex-direction: column; gap: 14px;
+    text-align: left;
+  }
+  .cta-reassurance li {
+    display: flex; align-items: flex-start; gap: 14px;
+    font-size: 15.5px;
+    color: rgba(255,255,255,0.78);
+    line-height: 1.5;
+  }
+  .cta-check {
+    color: var(--pink);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    flex-shrink: 0;
+  }
   .cta-ball {
     position: absolute;
     width: 60px; height: 60px;
@@ -825,6 +899,10 @@
         Andere reden <span class="accent">über die Wiese.</span>
       </h1>
       <p class="lead">Quint baut Marken für Praxen, Sportvereine und inhabergeführte Dienstleister, die nicht aussehen wollen wie alle anderen in ihrer Branche. Branding mit Haltung. Social ohne Beige.</p>
+      <div class="hero-authority" aria-label="Gründer-Hinweis">
+        <span class="hero-authority-dot"></span>
+        Von Aric Brämswig <span class="hero-authority-meta">— Gründer REHAB FIVE</span> &amp; Rania Landwehrmeyer
+      </div>
       <div class="hero-ctas">
         <a class="btn-primary" href="#kontakt">Erstgespräch buchen <span class="arrow">→</span></a>
         <a class="btn-ghost" href="#arbeit">Unsere Arbeit ansehen</a>
@@ -864,6 +942,7 @@
       <span class="italic">großartige Produkte</span><br/>
       und furchtbare Marken.
     </h2>
+    <p class="statement-tail">Und verlieren damit jeden Tag Anfragen, von denen sie nie erfahren.</p>
   </div>
 </section>
 
@@ -1002,6 +1081,10 @@
           <h3>REHAB FIVE</h3>
           <div class="case-sub">Physiotherapie, neu gedacht.</div>
           <p class="case-body">Premium-Positionierung in einer konservativen Branche. Neu gedacht, neu gebrandet, in zwei Städten skaliert — mit Markenpartnern wie USC und UBC Münster.</p>
+          <div class="case-quote">
+            <span class="case-quote-mark" aria-hidden="true">„</span>
+            <p>Aus einer Praxis wurde eine Marken-Welt — mit eigener Sprache, eigener Haltung, eigenem Publikum. Den Schritt, den jeder Mittelständler einmal gehen muss.</p>
+          </div>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap;">
           <div class="case-stats">
@@ -1150,6 +1233,11 @@
     <h2>Bring den Ball<br/><span class="italic">ins Rollen.</span></h2>
     <p>30 Minuten. Kostenlos. Ohne Bullshit. Wir hören zu, du hörst zu — danach wissen wir beide, ob wir zusammenpassen.</p>
     <a class="cta-email" href="mailto:hallo@quint-marketing.de">hallo@quint-marketing.de →</a>
+    <ul class="cta-reassurance" aria-label="Was beim Erstgespräch passiert">
+      <li><span class="cta-check">✓</span> Keine Verkaufs-Präsentation, keine Power-Point-Theater</li>
+      <li><span class="cta-check">✓</span> Wenn wir nicht passen, sagen wir es im selben Gespräch</li>
+      <li><span class="cta-check">✓</span> Du gehst raus mit einer ehrlichen Einschätzung deiner Marke — auch wenn wir nicht zusammen arbeiten</li>
+    </ul>
   </div>
   <div class="cta-ball" aria-hidden="true"></div>
 </section>
