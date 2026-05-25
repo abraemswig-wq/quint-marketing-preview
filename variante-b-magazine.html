@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quint — Variante B: Magazine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B;
+    --pink: #E89BB1;
+    --pink-strong: #D87A95;
+    --cream: #F4EFE7;
+    --cream-deep: #E8DFCE;
+    --white: #ffffff;
+    --ink: #0a1f3a;
+    --paper: #F7F2E9;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Fraunces", Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+  }
+  .sans { font-family: "Familjen Grotesk", sans-serif; letter-spacing: 0; }
+  .italic { font-style: italic; }
+  a { color: inherit; text-decoration: none; }
+
+  .demo-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 48px;
+    border-bottom: 1px solid rgba(20,60,107,0.15);
+    font-family: "Familjen Grotesk", sans-serif;
+  }
+  .demo-logo { font-weight: 700; font-size: 22px; letter-spacing: -0.04em; color: var(--navy); }
+  .demo-logo .dot { color: var(--pink-strong); }
+  .demo-back { font-size: 13px; color: rgba(20,60,107,0.55); }
+  .demo-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px;
+    background: var(--navy); color: var(--paper);
+    border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;
+  }
+  .demo-tag::before { content: ""; width: 6px; height: 6px; background: var(--pink); border-radius: 50%; }
+
+  /* MASTHEAD */
+  .masthead {
+    text-align: center;
+    padding: 80px 48px 60px;
+    border-bottom: 1px solid rgba(20,60,107,0.15);
+  }
+  .masthead-issue {
+    font-family: "Familjen Grotesk", sans-serif;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(20,60,107,0.55);
+    margin-bottom: 18px;
+  }
+  .masthead-title {
+    font-size: clamp(60px, 10vw, 140px);
+    line-height: 0.85;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: var(--navy);
+  }
+  .masthead-sub {
+    font-family: "Familjen Grotesk", sans-serif;
+    font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+    margin-top: 28px;
+    color: rgba(20,60,107,0.65);
+  }
+  .masthead-sub .dot { display: inline-block; margin: 0 12px; color: var(--pink-strong); }
+
+  /* HEADLINE-ARTICLE */
+  .article {
+    padding: 80px 48px;
+    max-width: 1280px; margin: 0 auto;
+  }
+  .article-byline {
+    font-family: "Familjen Grotesk", sans-serif;
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(20,60,107,0.55);
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  .article-byline strong { color: var(--navy); font-weight: 600; }
+  .article-headline {
+    font-size: clamp(48px, 8vw, 120px);
+    line-height: 0.92;
+    font-weight: 300;
+    letter-spacing: -0.035em;
+    text-align: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    color: var(--navy);
+  }
+  .article-headline .italic { color: var(--pink-strong); font-weight: 400; }
+  .article-deck {
+    font-family: "Familjen Grotesk", sans-serif;
+    font-size: clamp(17px, 1.4vw, 21px);
+    text-align: center;
+    max-width: 620px;
+    margin: 48px auto 0;
+    color: rgba(20,60,107,0.75);
+    line-height: 1.55;
+    letter-spacing: 0;
+  }
+
+  /* COLUMN BODY */
+  .columns {
+    padding: 60px 48px 100px;
+    max-width: 1120px; margin: 0 auto;
+    column-count: 2;
+    column-gap: 48px;
+    column-rule: 1px solid rgba(20,60,107,0.15);
+  }
+  .columns p {
+    font-size: 19px;
+    line-height: 1.55;
+    margin-bottom: 18px;
+    color: var(--navy);
+  }
+  .drop-cap::first-letter {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    float: left;
+    font-size: 88px;
+    line-height: 0.85;
+    margin: 6px 14px 0 0;
+    color: var(--pink-strong);
+    font-weight: 400;
+  }
+  @media (max-width: 800px) { .columns { column-count: 1; } }
+
+  /* PULL QUOTE */
+  .pullquote {
+    padding: 60px 48px;
+    max-width: 1000px; margin: 20px auto;
+    text-align: center;
+    border-top: 2px solid var(--pink-strong);
+    border-bottom: 2px solid var(--pink-strong);
+  }
+  .pullquote blockquote {
+    font-size: clamp(28px, 4vw, 52px);
+    line-height: 1.15;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--navy);
+    letter-spacing: -0.015em;
+  }
+  .pullquote blockquote .italic-pink { color: var(--pink-strong); }
+  .pullquote cite {
+    display: block;
+    font-family: "Familjen Grotesk", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 24px;
+    font-style: normal;
+    color: rgba(20,60,107,0.55);
+  }
+
+  /* BYLINE BAR */
+  .byline-bar {
+    background: var(--navy);
+    color: var(--paper);
+    padding: 80px 48px;
+    text-align: center;
+  }
+  .byline-bar .label {
+    font-family: "Familjen Grotesk", sans-serif;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0.65;
+  }
+  .byline-bar h2 {
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.05;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+  .byline-bar h2 .italic { color: var(--pink); }
+  .byline-bar .authors {
+    margin-top: 60px;
+    display: flex; justify-content: center; gap: 80px;
+    flex-wrap: wrap;
+  }
+  .author {
+    text-align: center;
+    max-width: 240px;
+  }
+  .author-initials {
+    font-style: italic;
+    font-size: 72px;
+    line-height: 1;
+    color: var(--pink);
+    font-weight: 300;
+    margin-bottom: 14px;
+    letter-spacing: -0.04em;
+  }
+  .author-name {
+    font-family: "Familjen Grotesk", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: 0;
+  }
+  .author-role {
+    font-family: "Familjen Grotesk", sans-serif;
+    font-size: 13px;
+    opacity: 0.65;
+    letter-spacing: 0;
+  }
+
+  /* FOOTER CTA */
+  .footer-cta {
+    padding: 100px 48px;
+    text-align: center;
+    background: var(--cream-deep);
+    color: var(--navy);
+  }
+  .footer-cta .small {
+    font-family: "Familjen Grotesk", sans-serif;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(20,60,107,0.55);
+    margin-bottom: 24px;
+  }
+  .footer-cta h3 {
+    font-size: clamp(44px, 6vw, 80px);
+    line-height: 1;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    margin-bottom: 36px;
+  }
+  .footer-cta h3 .italic { color: var(--pink-strong); }
+  .footer-cta a.email {
+    display: inline-block;
+    font-family: "Familjen Grotesk", sans-serif;
+    font-size: 17px;
+    letter-spacing: 0.05em;
+    color: var(--navy);
+    padding: 16px 32px;
+    border: 1.5px solid var(--navy);
+    border-radius: 999px;
+    font-weight: 600;
+    transition: background 0.3s, color 0.3s;
+  }
+  .footer-cta a.email:hover { background: var(--navy); color: var(--cream); }
+</style>
+</head>
+<body>
+
+<header class="demo-nav">
+  <a href="index.html" class="demo-logo">Quint<span class="dot">.</span></a>
+  <div class="demo-tag">Variante B · Magazine</div>
+  <a href="index.html" class="demo-back">← Zur Hauptseite</a>
+</header>
+
+<!-- MASTHEAD -->
+<section class="masthead">
+  <div class="masthead-issue">Ausgabe 01 · Münster · MMXXVI</div>
+  <h1 class="masthead-title">Quint<span style="color: var(--pink-strong);">.</span></h1>
+  <div class="masthead-sub">Branding <span class="dot">●</span> Social <span class="dot">●</span> Für die, die mehr meinen</div>
+</section>
+
+<!-- HEADLINE ARTICLE -->
+<section class="article">
+  <div class="article-byline">
+    Aus der Werkstatt von <strong>Aric Brämswig</strong> &amp; <strong>Rania Landwehrmeyer</strong>
+  </div>
+  <h2 class="article-headline">
+    Wir jagen den Ball.<br/>Andere reden <span class="italic">über die Wiese.</span>
+  </h2>
+  <p class="article-deck">
+    Quint baut Marken für Praxen, Sportvereine und inhabergeführte Dienstleister, die nicht aussehen wollen wie alle anderen in ihrer Branche.
+  </p>
+</section>
+
+<!-- LEAD COLUMNS -->
+<section class="columns">
+  <p class="drop-cap">Die meisten Mittelständler haben großartige Produkte und furchtbare Marken — und verlieren damit jeden Tag Anfragen, von denen sie nie erfahren. Wir haben das in Münster selbst erlebt: als REHAB FIVE eine konservative Branche neu dachte, schauten die anderen weg. Heute fragen sie, wie wir es gemacht haben.</p>
+  <p>Was wir gemacht haben, ist nicht Magie. Es ist <span class="italic">Handwerk</span>. Eine Marke ist keine Optik, sondern eine Haltung, die zufällig auch gut aussieht. Eine Methode, kein Talent. Vier Buchstaben, die wir immer wieder anwenden, immer wieder schärfen: <strong>H</strong>altung. <strong>H</strong>andwerk. <strong>H</strong>andschrift. <strong>H</strong>ingabe.</p>
+  <p>Mit dieser Logik haben wir Quint gegründet — als Werkstatt für KMU, die wissen, dass die Welt sich verändert hat, und die nicht länger zwischen 80-Seiten-Strategie-Decks und PowerPoint-Theater wählen wollen. Wir liefern keine Theorie. Wir liefern Marken, die stehen bleiben.</p>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="pullquote">
+  <blockquote>
+    „Branding ist <span class="italic-pink">keine Optik.</span> Branding ist eine Haltung,<br/>die zufällig auch gut aussieht."
+  </blockquote>
+  <cite>— Hausspruch, Werkstatt Quint</cite>
+</section>
+
+<!-- AUTHORS -->
+<section class="byline-bar">
+  <div class="label">Die Werkstatt</div>
+  <h2>Zwei Menschen.<br/><span class="italic">Eine Handschrift.</span></h2>
+  <div class="authors">
+    <div class="author">
+      <div class="author-initials">AB</div>
+      <div class="author-name">Aric Brämswig</div>
+      <div class="author-role">Strategie & Markenführung<br/>Gründer REHAB FIVE</div>
+    </div>
+    <div class="author">
+      <div class="author-initials">RL</div>
+      <div class="author-name">Rania Landwehrmeyer</div>
+      <div class="author-role">Design & Markenwelt</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<section class="footer-cta">
+  <div class="small">Bereit?</div>
+  <h3>Bring den Ball<br/><span class="italic">ins Rollen.</span></h3>
+  <a class="email" href="mailto:hallo@quint-marketing.de">hallo@quint-marketing.de →</a>
+</section>
+
+</body>
+</html>

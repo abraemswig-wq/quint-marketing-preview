@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quint — Variante A: Bento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B;
+    --navy-deep: #0D2747;
+    --pink: #E89BB1;
+    --pink-soft: #F3C7D4;
+    --pink-strong: #D87A95;
+    --cream: #F4EFE7;
+    --white: #ffffff;
+    --ink: #0a1f3a;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding: 16px;
+  }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+  a { color: inherit; text-decoration: none; }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--pink-strong);
+  }
+
+  /* DEMO NAV */
+  .demo-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 24px;
+    background: var(--white);
+    border-radius: 18px;
+    margin-bottom: 16px;
+  }
+  .demo-logo { font-weight: 700; font-size: 22px; letter-spacing: -0.04em; color: var(--navy); }
+  .demo-logo .dot { color: var(--pink); }
+  .demo-back { font-size: 13px; color: rgba(20,60,107,0.55); }
+  .demo-back:hover { color: var(--pink-strong); }
+  .demo-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px;
+    background: var(--navy); color: var(--white);
+    border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;
+  }
+  .demo-tag::before { content: ""; width: 6px; height: 6px; background: var(--pink); border-radius: 50%; }
+
+  /* BENTO GRID */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(140px, auto);
+    gap: 16px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .cell {
+    border-radius: 22px;
+    padding: 36px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s;
+  }
+  .cell:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -20px rgba(20,60,107,0.18); }
+
+  /* Hero — gross, dunkel */
+  .cell-hero {
+    grid-column: span 8;
+    grid-row: span 3;
+    background: var(--navy);
+    color: var(--white);
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 56px;
+  }
+  .cell-hero h1 {
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 0.95;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 28px 0;
+  }
+  .cell-hero h1 .italic { color: var(--pink); }
+  .cell-hero p {
+    color: rgba(255,255,255,0.7);
+    font-size: 17px;
+    max-width: 480px;
+    margin-bottom: 32px;
+  }
+  .cell-hero .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .cell-hero .btn {
+    padding: 14px 24px;
+    border-radius: 999px;
+    font-size: 14px; font-weight: 700;
+    transition: transform 0.2s;
+  }
+  .cell-hero .btn:hover { transform: translateY(-2px); }
+  .cell-hero .btn-primary { background: var(--pink); color: var(--navy); }
+  .cell-hero .btn-ghost { border: 1px solid rgba(255,255,255,0.2); color: var(--white); }
+
+  /* Team-Cell, Pink */
+  .cell-team {
+    grid-column: span 4;
+    grid-row: span 3;
+    background: var(--pink);
+    color: var(--navy);
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .cell-team .team-headline {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .cell-team .team-list {
+    margin-top: auto;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .cell-team .team-row {
+    display: flex; align-items: center; gap: 14px;
+    padding-top: 14px;
+    border-top: 1.5px solid rgba(20,60,107,0.2);
+  }
+  .cell-team .team-initials {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 28px;
+    width: 52px; height: 52px;
+    background: var(--navy); color: var(--pink);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .cell-team .team-name { font-weight: 700; font-size: 15px; line-height: 1.15; }
+  .cell-team .team-role { font-size: 12.5px; opacity: 0.75; }
+
+  /* Stat Cells */
+  .cell-stat {
+    grid-column: span 3;
+    background: var(--white);
+    color: var(--navy);
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 200px;
+  }
+  .cell-stat .stat-num {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: clamp(56px, 7vw, 84px);
+    line-height: 1;
+    color: var(--pink-strong);
+    font-weight: 400;
+  }
+  .cell-stat .stat-label {
+    font-size: 13px;
+    color: rgba(20,60,107,0.7);
+    letter-spacing: 0.02em;
+    margin-top: auto;
+  }
+
+  /* ICP-Cluster Cell, kompakt */
+  .cell-icp {
+    grid-column: span 6;
+    background: var(--navy-deep);
+    color: var(--white);
+    min-height: 240px;
+  }
+  .cell-icp h3 { font-size: 22px; margin-bottom: 20px; font-weight: 700; }
+  .cell-icp h3 .italic { color: var(--pink); }
+  .cell-icp .icp-list { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .cell-icp .icp-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 16px;
+  }
+  .cell-icp .icp-num {
+    color: var(--pink);
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .cell-icp .icp-name { font-weight: 700; font-size: 14px; line-height: 1.2; }
+
+  /* Case Cell — orange Brand-Welt */
+  .cell-case {
+    grid-column: span 6;
+    background: linear-gradient(135deg, #d99129 0%, #c4781a 100%);
+    color: var(--white);
+    min-height: 240px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .cell-case::before {
+    content: "";
+    position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+  }
+  .cell-case h3 {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 36px;
+    margin-bottom: 8px;
+    line-height: 1;
+    font-weight: 400;
+  }
+  .cell-case .case-name { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+  .cell-case .case-foot {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-top: 24px;
+  }
+  .cell-case .case-arrow {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: 18px;
+  }
+  .cell-case img { width: 140px; opacity: 0.95; }
+
+  /* CTA Cell */
+  .cell-cta {
+    grid-column: span 8;
+    background: var(--pink-soft);
+    color: var(--navy);
+    min-height: 180px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .cell-cta h3 {
+    font-size: clamp(26px, 3vw, 38px);
+    line-height: 1;
+    font-weight: 700;
+  }
+  .cell-cta h3 .italic { font-style: italic; font-family: "Fraunces", serif; font-weight: 400; }
+  .cell-cta .btn-pink {
+    background: var(--navy); color: var(--pink);
+    padding: 16px 28px; border-radius: 999px;
+    font-size: 14px; font-weight: 700;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .cell-cta .btn-pink:hover { background: var(--navy-deep); transform: translateY(-2px); }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    .cell-hero, .cell-team, .cell-stat, .cell-icp, .cell-case, .cell-cta { grid-column: span 12; grid-row: auto; }
+    .cell-hero { padding: 36px; }
+    .cell-icp .icp-list { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="demo-nav">
+  <a href="index.html" class="demo-logo">Quint<span class="dot">.</span></a>
+  <div class="demo-tag">Variante A · Bento</div>
+  <a href="index.html" class="demo-back">← Zur Hauptseite</a>
+</header>
+
+<main class="bento">
+
+  <!-- HERO -->
+  <section class="cell cell-hero">
+    <div class="eyebrow" style="color: var(--pink);">Branding + Social für Praxen, Vereine, Kanzleien</div>
+    <div>
+      <h1>Wir jagen den Ball.<br/>Andere reden<br/><span class="italic">über die Wiese.</span></h1>
+      <p>Quint baut Marken für Inhaberinnen und Inhaber, die nicht aussehen wollen wie alle anderen in ihrer Branche.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#">Erstgespräch buchen →</a>
+        <a class="btn btn-ghost" href="#">Arbeit ansehen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="cell cell-team">
+    <div>
+      <div class="eyebrow" style="color: var(--navy);">Wer wir sind</div>
+      <div class="team-headline">Zwei Menschen.<br/>Eine Handschrift.</div>
+    </div>
+    <div class="team-list">
+      <div class="team-row">
+        <div class="team-initials">AB</div>
+        <div>
+          <div class="team-name">Aric Brämswig</div>
+          <div class="team-role">Strategie · Gründer REHAB FIVE</div>
+        </div>
+      </div>
+      <div class="team-row">
+        <div class="team-initials">RL</div>
+        <div>
+          <div class="team-name">Rania Landwehrmeyer</div>
+          <div class="team-role">Design & Markenwelt</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="cell cell-stat">
+    <div class="eyebrow">Methode</div>
+    <div>
+      <div class="stat-num">4H</div>
+    </div>
+    <div class="stat-label">Haltung · Handwerk<br/>Handschrift · Hingabe</div>
+  </section>
+
+  <section class="cell cell-stat">
+    <div class="eyebrow">Format</div>
+    <div>
+      <div class="stat-num">2</div>
+    </div>
+    <div class="stat-label">Säulen — Branding<br/>+ Social. Nicht mehr.</div>
+  </section>
+
+  <section class="cell cell-stat">
+    <div class="eyebrow">Basis</div>
+    <div>
+      <div class="stat-num">MS</div>
+    </div>
+    <div class="stat-label">Münster — wir arbeiten<br/>im gesamten DACH-Raum</div>
+  </section>
+
+  <!-- ICP CLUSTER -->
+  <section class="cell cell-icp">
+    <div class="eyebrow" style="color: var(--pink); margin-bottom: 12px;">Für wen wir bauen</div>
+    <h3>Drei Welten.<br/><span class="italic">Eine Handschrift.</span></h3>
+    <div class="icp-list">
+      <div class="icp-item">
+        <div class="icp-num">01.</div>
+        <div class="icp-name">Health & Beauty<br/><span style="opacity:0.6; font-weight:400;">Praxen · Studios</span></div>
+      </div>
+      <div class="icp-item">
+        <div class="icp-num">02.</div>
+        <div class="icp-name">Sport & Vereine<br/><span style="opacity:0.6; font-weight:400;">Clubs · Verbände</span></div>
+      </div>
+      <div class="icp-item">
+        <div class="icp-num">03.</div>
+        <div class="icp-name">Dienstleister<br/><span style="opacity:0.6; font-weight:400;">Kanzleien · Beratung</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE -->
+  <section class="cell cell-case">
+    <div>
+      <div class="eyebrow" style="color: rgba(255,255,255,0.85);">Anker-Case</div>
+      <div style="margin-top: 16px;">
+        <div class="case-name">REHAB FIVE</div>
+        <h3>Physiotherapie,<br/>neu gedacht.</h3>
+      </div>
+    </div>
+    <div class="case-foot">
+      <img src="rehab-logo-white.svg" alt="REHAB FIVE" />
+      <span class="case-arrow">ansehen →</span>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cell cell-cta">
+    <h3>Bring den Ball<br/><span class="italic">ins Rollen.</span></h3>
+    <a class="btn-pink" href="mailto:hallo@quint-marketing.de">Erstgespräch → 30 min · kostenlos</a>
+  </section>
+
+</main>
+
+</body>
+</html>
