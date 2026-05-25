@@ -1349,8 +1349,10 @@
   window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
     if (!loader) return;
+    const params = new URLSearchParams(window.location.search);
+    const skip = params.get('skip-loader') === '1';
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const delay = reduceMotion ? 0 : 2800;
+    const delay = (skip || reduceMotion) ? 0 : 2800;
     setTimeout(() => {
       loader.classList.add('done');
       document.body.classList.remove('locked');
