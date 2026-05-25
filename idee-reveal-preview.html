@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quint — Idee-Preview: Word-by-Word Reveal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B;
+    --navy-deep: #0A1F3D;
+    --pink: #E89BB1;
+    --pink-strong: #D87A95;
+    --cream: #F4EFE7;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--navy);
+    color: var(--cream);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+  a { color: inherit; text-decoration: none; }
+
+  /* Nav */
+  .nav {
+    padding: 20px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(20,60,107,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo { font-weight: 700; font-size: 22px; letter-spacing: -0.04em; }
+  .nav-logo .dot { color: var(--pink); }
+  .demo-tag {
+    padding: 6px 14px;
+    background: var(--pink); color: var(--navy);
+    border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;
+  }
+  .nav-back { font-size: 12px; color: rgba(244,239,231,0.55); }
+  .nav-back:hover { color: var(--pink); }
+
+  /* HERO – mit Word-by-Word Reveal */
+  .hero {
+    padding: 100px 32px 140px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-content { max-width: 1080px; }
+
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--pink);
+    opacity: 0;
+    animation: fadeIn 0.7s cubic-bezier(.2,.8,.2,1) 1.30s forwards;
+  }
+
+  .hero h1 {
+    font-size: clamp(56px, 9vw, 132px);
+    line-height: 0.92;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 28px 0 36px;
+    color: var(--cream);
+  }
+  .word {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+  }
+  .word > span {
+    display: inline-block;
+    transform: translateY(110%);
+    animation: wordIn 0.85s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  .word.italic-word > span { color: var(--pink); font-style: italic; font-family: "Fraunces", serif; font-weight: 400; }
+  @keyframes wordIn {
+    to { transform: translateY(0); }
+  }
+
+  .hero p.lead {
+    font-size: clamp(19px, 1.7vw, 24px);
+    max-width: 640px;
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 44px;
+    line-height: 1.45;
+    opacity: 0;
+    animation: fadeIn 0.7s cubic-bezier(.2,.8,.2,1) 1.70s forwards;
+  }
+
+  .hero-authority {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.62);
+    margin-bottom: 36px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.03);
+    opacity: 0;
+    animation: fadeIn 0.7s cubic-bezier(.2,.8,.2,1) 1.50s forwards;
+  }
+  .hero-authority-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--pink);
+    animation: pulse 2.4s ease-in-out infinite 1.5s;
+  }
+  .hero-authority-meta { color: rgba(255,255,255,0.42); }
+  @keyframes pulse { 0%,100% { opacity: 0.4; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.15); } }
+
+  .hero-ctas {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeIn 0.7s cubic-bezier(.2,.8,.2,1) 1.90s forwards;
+  }
+  .btn-primary {
+    background: var(--pink); color: var(--navy);
+    padding: 18px 32px; border-radius: 999px;
+    font-weight: 700; font-size: 15px;
+    transition: transform 0.25s, background 0.25s;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .btn-primary:hover { transform: translateY(-3px); }
+  .btn-ghost {
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 18px 32px; border-radius: 999px;
+    font-weight: 500; font-size: 15px;
+  }
+
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  /* Replay-Button */
+  .replay {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    background: var(--pink);
+    color: var(--navy);
+    padding: 14px 22px;
+    border-radius: 999px;
+    border: none;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    z-index: 100;
+    transition: transform 0.2s;
+  }
+  .replay:hover { transform: translateY(-3px); }
+
+  /* Caption oben */
+  .preview-caption {
+    background: rgba(232,155,177,0.08);
+    border-bottom: 1px solid rgba(232,155,177,0.2);
+    padding: 14px 32px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--pink);
+    letter-spacing: 0.05em;
+  }
+  .preview-caption strong { color: var(--cream); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .word > span, .eyebrow, .hero-authority, .lead, .hero-ctas { animation: none; opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="preview-caption">
+  <strong>Idee-Preview:</strong> So sähe das Word-by-Word Reveal aus, das nach dem Loader anspringt — unten rechts „nochmal abspielen" klicken
+</div>
+
+<header class="nav">
+  <a href="index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+  <div class="demo-tag">Reveal-Idee</div>
+  <a href="index.html" class="nav-back">← Hauptseite</a>
+</header>
+
+<section class="hero">
+  <div class="hero-content" id="heroContent">
+    <div class="eyebrow">Branding + Social für Praxen, Vereine, Kanzleien</div>
+    <h1 id="heroHeadline">
+      <span class="word"><span style="animation-delay: 0.10s;">Wir</span></span>
+      <span class="word"><span style="animation-delay: 0.20s;">jagen</span></span>
+      <span class="word"><span style="animation-delay: 0.30s;">den</span></span>
+      <span class="word"><span style="animation-delay: 0.40s;">Ball.</span></span>
+      <br/>
+      <span class="word"><span style="animation-delay: 0.65s;">Andere</span></span>
+      <span class="word"><span style="animation-delay: 0.75s;">reden</span></span>
+      <span class="word italic-word"><span style="animation-delay: 0.90s;">über die Wiese.</span></span>
+    </h1>
+    <p class="lead">Quint baut Marken für Praxen, Sportvereine und inhabergeführte Dienstleister, die nicht aussehen wollen wie alle anderen in ihrer Branche. Branding mit Haltung. Social ohne Beige.</p>
+    <div class="hero-authority">
+      <span class="hero-authority-dot"></span>
+      Von Aric Brämswig <span class="hero-authority-meta">— Gründer REHAB FIVE</span> &amp; Rania Landwehrmeyer
+    </div>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#">Erstgespräch buchen →</a>
+      <a class="btn-ghost" href="#">Unsere Arbeit ansehen</a>
+    </div>
+  </div>
+</section>
+
+<button class="replay" id="replay">↻ Reveal nochmal abspielen</button>
+
+<script>
+  const replay = document.getElementById('replay');
+  const content = document.getElementById('heroContent');
+  replay.addEventListener('click', () => {
+    // Force reflow by cloning innerHTML
+    const html = content.innerHTML;
+    content.innerHTML = '';
+    void content.offsetHeight; // trigger reflow
+    content.innerHTML = html;
+  });
+</script>
+
+</body>
+</html>
