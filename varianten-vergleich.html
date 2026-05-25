@@ -247,6 +247,70 @@
   }
   .card-cta:hover .arrow { transform: translateX(4px); }
 
+  /* VOTING BAR */
+  .vote-bar {
+    position: sticky;
+    top: 64px;
+    z-index: 40;
+    background: var(--pink);
+    color: var(--navy);
+    padding: 14px 32px;
+    display: flex; align-items: center; justify-content: center; gap: 24px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--pink-strong);
+    animation: voteBarIn 0.4s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes voteBarIn { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+  .vote-bar[hidden] { display: none; }
+  .vote-bar-msg { font-size: 14.5px; font-weight: 500; }
+  .vote-bar-msg strong {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-weight: 600; font-size: 17px;
+    margin-left: 4px;
+  }
+  .vote-bar-send {
+    background: var(--navy); color: var(--pink);
+    padding: 10px 18px; border-radius: 999px;
+    font-size: 13px; font-weight: 700;
+    transition: transform 0.2s, background 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .vote-bar-send:hover { background: var(--navy-deep); transform: translateY(-2px); }
+  .vote-bar-clear {
+    background: transparent; border: 1px solid rgba(20,60,107,0.3);
+    color: var(--navy); padding: 10px 16px; border-radius: 999px;
+    font-size: 12px; font-weight: 600;
+    font-family: inherit; cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .vote-bar-clear:hover { background: rgba(20,60,107,0.08); border-color: var(--navy); }
+
+  /* VOTE BUTTON in Cards */
+  .card-wrap { display: flex; flex-direction: column; gap: 12px; }
+  .vote-btn {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%;
+  }
+  .vote-btn:hover { border-color: var(--pink); background: rgba(232,155,177,0.08); color: var(--pink); }
+  .vote-btn .star { font-family: "Fraunces", serif; font-style: italic; }
+  .vote-btn.selected {
+    background: var(--pink);
+    color: var(--navy);
+    border-color: var(--pink);
+    font-weight: 700;
+  }
+  .vote-btn.selected::after { content: " ✓"; font-style: normal; font-weight: 700; }
+
   /* FOOTER */
   footer {
     padding: 48px 32px 64px;
@@ -282,9 +346,16 @@
 
 <header class="nav">
   <a href="index.html" class="nav-logo">Quint<span class="dot">.</span></a>
-  <div class="nav-meta"><span class="nav-meta-dot"></span>Drei Varianten · Auswahl</div>
+  <div class="nav-meta"><span class="nav-meta-dot"></span>Vier Varianten · Auswahl</div>
   <a href="index.html" class="nav-home">Hauptseite ↗</a>
 </header>
+
+<!-- VOTE BAR -->
+<div class="vote-bar" id="voteBar" hidden>
+  <span class="vote-bar-msg">Deine Wahl: <strong id="voteChoice">—</strong></span>
+  <a class="vote-bar-send" id="voteSend" href="#">Wahl an Aric per E-Mail →</a>
+  <button class="vote-bar-clear" id="voteClear" type="button">zurücksetzen</button>
+</div>
 
 <section class="head">
   <div class="head-eyebrow"><span class="head-eyebrow-dot"></span>Vorgelegt zur Auswahl</div>
@@ -295,6 +366,7 @@
 <main class="grid">
 
   <!-- AKTUELL (Hauptseite) -->
+  <div class="card-wrap">
   <a href="index.html" class="card card-current" target="_blank" rel="noopener">
     <div class="card-preview">
       <span class="card-tag tag-current">● Aktueller Stand</span>
@@ -314,8 +386,11 @@
       <span class="card-cta">Vollansicht öffnen <span class="arrow">→</span></span>
     </div>
   </a>
+  <button class="vote-btn" data-variant="Aktueller Stand (Editorial-Playful)" type="button"><span class="star">★</span> Für diese Variante stimmen</button>
+  </div>
 
   <!-- BENTO -->
+  <div class="card-wrap">
   <a href="variante-a-bento.html" class="card" target="_blank" rel="noopener">
     <div class="card-preview">
       <span class="card-tag">Variante A</span>
@@ -335,8 +410,11 @@
       <span class="card-cta">Vollansicht öffnen <span class="arrow">→</span></span>
     </div>
   </a>
+  <button class="vote-btn" data-variant="A · Bento" type="button"><span class="star">★</span> Für diese Variante stimmen</button>
+  </div>
 
   <!-- BRUTALIST -->
+  <div class="card-wrap">
   <a href="variante-c-brutalist.html" class="card" target="_blank" rel="noopener">
     <div class="card-preview">
       <span class="card-tag">Variante C</span>
@@ -356,8 +434,11 @@
       <span class="card-cta">Vollansicht öffnen <span class="arrow">→</span></span>
     </div>
   </a>
+  <button class="vote-btn" data-variant="C · Soft Brutalist" type="button"><span class="star">★</span> Für diese Variante stimmen</button>
+  </div>
 
   <!-- STICKY STACK -->
+  <div class="card-wrap">
   <a href="variante-h-stickystack.html" class="card" target="_blank" rel="noopener">
     <div class="card-preview">
       <span class="card-tag">Variante H</span>
@@ -377,6 +458,8 @@
       <span class="card-cta">Vollansicht öffnen <span class="arrow">→</span></span>
     </div>
   </a>
+  <button class="vote-btn" data-variant="H · Sticky Stack" type="button"><span class="star">★</span> Für diese Variante stimmen</button>
+  </div>
 
 </main>
 
@@ -407,6 +490,64 @@
   }
   window.addEventListener('load', scaleIframes);
   window.addEventListener('resize', scaleIframes);
+
+  // VOTING via localStorage + mailto
+  (function() {
+    const STORAGE_KEY = 'quint-vote';
+    const RECIPIENT = 'hallo@quint-marketing.de';
+    const voteBar = document.getElementById('voteBar');
+    const voteChoice = document.getElementById('voteChoice');
+    const voteSend = document.getElementById('voteSend');
+    const voteClear = document.getElementById('voteClear');
+    const voteButtons = document.querySelectorAll('.vote-btn');
+
+    function updateMailto(variant) {
+      const subject = encodeURIComponent('Quint-Site — meine Variante-Wahl');
+      const body = encodeURIComponent(
+        'Hi Aric,\n\n' +
+        'ich habe mir die Varianten angeschaut und wähle:\n\n' +
+        '→ ' + variant + '\n\n' +
+        'Kurze Gedanken dazu:\n\n\n' +
+        '(Diese Mail wurde über die Vergleichsseite ausgelöst.)'
+      );
+      voteSend.href = 'mailto:' + RECIPIENT + '?subject=' + subject + '&body=' + body;
+    }
+
+    function showVote(variant) {
+      voteChoice.textContent = variant;
+      updateMailto(variant);
+      voteBar.hidden = false;
+      voteButtons.forEach(btn => {
+        if (btn.dataset.variant === variant) btn.classList.add('selected');
+        else btn.classList.remove('selected');
+      });
+    }
+
+    function clearVote() {
+      localStorage.removeItem(STORAGE_KEY);
+      voteBar.hidden = true;
+      voteButtons.forEach(btn => btn.classList.remove('selected'));
+    }
+
+    // Init: existierende Wahl aus localStorage laden
+    const existing = localStorage.getItem(STORAGE_KEY);
+    if (existing) showVote(existing);
+
+    // Vote-Buttons binden
+    voteButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const variant = btn.dataset.variant;
+        localStorage.setItem(STORAGE_KEY, variant);
+        showVote(variant);
+        // Smooth-scroll nach oben, damit die Vote-Bar gesehen wird
+        if (window.scrollY > 200) window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    voteClear.addEventListener('click', clearVote);
+  })();
 </script>
 
 </body>
