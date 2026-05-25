@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quint — Variante J: Cinematic Loader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B;
+    --navy-deep: #0A1F3D;
+    --navy-black: #050E1F;
+    --pink: #E89BB1;
+    --pink-strong: #D87A95;
+    --cream: #F4EFE7;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--navy-black);
+    color: var(--cream);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body.locked { overflow: hidden; height: 100vh; }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; }
+  a { color: inherit; text-decoration: none; }
+
+  /* PAGE LOADER */
+  .loader {
+    position: fixed; inset: 0;
+    background: var(--navy-black);
+    z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .loader-content {
+    text-align: center;
+    position: relative;
+  }
+  .loader-quint {
+    font-size: clamp(80px, 14vw, 220px);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    color: var(--cream);
+    display: inline-flex;
+    align-items: baseline;
+    opacity: 0;
+    animation: loaderFadeIn 0.8s cubic-bezier(.2,.8,.2,1) 0.1s forwards;
+  }
+  .loader-dot {
+    width: clamp(16px, 2.5vw, 40px);
+    height: clamp(16px, 2.5vw, 40px);
+    background: var(--pink);
+    border-radius: 50%;
+    margin-left: 0.05em;
+    transform: scale(0);
+    animation: loaderDotPop 0.6s cubic-bezier(.34,1.56,.64,1) 0.9s forwards,
+               loaderDotExpand 1s cubic-bezier(.6,0,.7,1) 2.1s forwards;
+  }
+  @keyframes loaderFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes loaderDotPop {
+    from { transform: scale(0); }
+    to   { transform: scale(1); }
+  }
+  @keyframes loaderDotExpand {
+    0%   { transform: scale(1); }
+    100% { transform: scale(200); }
+  }
+  .loader-progress {
+    position: absolute;
+    bottom: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 200px; height: 2px;
+    background: rgba(255,255,255,0.1);
+    overflow: hidden;
+  }
+  .loader-progress::after {
+    content: "";
+    position: absolute; left: 0; top: 0;
+    width: 0; height: 100%;
+    background: var(--pink);
+    animation: loaderProgress 2s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  @keyframes loaderProgress {
+    from { width: 0; }
+    to   { width: 100%; }
+  }
+  .loader.done {
+    pointer-events: none;
+    animation: loaderHide 0.8s cubic-bezier(.6,0,.7,1) 0.2s forwards;
+  }
+  @keyframes loaderHide { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+
+  /* NAV */
+  .nav {
+    padding: 20px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(5,14,31,0.6);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    opacity: 0;
+    transform: translateY(-12px);
+    animation: navIn 0.7s cubic-bezier(.2,.8,.2,1) 3.4s forwards;
+  }
+  @keyframes navIn { to { opacity: 1; transform: translateY(0); } }
+  .nav-logo { font-weight: 700; font-size: 22px; letter-spacing: -0.04em; }
+  .nav-logo .dot { color: var(--pink); }
+  .demo-tag {
+    padding: 6px 14px;
+    background: var(--pink); color: var(--navy-black);
+    border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;
+  }
+  .nav-back { font-size: 12px; color: rgba(244,239,231,0.5); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 140px 32px 100px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(244,239,231,0.6);
+    margin-bottom: 36px;
+    align-self: flex-start;
+    opacity: 0;
+    animation: reveal 0.7s cubic-bezier(.2,.8,.2,1) 3.0s forwards;
+  }
+  .hero-eyebrow-dot { width: 8px; height: 8px; background: var(--pink); border-radius: 50%; }
+
+  .hero h1 {
+    font-size: clamp(56px, 11vw, 168px);
+    line-height: 0.9;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+  }
+  .hero h1 .italic { color: var(--pink); font-style: italic; font-family: "Fraunces", serif; font-weight: 400; letter-spacing: -0.02em; }
+  .word {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+  }
+  .word > span {
+    display: inline-block;
+    transform: translateY(110%);
+    animation: wordIn 0.9s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  @keyframes wordIn { to { transform: translateY(0); } }
+
+  .hero-bottom {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-top: 80px;
+    flex-wrap: wrap; gap: 40px;
+    opacity: 0;
+    animation: reveal 0.8s cubic-bezier(.2,.8,.2,1) 4.0s forwards;
+  }
+  @keyframes reveal { to { opacity: 1; } }
+  .hero-lead {
+    font-size: clamp(17px, 1.5vw, 22px);
+    max-width: 540px;
+    color: rgba(244,239,231,0.72);
+    line-height: 1.45;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--pink);
+    color: var(--navy-black);
+    padding: 22px 36px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    transition: transform 0.3s, background 0.3s;
+  }
+  .hero-cta:hover { background: var(--cream); transform: translateY(-4px); }
+
+  /* MARQUEE */
+  .marquee {
+    overflow: hidden;
+    padding: 30px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    opacity: 0;
+    animation: reveal 0.8s cubic-bezier(.2,.8,.2,1) 4.2s forwards;
+  }
+  .marquee-track {
+    display: flex; gap: 48px; white-space: nowrap;
+    animation: scroll 36s linear infinite;
+    font-size: clamp(28px, 5vw, 80px);
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    align-items: center;
+  }
+  .marquee-track .italic-tag { font-family: "Fraunces", serif; font-style: italic; color: var(--pink); font-weight: 400; }
+  .marquee-track .dot { width: 14px; height: 14px; background: var(--pink); border-radius: 50%; flex-shrink: 0; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTIONS with scroll-reveal mask */
+  .section {
+    padding: 160px 32px;
+    position: relative;
+  }
+  .section-inner { max-width: 1320px; margin: 0 auto; }
+  .reveal-mask {
+    overflow: hidden;
+    display: inline-block;
+  }
+  .reveal-mask > * {
+    display: block;
+    transform: translateY(110%);
+    transition: transform 1s cubic-bezier(.2,.8,.2,1);
+  }
+  .reveal-mask.in > * { transform: translateY(0); }
+
+  .section-eyebrow {
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--pink); font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .section h2 {
+    font-size: clamp(40px, 6.5vw, 108px);
+    line-height: 0.95;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    margin-bottom: 80px;
+  }
+  .section h2 .italic { color: var(--pink); font-style: italic; font-family: "Fraunces", serif; font-weight: 400; }
+
+  .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 800px) { .pillars { grid-template-columns: 1fr; } }
+  .pillar {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 48px 40px;
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1), border-color 0.3s, background 0.3s;
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  .pillar.in { opacity: 1; transform: translateY(0); transition: opacity 0.9s cubic-bezier(.2,.8,.2,1), transform 0.9s cubic-bezier(.2,.8,.2,1); }
+  .pillar:hover { transform: translateY(-6px) !important; border-color: var(--pink); background: rgba(232,155,177,0.05); }
+  .pillar-num {
+    font-family: "Fraunces", serif; font-style: italic; font-size: 56px;
+    color: var(--pink); margin-bottom: 28px; line-height: 1;
+  }
+  .pillar h3 { font-size: clamp(26px, 3vw, 36px); margin-bottom: 12px; }
+  .pillar .sub { font-family: "Fraunces", serif; font-style: italic; color: var(--pink); margin-bottom: 24px; font-size: 18px; }
+  .pillar p { color: rgba(244,239,231,0.72); font-size: 16px; line-height: 1.55; }
+
+  /* CTA */
+  .cta { padding: 200px 32px; text-align: center; }
+  .cta h2 {
+    font-size: clamp(60px, 10vw, 168px);
+    line-height: 0.92;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin-bottom: 56px;
+  }
+  .cta h2 .italic { color: var(--pink); font-style: italic; font-family: "Fraunces", serif; font-weight: 400; }
+  .cta-email {
+    display: inline-block;
+    color: var(--pink);
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: clamp(28px, 3vw, 52px);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--pink);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .cta-email:hover { opacity: 0.7; transform: translateY(-4px); }
+</style>
+</head>
+<body class="locked">
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-content">
+    <div class="loader-quint">Quint<span class="loader-dot"></span></div>
+    <div class="loader-progress"></div>
+  </div>
+</div>
+
+<header class="nav">
+  <a href="index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+  <div class="demo-tag">J · Cinematic Loader</div>
+  <a href="index.html" class="nav-back">← Hauptseite</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Quint Studio · est. 2026</div>
+  <h1>
+    <span class="word"><span style="animation-delay: 2.8s;">Wir</span></span>
+    <span class="word"><span style="animation-delay: 2.9s;">jagen</span></span>
+    <span class="word"><span style="animation-delay: 3.0s;">den</span></span>
+    <span class="word"><span style="animation-delay: 3.1s;">Ball.</span></span><br/>
+    <span class="word"><span style="animation-delay: 3.2s;">Andere</span></span>
+    <span class="word"><span style="animation-delay: 3.3s;">reden</span></span><br/>
+    <span class="word italic"><span style="animation-delay: 3.5s;">über die Wiese.</span></span>
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-lead">Branding und Social für Praxen, Vereine und inhabergeführte Dienstleister, die nicht aussehen wollen wie alle anderen in ihrer Branche.</p>
+    <a class="hero-cta" href="#kontakt">Erstgespräch →</a>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>BRANDING</span><span class="dot"></span>
+    <span class="italic-tag">mit Haltung</span><span class="dot"></span>
+    <span>SOCIAL</span><span class="dot"></span>
+    <span class="italic-tag">ohne Beige</span><span class="dot"></span>
+    <span>BRANDING</span><span class="dot"></span>
+    <span class="italic-tag">mit Haltung</span><span class="dot"></span>
+    <span>SOCIAL</span><span class="dot"></span>
+    <span class="italic-tag">ohne Beige</span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Was wir machen</div>
+    <h2>Zwei Dinge.<br/><span class="italic">Beide richtig.</span></h2>
+    <div class="pillars">
+      <div class="pillar" data-reveal>
+        <div class="pillar-num">01</div>
+        <h3>Branding</h3>
+        <div class="sub">vom Fundament bis zum Pixel.</div>
+        <p>Wir bauen Marken, die ihre Branche nicht kopieren, sondern verändern. Vom strategischen Kern bis zur letzten Visitenkarte.</p>
+      </div>
+      <div class="pillar" data-reveal>
+        <div class="pillar-num">02</div>
+        <h3>Social</h3>
+        <div class="sub">kein Posting-Theater.</div>
+        <p>Social-Auftritte, die deine Marke erweitern statt sie zu verwässern. Mit Strategie, Handschrift, Hingabe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="kontakt">
+  <h2>Bring den Ball<br/><span class="italic">ins Rollen.</span></h2>
+  <a class="cta-email" href="mailto:hallo@quint-marketing.de">hallo@quint-marketing.de →</a>
+</section>
+
+<script>
+  // LOADER
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('done');
+      document.body.classList.remove('locked');
+    }, 2800);
+  });
+  // Reveal-Pillars
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quint — Variante K: 3D Tilt Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B;
+    --navy-deep: #0A1F3D;
+    --pink: #E89BB1;
+    --pink-soft: #F3C7D4;
+    --pink-strong: #D87A95;
+    --cream: #F4EFE7;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
+    color: var(--cream);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; }
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  .nav {
+    padding: 20px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,31,61,0.5);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo { font-weight: 700; font-size: 22px; letter-spacing: -0.04em; }
+  .nav-logo .dot { color: var(--pink); }
+  .demo-tag {
+    padding: 6px 14px;
+    background: var(--pink); color: var(--navy-deep);
+    border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;
+  }
+  .nav-back { font-size: 12px; color: rgba(244,239,231,0.5); }
+
+  /* HERO with 3D parallax layers */
+  .hero {
+    min-height: 100vh;
+    padding: 140px 32px 80px;
+    perspective: 1200px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-glow {
+    position: absolute;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(232,155,177,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+    top: -200px; right: -200px;
+    pointer-events: none;
+    filter: blur(40px);
+    will-change: transform;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1320px; margin: 0 auto;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(244,239,231,0.6);
+    margin-bottom: 32px;
+  }
+  .hero-eyebrow-dot { width: 8px; height: 8px; background: var(--pink); border-radius: 50%; animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 0.5; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.15); } }
+
+  .hero h1 {
+    font-size: clamp(54px, 10vw, 160px);
+    line-height: 0.92;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    margin-bottom: 40px;
+  }
+  .hero h1 .italic { color: var(--pink); font-style: italic; font-family: "Fraunces", serif; font-weight: 400; }
+  .hero-lead {
+    font-size: clamp(17px, 1.5vw, 22px);
+    max-width: 560px;
+    color: rgba(244,239,231,0.72);
+    line-height: 1.45;
+    margin-bottom: 40px;
+  }
+
+  /* HERO TILT CARD - 3D Floating Card */
+  .hero-tilt-card {
+    position: absolute;
+    right: 60px; top: 200px;
+    width: 360px;
+    height: 460px;
+    background: linear-gradient(135deg, var(--pink) 0%, var(--pink-strong) 100%);
+    border-radius: 28px;
+    padding: 36px;
+    color: var(--navy-deep);
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 0.3s cubic-bezier(.2,.8,.2,1);
+    box-shadow: 0 50px 100px -30px rgba(216,122,149,0.5);
+    z-index: 3;
+    cursor: pointer;
+  }
+  .hero-tilt-card .card-eyebrow {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700;
+    margin-bottom: 24px;
+  }
+  .hero-tilt-card .card-title {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: 44px; line-height: 0.95;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+  .hero-tilt-card .card-body {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(10,31,61,0.78);
+  }
+  .hero-tilt-card .card-foot {
+    position: absolute;
+    bottom: 36px; left: 36px; right: 36px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .hero-tilt-card .card-arrow {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: 24px;
+  }
+  @media (max-width: 1100px) { .hero-tilt-card { display: none; } }
+
+  /* TILT GALLERY SECTION */
+  .gallery {
+    padding: 160px 32px;
+    perspective: 1400px;
+  }
+  .gallery-inner { max-width: 1320px; margin: 0 auto; }
+  .gallery-eyebrow {
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--pink); font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .gallery h2 {
+    font-size: clamp(40px, 6.5vw, 96px);
+    line-height: 0.96;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    max-width: 1100px;
+    margin-bottom: 80px;
+  }
+  .gallery h2 .italic { color: var(--pink); font-style: italic; font-family: "Fraunces", serif; font-weight: 400; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 800px) { .gallery-grid { grid-template-columns: 1fr; } }
+
+  .tilt-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 28px;
+    padding: 56px 48px;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1), background 0.4s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .tilt-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(800px circle at var(--mx, 50%) var(--my, 50%), rgba(232,155,177,0.2), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+  .tilt-card:hover::before { opacity: 1; }
+  .tilt-card:hover { background: rgba(232,155,177,0.05); }
+  .tilt-num {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: 64px; color: var(--pink); line-height: 1;
+    margin-bottom: 36px;
+    transform: translateZ(40px);
+  }
+  .tilt-card h3 {
+    font-size: clamp(28px, 3.2vw, 42px);
+    margin-bottom: 16px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    transform: translateZ(30px);
+  }
+  .tilt-card .sub {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: 22px; color: var(--pink);
+    margin-bottom: 28px;
+    transform: translateZ(20px);
+  }
+  .tilt-card p {
+    font-size: 16px; color: rgba(244,239,231,0.72);
+    line-height: 1.55;
+    max-width: 480px;
+    transform: translateZ(15px);
+  }
+
+  /* CASE FLOATING */
+  .case-float-section {
+    padding: 200px 32px;
+    perspective: 1400px;
+  }
+  .case-float {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #d99129 0%, #c4781a 100%);
+    color: var(--white);
+    border-radius: 36px;
+    padding: 80px 64px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 60px 120px -40px rgba(217,145,41,0.4);
+    cursor: pointer;
+  }
+  .case-float::before {
+    content: "";
+    position: absolute; top: -100px; right: -100px;
+    width: 360px; height: 360px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .case-float-content { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; position: relative; }
+  @media (max-width: 800px) { .case-float-content { grid-template-columns: 1fr; } }
+  .case-float h3 { font-size: clamp(40px, 5vw, 72px); line-height: 1; font-weight: 700; margin-bottom: 14px; transform: translateZ(40px); }
+  .case-float .sub { font-family: "Fraunces", serif; font-style: italic; font-size: 24px; opacity: 0.95; margin-bottom: 20px; transform: translateZ(30px); }
+  .case-float p { font-size: 17px; opacity: 0.85; max-width: 460px; transform: translateZ(20px); }
+  .case-float img { width: 240px; transform: translateZ(50px); }
+  .case-float-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  /* CTA */
+  .cta { padding: 160px 32px; text-align: center; }
+  .cta h2 {
+    font-size: clamp(56px, 9vw, 132px);
+    line-height: 0.92;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin-bottom: 56px;
+  }
+  .cta h2 .italic { color: var(--pink); font-style: italic; font-family: "Fraunces", serif; font-weight: 400; }
+  .cta-email {
+    display: inline-block;
+    color: var(--pink);
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: clamp(26px, 3vw, 48px);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--pink);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .cta-email:hover { opacity: 0.7; transform: translateY(-4px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-tilt-card, .tilt-card, .case-float { transition: none !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a href="index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+  <div class="demo-tag">K · 3D Tilt Gallery</div>
+  <a href="index.html" class="nav-back">← Hauptseite</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow" id="heroGlow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Quint Studio · 2026</div>
+    <h1>Wir jagen den Ball.<br/>Andere reden<br/><span class="italic">über die Wiese.</span></h1>
+    <p class="hero-lead">Branding und Social für Praxen, Vereine und inhabergeführte Dienstleister, die nicht aussehen wollen wie alle anderen in ihrer Branche.</p>
+  </div>
+  <div class="hero-tilt-card" id="heroCard">
+    <div class="card-eyebrow">Anker-Case · 2026</div>
+    <div class="card-title">Eine Praxis<br/>wird zur<br/>Marken-Welt.</div>
+    <div class="card-body">REHAB FIVE — Premium-Positionierung in einer konservativen Branche. Bewege die Maus über die Karte.</div>
+    <div class="card-foot">
+      <span>REHAB FIVE</span>
+      <span class="card-arrow">→</span>
+    </div>
+  </div>
+</section>
+
+<!-- TILT GALLERY -->
+<section class="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-eyebrow">Was wir machen</div>
+    <h2>Zwei Dinge.<br/><span class="italic">Beide richtig.</span></h2>
+    <div class="gallery-grid">
+      <div class="tilt-card" data-tilt>
+        <div class="tilt-num">01</div>
+        <h3>Branding</h3>
+        <div class="sub">vom Fundament bis zum Pixel.</div>
+        <p>Wir bauen Marken, die ihre Branche nicht kopieren, sondern verändern. Vom strategischen Kern bis zur letzten Visitenkarte.</p>
+      </div>
+      <div class="tilt-card" data-tilt>
+        <div class="tilt-num">02</div>
+        <h3>Social</h3>
+        <div class="sub">kein Posting-Theater.</div>
+        <p>Social-Auftritte, die deine Marke erweitern statt sie zu verwässern. Mit Strategie, Handschrift, Hingabe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE -->
+<section class="case-float-section">
+  <div class="case-float" data-tilt>
+    <div class="case-float-content">
+      <div>
+        <div class="case-float-tag">Anker-Case</div>
+        <h3>REHAB FIVE</h3>
+        <div class="sub">Physiotherapie, neu gedacht.</div>
+        <p>Premium-Positionierung in einer konservativen Branche. Neu gedacht, neu gebrandet, in zwei Städten skaliert — mit Markenpartnern wie USC und UBC Münster.</p>
+      </div>
+      <img src="rehab-logo-white.svg" alt="REHAB FIVE" />
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Bring den Ball<br/><span class="italic">ins Rollen.</span></h2>
+  <a class="cta-email" href="mailto:hallo@quint-marketing.de">hallo@quint-marketing.de →</a>
+</section>
+
+<script>
+  // 3D Tilt für Karten
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    document.querySelectorAll('[data-tilt]').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const rx = ((y - cy) / cy) * -8;
+        const ry = ((x - cx) / cx) * 8;
+        card.style.transform = `perspective(1200px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+        card.style.setProperty('--mx', `${x}px`);
+        card.style.setProperty('--my', `${y}px`);
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1200px) rotateX(0) rotateY(0)';
+      });
+    });
+
+    // Hero-Card mit dramatischerem Tilt
+    const heroCard = document.getElementById('heroCard');
+    const hero = document.querySelector('.hero');
+    if (heroCard && hero) {
+      hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        const rx = (y - 0.5) * -16;
+        const ry = (x - 0.5) * 16;
+        heroCard.style.transform = `perspective(1200px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(40px)`;
+      });
+      hero.addEventListener('mouseleave', () => {
+        heroCard.style.transform = 'perspective(1200px) rotateX(0) rotateY(0)';
+      });
+    }
+
+    // Hero-Glow folgt der Maus
+    const glow = document.getElementById('heroGlow');
+    if (glow && hero) {
+      hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        glow.style.transform = `translate(${(x - rect.width / 2) * 0.15}px, ${(y - 200) * 0.15}px)`;
+      });
+    }
+  }
+</script>
+
+</body>
+</html>

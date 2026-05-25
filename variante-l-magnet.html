@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quint — Variante L: Magnet Cursor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B;
+    --navy-deep: #0A1F3D;
+    --navy-black: #050E1F;
+    --pink: #E89BB1;
+    --pink-strong: #D87A95;
+    --cream: #F4EFE7;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    cursor: none;
+  }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; }
+  a { color: inherit; text-decoration: none; }
+
+  /* MAGNET CURSOR */
+  .cursor-ring {
+    position: fixed;
+    width: 44px; height: 44px;
+    border: 1.5px solid var(--navy);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, background 0.3s, border-color 0.3s;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring.hover {
+    width: 80px; height: 80px;
+    background: var(--pink);
+    border-color: var(--pink);
+    mix-blend-mode: normal;
+  }
+  .cursor-dot {
+    position: fixed;
+    width: 6px; height: 6px;
+    background: var(--pink-strong);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+  }
+  @media (hover: none) {
+    .cursor-ring, .cursor-dot { display: none; }
+    body { cursor: auto; }
+    a, button, .magnet { cursor: pointer; }
+  }
+  a, button, .magnet { cursor: none; }
+
+  /* NAV */
+  .nav {
+    padding: 24px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(244,239,231,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(20,60,107,0.08);
+  }
+  .nav-logo { font-weight: 700; font-size: 22px; letter-spacing: -0.04em; }
+  .nav-logo .dot { color: var(--pink-strong); }
+  .demo-tag {
+    padding: 6px 14px;
+    background: var(--navy); color: var(--cream);
+    border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;
+  }
+  .nav-back { font-size: 12px; color: rgba(20,60,107,0.55); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 140px 32px 80px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid rgba(20,60,107,0.15);
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(20,60,107,0.6);
+    margin-bottom: 32px;
+    align-self: flex-start;
+  }
+  .hero-eyebrow-dot { width: 8px; height: 8px; background: var(--pink-strong); border-radius: 50%; animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 0.5; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.15); } }
+
+  /* Glitch-Reveal Headline */
+  .hero h1 {
+    font-size: clamp(58px, 11vw, 168px);
+    line-height: 0.9;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: var(--navy);
+    overflow: hidden;
+  }
+  .hero h1 .italic { color: var(--pink-strong); font-style: italic; font-family: "Fraunces", serif; font-weight: 400; }
+  .hero h1 .line {
+    display: block;
+    overflow: hidden;
+  }
+  .hero h1 .line > span {
+    display: inline-block;
+    transform: translateY(110%) skewY(8deg);
+    animation: lineIn 1.1s cubic-bezier(.2,.8,.2,1) forwards;
+    transform-origin: left bottom;
+  }
+  .hero h1 .line:nth-child(1) > span { animation-delay: 0.15s; }
+  .hero h1 .line:nth-child(2) > span { animation-delay: 0.30s; }
+  .hero h1 .line:nth-child(3) > span { animation-delay: 0.45s; }
+  @keyframes lineIn { to { transform: translateY(0) skewY(0); } }
+
+  .hero-bottom {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-top: 72px;
+    gap: 48px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeIn 1s cubic-bezier(.2,.8,.2,1) 1.4s forwards;
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+  .hero-lead {
+    font-size: clamp(17px, 1.5vw, 22px);
+    max-width: 540px;
+    color: rgba(20,60,107,0.78);
+    line-height: 1.45;
+  }
+  .hero-cta-magnet {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--navy);
+    color: var(--pink);
+    padding: 24px 36px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: background 0.4s, color 0.4s;
+    position: relative;
+  }
+  .hero-cta-magnet:hover { background: var(--pink); color: var(--navy); }
+  .hero-cta-magnet .arrow { font-family: "Fraunces", serif; font-style: italic; transition: transform 0.3s; }
+  .hero-cta-magnet:hover .arrow { transform: translateX(4px); }
+
+  /* MARQUEE */
+  .marquee {
+    overflow: hidden;
+    padding: 24px 0;
+    background: var(--navy);
+    color: var(--cream);
+    border-top: 2px solid var(--navy);
+    border-bottom: 2px solid var(--navy);
+  }
+  .marquee-track {
+    display: flex; gap: 48px; white-space: nowrap;
+    animation: scroll 32s linear infinite;
+    font-size: clamp(28px, 5vw, 72px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    align-items: center;
+  }
+  .marquee-track .italic-tag { font-family: "Fraunces", serif; font-style: italic; color: var(--pink); font-weight: 400; text-transform: none; }
+  .marquee-track .dot { width: 14px; height: 14px; background: var(--pink); border-radius: 50%; flex-shrink: 0; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTIONS with scroll-reveal */
+  .section { padding: 160px 32px; position: relative; }
+  .section-inner { max-width: 1320px; margin: 0 auto; }
+  .section-eyebrow {
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--pink-strong); font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .section h2 {
+    font-size: clamp(40px, 7vw, 108px);
+    line-height: 0.95;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    margin-bottom: 80px;
+    max-width: 1100px;
+  }
+  .section h2 .italic { color: var(--pink-strong); font-style: italic; font-family: "Fraunces", serif; font-weight: 400; }
+
+  /* SCROLL-SCALE-REVEAL — Elements grow as they enter */
+  .scale-reveal {
+    opacity: 0;
+    transform: scale(0.85) translateY(60px);
+    transition: opacity 1.2s cubic-bezier(.2,.8,.2,1), transform 1.2s cubic-bezier(.2,.8,.2,1);
+  }
+  .scale-reveal.in { opacity: 1; transform: scale(1) translateY(0); }
+
+  /* PILLARS */
+  .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 800px) { .pillars { grid-template-columns: 1fr; } }
+  .pillar {
+    background: var(--white);
+    border: 2px solid var(--navy);
+    border-radius: 28px;
+    padding: 48px 40px;
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1), background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar:hover { transform: translateY(-8px); background: var(--pink); }
+  .pillar-num {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: 56px; color: var(--pink-strong);
+    margin-bottom: 28px; line-height: 1;
+    transition: color 0.3s;
+  }
+  .pillar:hover .pillar-num { color: var(--navy); }
+  .pillar h3 { font-size: clamp(26px, 3vw, 36px); margin-bottom: 12px; }
+  .pillar .sub { font-family: "Fraunces", serif; font-style: italic; color: var(--pink-strong); margin-bottom: 24px; font-size: 18px; transition: color 0.3s; }
+  .pillar:hover .sub { color: var(--navy); }
+  .pillar p { color: rgba(20,60,107,0.78); font-size: 16px; line-height: 1.55; }
+
+  /* CASE */
+  .case-card {
+    background: linear-gradient(135deg, #d99129 0%, #c4781a 100%);
+    color: var(--white);
+    border-radius: 36px;
+    padding: 72px 56px;
+    display: grid; grid-template-columns: 1.4fr auto; gap: 48px; align-items: center;
+    border: 3px solid var(--navy);
+    box-shadow: 14px 14px 0 var(--navy);
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s;
+  }
+  .case-card:hover { transform: translate(-4px, -4px); box-shadow: 18px 18px 0 var(--navy); }
+  @media (max-width: 800px) { .case-card { grid-template-columns: 1fr; } }
+  .case-card h3 { font-size: clamp(40px, 5vw, 64px); line-height: 1; font-weight: 700; margin-bottom: 14px; }
+  .case-card .sub { font-family: "Fraunces", serif; font-style: italic; font-size: 22px; opacity: 0.9; margin-bottom: 20px; }
+  .case-card p { font-size: 17px; opacity: 0.85; max-width: 480px; }
+  .case-card img { width: 240px; }
+
+  /* CTA */
+  .cta {
+    padding: 180px 32px;
+    text-align: center;
+    background: var(--navy);
+    color: var(--cream);
+  }
+  .cta h2 {
+    font-size: clamp(60px, 10vw, 160px);
+    line-height: 0.9;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin-bottom: 64px;
+  }
+  .cta h2 .italic { color: var(--pink); font-style: italic; font-family: "Fraunces", serif; font-weight: 400; }
+  .cta-magnet {
+    display: inline-block;
+    background: var(--pink);
+    color: var(--navy);
+    padding: 28px 56px;
+    border-radius: 999px;
+    font-size: clamp(18px, 1.8vw, 26px);
+    font-weight: 700;
+    transition: background 0.3s;
+    position: relative;
+  }
+  .cta-magnet:hover { background: var(--cream); }
+</style>
+</head>
+<body>
+
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<header class="nav">
+  <a href="index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+  <div class="demo-tag">L · Magnet Cursor</div>
+  <a href="index.html" class="nav-back">← Hauptseite</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Quint Studio · 2026</div>
+  <h1>
+    <span class="line"><span>Wir jagen den Ball.</span></span>
+    <span class="line"><span>Andere reden</span></span>
+    <span class="line"><span class="italic">über die Wiese.</span></span>
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-lead">Branding und Social für Praxen, Vereine und inhabergeführte Dienstleister, die nicht aussehen wollen wie alle anderen in ihrer Branche.</p>
+    <a class="hero-cta-magnet magnet" data-magnet-strength="0.4" href="#kontakt">Erstgespräch <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>BRANDING</span><span class="dot"></span>
+    <span class="italic-tag">mit Haltung</span><span class="dot"></span>
+    <span>SOCIAL</span><span class="dot"></span>
+    <span class="italic-tag">ohne Beige</span><span class="dot"></span>
+    <span>BRANDING</span><span class="dot"></span>
+    <span class="italic-tag">mit Haltung</span><span class="dot"></span>
+    <span>SOCIAL</span><span class="dot"></span>
+    <span class="italic-tag">ohne Beige</span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Was wir machen</div>
+    <h2>Zwei Dinge.<br/><span class="italic">Beide richtig.</span></h2>
+    <div class="pillars">
+      <div class="pillar scale-reveal">
+        <div class="pillar-num">01</div>
+        <h3>Branding</h3>
+        <div class="sub">vom Fundament bis zum Pixel.</div>
+        <p>Wir bauen Marken, die ihre Branche nicht kopieren, sondern verändern. Vom strategischen Kern bis zur letzten Visitenkarte.</p>
+      </div>
+      <div class="pillar scale-reveal">
+        <div class="pillar-num">02</div>
+        <h3>Social</h3>
+        <div class="sub">kein Posting-Theater.</div>
+        <p>Social-Auftritte, die deine Marke erweitern statt sie zu verwässern. Mit Strategie, Handschrift, Hingabe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Anker-Case</div>
+    <h2>Marken,<br/>die <span class="italic">stehen bleiben.</span></h2>
+    <div class="case-card scale-reveal magnet" data-magnet-strength="0.15">
+      <div>
+        <h3>REHAB FIVE</h3>
+        <div class="sub">Physiotherapie, neu gedacht.</div>
+        <p>Premium-Positionierung in einer konservativen Branche. Neu gedacht, neu gebrandet, in zwei Städten skaliert — mit Markenpartnern wie USC und UBC Münster.</p>
+      </div>
+      <img src="rehab-logo-white.svg" alt="REHAB FIVE" />
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="kontakt">
+  <h2>Bring den Ball<br/><span class="italic">ins Rollen.</span></h2>
+  <a class="cta-magnet magnet" data-magnet-strength="0.5" href="mailto:hallo@quint-marketing.de">hallo@quint-marketing.de →</a>
+</section>
+
+<script>
+  // Custom Cursor mit zwei Layern
+  const ring = document.getElementById('cursorRing');
+  const dot = document.getElementById('cursorDot');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mx = e.clientX;
+    my = e.clientY;
+    dot.style.left = mx + 'px';
+    dot.style.top = my + 'px';
+  });
+
+  function animateCursor() {
+    rx += (mx - rx) * 0.18;
+    ry += (my - ry) * 0.18;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // Hover-States
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+  });
+
+  // MAGNET-EFFECT: Buttons "ziehen" sich zum Cursor
+  document.querySelectorAll('.magnet').forEach(el => {
+    const strength = parseFloat(el.dataset.magnetStrength) || 0.3;
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) * strength;
+      const dy = (e.clientY - cy) * strength;
+      el.style.transform = `translate(${dx}px, ${dy}px)`;
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+    });
+  });
+
+  // SCROLL-SCALE-REVEAL
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.scale-reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
