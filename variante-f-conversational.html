@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quint — Variante F: Conversational</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B;
+    --navy-deep: #0D2747;
+    --pink: #E89BB1;
+    --pink-soft: #F3C7D4;
+    --pink-strong: #D87A95;
+    --cream: #F4EFE7;
+    --white: #ffffff;
+    --bubble-grey: #EFEFEF;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; }
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  .nav {
+    padding: 16px 24px;
+    background: var(--navy);
+    color: var(--cream);
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 50;
+  }
+  .nav-logo { font-weight: 700; font-size: 20px; letter-spacing: -0.04em; }
+  .nav-logo .dot { color: var(--pink); }
+  .demo-tag {
+    padding: 5px 12px;
+    background: var(--pink); color: var(--navy);
+    border-radius: 999px;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;
+  }
+  .nav-back { font-size: 12px; color: rgba(244,239,231,0.6); }
+
+  /* CHAT-CONTAINER */
+  .chat-container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 24px 100px;
+    min-height: calc(100vh - 56px);
+    display: flex; flex-direction: column;
+  }
+  .chat-header {
+    text-align: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(20,60,107,0.1);
+    margin-bottom: 32px;
+  }
+  .chat-avatar {
+    width: 64px; height: 64px;
+    background: var(--navy);
+    color: var(--pink);
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 32px;
+    font-weight: 400;
+    position: relative;
+  }
+  .chat-avatar::after {
+    content: "";
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 16px; height: 16px;
+    background: #22C55E;
+    border: 3px solid var(--cream);
+    border-radius: 50%;
+  }
+  .chat-name {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.015em;
+  }
+  .chat-status {
+    font-size: 12px;
+    color: rgba(20,60,107,0.55);
+    margin-top: 2px;
+  }
+
+  /* MESSAGES */
+  .messages { display: flex; flex-direction: column; gap: 12px; }
+  .msg-day {
+    text-align: center;
+    font-size: 11px;
+    color: rgba(20,60,107,0.45);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 16px 0 8px;
+  }
+
+  /* Quint-Bubble (links, pink) */
+  .msg.quint {
+    align-self: flex-start;
+    max-width: 80%;
+    display: flex; gap: 12px; align-items: flex-end;
+  }
+  .msg.quint .bubble {
+    background: var(--pink);
+    color: var(--navy);
+    padding: 14px 18px;
+    border-radius: 22px 22px 22px 6px;
+    font-size: 16px;
+    line-height: 1.45;
+    box-shadow: 0 1px 2px rgba(20,60,107,0.05);
+  }
+  .msg.quint .bubble .italic { color: var(--navy); }
+  .msg.quint .bubble strong { font-weight: 700; }
+  .msg.quint .bubble.big {
+    font-size: clamp(22px, 3vw, 32px);
+    line-height: 1.15;
+    padding: 22px 28px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+  .msg.quint .bubble.huge {
+    font-size: clamp(34px, 5vw, 54px);
+    line-height: 1.05;
+    padding: 28px 36px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  .msg.quint .bubble.image-card {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 0;
+    overflow: hidden;
+    width: 280px;
+  }
+  .msg.quint .bubble.image-card .img-area {
+    background: linear-gradient(135deg, #d99129 0%, #c4781a 100%);
+    padding: 28px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .msg.quint .bubble.image-card .img-area img { width: 100%; max-width: 200px; }
+  .msg.quint .bubble.image-card .caption { padding: 14px 18px; font-size: 13px; }
+  .msg.quint .bubble.image-card .caption strong { font-size: 15px; color: var(--pink); }
+
+  /* User-Bubble (rechts, navy) */
+  .msg.user {
+    align-self: flex-end;
+    max-width: 80%;
+  }
+  .msg.user .bubble {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 12px 18px;
+    border-radius: 22px 22px 6px 22px;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  /* System-Action (zentriert, klein) */
+  .msg.system {
+    align-self: center;
+    font-size: 12px;
+    color: rgba(20,60,107,0.5);
+    padding: 6px 14px;
+    background: rgba(20,60,107,0.06);
+    border-radius: 999px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Quick-Reply Chips */
+  .chips {
+    display: flex; gap: 8px;
+    flex-wrap: wrap;
+    padding: 10px 0 4px;
+    align-self: flex-end;
+  }
+  .chip {
+    background: var(--white);
+    color: var(--navy);
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    border: 1.5px solid var(--navy);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+  .chip:hover {
+    background: var(--navy);
+    color: var(--pink);
+  }
+  .chip.primary {
+    background: var(--navy);
+    color: var(--pink);
+    font-weight: 700;
+  }
+  .chip.primary:hover { background: var(--navy-deep); }
+
+  /* Final CTA */
+  .final-cta {
+    margin-top: 40px;
+    padding: 32px 28px;
+    background: var(--white);
+    border: 2px solid var(--navy);
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 6px 6px 0 var(--navy);
+  }
+  .final-cta h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .final-cta h3 .italic { color: var(--pink-strong); }
+  .final-cta p {
+    font-size: 14px;
+    color: rgba(20,60,107,0.65);
+    margin-bottom: 24px;
+  }
+  .final-cta a.email {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--pink);
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a href="index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+  <div class="demo-tag">F · Conversational</div>
+  <a href="index.html" class="nav-back">← Zur Hauptseite</a>
+</header>
+
+<main class="chat-container">
+
+  <div class="chat-header">
+    <div class="chat-avatar">Q</div>
+    <div class="chat-name">Quint</div>
+    <div class="chat-status">● Online · antwortet meistens in einer Minute</div>
+  </div>
+
+  <div class="messages">
+
+    <div class="msg-day">Heute</div>
+
+    <div class="msg quint">
+      <div class="bubble huge">Hi.</div>
+    </div>
+
+    <div class="msg quint">
+      <div class="bubble big">Wir jagen den Ball. <span class="italic">Andere reden über die Wiese.</span></div>
+    </div>
+
+    <div class="msg quint">
+      <div class="bubble">Quint baut Marken für Praxen, Sportvereine und inhabergeführte Dienstleister — die nicht aussehen wollen wie alle anderen in ihrer Branche.</div>
+    </div>
+
+    <div class="msg system">Wer schreibt hier?</div>
+
+    <div class="msg quint">
+      <div class="bubble"><strong>Aric Brämswig</strong> (Strategie, Gründer REHAB FIVE) und <strong>Rania Landwehrmeyer</strong> (Design). Aus Münster, für KMU im DACH-Raum.</div>
+    </div>
+
+    <div class="msg quint">
+      <div class="bubble">Was wir machen, ist einfach: <strong>Branding</strong> und <strong>Social Media</strong>. Nicht mehr. Beides richtig.</div>
+    </div>
+
+    <div class="msg system">Beispiel?</div>
+
+    <div class="msg quint">
+      <div class="bubble image-card">
+        <div class="img-area"><img src="rehab-logo-white.svg" alt="REHAB FIVE" /></div>
+        <div class="caption">
+          <strong>REHAB FIVE</strong><br/>
+          Physiotherapie, neu gedacht. 2 Standorte, 5-Säulen-Modell, Markenpartner USC & UBC.
+        </div>
+      </div>
+    </div>
+
+    <div class="msg quint">
+      <div class="bubble">Und: <span class="italic">aus einer Praxis wurde eine Marken-Welt — mit eigener Sprache, eigener Haltung, eigenem Publikum.</span></div>
+    </div>
+
+    <div class="msg system">Wie läuft eine Zusammenarbeit?</div>
+
+    <div class="msg quint">
+      <div class="bubble">Wir starten <strong>nicht</strong> mit einem 80-Seiten-Deck. Wir starten mit einem 30-Minuten-Gespräch — kostenlos, ohne Verkaufs-Theater. Wenn wir nicht zusammenpassen, sagen wir es im selben Gespräch.</div>
+    </div>
+
+    <div class="chips">
+      <span class="chip">Was kostet das?</span>
+      <span class="chip">Macht ihr auch Webseiten?</span>
+      <span class="chip primary">Erstgespräch buchen →</span>
+    </div>
+
+    <div class="final-cta">
+      <h3>Bring den Ball <span class="italic">ins Rollen.</span></h3>
+      <p>30 Minuten · kostenlos · ohne Bullshit</p>
+      <a class="email" href="mailto:hallo@quint-marketing.de">hallo@quint-marketing.de</a>
+    </div>
+
+  </div>
+
+</main>
+
+</body>
+</html>

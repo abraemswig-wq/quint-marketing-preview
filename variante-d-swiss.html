@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quint — Variante D: Swiss/Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B;
+    --pink: #E89BB1;
+    --pink-strong: #D87A95;
+    --cream: #F4EFE7;
+    --paper: #FAFAF7;
+    --ink: #0a1f3a;
+    --line: rgba(20,60,107,0.12);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--navy);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+  }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 300; letter-spacing: -0.01em; }
+  a { color: inherit; text-decoration: none; }
+
+  /* GRID-SYSTEM */
+  .grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    padding: 0 48px;
+  }
+
+  /* NAV */
+  .nav {
+    border-bottom: 1px solid var(--line);
+    padding: 28px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo { font-weight: 700; font-size: 20px; letter-spacing: -0.04em; }
+  .nav-logo .dot { color: var(--pink-strong); }
+  .nav-meta {
+    display: flex; gap: 32px;
+    font-size: 12px;
+    color: rgba(20,60,107,0.55);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .nav-meta a:hover { color: var(--pink-strong); }
+  .demo-tag {
+    padding: 4px 12px;
+    border: 1px solid var(--navy);
+    border-radius: 999px;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600;
+  }
+
+  /* HERO — extrem reduziert */
+  .hero {
+    min-height: 92vh;
+    display: flex; align-items: flex-end;
+    padding: 100px 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+  .hero-num {
+    grid-column: 1 / 2;
+    font-size: 11px;
+    color: var(--pink-strong);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .hero-content {
+    grid-column: 2 / 11;
+  }
+  .hero h1 {
+    font-size: clamp(48px, 7.5vw, 110px);
+    line-height: 0.96;
+    font-weight: 300;
+    letter-spacing: -0.035em;
+    margin-bottom: 48px;
+  }
+  .hero h1 .italic { color: var(--pink-strong); font-weight: 300; }
+  .hero-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px;
+    max-width: 880px;
+  }
+  .hero-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(20,60,107,0.5);
+    margin-bottom: 6px;
+  }
+  .hero-meta-item .value {
+    font-size: 14px;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+  @media (max-width: 700px) { .hero-meta { grid-template-columns: 1fr; gap: 20px; } .hero-content { grid-column: 1 / -1; } .hero-num { display: none; } }
+
+  /* SECTION */
+  .section {
+    padding: 120px 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+  .section-num {
+    grid-column: 1 / 2;
+    font-size: 11px;
+    color: var(--pink-strong);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .section-eyebrow {
+    grid-column: 2 / 5;
+    font-size: 11px;
+    color: rgba(20,60,107,0.5);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .section-headline {
+    grid-column: 5 / 13;
+    font-size: clamp(28px, 3.5vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 64px;
+  }
+  .section-headline .italic { color: var(--pink-strong); }
+  @media (max-width: 800px) {
+    .section-num { display: none; }
+    .section-eyebrow { grid-column: 1 / -1; margin-bottom: 16px; }
+    .section-headline { grid-column: 1 / -1; }
+  }
+
+  /* PILLARS */
+  .pillars {
+    grid-column: 5 / 13;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 64px;
+  }
+  @media (max-width: 800px) { .pillars { grid-template-columns: 1fr; grid-column: 1 / -1; } }
+  .pillar-num {
+    font-size: 10px;
+    color: var(--pink-strong);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .pillar h3 {
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin-bottom: 12px;
+  }
+  .pillar p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(20,60,107,0.7);
+    max-width: 380px;
+  }
+
+  /* TEAM */
+  .team-block {
+    grid-column: 5 / 13;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  @media (max-width: 800px) { .team-block { grid-template-columns: 1fr; grid-column: 1 / -1; } }
+  .person {
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .person-initials {
+    font-size: 56px;
+    font-style: italic;
+    font-family: "Fraunces", serif;
+    color: var(--pink-strong);
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 24px;
+    letter-spacing: -0.04em;
+  }
+  .person-name {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin-bottom: 4px;
+  }
+  .person-role {
+    font-size: 13px;
+    color: rgba(20,60,107,0.55);
+    letter-spacing: 0.05em;
+  }
+  .person-bio {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(20,60,107,0.72);
+    margin-top: 20px;
+    max-width: 360px;
+  }
+
+  /* CTA */
+  .cta {
+    padding: 160px 48px;
+    text-align: center;
+  }
+  .cta .small {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(20,60,107,0.55);
+    margin-bottom: 32px;
+  }
+  .cta h2 {
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 1;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    margin-bottom: 48px;
+  }
+  .cta h2 .italic { color: var(--pink-strong); }
+  .cta a.email {
+    display: inline-block;
+    font-size: 16px;
+    color: var(--navy);
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--navy);
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .cta a.email:hover { color: var(--pink-strong); border-color: var(--pink-strong); }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 40px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px;
+    color: rgba(20,60,107,0.5);
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a href="index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+  <div class="demo-tag">D · Swiss/Minimal</div>
+  <div class="nav-meta">
+    <a href="index.html">Hauptseite ↗</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-num">01 / Hero</div>
+    <div class="hero-content">
+      <h1>
+        Wir jagen den Ball.<br/>
+        Andere reden <span class="italic">über die Wiese.</span>
+      </h1>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="label">Sitz</div>
+          <div class="value">Münster, NRW<br/>DACH-Raum</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="label">Leistung</div>
+          <div class="value">Branding<br/>Social Media</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="label">Gegründet</div>
+          <div class="value">2026<br/>von Aric &amp; Rania</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEISTUNGEN -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-num">02 / Leistung</div>
+    <div class="section-eyebrow">Was wir machen</div>
+    <h2 class="section-headline">Zwei Dinge. <span class="italic">Beide richtig.</span></h2>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">01 — Branding</div>
+        <h3>Vom Fundament bis zum Pixel.</h3>
+        <p>Wir bauen Marken, die ihre Branche nicht kopieren, sondern verändern. Vom strategischen Kern bis zur letzten Visitenkarte.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02 — Social</div>
+        <h3>Kein Posting-Theater.</h3>
+        <p>Social-Auftritte, die deine Marke erweitern statt sie zu verwässern. Mit Strategie, Handschrift, Hingabe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-num">03 / Werkstatt</div>
+    <div class="section-eyebrow">Wer wir sind</div>
+    <h2 class="section-headline">Zwei Menschen.<br/><span class="italic">Eine Handschrift.</span></h2>
+    <div class="team-block">
+      <div class="person">
+        <div class="person-initials">AB</div>
+        <div class="person-name">Aric Brämswig</div>
+        <div class="person-role">Strategie · Markenführung</div>
+        <p class="person-bio">Gründer REHAB FIVE. Hat eine konservative Branche modern gedacht — macht jetzt das Gleiche für andere KMU.</p>
+      </div>
+      <div class="person">
+        <div class="person-initials">RL</div>
+        <div class="person-name">Rania Landwehrmeyer</div>
+        <div class="person-role">Design · Markenwelt</div>
+        <p class="person-bio">Übersetzt Strategie in Form. Jede Linie, jeder Ton, jede Geste der Marke läuft durch ihre Hand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="small">04 / Kontakt</div>
+  <h2>Bring den Ball<br/><span class="italic">ins Rollen.</span></h2>
+  <a class="email" href="mailto:hallo@quint-marketing.de">hallo@quint-marketing.de</a>
+</section>
+
+<footer>
+  <div>© 2026 Quint · Münster</div>
+  <div>Branding · Social</div>
+</footer>
+
+</body>
+</html>
