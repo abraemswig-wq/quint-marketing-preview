@@ -94,14 +94,28 @@
   /* GRID */
   .grid {
     padding: 40px 32px 120px;
-    max-width: 1620px;
+    max-width: 1480px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 32px;
   }
-  @media (max-width: 1100px) { .grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 750px) { .grid { grid-template-columns: 1fr; } }
+
+  /* Aktuelle-Karte hervorheben */
+  .card-current {
+    border-color: rgba(232,155,177,0.4);
+    background: rgba(232,155,177,0.04);
+  }
+  .card-tag.tag-current {
+    background: var(--cream);
+    color: var(--navy);
+  }
+  .card-current .card-meta-row .value.live::before {
+    content: "● ";
+    color: #22C55E;
+    margin-right: 2px;
+  }
 
   .card {
     background: rgba(255,255,255,0.035);
@@ -274,11 +288,32 @@
 
 <section class="head">
   <div class="head-eyebrow"><span class="head-eyebrow-dot"></span>Vorgelegt zur Auswahl</div>
-  <h1>Drei Wege,<br/>eine <span class="italic">Marke.</span></h1>
-  <p class="lead">Drei Design-Richtungen für die Quint-Site, alle in derselben Markenwelt (Navy, Pink, Cream, Familjen Grotesk + Fraunces). Klick auf eine Karte öffnet die Vollansicht — unten Feedback.</p>
+  <h1>Vier Wege,<br/>eine <span class="italic">Marke.</span></h1>
+  <p class="lead">Der aktuelle Stand der Quint-Site plus drei Design-Alternativen, alle in derselben Markenwelt (Navy, Pink, Cream, Familjen Grotesk + Fraunces). Klick auf eine Karte öffnet die Vollansicht.</p>
 </section>
 
 <main class="grid">
+
+  <!-- AKTUELL (Hauptseite) -->
+  <a href="index.html" class="card card-current" target="_blank" rel="noopener">
+    <div class="card-preview">
+      <span class="card-tag tag-current">● Aktueller Stand</span>
+      <span class="card-letter">★</span>
+      <div class="card-iframe-wrap"><iframe src="index.html" loading="lazy" title="Aktuelle Hauptseite Vorschau" tabindex="-1" scrolling="no"></iframe></div>
+      <div class="card-preview-overlay"></div>
+    </div>
+    <div class="card-body">
+      <h3>Aktuelle <span class="italic">Hauptseite</span></h3>
+      <div class="stil">Playful-Editorial mit Cinematic Loader.</div>
+      <p>Der aktuelle Live-Stand: Vollbild-Loader mit Pink-Punkt-Expansion beim Laden, Authority-Cue (Aric + Rania), Ring-Hover bei der Methode (REHAB-FIVE-Stil), drei ICP-Cluster, Manifest mit Risk-Reversal-Bullets.</p>
+      <div class="card-meta">
+        <div class="card-meta-row"><span class="label">Status</span><span class="value live">Live</span></div>
+        <div class="card-meta-row"><span class="label">Stärke</span><span class="value">vollständig + Marken-Voice</span></div>
+        <div class="card-meta-row"><span class="label">Conversion</span><span class="value">★★★★</span></div>
+      </div>
+      <span class="card-cta">Vollansicht öffnen <span class="arrow">→</span></span>
+    </div>
+  </a>
 
   <!-- BENTO -->
   <a href="variante-a-bento.html" class="card" target="_blank" rel="noopener">
