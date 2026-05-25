@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quint — Variante I: Mega-Type Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B;
+    --navy-deep: #0A1F3D;
+    --pink: #E89BB1;
+    --pink-strong: #D87A95;
+    --cream: #F4EFE7;
+    --cream-deep: #E8DFCE;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  a { color: inherit; text-decoration: none; }
+
+  /* Custom Cursor */
+  .cursor {
+    position: fixed;
+    width: 32px; height: 32px;
+    border: 1.5px solid var(--navy);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.25s, height 0.25s, background 0.25s, border-color 0.25s, transform 0.05s;
+    mix-blend-mode: difference;
+  }
+  .cursor.hover { width: 80px; height: 80px; background: var(--pink); border-color: var(--pink); mix-blend-mode: normal; }
+  @media (hover: none) { .cursor { display: none; } body { cursor: auto; } }
+  a, button { cursor: none; }
+  body { cursor: none; }
+
+  /* NAV */
+  .nav {
+    padding: 24px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(244,239,231,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(20,60,107,0.1);
+  }
+  .nav-logo { font-weight: 700; font-size: 22px; letter-spacing: -0.04em; }
+  .nav-logo .dot { color: var(--pink-strong); }
+  .demo-tag {
+    padding: 6px 14px;
+    background: var(--navy); color: var(--cream);
+    border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;
+  }
+  .nav-back { font-size: 12px; color: rgba(20,60,107,0.55); }
+
+  /* MEGA-HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 140px 32px 80px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative;
+  }
+  .hero-top {
+    display: flex; justify-content: space-between;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(20,60,107,0.6);
+    margin-bottom: 60px;
+  }
+  .hero-top strong { color: var(--navy); font-weight: 600; }
+  .hero h1 {
+    font-size: clamp(60px, 16vw, 280px);
+    line-height: 0.84;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+  }
+  .hero h1 .italic {
+    color: var(--pink-strong);
+    text-transform: none;
+    font-style: italic;
+    font-family: "Fraunces", serif;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+  }
+  .hero-bottom {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-top: 80px;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .hero-lead {
+    font-size: clamp(17px, 1.4vw, 22px);
+    max-width: 540px;
+    color: rgba(20,60,107,0.78);
+    line-height: 1.45;
+  }
+  .hero-cta-arrow {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: clamp(28px, 3.5vw, 56px);
+    color: var(--navy);
+    border-bottom: 2px solid var(--navy);
+    padding-bottom: 4px;
+    transition: color 0.3s, border-color 0.3s, transform 0.3s;
+  }
+  .hero-cta-arrow:hover { color: var(--pink-strong); border-color: var(--pink-strong); transform: translateX(8px); }
+
+  /* MARQUEE */
+  .marquee {
+    overflow: hidden;
+    padding: 24px 0;
+    background: var(--navy);
+    color: var(--cream);
+    border-top: 2px solid var(--navy);
+    border-bottom: 2px solid var(--navy);
+  }
+  .marquee-track {
+    display: flex; gap: 48px; white-space: nowrap;
+    animation: scroll 34s linear infinite;
+    font-size: clamp(28px, 5vw, 72px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    align-items: center;
+  }
+  .marquee-track .italic-tag {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    text-transform: none;
+    color: var(--pink);
+    font-weight: 400;
+  }
+  .marquee-track .dot {
+    width: 14px; height: 14px;
+    background: var(--pink);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* MEGA-STATEMENT (one big sentence per viewport) */
+  .mega-statement {
+    min-height: 100vh;
+    padding: 80px 32px;
+    display: flex; align-items: center;
+    position: relative;
+  }
+  .mega-statement.pink-bg { background: var(--pink); }
+  .mega-statement.navy-bg { background: var(--navy); color: var(--cream); }
+  .mega-statement-eyebrow {
+    position: absolute;
+    top: 60px; left: 32px;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(20,60,107,0.55);
+  }
+  .navy-bg .mega-statement-eyebrow { color: rgba(244,239,231,0.55); }
+  .mega-statement-num {
+    position: absolute;
+    top: 60px; right: 32px;
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 18px;
+    opacity: 0.55;
+  }
+  .mega-statement h2 {
+    font-size: clamp(48px, 10vw, 180px);
+    line-height: 0.9;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    max-width: 1500px;
+    text-transform: uppercase;
+  }
+  .mega-statement h2 .italic {
+    font-style: italic;
+    font-family: "Fraunces", serif;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: -0.025em;
+  }
+  .pink-bg h2 .italic { color: var(--navy); }
+  .navy-bg h2 .italic { color: var(--pink); }
+
+  /* CASE BLOCK */
+  .case-block {
+    padding: 140px 32px;
+    background: var(--cream-deep);
+    color: var(--navy);
+  }
+  .case-inner { max-width: 1320px; margin: 0 auto; }
+  .case-eyebrow {
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--pink-strong);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .case-block h2 {
+    font-size: clamp(40px, 7vw, 120px);
+    line-height: 0.95;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin-bottom: 64px;
+    text-transform: uppercase;
+  }
+  .case-block h2 .italic {
+    text-transform: none; color: var(--pink-strong);
+    font-family: "Fraunces", serif; font-style: italic; font-weight: 400;
+  }
+  .case-card {
+    background: linear-gradient(135deg, #d99129 0%, #c4781a 100%);
+    color: var(--white);
+    border-radius: 36px;
+    padding: 72px 56px;
+    display: grid; grid-template-columns: 1fr auto; gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 800px) { .case-card { grid-template-columns: 1fr; } }
+  .case-card h3 { font-size: clamp(44px, 5vw, 72px); line-height: 1; font-weight: 700; margin-bottom: 12px; }
+  .case-card .sub { font-family: "Fraunces", serif; font-style: italic; font-size: 24px; opacity: 0.9; margin-bottom: 20px; }
+  .case-card p { font-size: 17px; opacity: 0.85; max-width: 520px; }
+  .case-card img { width: 240px; }
+
+  /* TEAM-BLOCK */
+  .team-block {
+    padding: 140px 32px;
+    background: var(--cream);
+    color: var(--navy);
+  }
+  .team-inner { max-width: 1320px; margin: 0 auto; }
+  .team-eyebrow {
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--pink-strong);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .team-block h2 {
+    font-size: clamp(40px, 7vw, 110px);
+    line-height: 0.95;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin-bottom: 80px;
+    text-transform: uppercase;
+  }
+  .team-block h2 .italic {
+    text-transform: none; color: var(--pink-strong);
+    font-family: "Fraunces", serif; font-style: italic; font-weight: 400;
+  }
+  .team-row { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  @media (max-width: 800px) { .team-row { grid-template-columns: 1fr; } }
+  .team-person {
+    border-top: 2px solid var(--navy);
+    padding-top: 28px;
+  }
+  .team-init {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: clamp(64px, 8vw, 112px);
+    color: var(--pink-strong);
+    line-height: 1;
+    margin-bottom: 24px;
+    letter-spacing: -0.04em;
+    font-weight: 400;
+  }
+  .team-name { font-size: clamp(26px, 3vw, 36px); font-weight: 700; letter-spacing: -0.025em; text-transform: uppercase; }
+  .team-role { font-size: 13px; color: rgba(20,60,107,0.6); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 6px; }
+  .team-bio { font-size: 15px; line-height: 1.55; color: rgba(20,60,107,0.78); margin-top: 18px; max-width: 420px; }
+
+  /* CTA */
+  .cta-block {
+    padding: 180px 32px;
+    background: var(--navy);
+    color: var(--cream);
+    text-align: center;
+  }
+  .cta-block .small {
+    font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(244,239,231,0.55);
+    margin-bottom: 28px;
+  }
+  .cta-block h2 {
+    font-size: clamp(60px, 11vw, 180px);
+    line-height: 0.9;
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    margin-bottom: 56px;
+    text-transform: uppercase;
+  }
+  .cta-block h2 .italic { color: var(--pink); text-transform: none; font-family: "Fraunces", serif; font-style: italic; font-weight: 400; }
+  .cta-block a.email {
+    display: inline-block;
+    color: var(--pink);
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: clamp(28px, 3vw, 52px);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--pink);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .cta-block a.email:hover { opacity: 0.7; transform: translateY(-4px); }
+
+  footer {
+    padding: 32px;
+    background: var(--navy-deep);
+    color: rgba(244,239,231,0.4);
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<header class="nav">
+  <a href="index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+  <div class="demo-tag">I · Mega-Type Editorial</div>
+  <a href="index.html" class="nav-back">← Hauptseite</a>
+</header>
+
+<!-- MEGA HERO -->
+<section class="hero">
+  <div class="hero-top">
+    <div><strong>Quint</strong> — Branding & Social</div>
+    <div>Münster · <strong>2026</strong> · DACH</div>
+  </div>
+  <h1>
+    Wir jagen<br/>
+    den Ball.<br/>
+    <span class="italic">Andere reden</span><br/>
+    über die Wiese.
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-lead">Branding und Social für Praxen, Sportvereine und inhabergeführte Dienstleister, die nicht aussehen wollen wie alle anderen in ihrer Branche.</p>
+    <a class="hero-cta-arrow" href="#kontakt">Erstgespräch →</a>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>BRANDING</span><span class="dot"></span>
+    <span class="italic-tag">mit Haltung</span><span class="dot"></span>
+    <span>SOCIAL</span><span class="dot"></span>
+    <span class="italic-tag">ohne Beige</span><span class="dot"></span>
+    <span>POSITIONIERUNG</span><span class="dot"></span>
+    <span class="italic-tag">die hält</span><span class="dot"></span>
+    <span>BRANDING</span><span class="dot"></span>
+    <span class="italic-tag">mit Haltung</span><span class="dot"></span>
+    <span>SOCIAL</span><span class="dot"></span>
+    <span class="italic-tag">ohne Beige</span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- STATEMENT 1 -->
+<section class="mega-statement">
+  <div class="mega-statement-eyebrow">Vorab, ehrlich</div>
+  <div class="mega-statement-num">01/05</div>
+  <h2>Die meisten<br/>Mittelständler<br/>haben großartige<br/>Produkte —<br/><span class="italic">und furchtbare Marken.</span></h2>
+</section>
+
+<!-- STATEMENT 2 -->
+<section class="mega-statement pink-bg">
+  <div class="mega-statement-eyebrow">Unsere Haltung</div>
+  <div class="mega-statement-num">02/05</div>
+  <h2>Branding<br/>ist keine<br/>Optik.<br/><span class="italic">Es ist eine Haltung,</span><br/>die zufällig auch<br/>gut aussieht.</h2>
+</section>
+
+<!-- CASE -->
+<section class="case-block">
+  <div class="case-inner">
+    <div class="case-eyebrow">Anker-Case · 03/05</div>
+    <h2>Marken,<br/>die <span class="italic">stehen bleiben.</span></h2>
+    <div class="case-card">
+      <div>
+        <h3>REHAB FIVE</h3>
+        <div class="sub">Physiotherapie, neu gedacht.</div>
+        <p>Premium-Positionierung in einer konservativen Branche. Neu gedacht, neu gebrandet, in zwei Städten skaliert — mit Markenpartnern wie USC und UBC Münster.</p>
+      </div>
+      <img src="rehab-logo-white.svg" alt="REHAB FIVE" />
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-block">
+  <div class="team-inner">
+    <div class="team-eyebrow">Werkstatt · 04/05</div>
+    <h2>Zwei Menschen.<br/><span class="italic">Eine Handschrift.</span></h2>
+    <div class="team-row">
+      <div class="team-person">
+        <div class="team-init">AB</div>
+        <div class="team-name">Aric Brämswig</div>
+        <div class="team-role">Strategie · Markenführung</div>
+        <p class="team-bio">Gründer REHAB FIVE. Hat eine konservative Branche modern gedacht — macht jetzt das Gleiche für andere KMU.</p>
+      </div>
+      <div class="team-person">
+        <div class="team-init">RL</div>
+        <div class="team-name">Rania Landwehrmeyer</div>
+        <div class="team-role">Design · Markenwelt</div>
+        <p class="team-bio">Übersetzt Strategie in Form. Jede Linie, jeder Ton, jede Geste der Marke läuft durch ihre Hand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-block" id="kontakt">
+  <div class="small">05/05 · Bereit?</div>
+  <h2>Bring den Ball<br/><span class="italic">ins Rollen.</span></h2>
+  <a class="email" href="mailto:hallo@quint-marketing.de">hallo@quint-marketing.de →</a>
+</section>
+
+<footer>© 2026 QUINT · MÜNSTER · BRANDING & SOCIAL</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  let mouseX = 0, mouseY = 0;
+  let curX = 0, curY = 0;
+  document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+  function animate() {
+    curX += (mouseX - curX) * 0.18;
+    curY += (mouseY - curY) * 0.18;
+    cursor.style.left = curX + 'px';
+    cursor.style.top = curY + 'px';
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>
+
+</body>
+</html>

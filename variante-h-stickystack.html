@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quint — Variante H: Sticky Stack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B;
+    --navy-deep: #0A1F3D;
+    --pink: #E89BB1;
+    --pink-strong: #D87A95;
+    --cream: #F4EFE7;
+    --cream-deep: #E8DFCE;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    background: var(--navy);
+  }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 0 40px; }
+
+  /* NAV */
+  .nav {
+    padding: 20px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(20,60,107,0.75);
+    backdrop-filter: blur(16px);
+    color: var(--cream);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-logo { font-weight: 700; font-size: 22px; letter-spacing: -0.04em; }
+  .nav-logo .dot { color: var(--pink); }
+  .demo-tag {
+    padding: 6px 14px;
+    background: var(--pink); color: var(--navy);
+    border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;
+  }
+  .nav-back { font-size: 12px; color: rgba(244,239,231,0.55); }
+
+  /* STICKY-STACK Container */
+  .stack {
+    /* Each child .panel is sticky → stacks visually */
+  }
+  .panel {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    width: 100%;
+    padding: 140px 40px 100px;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+
+  /* Panel-Color Variants */
+  .panel-navy { background: var(--navy); color: var(--cream); }
+  .panel-cream { background: var(--cream); color: var(--navy); }
+  .panel-pink { background: var(--pink); color: var(--navy); }
+  .panel-navy-deep { background: var(--navy-deep); color: var(--cream); }
+  .panel-pink-strong { background: var(--pink-strong); color: var(--navy-deep); }
+
+  /* Decorative number for each panel */
+  .panel-num {
+    position: absolute;
+    top: 130px; right: 40px;
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: clamp(80px, 14vw, 220px);
+    line-height: 0.9;
+    opacity: 0.12;
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    pointer-events: none;
+  }
+
+  /* HERO panel */
+  .hero-panel {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 14px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow-dot {
+    width: 8px; height: 8px;
+    background: var(--pink); border-radius: 50%;
+  }
+  .hero-panel h1 {
+    font-size: clamp(54px, 9vw, 132px);
+    line-height: 0.92;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    margin-bottom: 40px;
+    max-width: 1400px;
+  }
+  .hero-panel h1 .italic { color: var(--pink); }
+  .hero-panel p {
+    font-size: clamp(18px, 1.5vw, 22px);
+    max-width: 620px;
+    color: rgba(244,239,231,0.78);
+    line-height: 1.45;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--pink);
+    color: var(--navy);
+    padding: 18px 30px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 40px;
+    transition: transform 0.3s, background 0.3s;
+  }
+  .hero-cta:hover { background: var(--cream); transform: translateY(-3px); }
+
+  /* Section content */
+  .panel-content {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .panel-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.08);
+  }
+  .panel-cream .panel-eyebrow,
+  .panel-pink .panel-eyebrow,
+  .panel-pink-strong .panel-eyebrow { color: var(--navy); }
+  .panel-navy .panel-eyebrow,
+  .panel-navy-deep .panel-eyebrow { background: rgba(255,255,255,0.08); color: var(--pink); }
+
+  .panel-content h2 {
+    font-size: clamp(40px, 6.5vw, 100px);
+    line-height: 0.96;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    margin-bottom: 48px;
+    max-width: 1100px;
+  }
+  .panel-content h2 .italic {
+    font-style: italic;
+    font-family: "Fraunces", serif;
+    font-weight: 400;
+  }
+  .panel-navy h2 .italic, .panel-navy-deep h2 .italic { color: var(--pink); }
+  .panel-pink h2 .italic, .panel-pink-strong h2 .italic { color: var(--navy); }
+  .panel-cream h2 .italic { color: var(--pink-strong); }
+
+  /* Two-column lists */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 80px;
+    margin-top: 64px;
+  }
+  @media (max-width: 800px) { .two-col { grid-template-columns: 1fr; } }
+  .col-item .num {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 28px;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+  .col-item h4 {
+    font-size: clamp(22px, 2.4vw, 30px);
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+  .col-item h4 .italic {
+    font-style: italic;
+    font-family: "Fraunces", serif;
+    font-weight: 400;
+  }
+  .col-item p { font-size: 15.5px; line-height: 1.55; opacity: 0.78; max-width: 460px; }
+
+  /* Team panel */
+  .team-row {
+    display: flex; gap: 80px; flex-wrap: wrap;
+    margin-top: 64px;
+  }
+  .team-person { max-width: 380px; }
+  .team-initials {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: clamp(72px, 9vw, 120px);
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 28px;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+  }
+  .panel-pink .team-initials,
+  .panel-pink-strong .team-initials { color: var(--navy); }
+  .team-name {
+    font-size: clamp(22px, 2.4vw, 30px);
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.015em;
+  }
+  .team-role {
+    font-size: 14px;
+    margin-bottom: 16px;
+    opacity: 0.65;
+  }
+  .team-bio {
+    font-size: 15px;
+    line-height: 1.55;
+    opacity: 0.78;
+  }
+
+  /* CTA panel */
+  .cta-panel { text-align: center; align-items: center; justify-content: center; flex-direction: column; }
+  .cta-panel h2 {
+    text-align: center;
+    margin: 0 auto 56px;
+    font-size: clamp(56px, 9vw, 140px);
+  }
+  .cta-link {
+    display: inline-block;
+    font-size: clamp(20px, 2vw, 32px);
+    padding: 18px 36px;
+    background: var(--navy);
+    color: var(--pink);
+    border-radius: 999px;
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    transition: transform 0.3s;
+  }
+  .panel-pink-strong .cta-link, .panel-pink .cta-link { background: var(--navy-deep); color: var(--cream); }
+  .cta-link:hover { transform: translateY(-4px); }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a href="index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+  <div class="demo-tag">H · Sticky Stack</div>
+  <a href="index.html" class="nav-back">← Hauptseite</a>
+</header>
+
+<div class="stack">
+
+  <!-- PANEL 1: HERO (NAVY) -->
+  <section class="panel panel-navy hero-panel">
+    <div class="panel-num">01</div>
+    <div class="panel-content">
+      <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Quint Studio · 2026</div>
+      <h1>Wir jagen den Ball.<br/>Andere reden <span class="italic">über die Wiese.</span></h1>
+      <p>Branding und Social für Praxen, Vereine und inhabergeführte Dienstleister, die nicht aussehen wollen wie alle anderen in ihrer Branche.</p>
+      <a class="hero-cta" href="#kontakt">Erstgespräch buchen →</a>
+    </div>
+  </section>
+
+  <!-- PANEL 2: WAS WIR MACHEN (CREAM) -->
+  <section class="panel panel-cream">
+    <div class="panel-num">02</div>
+    <div class="panel-content">
+      <div class="panel-eyebrow">Was wir machen</div>
+      <h2>Zwei Dinge.<br/><span class="italic">Beide richtig.</span></h2>
+      <div class="two-col">
+        <div class="col-item">
+          <div class="num">01.</div>
+          <h4>Branding <span class="italic">vom Fundament bis zum Pixel.</span></h4>
+          <p>Wir bauen Marken, die ihre Branche nicht kopieren, sondern verändern. Strategischer Kern bis letzte Visitenkarte.</p>
+        </div>
+        <div class="col-item">
+          <div class="num">02.</div>
+          <h4>Social <span class="italic">ohne Beige.</span></h4>
+          <p>Social-Auftritte, die deine Marke erweitern statt verwässern. Strategie, Handschrift, Hingabe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANEL 3: METHODE (PINK) -->
+  <section class="panel panel-pink">
+    <div class="panel-num">03</div>
+    <div class="panel-content">
+      <div class="panel-eyebrow">Wie wir denken</div>
+      <h2>Erst der Ball.<br/><span class="italic">Dann das Rennen.</span></h2>
+      <div class="two-col">
+        <div class="col-item">
+          <div class="num">H1.</div>
+          <h4>Haltung — worauf wir <span class="italic">zielen.</span></h4>
+          <p>Klären, was deine Marke behaupten soll — und was sie konsequent ablehnt. Ohne Haltung kein Profil.</p>
+        </div>
+        <div class="col-item">
+          <div class="num">H2.</div>
+          <h4>Handwerk — wie wir <span class="italic">bauen.</span></h4>
+          <p>Design, Copy, Video — aus einer Hand, nach demselben Maßstab gefertigt.</p>
+        </div>
+        <div class="col-item">
+          <div class="num">H3.</div>
+          <h4>Handschrift — woran man uns <span class="italic">erkennt.</span></h4>
+          <p>Jede Marke, die wir bauen, sieht wie sich selbst aus. Nie wie wir.</p>
+        </div>
+        <div class="col-item">
+          <div class="num">H4.</div>
+          <h4>Hingabe — was uns <span class="italic">trägt.</span></h4>
+          <p>Wir arbeiten mit wenigen Kunden, aber für jeden, als wäre er der einzige.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANEL 4: TEAM (NAVY-DEEP) -->
+  <section class="panel panel-navy-deep">
+    <div class="panel-num">04</div>
+    <div class="panel-content">
+      <div class="panel-eyebrow">Wer wir sind</div>
+      <h2>Zwei Menschen.<br/><span class="italic">Eine Handschrift.</span></h2>
+      <div class="team-row">
+        <div class="team-person">
+          <div class="team-initials" style="color: var(--pink);">AB</div>
+          <div class="team-name">Aric Brämswig</div>
+          <div class="team-role">Strategie · Markenführung</div>
+          <p class="team-bio">Gründer REHAB FIVE. Hat eine konservative Branche modern gedacht — macht jetzt das Gleiche für andere KMU.</p>
+        </div>
+        <div class="team-person">
+          <div class="team-initials" style="color: var(--pink);">RL</div>
+          <div class="team-name">Rania Landwehrmeyer</div>
+          <div class="team-role">Design · Markenwelt</div>
+          <p class="team-bio">Übersetzt Strategie in Form. Jede Linie, jeder Ton, jede Geste der Marke läuft durch ihre Hand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANEL 5: CTA (PINK-STRONG) -->
+  <section class="panel panel-pink-strong cta-panel" id="kontakt">
+    <div class="panel-num">05</div>
+    <div class="panel-content" style="text-align: center;">
+      <div class="panel-eyebrow" style="background: rgba(20,30,60,0.15);">Bereit?</div>
+      <h2>Bring den Ball<br/><span class="italic">ins Rollen.</span></h2>
+      <a class="cta-link" href="mailto:hallo@quint-marketing.de">hallo@quint-marketing.de →</a>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
