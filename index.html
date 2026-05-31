@@ -12,7 +12,7 @@
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-<link rel="apple-touch-icon" href="quint-logo.png" />
+<link rel="apple-touch-icon" href="favicon.svg" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
@@ -40,7 +40,7 @@
   "name": "Quint Marketing",
   "alternateName": "Quint",
   "url": "https://abraemswig-wq.github.io/quint-marketing-preview/",
-  "logo": "https://abraemswig-wq.github.io/quint-marketing-preview/quint-logo.png",
+  "logo": "https://abraemswig-wq.github.io/quint-marketing-preview/favicon.svg",
   "image": "https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png",
   "description": "Branding und Social Media für KMU im DACH-Raum. Wir bauen Marken, die nicht aussehen wie alle anderen.",
   "slogan": "Wir jagen den Ball. Andere reden über die Wiese.",
@@ -362,18 +362,7 @@
     transition: border-color 0.25s, background 0.25s;
   }
   .btn-ghost:hover { border-color: var(--pink); background: rgba(232,155,177,0.06); }
-  .hero-dackel {
-    position: absolute; right: -60px; bottom: 0;
-    width: 540px; pointer-events: none;
-    animation: dackelFloat 6s ease-in-out infinite;
-    z-index: 1;
-  }
-  @keyframes dackelFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-12px) rotate(-1deg); }
-  }
-  @media (max-width: 1100px) { .hero-dackel { width: 380px; opacity: 0.55; right: -80px; } }
-  @media (max-width: 700px) { .hero-dackel { width: 260px; opacity: 0.3; right: -60px; } }
+  /* hero-dackel entfernt (Dackel-Asset deaktiviert) */
   .hero-ball {
     position: absolute; width: 28px; height: 28px;
     background: var(--pink); border-radius: 50%;
@@ -1246,7 +1235,6 @@
       </div>
     </div>
   </div>
-  <img class="hero-dackel" src="quint-logo.png" alt="" aria-hidden="true" />
   <div class="hero-ball" aria-hidden="true"></div>
 </header>
 
