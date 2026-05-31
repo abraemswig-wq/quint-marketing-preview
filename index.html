@@ -318,72 +318,6 @@
 
   /* HERO */
   .hero { padding: 100px 0 140px; position: relative; overflow: hidden; }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: 64px;
-    align-items: center;
-  }
-  @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
-
-  /* Editorial Brand-Card rechts im Hero */
-  .hero-side {
-    background: linear-gradient(180deg, rgba(232,155,177,0.08) 0%, rgba(255,255,255,0.02) 100%);
-    border: 1px solid rgba(232,155,177,0.18);
-    border-radius: var(--radius-card, 24px);
-    padding: 32px 28px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-side::before {
-    content: "";
-    position: absolute;
-    top: -40px; right: -40px;
-    width: 160px; height: 160px;
-    background: radial-gradient(circle, rgba(232,155,177,0.18) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-  .hero-side-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--pink);
-    font-weight: 600;
-    margin-bottom: 18px;
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .hero-side-eyebrow::before {
-    content: "";
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--pink);
-    animation: pulse 2.4s ease-in-out infinite;
-  }
-  .hero-side-headline {
-    font-family: "Fraunces", serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(20px, 1.8vw, 26px);
-    line-height: 1.2;
-    color: var(--white);
-    margin-bottom: 20px;
-    letter-spacing: -0.01em;
-  }
-  .hero-side-list {
-    list-style: none;
-    margin-top: 8px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-  }
-  .hero-side-list li {
-    display: flex; justify-content: space-between; align-items: baseline;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    font-size: 13.5px;
-  }
-  .hero-side-list li:last-child { border-bottom: 0; padding-bottom: 0; }
-  .hero-side-list .k { color: rgba(255,255,255,0.55); letter-spacing: 0.05em; text-transform: uppercase; font-size: 11px; }
-  .hero-side-list .v { color: var(--white); font-weight: 500; text-align: right; }
   .hero-content { position: relative; z-index: 2; max-width: 1080px; }
   .hero h1 {
     font-size: clamp(56px, 9vw, 132px);
@@ -1292,35 +1226,21 @@
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <div class="eyebrow">Branding + Social für Praxen, Vereine, Kanzleien</div>
-        <h1>
-          Wir jagen den Ball.<br/>
-          Andere reden <span class="accent">über die Wiese.</span>
-        </h1>
-        <p class="lead">Quint baut Marken für Praxen, Sportvereine und inhabergeführte Dienstleister, die nicht aussehen wollen wie alle anderen in ihrer Branche. Branding mit Haltung. Social ohne Beige.</p>
-        <div class="hero-authority" aria-label="Gründer-Hinweis">
-          <span class="hero-authority-dot"></span>
-          Von Aric Brämswig <span class="hero-authority-meta">— Gründer REHAB FIVE</span> &amp; Rania Landwehrmeyer
-        </div>
-        <div class="hero-ctas">
-          <a class="btn-primary" href="#kontakt" data-magnet data-spring>Erstgespräch buchen <span class="arrow">→</span></a>
-          <a class="btn-ghost" href="#arbeit" data-spring>Unsere Arbeit ansehen</a>
-        </div>
+    <div class="hero-content">
+      <div class="eyebrow">Branding + Social für Praxen, Vereine, Kanzleien</div>
+      <h1>
+        Wir jagen den Ball.<br/>
+        Andere reden <span class="accent">über die Wiese.</span>
+      </h1>
+      <p class="lead">Quint baut Marken für Praxen, Sportvereine und inhabergeführte Dienstleister, die nicht aussehen wollen wie alle anderen in ihrer Branche. Branding mit Haltung. Social ohne Beige.</p>
+      <div class="hero-authority" aria-label="Gründer-Hinweis">
+        <span class="hero-authority-dot"></span>
+        Von Aric Brämswig <span class="hero-authority-meta">— Gründer REHAB FIVE</span> &amp; Rania Landwehrmeyer
       </div>
-
-      <aside class="hero-side" aria-label="Quint im Überblick">
-        <div class="hero-side-eyebrow">Quint Studio</div>
-        <p class="hero-side-headline">Eine Werkstatt aus Münster — zwei Hände, drei Welten.</p>
-        <ul class="hero-side-list">
-          <li><span class="k">Disziplinen</span><span class="v">Branding · Social</span></li>
-          <li><span class="k">Welten</span><span class="v">Praxen · Vereine · Kanzleien</span></li>
-          <li><span class="k">Sitz</span><span class="v">Münster · DACH</span></li>
-          <li><span class="k">Founder</span><span class="v">Aric &amp; Rania</span></li>
-          <li><span class="k">Antwort</span><span class="v">in 24 h</span></li>
-        </ul>
-      </aside>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#kontakt" data-magnet data-spring>Erstgespräch buchen <span class="arrow">→</span></a>
+        <a class="btn-ghost" href="#arbeit" data-spring>Unsere Arbeit ansehen</a>
+      </div>
     </div>
   </div>
 </header>
