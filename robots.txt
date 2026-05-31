@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Konzept-Vorschauen — werden später wahrscheinlich aus dem Index genommen
+Disallow: /variante-
+Disallow: /idee-
+Disallow: /scroll-expand-demo.html
+Disallow: /varianten-vergleich.html
+
+Sitemap: https://abraemswig-wq.github.io/quint-marketing-preview/sitemap.xml

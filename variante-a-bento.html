@@ -418,5 +418,21 @@
   });
 </script>
 
+<!-- Motion One: Senior-Designer-Polish -->
+<script type="module">
+  import { magneticHover, cardTilt, buttonSpring } from "./motion-shared.js";
+  window.addEventListener('load', () => {
+    const params = new URLSearchParams(window.location.search);
+    const skip = params.get('skip-loader') === '1';
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const delay = (skip || reduceMotion) ? 0 : 2800;
+    setTimeout(() => {
+      magneticHover('a.btn, a.btn-pink, .nav-cta', 0.18);
+      buttonSpring('a.btn, a.btn-pink, .nav-cta');
+      cardTilt('.cell', 3);
+    }, delay + 200);
+  });
+</script>
+
 </body>
 </html>

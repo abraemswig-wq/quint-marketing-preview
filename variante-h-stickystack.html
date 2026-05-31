@@ -405,5 +405,20 @@
   });
 </script>
 
+<!-- Motion One: Senior-Designer-Polish -->
+<script type="module">
+  import { magneticHover, buttonSpring } from "./motion-shared.js";
+  window.addEventListener('load', () => {
+    const params = new URLSearchParams(window.location.search);
+    const skip = params.get('skip-loader') === '1';
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const delay = (skip || reduceMotion) ? 0 : 2800;
+    setTimeout(() => {
+      magneticHover('.hero-cta, .cta-link, .nav-cta', 0.2);
+      buttonSpring('.hero-cta, .cta-link, .nav-cta');
+    }, delay + 200);
+  });
+</script>
+
 </body>
 </html>

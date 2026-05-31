@@ -89,6 +89,64 @@
 }
 </script>
 
+<!-- Schema.org — FAQPage für AI-SEO (Google AI Overviews, ChatGPT, Perplexity) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie lange dauert ein Branding-Projekt bei Quint?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Branding-Projekte dauern in der Regel 6 bis 12 Wochen, abhängig von der Tiefe der Markenstrategie und ob ein Web-Relaunch dabei ist."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie läuft die Zusammenarbeit konkret ab?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In vier Phasen: Kickoff (Haltungs-Klärung), Konzept (Markenstrategie und visuelles System), Bau (Design, Copy, Assets), Übergabe (Guideline und Schulung). Wöchentliche Check-ins, ein zentraler Ansprechpartner — Aric oder Rania, kein Account Manager."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was unterscheidet Quint von einer klassischen Werbeagentur?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Werbeagenturen verkaufen Kampagnen. Quint baut Marken. Eine Kampagne läuft drei Monate — eine Marke trägt zehn Jahre."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Macht Quint auch Webseiten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, als Teil eines Branding-Projekts. Quint nutzt Webflow oder Framer je nach Anforderung. Für reine Webseiten-Anfragen ohne Branding ist Quint nicht die richtige Adresse."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wer produziert den Social-Media-Content?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quint produziert. Realistisch heißt das: feste Foto- und Drehtage vor Ort (ein bis zwei pro Quartal), aus dem Material entstehen 4 bis 8 Wochen Content. Der Kunde liefert Input zu Themen — Quint macht Bild, Ton und Text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Arbeitet Quint nur in Münster oder auch deutschlandweit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sitz ist Münster, Quint arbeitet aber im gesamten DACH-Raum. Kickoff am liebsten persönlich beim Kunden, der Rest läuft remote über Video-Meetings."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
@@ -853,6 +911,203 @@
   .manifesto-item h4 .italic { color: var(--navy); }
   .manifesto-item p { font-size: 16px; color: rgba(20,60,107,0.78); line-height: 1.55; }
 
+  /* ANTI-MARKETING-BLOCK */
+  .anti-marketing {
+    padding: 160px 0;
+    background: var(--navy);
+    color: var(--cream);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .anti-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 64px;
+  }
+  @media (max-width: 800px) { .anti-list { grid-template-columns: 1fr; } }
+  .anti-item {
+    padding: 36px 32px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    background: rgba(255,255,255,0.02);
+    position: relative;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .anti-item:hover { border-color: var(--pink); background: rgba(232,155,177,0.04); }
+  .anti-item .strike {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: 16px;
+    color: rgba(232,155,177,0.8);
+    margin-bottom: 18px;
+  }
+  .anti-item .strike::before {
+    content: "✗";
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(232,155,177,0.15);
+    color: var(--pink);
+    font-size: 13px;
+    font-weight: 700;
+    font-family: inherit;
+    font-style: normal;
+  }
+  .anti-item h3 {
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+  .anti-item h3 .italic { color: var(--pink); }
+  .anti-item p { font-size: 15.5px; color: rgba(244,239,231,0.72); line-height: 1.55; }
+
+  /* FAQ-BLOCK */
+  .faq {
+    padding: 160px 0;
+    background: var(--navy-deep);
+    color: var(--cream);
+  }
+  .faq-list {
+    margin-top: 64px;
+    max-width: 880px;
+  }
+  .faq-item {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 0;
+  }
+  .faq-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .faq-q {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    color: var(--cream);
+    text-align: left;
+    padding: 28px 0;
+    font-family: inherit;
+    font-size: clamp(18px, 1.7vw, 22px);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+    transition: color 0.2s;
+  }
+  .faq-q:hover { color: var(--pink); }
+  .faq-q .faq-icon {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .faq-item[open] .faq-q .faq-icon { background: var(--pink); color: var(--navy-deep); border-color: var(--pink); transform: rotate(45deg); }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-a {
+    padding: 0 0 28px;
+    color: rgba(244,239,231,0.78);
+    font-size: 15.5px;
+    line-height: 1.55;
+    max-width: 720px;
+  }
+  .faq-a .placeholder {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 10px;
+    background: rgba(232,155,177,0.15);
+    color: var(--pink);
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* NEWSLETTER-STUB (im CTA-Block) */
+  .newsletter-stub {
+    margin: 64px auto 0;
+    max-width: 540px;
+    padding: 36px 32px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px;
+  }
+  .newsletter-stub h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.015em;
+    color: var(--cream);
+  }
+  .newsletter-stub h3 .italic { color: var(--pink); }
+  .newsletter-stub p {
+    color: rgba(244,239,231,0.7);
+    font-size: 14.5px;
+    margin-bottom: 24px;
+  }
+  .newsletter-stub form {
+    display: flex; gap: 8px;
+    flex-wrap: wrap;
+  }
+  .newsletter-stub input[type="email"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 14px 18px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    color: var(--cream);
+    border: 1px solid rgba(255,255,255,0.15);
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .newsletter-stub input[type="email"]::placeholder { color: rgba(244,239,231,0.45); }
+  .newsletter-stub input[type="email"]:focus {
+    outline: none;
+    border-color: var(--pink);
+    background: rgba(255,255,255,0.12);
+  }
+  .newsletter-stub button {
+    background: var(--pink);
+    color: var(--navy);
+    border: 0;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .newsletter-stub button:hover { background: var(--cream); transform: translateY(-2px); }
+  .newsletter-stub .small {
+    display: block;
+    margin-top: 14px;
+    font-size: 12px;
+    color: rgba(244,239,231,0.5);
+  }
+
+  /* Skip-Link für Accessibility */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 10000;
+    padding: 12px 18px;
+    background: var(--pink);
+    color: var(--navy);
+    font-weight: 700;
+    border-radius: 0 0 12px 0;
+    font-size: 14px;
+  }
+  .skip-link:focus { left: 0; }
+
   /* CTA */
   .cta-block {
     text-align: center;
@@ -947,6 +1202,8 @@
 </head>
 <body class="locked">
 
+<a href="#top" class="skip-link">Zum Inhalt springen</a>
+
 <!-- CINEMATIC LOADER -->
 <div class="loader" id="loader">
   <div class="loader-content">
@@ -960,13 +1217,13 @@
     <a href="#top" class="logo">Quint<span class="dot">.</span></a>
     <div class="nav-links">
       <a href="#leistungen">Leistungen</a>
+      <a href="#fuer-wen">Für wen</a>
       <a href="#methode">Methode</a>
       <a href="#arbeit">Arbeit</a>
-      <a href="#fuer-wen">Für wen</a>
       <a href="#team">Team</a>
-      <a href="#manifest">Manifest</a>
+      <a href="#faq">FAQ</a>
     </div>
-    <a class="nav-cta" href="#kontakt">Erstgespräch →</a>
+    <a class="nav-cta" href="#kontakt" data-spring>Erstgespräch →</a>
   </div>
 </nav>
 
@@ -984,8 +1241,8 @@
         Von Aric Brämswig <span class="hero-authority-meta">— Gründer REHAB FIVE</span> &amp; Rania Landwehrmeyer
       </div>
       <div class="hero-ctas">
-        <a class="btn-primary" href="#kontakt">Erstgespräch buchen <span class="arrow">→</span></a>
-        <a class="btn-ghost" href="#arbeit">Unsere Arbeit ansehen</a>
+        <a class="btn-primary" href="#kontakt" data-magnet data-spring>Erstgespräch buchen <span class="arrow">→</span></a>
+        <a class="btn-ghost" href="#arbeit" data-spring>Unsere Arbeit ansehen</a>
       </div>
     </div>
   </div>
@@ -1023,6 +1280,58 @@
       und furchtbare Marken.
     </h2>
     <p class="statement-tail">Und verlieren damit jeden Tag Anfragen, von denen sie nie erfahren.</p>
+  </div>
+</section>
+
+<section class="audience-block" id="fuer-wen" aria-labelledby="fuer-wen-heading">
+  <div class="wrap">
+    <div class="section-head reveal" data-scroll-reveal>
+      <div class="eyebrow">Für wen wir bauen</div>
+      <h2 id="fuer-wen-heading">Drei Welten.<br/><span class="italic">Eine Handschrift.</span></h2>
+      <p class="lead">Wir bauen keine Marken für alle. Wir bauen Marken für Inhaberinnen und Inhaber, die ihren Beruf ernst meinen — in drei Welten, in denen wir zuhause sind.</p>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card reveal" data-scroll-reveal data-tilt>
+        <div class="audience-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <div class="audience-num">01.</div>
+        <h3>Health & Beauty</h3>
+        <div class="audience-sub">Praxen, Studios, Optiker.</div>
+        <p>Inhabergeführte Praxen und Studios, die Premium-Qualität liefern — und endlich auch so aussehen wollen. Aric kommt selbst aus dieser Welt: REHAB FIVE ist seine Praxis.</p>
+      </div>
+
+      <div class="audience-card reveal" data-scroll-reveal data-tilt>
+        <div class="audience-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+            <path d="M2 12h20"/>
+          </svg>
+        </div>
+        <div class="audience-num">02.</div>
+        <h3>Sport & Vereine</h3>
+        <div class="audience-sub">Clubs, Verbände, Sportstätten.</div>
+        <p>Vereine und Sportmarken, die mehr sind als ihr Logo auf dem Trikot. Aric kennt die Welt aus erster Hand — über REHAB FIVE arbeitet er mit Partnern wie USC und UBC Münster.</p>
+      </div>
+
+      <div class="audience-card reveal" data-scroll-reveal data-tilt>
+        <div class="audience-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="7" width="18" height="13" rx="2"/>
+            <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            <line x1="12" y1="12" x2="12" y2="16"/>
+          </svg>
+        </div>
+        <div class="audience-num">03.</div>
+        <h3>Inhabergeführte Dienstleister</h3>
+        <div class="audience-sub">Kanzleien, Beratungen, Steuerbüros.</div>
+        <p>Anwaltskanzleien, Steuerbüros, Beratungen, die merken: Mandanten googeln vor dem ersten Anruf. Wir machen aus Expertise eine Marke, die das auch ausstrahlt.</p>
+      </div>
+    </div>
+    <p class="audience-foot reveal" data-scroll-reveal>Du siehst deine Welt nicht? Schreib uns trotzdem — wenn die Haltung passt, passt der Rest.</p>
   </div>
 </section>
 
@@ -1197,58 +1506,6 @@
   </div>
 </section>
 
-<section class="audience-block" id="fuer-wen">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">Für wen wir bauen</div>
-      <h2>Drei Welten.<br/><span class="italic">Eine Handschrift.</span></h2>
-      <p class="lead">Wir bauen keine Marken für alle. Wir bauen Marken für Inhaberinnen und Inhaber, die ihren Beruf ernst meinen — in drei Welten, in denen wir zuhause sind.</p>
-    </div>
-    <div class="audience-grid">
-      <div class="audience-card reveal">
-        <div class="audience-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-          </svg>
-        </div>
-        <div class="audience-num">01.</div>
-        <h3>Health & Beauty</h3>
-        <div class="audience-sub">Praxen, Studios, Optiker.</div>
-        <p>Inhabergeführte Praxen und Studios, die Premium-Qualität liefern — und endlich auch so aussehen wollen. Aric kommt selbst aus dieser Welt: REHAB FIVE ist seine Praxis.</p>
-      </div>
-
-      <div class="audience-card reveal">
-        <div class="audience-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
-            <path d="M2 12h20"/>
-          </svg>
-        </div>
-        <div class="audience-num">02.</div>
-        <h3>Sport & Vereine</h3>
-        <div class="audience-sub">Clubs, Verbände, Sportstätten.</div>
-        <p>Vereine und Sportmarken, die mehr sind als ihr Logo auf dem Trikot. Aric kennt die Welt aus erster Hand — über REHAB FIVE arbeitet er mit Partnern wie USC und UBC Münster.</p>
-      </div>
-
-      <div class="audience-card reveal">
-        <div class="audience-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="7" width="18" height="13" rx="2"/>
-            <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-            <line x1="12" y1="12" x2="12" y2="16"/>
-          </svg>
-        </div>
-        <div class="audience-num">03.</div>
-        <h3>Inhabergeführte Dienstleister</h3>
-        <div class="audience-sub">Kanzleien, Beratungen, Steuerbüros.</div>
-        <p>Anwaltskanzleien, Steuerbüros, Beratungen, die merken: Mandanten googeln vor dem ersten Anruf. Wir machen aus Expertise eine Marke, die das auch ausstrahlt.</p>
-      </div>
-    </div>
-    <p class="audience-foot reveal">Du siehst deine Welt nicht? Schreib uns trotzdem — wenn die Haltung passt, passt der Rest.</p>
-  </div>
-</section>
-
 <section class="team-block" id="team">
   <div class="wrap">
     <div class="section-head reveal">
@@ -1307,17 +1564,99 @@
   </div>
 </section>
 
+<!-- ANTI-MARKETING-BLOCK -->
+<section class="anti-marketing" id="was-wir-nicht-tun" aria-labelledby="anti-heading">
+  <div class="wrap">
+    <div class="section-head reveal" data-scroll-reveal>
+      <div class="eyebrow">Was wir nicht tun</div>
+      <h2 id="anti-heading">Damit wir uns <span class="italic">nicht missverstehen.</span></h2>
+      <p class="lead">Die meisten Agenturen verstecken, was sie nicht können. Wir sagen, was wir nicht tun — damit du gleich weißt, ob wir passen.</p>
+    </div>
+    <div class="anti-list">
+      <div class="anti-item reveal" data-scroll-reveal>
+        <span class="strike">Kein 80-Seiten-Strategie-Deck</span>
+        <h3>Strategie passt auf <span class="italic">eine Seite.</span></h3>
+        <p>Wir liefern keine Theorie-Türme, die nach drei Wochen niemand mehr aufschlägt. Sondern ein Dokument, das du nach dem Lesen verstanden hast — und nach dem du arbeiten kannst.</p>
+      </div>
+      <div class="anti-item reveal" data-scroll-reveal>
+        <span class="strike">Kein Praktikanten-Social</span>
+        <h3>Dein Schaufenster ist <span class="italic">kein Spielplatz.</span></h3>
+        <p>Social Media betreuen bei uns nicht die Jüngsten — sondern die, die deine Marke am besten verstanden haben. Jede Sekunde, in der du dort erscheinst, ist Markenkommunikation.</p>
+      </div>
+      <div class="anti-item reveal" data-scroll-reveal>
+        <span class="strike">Kein Full-Service-Bauchladen</span>
+        <h3>Wir machen <span class="italic">zwei Dinge.</span></h3>
+        <p>Branding und Social Media. Nicht „auch noch eben Print, Messen, Eventfilm, Wartezimmer-TV". Wer alles macht, macht nichts richtig. Für den Rest haben wir Partner, denen wir vertrauen.</p>
+      </div>
+      <div class="anti-item reveal" data-scroll-reveal>
+        <span class="strike">Kein Kunden-Hamsterrad</span>
+        <h3>Wenige Marken, <span class="italic">volle Aufmerksamkeit.</span></h3>
+        <p>Wir nehmen nicht 30 Etats an, um quartalsweise zu liefern. Wir nehmen wenige — und liefern dafür wöchentlich. Wenn wir zu voll sind, sagen wir es vor dem ersten Gespräch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq" aria-labelledby="faq-heading">
+  <div class="wrap">
+    <div class="section-head reveal" data-scroll-reveal>
+      <div class="eyebrow">Häufige Fragen</div>
+      <h2 id="faq-heading">Was meistens als <span class="italic">Nächstes</span> kommt.</h2>
+      <p class="lead">Sechs Fragen, die wir in Erstgesprächen am häufigsten hören. Antworten sind ehrlich und kurz.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">Wie lange dauert ein Branding-Projekt? <span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-a">Branding-Projekte dauern bei uns in der Regel <strong>6 bis 12 Wochen</strong> — abhängig davon, wie tief wir in die Markenstrategie einsteigen und ob ein Web-Relaunch dabei ist. <span class="placeholder">Platzhalter — wartet auf Bestätigung von Rania</span></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Wie läuft die Zusammenarbeit konkret ab? <span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-a">In vier Phasen: Kickoff (gemeinsame Haltungs-Klärung) → Konzept (Markenstrategie + visuelles System) → Bau (Design, Copy, Assets) → Übergabe (Guideline + Schulung). Wöchentliche Check-ins, ein zentraler Ansprechpartner — Aric oder Rania, kein Account Manager. <span class="placeholder">Platzhalter — wartet auf Bestätigung</span></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Was unterscheidet euch von einer Werbeagentur? <span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-a">Werbeagenturen verkaufen Kampagnen. Wir bauen Marken. Eine Kampagne läuft drei Monate — eine Marke trägt zehn Jahre. Beides hat seinen Platz, aber wer zu uns kommt, will das Zweite. <span class="placeholder">Platzhalter — wartet auf Bestätigung</span></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Macht ihr auch Webseiten? <span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-a">Ja — als Teil eines Branding-Projekts. Wir nutzen Webflow oder Framer, je nach Anforderung. Für reine „mach mir eine Website ohne Branding"-Anfragen sind wir nicht die richtige Adresse. <span class="placeholder">Platzhalter — wartet auf Bestätigung</span></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Wer produziert den Social-Content — wir oder ihr? <span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-a">Wir produzieren. Realistisch heißt das: feste Foto- und Drehtage bei dir vor Ort (ein bis zwei pro Quartal), aus dem Material entstehen 4 bis 8 Wochen Content. Du lieferst Input zu Themen — wir machen Bild, Ton, Text. <span class="placeholder">Platzhalter — wartet auf Bestätigung</span></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Arbeitet ihr nur in Münster oder auch deutschlandweit? <span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-a">Beides. Unser Sitz ist Münster, wir arbeiten aber im gesamten DACH-Raum. Kickoff am liebsten persönlich (wir kommen zu dir), der Rest läuft remote über Video — funktioniert bewiesen, spart dir Anreisezeit. <span class="placeholder">Platzhalter — wartet auf Bestätigung</span></div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <section class="cta-block" id="kontakt">
   <div class="wrap-narrow" style="position: relative; z-index: 2;">
     <div class="eyebrow" style="margin-bottom: 28px; color: var(--pink);">Bereit?</div>
     <h2>Bring den Ball<br/><span class="italic">ins Rollen.</span></h2>
     <p>30 Minuten. Kostenlos. Ohne Bullshit. Wir hören zu, du hörst zu — danach wissen wir beide, ob wir zusammenpassen.</p>
-    <a class="cta-email" href="mailto:hallo@quint-marketing.de">hallo@quint-marketing.de →</a>
+    <a class="cta-email" href="mailto:hallo@quint-marketing.de" data-magnet data-spring>hallo@quint-marketing.de →</a>
     <ul class="cta-reassurance" aria-label="Was beim Erstgespräch passiert">
       <li><span class="cta-check">✓</span> Keine Verkaufs-Präsentation, keine Power-Point-Theater</li>
       <li><span class="cta-check">✓</span> Wenn wir nicht passen, sagen wir es im selben Gespräch</li>
       <li><span class="cta-check">✓</span> Du gehst raus mit einer ehrlichen Einschätzung deiner Marke — auch wenn wir nicht zusammen arbeiten</li>
     </ul>
+
+    <!-- Newsletter-Stub: Soft-Conversion vor Erstgespräch -->
+    <div class="newsletter-stub" data-scroll-reveal>
+      <h3>Noch nicht bereit?<br/><span class="italic">Quint-Notizen.</span></h3>
+      <p>Einmal im Monat eine kurze E-Mail mit Marken-Beobachtungen aus unseren drei Welten. Kein Newsletter-Bullshit. Jederzeit abbestellbar.</p>
+      <form action="mailto:a.braemswig@rehab-five.com" method="post" enctype="text/plain" data-newsletter>
+        <label for="newsletter-email" class="sr-only" style="position: absolute; left: -9999px;">E-Mail</label>
+        <input type="email" id="newsletter-email" name="email" placeholder="deine@email.de" required />
+        <button type="submit" data-spring>Abonnieren →</button>
+      </form>
+      <span class="small">Bei erfolgreichem Versand bekommst du eine Begrüßungs-Mail. Wir nutzen die Adresse für nichts anderes.</span>
+    </div>
   </div>
   <div class="cta-ball" aria-hidden="true"></div>
 </section>
@@ -1334,6 +1673,7 @@
   </div>
 </footer>
 
+<!-- Legacy fallback reveal (läuft falls Motion One nicht lädt) -->
 <script>
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -1357,6 +1697,25 @@
       loader.classList.add('done');
       document.body.classList.remove('locked');
     }, delay);
+  });
+</script>
+
+<!-- Motion One: Senior-Designer-Animation-Pass (Framer-Motion-Äquivalent für Vanilla JS) -->
+<script type="module">
+  import { scrollReveal, magneticHover, cardTilt, buttonSpring } from "./motion-shared.js";
+
+  // Warten bis Loader-Animation durch ist, damit Animationen erst nach Page-Reveal greifen
+  window.addEventListener('load', () => {
+    const params = new URLSearchParams(window.location.search);
+    const skip = params.get('skip-loader') === '1';
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const delay = (skip || reduceMotion) ? 0 : 2800;
+    setTimeout(() => {
+      scrollReveal('[data-scroll-reveal]');
+      magneticHover('[data-magnet]', 0.18);
+      cardTilt('[data-tilt]', 4);
+      buttonSpring('[data-spring]');
+    }, delay + 200);
   });
 </script>
 
