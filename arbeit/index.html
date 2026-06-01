@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Arbeit — Cases aus der Quint-Werkstatt</title>
+<meta name="description" content="Cases aus der Quint-Werkstatt: Branding und Markenwelten für Praxen, Vereine und inhabergeführte Dienstleister im DACH-Raum." />
+<meta name="theme-color" content="#143C6B" />
+<link rel="canonical" href="https://abraemswig-wq.github.io/quint-marketing-preview/arbeit/" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Arbeit — Quint Cases" />
+<meta property="og:description" content="Cases aus der Werkstatt — Marken, die stehen bleiben." />
+<meta property="og:image" content="https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png" />
+<meta property="og:locale" content="de_DE" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B; --navy-deep: #0D2747; --pink: #E89BB1; --pink-soft: #F3C7D4;
+    --pink-strong: #D87A95; --cream: #F4EFE7; --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--navy); color: var(--white); line-height: 1.5;
+    overflow-x: hidden; -webkit-font-smoothing: antialiased;
+  }
+  body.locked { overflow: hidden; height: 100vh; }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+  /* LOADER */
+  .loader { position: fixed; inset: 0; background: #0D2747; z-index: 9999; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .loader-content { text-align: center; position: relative; }
+  .loader-quint { font-size: clamp(80px, 14vw, 220px); font-weight: 700; letter-spacing: -0.05em; color: #ffffff; display: inline-flex; align-items: baseline; opacity: 0; animation: loaderFadeIn 0.8s cubic-bezier(.2,.8,.2,1) 0.1s forwards; }
+  .loader-dot { width: clamp(16px, 2.5vw, 40px); height: clamp(16px, 2.5vw, 40px); background: #E89BB1; border-radius: 50%; margin-left: 0.05em; transform: scale(0); animation: loaderDotPop 0.6s cubic-bezier(.34,1.56,.64,1) 0.9s forwards, loaderDotExpand 1s cubic-bezier(.6,0,.7,1) 2.1s forwards; }
+  @keyframes loaderFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes loaderDotPop { from { transform: scale(0); } to { transform: scale(1); } }
+  @keyframes loaderDotExpand { 0% { transform: scale(1); } 100% { transform: scale(200); } }
+  .loader-progress { position: absolute; bottom: -80px; left: 50%; transform: translateX(-50%); width: 200px; height: 2px; background: rgba(255,255,255,0.1); overflow: hidden; }
+  .loader-progress::after { content: ""; position: absolute; left: 0; top: 0; width: 0; height: 100%; background: #E89BB1; animation: loaderProgress 2s cubic-bezier(.2,.8,.2,1) forwards; }
+  @keyframes loaderProgress { from { width: 0; } to { width: 100%; } }
+  .loader.done { pointer-events: none; animation: loaderHide 0.8s cubic-bezier(.6,0,.7,1) 0.2s forwards; }
+  @keyframes loaderHide { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+  @media (prefers-reduced-motion: reduce) { .loader { display: none; } }
+
+  /* NAV */
+  nav.nav-bar { position: sticky; top: 0; z-index: 50; background: rgba(20, 60, 107, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; max-width: 1320px; margin: 0 auto; }
+  .nav-logo { font-weight: 700; font-size: 26px; letter-spacing: -0.04em; }
+  .nav-logo .dot { color: var(--pink); margin-right: 2px; }
+  .nav-back { font-size: 13px; color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 999px; transition: all 0.2s; }
+  .nav-back:hover { background: var(--pink); color: var(--navy); border-color: var(--pink); }
+
+  /* HEAD */
+  .head {
+    padding: 120px 0 60px;
+    text-align: center;
+  }
+  .head-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); margin-bottom: 28px;
+  }
+  .head-eyebrow-dot { width: 8px; height: 8px; background: var(--pink); border-radius: 50%; animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 0.45; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.15); } }
+  .head h1 { font-size: clamp(48px, 8vw, 110px); line-height: 0.96; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 24px; }
+  .head h1 .italic { color: var(--pink); }
+  .head p.lead { font-size: clamp(17px, 1.5vw, 22px); color: rgba(255,255,255,0.72); max-width: 680px; margin: 0 auto; line-height: 1.55; }
+
+  /* GRID */
+  .cases-grid {
+    padding: 60px 0 140px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .case-card {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 0;
+    border-radius: 36px;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s;
+  }
+  @media (max-width: 800px) { .case-card { grid-template-columns: 1fr; } }
+  .case-card.live { background: linear-gradient(135deg, var(--pink-strong) 0%, var(--pink) 100%); color: var(--navy); cursor: pointer; }
+  .case-card.live:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -20px rgba(232,155,177,0.4); }
+  .case-card.upcoming { background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.15); color: var(--white); }
+
+  .case-content {
+    padding: 56px 48px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 380px;
+  }
+  .case-card.live .case-tag {
+    display: inline-block;
+    background: var(--navy); color: var(--pink);
+    padding: 6px 14px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    align-self: flex-start;
+  }
+  .case-card.upcoming .case-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5);
+    padding: 6px 14px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    align-self: flex-start;
+  }
+  .case-content h3 {
+    font-size: clamp(36px, 4.5vw, 60px);
+    line-height: 0.98; font-weight: 700;
+    letter-spacing: -0.025em; margin: 28px 0 14px;
+  }
+  .case-content .sub {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: clamp(20px, 2vw, 26px); margin-bottom: 24px; line-height: 1.3;
+  }
+  .case-card.live .case-content p { color: rgba(20,60,107,0.78); font-size: 16px; line-height: 1.55; max-width: 480px; }
+  .case-card.upcoming .case-content p { color: rgba(255,255,255,0.6); font-size: 16px; line-height: 1.55; max-width: 480px; }
+  .case-cta {
+    margin-top: 32px;
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.05em;
+  }
+  .case-card.live .case-cta { color: var(--navy); }
+  .case-card.live .case-cta .arrow { font-family: "Fraunces", serif; font-style: italic; transition: transform 0.25s; }
+  .case-card.live:hover .case-cta .arrow { transform: translateX(6px); }
+
+  .case-visual {
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    padding: 48px;
+    position: relative;
+  }
+  .case-card.live .case-visual { background: linear-gradient(135deg, rgba(20,60,107,0.95), rgba(13,39,71,0.95)); }
+  .case-visual img { width: 100%; max-width: 320px; }
+  .case-visual .placeholder-text {
+    font-family: "Fraunces", serif; font-style: italic;
+    color: rgba(255,255,255,0.45); font-size: 18px;
+    text-align: center;
+  }
+
+  footer {
+    padding: 32px; background: var(--navy-deep);
+    color: rgba(244,239,231,0.4); text-align: center;
+    font-size: 12px; letter-spacing: 0.1em;
+  }
+  footer a:hover { color: var(--pink); }
+</style>
+</head>
+<body class="locked">
+
+<div class="loader" id="loader">
+  <div class="loader-content">
+    <div class="loader-quint">Quint<span class="loader-dot"></span></div>
+    <div class="loader-progress"></div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+    <a href="../index.html" class="nav-back">← Hauptseite</a>
+  </div>
+</nav>
+
+<header class="head">
+  <div class="wrap">
+    <div class="head-eyebrow"><span class="head-eyebrow-dot"></span>Arbeit · Cases</div>
+    <h1>Marken,<br/>die <span class="italic">stehen bleiben.</span></h1>
+    <p class="lead">Wir reden gerne über das, was wir gemacht haben. Aber lieber über das, was es für unsere Kund:innen bewegt hat.</p>
+  </div>
+</header>
+
+<section class="wrap">
+  <div class="cases-grid">
+
+    <!-- REHAB FIVE — LIVE -->
+    <a href="rehab-five.html" class="case-card live" aria-label="REHAB FIVE Case-Study öffnen">
+      <div class="case-content">
+        <span class="case-tag">Anker-Case</span>
+        <div>
+          <h3>REHAB FIVE</h3>
+          <div class="sub">Physiotherapie, neu gedacht.</div>
+          <p>Premium-Positionierung in einer konservativen Branche. Neu gedacht, neu gebrandet, in zwei Städten skaliert — mit Markenpartnern wie USC und UBC Münster.</p>
+        </div>
+        <span class="case-cta">Case ansehen <span class="arrow">→</span></span>
+      </div>
+      <div class="case-visual">
+        <img src="../rehab-logo-white.svg" alt="REHAB FIVE Logo" />
+      </div>
+    </a>
+
+    <!-- DEMNÄCHST -->
+    <div class="case-card upcoming">
+      <div class="case-content">
+        <span class="case-tag">In Vorbereitung</span>
+        <div>
+          <h3>Dein Projekt?</h3>
+          <div class="sub">Vielleicht der nächste Case.</div>
+          <p>Wir bauen pro Jahr nur eine Handvoll Marken — gründlich, mit voller Aufmerksamkeit. Wenn deine Marke jetzt mehr verdient als das, was sie ausstrahlt, lass uns reden.</p>
+        </div>
+        <a href="../index.html#kontakt" class="case-cta" style="color: var(--pink);">Erstgespräch buchen <span style="font-family: 'Fraunces', serif; font-style: italic;">→</span></a>
+      </div>
+      <div class="case-visual">
+        <div class="placeholder-text">Diese Stelle ist frei.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 QUINT · <a href="../index.html">Hauptseite</a> · <a href="../journal/">Journal</a>
+</footer>
+
+<script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    if (!loader) return;
+    const params = new URLSearchParams(window.location.search);
+    const skip = params.get('skip-loader') === '1';
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const delay = (skip || reduceMotion) ? 0 : 2800;
+    setTimeout(() => { loader.classList.add('done'); document.body.classList.remove('locked'); }, delay);
+  });
+</script>
+
+</body>
+</html>

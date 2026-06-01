@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>REHAB FIVE — Anker-Case · Quint Werkstatt</title>
+<meta name="description" content="REHAB FIVE — Premium-Positionierung einer konservativen Branche. Eine Case-Study aus der Quint-Werkstatt: 5-Säulen-Modell, zwei Standorte, Markenpartner USC und UBC Münster." />
+<meta name="theme-color" content="#143C6B" />
+<link rel="canonical" href="https://abraemswig-wq.github.io/quint-marketing-preview/arbeit/rehab-five.html" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="REHAB FIVE — Anker-Case · Quint" />
+<meta property="og:description" content="Premium-Positionierung in einer konservativen Branche. Neu gedacht, neu gebrandet, in zwei Städten skaliert." />
+<meta property="og:image" content="https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png" />
+
+<!-- Schema.org CreativeWork (Case Study) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "REHAB FIVE — Branding Case Study",
+  "about": "REHAB FIVE Physiotherapie, Markenaufbau in einer konservativen Branche",
+  "creator": {
+    "@type": "Organization",
+    "name": "Quint Marketing",
+    "url": "https://abraemswig-wq.github.io/quint-marketing-preview/"
+  },
+  "subjectOf": {
+    "@type": "ProfessionalService",
+    "name": "REHAB FIVE",
+    "url": "https://rehab-five.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Münster", "addressCountry": "DE" }
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B; --navy-deep: #0D2747; --pink: #E89BB1; --pink-soft: #F3C7D4;
+    --pink-strong: #D87A95; --cream: #F4EFE7; --rehab-orange: #d99129; --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--navy); color: var(--white); line-height: 1.5;
+    overflow-x: hidden; -webkit-font-smoothing: antialiased;
+  }
+  body.locked { overflow: hidden; height: 100vh; }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .wrap-narrow { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* LOADER */
+  .loader { position: fixed; inset: 0; background: #0D2747; z-index: 9999; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .loader-content { text-align: center; position: relative; }
+  .loader-quint { font-size: clamp(80px, 14vw, 220px); font-weight: 700; letter-spacing: -0.05em; color: #ffffff; display: inline-flex; align-items: baseline; opacity: 0; animation: loaderFadeIn 0.8s cubic-bezier(.2,.8,.2,1) 0.1s forwards; }
+  .loader-dot { width: clamp(16px, 2.5vw, 40px); height: clamp(16px, 2.5vw, 40px); background: #E89BB1; border-radius: 50%; margin-left: 0.05em; transform: scale(0); animation: loaderDotPop 0.6s cubic-bezier(.34,1.56,.64,1) 0.9s forwards, loaderDotExpand 1s cubic-bezier(.6,0,.7,1) 2.1s forwards; }
+  @keyframes loaderFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes loaderDotPop { from { transform: scale(0); } to { transform: scale(1); } }
+  @keyframes loaderDotExpand { 0% { transform: scale(1); } 100% { transform: scale(200); } }
+  .loader-progress { position: absolute; bottom: -80px; left: 50%; transform: translateX(-50%); width: 200px; height: 2px; background: rgba(255,255,255,0.1); overflow: hidden; }
+  .loader-progress::after { content: ""; position: absolute; left: 0; top: 0; width: 0; height: 100%; background: #E89BB1; animation: loaderProgress 2s cubic-bezier(.2,.8,.2,1) forwards; }
+  @keyframes loaderProgress { from { width: 0; } to { width: 100%; } }
+  .loader.done { pointer-events: none; animation: loaderHide 0.8s cubic-bezier(.6,0,.7,1) 0.2s forwards; }
+  @keyframes loaderHide { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+  @media (prefers-reduced-motion: reduce) { .loader { display: none; } }
+
+  /* NAV */
+  nav.nav-bar { position: sticky; top: 0; z-index: 50; background: rgba(20, 60, 107, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; max-width: 1320px; margin: 0 auto; }
+  .nav-logo { font-weight: 700; font-size: 26px; letter-spacing: -0.04em; }
+  .nav-logo .dot { color: var(--pink); margin-right: 2px; }
+  .nav-back { font-size: 13px; color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 999px; transition: all 0.2s; }
+  .nav-back:hover { background: var(--pink); color: var(--navy); border-color: var(--pink); }
+
+  /* HERO */
+  .case-hero {
+    padding: 80px 0 60px;
+    position: relative;
+  }
+  .breadcrumb {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 32px;
+  }
+  .breadcrumb a:hover { color: var(--pink); }
+  .breadcrumb-sep { margin: 0 10px; opacity: 0.4; }
+
+  .case-hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--pink); margin-bottom: 24px;
+  }
+  .case-hero-eyebrow .num {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: 18px; letter-spacing: 0;
+  }
+  .case-hero-eyebrow .sep { width: 30px; height: 1px; background: var(--pink); }
+
+  .case-hero h1 {
+    font-size: clamp(48px, 8vw, 110px);
+    line-height: 0.94; font-weight: 700;
+    letter-spacing: -0.03em; margin-bottom: 24px;
+  }
+  .case-hero h1 .italic { color: var(--pink); }
+
+  .case-hero-lead {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: clamp(20px, 2vw, 28px);
+    color: rgba(255,255,255,0.85); line-height: 1.4;
+    max-width: 760px; margin-bottom: 48px;
+  }
+
+  .case-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 32px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  @media (max-width: 700px) { .case-meta-grid { grid-template-columns: 1fr 1fr; } }
+  .case-meta-item .label {
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); margin-bottom: 8px;
+  }
+  .case-meta-item .value { font-size: 15px; color: var(--white); line-height: 1.35; }
+  .case-meta-item .value .italic { color: var(--pink-soft); }
+
+  /* BRAND-STAGE — Orange-Block mit Logo */
+  .brand-stage {
+    margin: 80px 0;
+    background: linear-gradient(135deg, var(--rehab-orange) 0%, #c4781a 100%);
+    border-radius: 36px;
+    padding: 120px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .brand-stage::before {
+    content: "";
+    position: absolute; top: -120px; right: -120px;
+    width: 360px; height: 360px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+  }
+  .brand-stage::after {
+    content: "";
+    position: absolute; bottom: -100px; left: -100px;
+    width: 280px; height: 280px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+  .brand-stage-logo { width: 80%; max-width: 540px; position: relative; z-index: 1; }
+  .brand-stage-caption {
+    font-family: "Fraunces", serif; font-style: italic;
+    color: rgba(255,255,255,0.85); font-size: 14px;
+    margin-top: 36px; position: relative; z-index: 1;
+    letter-spacing: 0.05em;
+  }
+
+  /* SEKTIONEN */
+  .section { padding: 100px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+  .section h2 {
+    font-size: clamp(32px, 5vw, 64px);
+    line-height: 1.02; font-weight: 700;
+    letter-spacing: -0.025em; margin-bottom: 24px;
+  }
+  .section h2 .italic { color: var(--pink); }
+  .section .section-lead {
+    font-size: clamp(17px, 1.5vw, 21px);
+    color: rgba(255,255,255,0.72); line-height: 1.55;
+    margin-bottom: 56px; max-width: 720px;
+  }
+
+  /* 5-SÄULEN */
+  .saeulen {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 56px;
+  }
+  @media (max-width: 1000px) { .saeulen { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .saeulen { grid-template-columns: 1fr; } }
+  .saeule {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 28px 20px;
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1), border-color 0.3s;
+  }
+  .saeule:hover { transform: translateY(-6px); border-color: var(--pink); }
+  .saeule .num {
+    font-family: "Fraunces", serif; font-style: italic;
+    color: var(--pink); font-size: 28px;
+    margin-bottom: 14px; line-height: 1;
+  }
+  .saeule h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .saeule p { font-size: 13.5px; color: rgba(255,255,255,0.65); line-height: 1.45; }
+
+  /* ILLUSTRATIONS-GALERIE */
+  .illu-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+  @media (max-width: 800px) { .illu-gallery { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .illu-gallery { grid-template-columns: 1fr; } }
+  .illu {
+    background: var(--cream);
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .illu:hover { transform: translateY(-4px) scale(1.01); }
+  .illu img { width: 100%; height: 100%; object-fit: cover; }
+  .illu-meta {
+    margin-top: 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+  }
+  .illu-meta strong { color: var(--white); font-weight: 500; }
+
+  /* INSTAGRAM-EMBED-SLOTS */
+  .insta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+  @media (max-width: 800px) { .insta-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .insta-grid { grid-template-columns: 1fr; } }
+  .insta-slot {
+    aspect-ratio: 1 / 1;
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(232,155,177,0.3);
+    border-radius: 16px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 24px;
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+  }
+  .insta-slot .icon {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: 32px; color: var(--pink);
+    margin-bottom: 12px;
+  }
+  .insta-slot .num { color: var(--pink); font-weight: 700; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px; }
+
+  /* STATS */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+  @media (max-width: 700px) { .stats-grid { grid-template-columns: 1fr; } }
+  .stat {
+    text-align: center;
+    padding: 36px 24px;
+    background: rgba(232,155,177,0.06);
+    border: 1px solid rgba(232,155,177,0.2);
+    border-radius: 20px;
+  }
+  .stat .big {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-weight: 400; color: var(--pink);
+    font-size: clamp(56px, 7vw, 96px);
+    line-height: 0.9; letter-spacing: -0.04em;
+    margin-bottom: 12px;
+  }
+  .stat .desc { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.4; }
+  .stat .desc strong { color: var(--white); }
+
+  /* PULLQUOTE */
+  .pullquote {
+    margin: 80px auto;
+    max-width: 880px;
+    padding: 56px 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+  }
+  .pullquote p {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: clamp(24px, 3vw, 40px);
+    line-height: 1.25; color: var(--white);
+    margin-bottom: 20px;
+  }
+  .pullquote .attrib {
+    font-size: 13px; color: var(--pink);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* CTA */
+  .case-cta {
+    padding: 120px 0; text-align: center;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(232,155,177,0.07) 0%, transparent 60%),
+      var(--navy-deep);
+    border-top: 1px solid rgba(232,155,177,0.15);
+  }
+  .case-cta h2 { font-size: clamp(36px, 5vw, 64px); font-weight: 700; margin-bottom: 24px; letter-spacing: -0.025em; }
+  .case-cta h2 .italic { color: var(--pink); }
+  .case-cta p { color: rgba(255,255,255,0.7); margin: 0 auto 36px; max-width: 560px; font-size: 16px; }
+  .case-cta .email-pill {
+    display: inline-block;
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: clamp(20px, 2vw, 28px);
+    color: var(--pink); padding: 14px 28px;
+    border: 2px solid var(--pink); border-radius: 999px;
+    transition: background 0.3s, color 0.3s;
+  }
+  .case-cta .email-pill:hover { background: var(--pink); color: var(--navy); }
+
+  /* RELATED */
+  .related-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 32px;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-bottom: 4px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .related-link:hover { color: var(--pink); border-color: var(--pink); }
+
+  footer { padding: 32px; background: var(--navy-deep); color: rgba(244,239,231,0.4); text-align: center; font-size: 12px; letter-spacing: 0.1em; }
+  footer a:hover { color: var(--pink); }
+</style>
+</head>
+<body class="locked">
+
+<div class="loader" id="loader">
+  <div class="loader-content">
+    <div class="loader-quint">Quint<span class="loader-dot"></span></div>
+    <div class="loader-progress"></div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+    <a href="index.html" class="nav-back">← Arbeit</a>
+  </div>
+</nav>
+
+<header class="case-hero">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Quint</a><span class="breadcrumb-sep">/</span>
+      <a href="index.html">Arbeit</a><span class="breadcrumb-sep">/</span>
+      REHAB FIVE
+    </nav>
+
+    <div class="case-hero-eyebrow">
+      <span class="num">№ 01</span>
+      <span class="sep"></span>
+      <span>Anker-Case · Health</span>
+    </div>
+
+    <h1>REHAB FIVE — <br/><span class="italic">Physiotherapie neu gedacht.</span></h1>
+    <p class="case-hero-lead">Wie aus einer Praxis eine Marken-Welt wurde — mit eigener Sprache, eigener Haltung, eigenem Publikum. Den Schritt, den jeder Mittelständler einmal gehen muss.</p>
+
+    <div class="case-meta-grid">
+      <div class="case-meta-item">
+        <div class="label">Branche</div>
+        <div class="value">Physiotherapie</div>
+      </div>
+      <div class="case-meta-item">
+        <div class="label">Sitz</div>
+        <div class="value">Münster · 2 Standorte</div>
+      </div>
+      <div class="case-meta-item">
+        <div class="label">Modell</div>
+        <div class="value"><span class="italic">5-Säulen-System</span></div>
+      </div>
+      <div class="case-meta-item">
+        <div class="label">Quint-Rolle</div>
+        <div class="value">Strategie · Markenführung</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="wrap">
+  <!-- Brand-Stage mit Logo -->
+  <div class="brand-stage">
+    <img src="../rehab-logo-white.svg" alt="REHAB FIVE Logo" class="brand-stage-logo" />
+    <div class="brand-stage-caption">Markenwelt · Orange als signature color · Sans-Serif mit Charakter</div>
+  </div>
+</section>
+
+<!-- AUSGANGSLAGE -->
+<section class="section">
+  <div class="wrap-narrow">
+    <h2>Ausgangslage: <span class="italic">eine konservative Branche.</span></h2>
+    <p class="section-lead">Physiotherapie ist in Deutschland eine Branche, die seit 20 Jahren visuell stehengeblieben ist. Weiße Wände, Stockfotos von älteren Patientinnen, austauschbare „Wir kümmern uns um Sie"-Sätze. Die Folge: Anbieter sind kaum unterscheidbar — und Mitarbeiter:innen suchen sich ihren Arbeitgeber eher nach Wegstrecke als nach Marke aus.</p>
+    <p class="section-lead">REHAB FIVE wollte das Gegenteil sein: eine moderne Praxis-Marke, die Patient:innen und Therapeut:innen aktiv anzieht — nicht zufällig vorbeischwemmt.</p>
+  </div>
+</section>
+
+<!-- 5-SÄULEN-MODELL -->
+<section class="section">
+  <div class="wrap">
+    <h2>Das <span class="italic">5-Säulen-Modell.</span></h2>
+    <p class="section-lead">Aus einer Behandlungsphilosophie wurde ein Marken-Modell, das sowohl Patient:innen-Kommunikation als auch Mitarbeiter:innen-Recruiting trägt.</p>
+    <div class="saeulen">
+      <div class="saeule">
+        <div class="num">01</div>
+        <h4>Training</h4>
+        <p>Aktivierung für Muskeln und Gelenke.</p>
+      </div>
+      <div class="saeule">
+        <div class="num">02</div>
+        <h4>Therapie</h4>
+        <p>Damit du wieder fit wirst.</p>
+      </div>
+      <div class="saeule">
+        <div class="num">03</div>
+        <h4>Prävention</h4>
+        <p>Damit du fit bleibst.</p>
+      </div>
+      <div class="saeule">
+        <div class="num">04</div>
+        <h4>Diagnostik</h4>
+        <p>Um herauszufinden, was zu tun ist.</p>
+      </div>
+      <div class="saeule">
+        <div class="num">05</div>
+        <h4>Athletik</h4>
+        <p>So bleibst du stabil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ILLUSTRATIONS-GALERIE -->
+<section class="section">
+  <div class="wrap">
+    <h2>Eine <span class="italic">eigene Bildwelt.</span></h2>
+    <p class="section-lead">Statt Stockfotos: eine eigene Illustrations-Welt, die zur Marke gehört. Wiedererkennbar, warm, charakterstark — vom Behandlungszimmer bis zum Recruiting-Post.</p>
+    <div class="illu-gallery">
+      <div class="illu"><img src="../assets/rehab-physio.avif" alt="REHAB FIVE Illustration: Physiotherapie" loading="lazy" /></div>
+      <div class="illu"><img src="../assets/rehab-personal.avif" alt="REHAB FIVE Illustration: Personaltraining" loading="lazy" /></div>
+      <div class="illu"><img src="../assets/rehab-diagnostik.avif" alt="REHAB FIVE Illustration: Diagnostik" loading="lazy" /></div>
+      <div class="illu"><img src="../assets/rehab-athletik.avif" alt="REHAB FIVE Illustration: Athletiktraining" loading="lazy" /></div>
+      <div class="illu"><img src="../assets/rehab-oma.avif" alt="REHAB FIVE Illustration: Senioren-Training" loading="lazy" /></div>
+      <div class="illu" style="background: var(--rehab-orange); align-items: center; justify-content: center;">
+        <img src="../rehab-signet.svg" alt="REHAB FIVE Signet" style="width: 50%; height: auto;" />
+      </div>
+    </div>
+    <p class="illu-meta">Illustrationen: <strong>REHAB FIVE Bildwelt</strong> · gezogen von rehab-five.com</p>
+  </div>
+</section>
+
+<!-- PULLQUOTE -->
+<div class="pullquote">
+  <div class="wrap">
+    <p>„Aus einer Praxis wurde eine Marken-Welt — mit eigener Sprache, eigener Haltung, eigenem Publikum."</p>
+    <span class="attrib">— Aric Brämswig, Gründer REHAB FIVE</span>
+  </div>
+</div>
+
+<!-- INSTAGRAM SLOTS -->
+<section class="section">
+  <div class="wrap">
+    <h2>Im <span class="italic">Alltag</span> sichtbar.</h2>
+    <p class="section-lead">Wie sich das Markenversprechen auf Social Media übersetzt — sechs Eindrücke aus dem REHAB-FIVE-Instagram. <em style="color: var(--pink);">Embed-Codes werden hier von Aric eingesetzt — sobald die gewünschten Posts ausgewählt sind.</em></p>
+    <div class="insta-grid">
+      <div class="insta-slot"><div class="num">№ 01</div><div class="icon">@</div>Instagram-Post<br/>Embed-Code folgt</div>
+      <div class="insta-slot"><div class="num">№ 02</div><div class="icon">@</div>Instagram-Post<br/>Embed-Code folgt</div>
+      <div class="insta-slot"><div class="num">№ 03</div><div class="icon">@</div>Instagram-Post<br/>Embed-Code folgt</div>
+      <div class="insta-slot"><div class="num">№ 04</div><div class="icon">@</div>Instagram-Post<br/>Embed-Code folgt</div>
+      <div class="insta-slot"><div class="num">№ 05</div><div class="icon">@</div>Instagram-Post<br/>Embed-Code folgt</div>
+      <div class="insta-slot"><div class="num">№ 06</div><div class="icon">@</div>Instagram-Post<br/>Embed-Code folgt</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section">
+  <div class="wrap-narrow">
+    <h2>Was es <span class="italic">bewegt</span> hat.</h2>
+    <p class="section-lead">Konkrete Outcomes — was die Marke REHAB FIVE messbar verändert hat, seit es die Marke gibt.</p>
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="big">2</div>
+        <div class="desc"><strong>Standorte</strong> in Münster — Scharnhorststraße &amp; Friedrich-Ebert-Straße.</div>
+      </div>
+      <div class="stat">
+        <div class="big">5</div>
+        <div class="desc"><strong>Säulen</strong> im Marken-Modell — Training, Therapie, Prävention, Diagnostik, Athletik.</div>
+      </div>
+      <div class="stat">
+        <div class="big">3</div>
+        <div class="desc"><strong>Marken­partner</strong> — USC Münster, UBC Münster, RVM.</div>
+      </div>
+    </div>
+    <p class="illu-meta" style="margin-top: 24px; text-align: center;">Weitere Outcome-Zahlen <em style="color: var(--pink);">(Wachstum, Bewerber:innen, Patient:innen-Reviews)</em> folgen — Aric ergänzt sie nach Sichtung.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="case-cta">
+  <div class="wrap-narrow">
+    <h2>Eure Marke,<br/><span class="italic">der nächste Case?</span></h2>
+    <p>Wenn ihr eine Marke baut, die mehr verdient als das, was sie gerade ausstrahlt — wir hören gerne zu. 30 Minuten, kostenlos, ohne Verkaufsmasche.</p>
+    <a class="email-pill" href="mailto:a.braemswig@rehab-five.com">Erstgespräch anfragen →</a>
+    <br/>
+    <a class="related-link" href="index.html">← zurück zur Arbeit</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 QUINT · <a href="../index.html">Hauptseite</a> · <a href="index.html">Arbeit</a> · <a href="../journal/">Journal</a>
+</footer>
+
+<script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    if (!loader) return;
+    const params = new URLSearchParams(window.location.search);
+    const skip = params.get('skip-loader') === '1';
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const delay = (skip || reduceMotion) ? 0 : 2800;
+    setTimeout(() => { loader.classList.add('done'); document.body.classList.remove('locked'); }, delay);
+  });
+</script>
+
+</body>
+</html>
