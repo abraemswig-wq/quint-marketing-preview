@@ -188,100 +188,91 @@
   .case-meta-item .value { font-size: 15px; color: var(--white); line-height: 1.35; }
   .case-meta-item .value .italic { color: var(--pink-soft); }
 
-  /* SCROLL-EXPAND-STAGE (ersetzt die alte Brand-Stage) */
-  .scroll-expand-stage {
-    position: relative;
-    height: 280vh;
-    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+  /* BRAND-HERO — Grüner Vollbild-Block mit Illustration */
+  .brand-hero {
     margin: 60px 0;
-  }
-  .scroll-expand-sticky {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    background: linear-gradient(135deg, var(--rehab-green) 0%, var(--rehab-green-deep) 100%);
+    border-radius: 36px;
+    padding: 72px 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
     align-items: center;
-    justify-content: center;
-    will-change: transform;
-  }
-  .scroll-expand-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 50% 40%, rgba(217,145,41,0.12) 0%, transparent 55%),
-      var(--navy-deep);
-    z-index: 0;
-  }
-  .scroll-expand-heading {
     position: relative;
-    z-index: 3;
-    text-align: center;
-    max-width: 780px;
-    padding: 0 32px;
-    will-change: opacity, transform;
-    pointer-events: none;
+    overflow: hidden;
   }
-  .scroll-expand-heading .scroll-eyebrow {
+  @media (max-width: 900px) { .brand-hero { grid-template-columns: 1fr; padding: 48px 32px; gap: 32px; } }
+
+  .brand-hero::before {
+    content: "";
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 320px; height: 320px;
+    background: rgba(217,145,41,0.22);
+    border-radius: 50%;
+    filter: blur(20px);
+  }
+  .brand-hero::after {
+    content: "";
+    position: absolute;
+    bottom: -120px; left: -80px;
+    width: 240px; height: 240px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+  .brand-hero-text { position: relative; z-index: 1; }
+  .brand-hero-eyebrow {
     display: inline-block;
-    background: var(--rehab-orange); color: var(--navy-deep);
+    background: var(--rehab-orange);
+    color: var(--rehab-green-deep);
     padding: 6px 14px; border-radius: 999px;
     font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700;
     margin-bottom: 24px;
   }
-  .scroll-expand-heading h2 {
-    font-size: clamp(32px, 5vw, 64px);
-    line-height: 1.05;
-    font-weight: 700;
+  .brand-hero h2 {
+    font-size: clamp(32px, 4.5vw, 56px);
+    line-height: 1.04; font-weight: 700;
     letter-spacing: -0.025em;
     color: var(--white);
+    margin-bottom: 20px;
   }
-  .scroll-expand-heading h2 .italic { color: var(--rehab-orange); }
-  .scroll-expand-asset {
+  .brand-hero h2 .italic { color: var(--rehab-orange); }
+  .brand-hero p {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: clamp(17px, 1.5vw, 22px);
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+    max-width: 440px;
+  }
+  .brand-hero-signet {
+    display: flex; align-items: center; gap: 12px;
+    margin-top: 28px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.05em;
+  }
+  .brand-hero-signet img {
+    width: 32px; height: 32px;
+    flex-shrink: 0;
+  }
+  .brand-hero-illu {
+    position: relative; z-index: 1;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--cream);
+    aspect-ratio: 4 / 5;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.4);
+  }
+  .brand-hero-illu img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .brand-hero-illu-tag {
     position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%) scale(0.2);
-    z-index: 2;
-    width: 360px;
-    max-width: 90vw;
-    aspect-ratio: 1 / 1.12;
-    will-change: transform, opacity;
-    pointer-events: none;
-    opacity: 0.5;
-  }
-  .scroll-expand-asset img {
-    width: 100%; height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 40px 60px rgba(217,145,41,0.35));
-  }
-  .scroll-expand-caption {
-    position: absolute;
-    bottom: 56px; left: 50%;
-    transform: translateX(-50%);
-    z-index: 4;
-    text-align: center;
-    max-width: 640px;
-    padding: 0 32px;
-    opacity: 0;
-    transition: opacity 0.4s;
-    pointer-events: none;
-  }
-  .scroll-expand-caption p {
-    font-family: "Fraunces", serif;
-    font-style: italic;
-    font-size: clamp(18px, 1.6vw, 26px);
+    top: 16px; left: 16px;
+    background: rgba(31,68,53,0.85);
+    backdrop-filter: blur(6px);
     color: var(--white);
-    line-height: 1.35;
-  }
-  .scroll-expand-caption.in { opacity: 1; pointer-events: auto; }
-  @media (prefers-reduced-motion: reduce) {
-    .scroll-expand-stage { height: auto; }
-    .scroll-expand-sticky { position: relative; height: auto; padding: 120px 0; }
-    .scroll-expand-asset { position: relative; transform: none; opacity: 1; top: auto; left: auto; }
-    .scroll-expand-heading { opacity: 1; }
-    .scroll-expand-caption { position: relative; opacity: 1; transform: none; }
+    padding: 6px 12px; border-radius: 999px;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 700;
   }
 
   /* SEKTIONEN */
@@ -715,22 +706,21 @@
   </div>
 </header>
 
-<!-- SCROLL-EXPAND-STAGE (ersetzt statische Brand-Stage) -->
-<section class="scroll-expand-stage" id="brand-stage" aria-label="Markenwelt-Inszenierung">
-  <div class="scroll-expand-sticky">
-    <div class="scroll-expand-bg" aria-hidden="true"></div>
-
-    <div class="scroll-expand-heading" id="caseExpandHeading">
-      <span class="scroll-eyebrow">Markenwelt</span>
-      <h2>Was passiert, wenn eine Praxis<br/><span class="italic">sich selbst</span> als Marke begreift.</h2>
+<!-- BRAND-HERO — Großer grüner Block mit Illustration -->
+<section class="wrap" id="brand-stage">
+  <div class="brand-hero">
+    <div class="brand-hero-text">
+      <span class="brand-hero-eyebrow">Markenwelt</span>
+      <h2>Eine Praxis, die aussieht wie sie <span class="italic">sich anfühlt.</span></h2>
+      <p>REHAB FIVE — eine Markenwelt, in der Patient:innen, Therapeut:innen und Räume zusammen die gleiche Geschichte erzählen.</p>
+      <div class="brand-hero-signet">
+        <img src="../rehab-signet.svg" alt="" aria-hidden="true" />
+        <span>Signet · Fünfeck · 5 Säulen</span>
+      </div>
     </div>
-
-    <div class="scroll-expand-asset" id="caseExpandAsset">
-      <img src="../rehab-signet.svg" alt="REHAB FIVE Signet — fünfeckige Markenform" />
-    </div>
-
-    <div class="scroll-expand-caption" id="caseExpandCaption">
-      <p>REHAB FIVE — die Marke beginnt im Signet. Fünf Säulen, ein Fünfeck, ein Versprechen.</p>
+    <div class="brand-hero-illu">
+      <span class="brand-hero-illu-tag">Aus der Bildwelt</span>
+      <img src="../assets/rehab-oma.avif" alt="REHAB FIVE Illustration — eine Senior:in im Training" />
     </div>
   </div>
 </section>
@@ -990,66 +980,6 @@
     const delay = (skip || reduceMotion) ? 0 : 2800;
     setTimeout(() => { loader.classList.add('done'); document.body.classList.remove('locked'); }, delay);
   });
-</script>
-
-<!-- SCROLL-EXPAND-LOGIK (Bildmodus mit REHAB-FIVE-Signet) -->
-<script>
-  (function() {
-    const stage = document.getElementById('brand-stage');
-    const asset = document.getElementById('caseExpandAsset');
-    const heading = document.getElementById('caseExpandHeading');
-    const caption = document.getElementById('caseExpandCaption');
-    if (!stage || !asset || !heading || !caption) return;
-
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return;
-
-    let ticking = false;
-
-    function update() {
-      const rect = stage.getBoundingClientRect();
-      const stageHeight = stage.offsetHeight;
-      const viewportHeight = window.innerHeight;
-      const totalScrollable = stageHeight - viewportHeight;
-
-      let progress = -rect.top / totalScrollable;
-      progress = Math.max(0, Math.min(1, progress));
-
-      const eased = 1 - Math.pow(1 - progress, 2);
-
-      // Signet: scale 0.2 → 4.5, opacity 0.5 → 1
-      const scale = 0.2 + eased * 4.3;
-      const opacity = 0.5 + eased * 0.5;
-      asset.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(3)})`;
-      asset.style.opacity = opacity.toFixed(3);
-
-      // Heading: fadet von 1 → 0
-      const headingOpacity = Math.max(0, 1 - eased * 2.2);
-      const headingTranslate = -eased * 40;
-      heading.style.opacity = headingOpacity.toFixed(3);
-      heading.style.transform = `translateY(${headingTranslate.toFixed(1)}px)`;
-
-      // Caption erscheint ab progress > 0.72
-      if (eased > 0.72) {
-        caption.classList.add('in');
-      } else {
-        caption.classList.remove('in');
-      }
-
-      ticking = false;
-    }
-
-    function onScroll() {
-      if (!ticking) {
-        window.requestAnimationFrame(update);
-        ticking = true;
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    update();
-  })();
 </script>
 
 </body>
