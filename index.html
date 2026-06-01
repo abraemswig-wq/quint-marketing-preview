@@ -1114,6 +1114,107 @@
     color: rgba(244,239,231,0.5);
   }
 
+  /* JOURNAL TEASER */
+  .journal-teaser {
+    padding: 140px 0;
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .journal-teaser-card {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px 48px;
+    background: linear-gradient(135deg, rgba(232,155,177,0.08) 0%, rgba(13,39,71,0.4) 100%);
+    border: 1px solid rgba(232,155,177,0.2);
+    border-radius: 28px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 36px;
+    align-items: center;
+    transition: border-color 0.3s, transform 0.4s cubic-bezier(.2,.8,.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .journal-teaser-card::before {
+    content: "";
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(232,155,177,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .journal-teaser-card:hover {
+    border-color: var(--pink);
+    transform: translateY(-4px);
+  }
+  @media (max-width: 800px) {
+    .journal-teaser-card { grid-template-columns: 1fr; gap: 20px; text-align: left; padding: 36px 28px; }
+  }
+  .journal-teaser-num {
+    position: relative; z-index: 1;
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 72px;
+    color: var(--pink);
+    line-height: 0.9;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+  }
+  .journal-teaser-body {
+    position: relative; z-index: 1;
+  }
+  .journal-teaser-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    font-weight: 600;
+    margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .journal-teaser-eyebrow::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--pink);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  .journal-teaser-body h3 {
+    font-size: clamp(24px, 2.6vw, 34px);
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .journal-teaser-body h3 .italic { color: var(--pink); }
+  .journal-teaser-body p {
+    font-size: 15.5px;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.55;
+    max-width: 540px;
+  }
+  .journal-teaser-cta {
+    position: relative; z-index: 1;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--pink);
+    color: var(--navy);
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    transition: gap 0.3s;
+  }
+  .journal-teaser-cta .arrow {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    transition: transform 0.3s;
+  }
+  .journal-teaser-card:hover .journal-teaser-cta { gap: 14px; }
+  .journal-teaser-card:hover .journal-teaser-cta .arrow { transform: translateX(4px); }
+
   /* Skip-Link für Accessibility */
   .skip-link {
     position: absolute;
@@ -1656,6 +1757,21 @@
         <div class="faq-a">Unser Zuhause ist Münster — aber wir arbeiten ortsunabhängig. <em>Remote klappt bei uns problemlos.</em> Für Kunden aus der Region sind persönliche Treffen jederzeit möglich. Kunden aus ganz Deutschland sind herzlich willkommen.</div>
       </details>
     </div>
+  </div>
+</section>
+
+<!-- JOURNAL TEASER -->
+<section class="journal-teaser" aria-labelledby="journal-teaser-heading">
+  <div class="wrap">
+    <a href="journal/branding-ist-kein-logo.html" class="journal-teaser-card" aria-label="Aktueller Journal-Beitrag öffnen">
+      <div class="journal-teaser-num">№ 01</div>
+      <div class="journal-teaser-body">
+        <div class="journal-teaser-eyebrow">Aus dem Journal · 25.05.2026</div>
+        <h3 id="journal-teaser-heading">Branding ist kein Logo. <span class="italic">Wofür man wirklich bezahlt.</span></h3>
+        <p>Wir machen ein Logo manchmal in einer Woche. Wir machen Branding in 8 bis 12. Der Unterschied erklärt, wofür Mittelständler bei einer Marken-Werkstatt eigentlich bezahlen.</p>
+      </div>
+      <span class="journal-teaser-cta">Beitrag lesen <span class="arrow">→</span></span>
+    </a>
   </div>
 </section>
 
