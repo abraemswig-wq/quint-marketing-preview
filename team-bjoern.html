@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Björn von Schulz — Logodesign & Design · Quint</title>
+<meta name="description" content="Björn von Schulz — Logodesign und Design bei Quint. Gestalterische Umsetzung von Markenwelten für inhabergeführte Praxen, Vereine und Dienstleister." />
+<meta name="theme-color" content="#143C6B" />
+<link rel="canonical" href="https://abraemswig-wq.github.io/quint-marketing-preview/team-bjoern.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+<meta property="og:type" content="profile" />
+<meta property="og:title" content="Björn von Schulz — Quint" />
+<meta property="og:description" content="Logodesign & Design bei Quint" />
+<meta property="og:image" content="https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png" />
+<meta property="og:locale" content="de_DE" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Björn von Schulz",
+  "givenName": "Björn",
+  "familyName": "von Schulz",
+  "jobTitle": "Logodesign & Design",
+  "worksFor": { "@type": "Organization", "name": "Quint Marketing", "url": "https://abraemswig-wq.github.io/quint-marketing-preview/" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B; --navy-deep: #0D2747; --pink: #E89BB1; --pink-soft: #F3C7D4;
+    --pink-strong: #D87A95; --cream: #F4EFE7; --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--navy); color: var(--white); line-height: 1.5;
+    overflow-x: hidden; -webkit-font-smoothing: antialiased;
+  }
+  body.locked { overflow: hidden; height: 100vh; }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+  /* LOADER */
+  .loader { position: fixed; inset: 0; background: #0D2747; z-index: 9999; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .loader-content { text-align: center; position: relative; }
+  .loader-quint { font-size: clamp(80px, 14vw, 220px); font-weight: 700; letter-spacing: -0.05em; color: #ffffff; display: inline-flex; align-items: baseline; opacity: 0; animation: loaderFadeIn 0.8s cubic-bezier(.2,.8,.2,1) 0.1s forwards; }
+  .loader-dot { width: clamp(16px, 2.5vw, 40px); height: clamp(16px, 2.5vw, 40px); background: #E89BB1; border-radius: 50%; margin-left: 0.05em; transform: scale(0); animation: loaderDotPop 0.6s cubic-bezier(.34,1.56,.64,1) 0.9s forwards, loaderDotExpand 1s cubic-bezier(.6,0,.7,1) 2.1s forwards; }
+  @keyframes loaderFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes loaderDotPop { from { transform: scale(0); } to { transform: scale(1); } }
+  @keyframes loaderDotExpand { 0% { transform: scale(1); } 100% { transform: scale(200); } }
+  .loader-progress { position: absolute; bottom: -80px; left: 50%; transform: translateX(-50%); width: 200px; height: 2px; background: rgba(255,255,255,0.1); overflow: hidden; }
+  .loader-progress::after { content: ""; position: absolute; left: 0; top: 0; width: 0; height: 100%; background: #E89BB1; animation: loaderProgress 2s cubic-bezier(.2,.8,.2,1) forwards; }
+  @keyframes loaderProgress { from { width: 0; } to { width: 100%; } }
+  .loader.done { pointer-events: none; animation: loaderHide 0.8s cubic-bezier(.6,0,.7,1) 0.2s forwards; }
+  @keyframes loaderHide { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+  @media (prefers-reduced-motion: reduce) { .loader { display: none; } }
+
+  /* NAV */
+  nav.nav-bar { position: sticky; top: 0; z-index: 50; background: rgba(20, 60, 107, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; max-width: 1320px; margin: 0 auto; }
+  .nav-logo { font-weight: 700; font-size: 26px; letter-spacing: -0.04em; }
+  .nav-logo .dot { color: var(--pink); margin-right: 2px; }
+  .nav-back { font-size: 13px; color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 999px; transition: all 0.2s; }
+  .nav-back:hover { background: var(--pink); color: var(--navy); border-color: var(--pink); }
+
+  /* HERO */
+  .hero { padding: 100px 0 80px; position: relative; }
+  .breadcrumb { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 40px; }
+  .breadcrumb a:hover { color: var(--pink); }
+  .breadcrumb-sep { margin: 0 10px; opacity: 0.4; }
+
+  .profile-hero { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: center; }
+  @media (max-width: 800px) { .profile-hero { grid-template-columns: 1fr; gap: 32px; } }
+
+  /* Variation für Björn: Navy-Tief mit Pink-Punkt-Akzent — wieder andere Atmosphäre */
+  .profile-initials-block {
+    position: relative;
+    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+    border: 1px solid rgba(232,155,177,0.3);
+    border-radius: 28px;
+    padding: 64px 32px;
+    aspect-ratio: 1 / 1.1;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .profile-initials-block::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(232,155,177,0.2) 0%, transparent 65%);
+    border-radius: 50%;
+  }
+  .profile-initials {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-weight: 400; font-size: clamp(120px, 18vw, 220px);
+    color: var(--pink); line-height: 0.9;
+    letter-spacing: -0.05em;
+    position: relative; z-index: 2;
+  }
+  .profile-photo-stamp {
+    position: absolute;
+    bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: var(--pink); color: var(--navy);
+    padding: 8px 14px; border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 700; z-index: 3;
+  }
+  .profile-meta-eyebrow { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--pink); margin-bottom: 20px; }
+  .profile-name { font-size: clamp(40px, 5.5vw, 72px); line-height: 0.96; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 20px; }
+  .profile-role {
+    font-family: "Fraunces", serif; font-style: italic; font-weight: 400;
+    font-size: clamp(22px, 2.2vw, 30px); color: var(--pink);
+    margin-bottom: 28px; line-height: 1.25;
+  }
+  .profile-lead { font-size: clamp(17px, 1.4vw, 20px); color: rgba(255,255,255,0.78); line-height: 1.55; max-width: 520px; }
+
+  /* SECTIONS */
+  .section { padding: 100px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+  .section h2 { font-size: clamp(28px, 3.5vw, 48px); line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 36px; }
+  .section h2 .italic { color: var(--pink); }
+  .section p { font-size: 17px; color: rgba(255,255,255,0.78); line-height: 1.6; max-width: 680px; margin-bottom: 18px; }
+  .section p strong { color: var(--white); font-weight: 500; }
+
+  .pending {
+    margin-top: 32px;
+    padding: 24px 28px;
+    background: rgba(232,155,177,0.08);
+    border: 1px dashed rgba(232,155,177,0.4);
+    border-radius: 18px;
+    font-size: 14px; line-height: 1.55;
+    color: rgba(244,239,231,0.85);
+    max-width: 700px;
+  }
+  .pending strong {
+    display: block;
+    color: var(--pink); font-weight: 700;
+    margin-bottom: 6px; font-size: 11px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+  }
+
+  /* CTA */
+  .profile-cta {
+    padding: 120px 0; text-align: center;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(232,155,177,0.07) 0%, transparent 60%),
+      var(--navy-deep);
+    border-top: 1px solid rgba(232,155,177,0.15);
+  }
+  .profile-cta h2 { font-size: clamp(36px, 5vw, 64px); margin-bottom: 28px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; }
+  .profile-cta h2 .italic { color: var(--pink); }
+  .profile-cta p { color: rgba(255,255,255,0.7); margin: 0 auto 36px; max-width: 540px; font-size: 16px; }
+  .profile-cta .email-pill {
+    display: inline-block;
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: clamp(20px, 2vw, 28px); color: var(--pink);
+    padding: 14px 28px; border: 2px solid var(--pink); border-radius: 999px;
+    transition: background 0.3s, color 0.3s;
+  }
+  .profile-cta .email-pill:hover { background: var(--pink); color: var(--navy); }
+
+  footer { padding: 32px; background: var(--navy-deep); color: rgba(244,239,231,0.4); text-align: center; font-size: 12px; letter-spacing: 0.1em; }
+  footer a:hover { color: var(--pink); }
+</style>
+</head>
+<body class="locked">
+
+<div class="loader" id="loader">
+  <div class="loader-content">
+    <div class="loader-quint">Quint<span class="loader-dot"></span></div>
+    <div class="loader-progress"></div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+    <a href="index.html#team" class="nav-back">← Team</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Quint</a><span class="breadcrumb-sep">/</span>
+      <a href="index.html#team">Team</a><span class="breadcrumb-sep">/</span>
+      Björn von Schulz
+    </nav>
+
+    <div class="profile-hero">
+      <div class="profile-initials-block">
+        <div class="profile-initials">BvS</div>
+        <span class="profile-photo-stamp">Foto folgt</span>
+      </div>
+
+      <div>
+        <div class="profile-meta-eyebrow">Logodesign · Design</div>
+        <h1 class="profile-name">Björn von Schulz</h1>
+        <p class="profile-role">Logodesign &amp; Design — <span class="italic">die handwerkliche Präzision von Quint.</span></p>
+        <p class="profile-lead">Wenn aus Markenidee Markenmarke wird — wenn aus Konzept ein Logo wird, das auch in zehn Jahren noch funktioniert — geht das durch Björns Hand. Logo-Entwicklung und gestalterische Umsetzung sind seine Domäne.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <h2>Ein <span class="italic">vollständigeres Bild</span> folgt.</h2>
+    <p>Björn ist der Logo- und Design-Kopf von Quint. Was oben steht, ist eine erste Annäherung — geschrieben von Aric, weil Björn seine eigene Stimme nicht von außen formulieren lassen will.</p>
+
+    <div class="pending">
+      <strong>Bio in Arbeit</strong>
+      Björn ergänzt diese Seite mit Werdegang, ausgewählten Logo-Projekten und seiner Sicht auf gute Gestaltung — sobald er dafür Zeit hat. Bis dahin: alle Anfragen rund um Quint erreichen ihn über Aric.
+    </div>
+  </div>
+</section>
+
+<section class="profile-cta">
+  <div class="wrap">
+    <h2>Erst Quint <span class="italic">kennenlernen?</span></h2>
+    <p>30 Minuten, kostenlos. Mit Aric, Rania oder Björn — je nachdem, was zu eurem Projekt passt.</p>
+    <a class="email-pill" href="mailto:a.braemswig@rehab-five.com">Erstgespräch anfragen →</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 QUINT · <a href="index.html">Hauptseite</a> · <a href="team-aric.html">Aric</a> · <a href="team-rania.html">Rania</a>
+</footer>
+
+<script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    if (!loader) return;
+    const params = new URLSearchParams(window.location.search);
+    const skip = params.get('skip-loader') === '1';
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const delay = (skip || reduceMotion) ? 0 : 2800;
+    setTimeout(() => { loader.classList.add('done'); document.body.classList.remove('locked'); }, delay);
+  });
+</script>
+
+</body>
+</html>

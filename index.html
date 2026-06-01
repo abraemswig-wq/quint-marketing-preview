@@ -59,6 +59,11 @@
       "@type": "Person",
       "name": "Rania Landwehrmeyer",
       "jobTitle": "Lead Design & Kundenkommunikation, Stellvertretung"
+    },
+    {
+      "@type": "Person",
+      "name": "Björn von Schulz",
+      "jobTitle": "Logodesign & Design"
     }
   ],
   "address": {
@@ -819,15 +824,16 @@
   /* TEAM */
   .team-block { padding: 160px 0; background: var(--navy); }
   .team-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 28px; margin-top: 64px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px; margin-top: 64px;
   }
-  @media (max-width: 800px) { .team-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 1000px) { .team-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 700px) { .team-grid { grid-template-columns: 1fr; } }
   .person {
     background: rgba(255,255,255,0.035);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 28px;
-    padding: 56px 48px;
+    padding: 44px 36px;
     transition: transform 0.4s cubic-bezier(.2,.8,.2,1), border-color 0.3s, background 0.3s;
     position: relative;
     overflow: hidden;
@@ -1634,8 +1640,8 @@
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Wer wir sind</div>
-      <h2>Zwei Menschen.<br/><span class="italic">Eine Handschrift.</span></h2>
-      <p class="lead">Quint ist kein Kollektiv und keine Agentur-Maschine. Wir sind zwei. Wer mit uns arbeitet, arbeitet mit uns — nicht mit einem Account Manager.</p>
+      <h2>Drei Menschen.<br/><span class="italic">Eine Handschrift.</span></h2>
+      <p class="lead">Quint ist kein Kollektiv und keine Agentur-Maschine. Wir sind drei — Strategie, Design, Logo-Handwerk. Wer mit uns arbeitet, arbeitet mit uns. Nicht mit einem Account Manager.</p>
     </div>
     <div class="team-grid">
       <a href="team-aric.html" class="person reveal person-link" aria-label="Aric Brämswig — Profil öffnen">
@@ -1652,6 +1658,14 @@
         <div class="person-name">Rania Landwehrmeyer</div>
         <div class="person-role">Lead Design · Kundenkommunikation</div>
         <p class="person-bio">Erste Ansprechpartnerin in der Kundenkommunikation und Stellvertreterin der Geschäftsführung. Übersetzt Strategie in Form — jede Linie, jeder Ton, jede Geste, mit der Quint in die Welt tritt, läuft durch ihre Hand.</p>
+        <span class="person-cta">Profil ansehen <span class="arrow">→</span></span>
+      </a>
+      <a href="team-bjoern.html" class="person reveal person-link" aria-label="Björn von Schulz — Profil öffnen">
+        <div class="person-decoration"></div>
+        <div class="person-initials">BvS</div>
+        <div class="person-name">Björn von Schulz</div>
+        <div class="person-role">Logodesign · Design</div>
+        <p class="person-bio">Wenn aus Markenidee Markenmarke wird — wenn aus Konzept ein Logo wird, das auch in zehn Jahren noch funktioniert — geht das durch Björns Hand. Logo-Entwicklung und gestalterische Umsetzung sind seine Domäne.</p>
         <span class="person-cta">Profil ansehen <span class="arrow">→</span></span>
       </a>
     </div>
