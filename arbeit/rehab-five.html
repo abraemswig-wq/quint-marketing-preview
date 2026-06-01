@@ -79,6 +79,57 @@
   .nav-back { font-size: 13px; color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 999px; transition: all 0.2s; }
   .nav-back:hover { background: var(--pink); color: var(--navy); border-color: var(--pink); }
 
+  /* MAGAZINE TOC */
+  .toc {
+    margin-top: 80px;
+    padding: 40px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .toc-head {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 32px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .toc-head .italic-num {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    color: var(--pink);
+    font-weight: 400; font-size: 16px;
+    letter-spacing: 0;
+  }
+  .toc-head .sep { width: 30px; height: 1px; background: rgba(255,255,255,0.2); }
+  .toc-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px 32px;
+    counter-reset: toc;
+  }
+  @media (max-width: 800px) { .toc-list { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .toc-list { grid-template-columns: 1fr; } }
+  .toc-list li {
+    counter-increment: toc;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .toc-list a {
+    display: flex; align-items: baseline; gap: 14px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.78);
+    transition: color 0.2s;
+  }
+  .toc-list a::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: "Fraunces", serif; font-style: italic;
+    color: var(--pink); font-size: 13px; font-weight: 400;
+    min-width: 28px;
+  }
+  .toc-list a:hover { color: var(--pink); }
+
   /* HERO */
   .case-hero {
     padding: 80px 0 60px;
@@ -181,30 +232,163 @@
     margin-bottom: 56px; max-width: 720px;
   }
 
-  /* 5-SÄULEN */
-  .saeulen {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-    margin-top: 56px;
+  /* 5-SÄULEN — Pentagon-Layout */
+  .pentagon-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 80px auto 0;
+    aspect-ratio: 1 / 1;
   }
-  @media (max-width: 1000px) { .saeulen { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 600px) { .saeulen { grid-template-columns: 1fr; } }
-  .saeule {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 18px;
-    padding: 28px 20px;
-    transition: transform 0.4s cubic-bezier(.2,.8,.2,1), border-color 0.3s;
+  @media (max-width: 700px) { .pentagon-wrap { display: none; } }
+
+  /* Pentagon Visual — zentrales Signet */
+  .pentagon-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px; height: 180px;
+    background: linear-gradient(135deg, var(--rehab-orange) 0%, #c4781a 100%);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 30px 60px -20px rgba(217,145,41,0.45);
+    z-index: 2;
   }
-  .saeule:hover { transform: translateY(-6px); border-color: var(--pink); }
-  .saeule .num {
+  .pentagon-center img { width: 60%; height: 60%; }
+
+  /* Säulen in Pentagon-Anordnung — 5 Punkte um Zentrum */
+  .saeule-orbit {
+    position: absolute;
+    width: 200px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 22px 20px;
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1), border-color 0.3s, background 0.3s;
+    backdrop-filter: blur(8px);
+    z-index: 3;
+  }
+  .saeule-orbit:hover {
+    transform: scale(1.05);
+    border-color: var(--pink);
+    background: rgba(232,155,177,0.08);
+  }
+  /* Pentagon-Positionen — 5 Punkte gleichmäßig um den Mittelpunkt verteilt */
+  .saeule-orbit.s1 { top: 0; left: 50%; transform: translateX(-50%); }
+  .saeule-orbit.s1:hover { transform: translateX(-50%) scale(1.05); }
+  .saeule-orbit.s2 { top: 38%; right: 0; }
+  .saeule-orbit.s3 { bottom: 0; right: 14%; }
+  .saeule-orbit.s4 { bottom: 0; left: 14%; }
+  .saeule-orbit.s5 { top: 38%; left: 0; }
+
+  .saeule-orbit .num {
     font-family: "Fraunces", serif; font-style: italic;
-    color: var(--pink); font-size: 28px;
-    margin-bottom: 14px; line-height: 1;
+    color: var(--pink); font-size: 22px;
+    margin-bottom: 8px; line-height: 1;
   }
-  .saeule h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
-  .saeule p { font-size: 13.5px; color: rgba(255,255,255,0.65); line-height: 1.45; }
+  .saeule-orbit h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .saeule-orbit p { font-size: 12.5px; color: rgba(255,255,255,0.65); line-height: 1.4; }
+
+  /* Verbindungslinien zum Zentrum (SVG) */
+  .pentagon-lines {
+    position: absolute; inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Mobile-Fallback: Klassisches Listen-Layout */
+  .saeulen-mobile {
+    display: none;
+    margin-top: 56px;
+    flex-direction: column;
+    gap: 12px;
+  }
+  @media (max-width: 700px) { .saeulen-mobile { display: flex; } }
+  .saeule-mobile {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 3px solid var(--rehab-orange);
+    border-radius: 16px;
+    padding: 20px 22px;
+  }
+  .saeule-mobile .num { font-family: "Fraunces", serif; font-style: italic; color: var(--pink); font-size: 20px; margin-bottom: 4px; }
+  .saeule-mobile h4 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+  .saeule-mobile p { font-size: 14px; color: rgba(255,255,255,0.7); }
+
+  /* MARKENFARBE-STORY */
+  .color-story {
+    background: linear-gradient(135deg, var(--rehab-orange) 0%, #c4781a 100%);
+    color: var(--navy-deep);
+    padding: 140px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .color-story::before {
+    content: "";
+    position: absolute;
+    top: -200px; right: -100px;
+    width: 500px; height: 500px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+  .color-story::after {
+    content: "";
+    position: absolute;
+    bottom: -200px; left: -100px;
+    width: 400px; height: 400px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+  .color-story-inner { position: relative; z-index: 1; }
+  .color-story-eyebrow {
+    display: inline-block;
+    background: var(--navy-deep);
+    color: var(--rehab-orange);
+    padding: 6px 14px; border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;
+    margin-bottom: 32px;
+  }
+  .color-story h2 {
+    font-size: clamp(36px, 6vw, 80px);
+    line-height: 0.98; font-weight: 700;
+    letter-spacing: -0.025em; margin-bottom: 40px;
+    color: var(--navy-deep);
+  }
+  .color-story h2 .italic {
+    font-family: "Fraunces", serif; font-style: italic; font-weight: 400;
+    color: var(--white);
+  }
+  .color-story p.story-text {
+    font-size: clamp(17px, 1.5vw, 21px);
+    color: rgba(13,39,71,0.85);
+    line-height: 1.55;
+    max-width: 720px;
+    margin-bottom: 56px;
+  }
+  .color-specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 760px;
+  }
+  @media (max-width: 700px) { .color-specs { grid-template-columns: 1fr; } }
+  .color-spec {
+    background: rgba(13,39,71,0.08);
+    border: 1px solid rgba(13,39,71,0.15);
+    border-radius: 20px;
+    padding: 24px 26px;
+  }
+  .color-spec .label {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(13,39,71,0.6); margin-bottom: 10px; font-weight: 700;
+  }
+  .color-spec .value {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: clamp(22px, 2.2vw, 28px);
+    color: var(--navy-deep); font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
 
   /* ILLUSTRATIONS-GALERIE */
   .illu-gallery {
@@ -394,6 +578,25 @@
         <div class="value">Strategie · Markenführung</div>
       </div>
     </div>
+
+    <!-- MAGAZINE INHALTSVERZEICHNIS -->
+    <nav class="toc" aria-label="Inhaltsverzeichnis dieser Case-Study">
+      <div class="toc-head">
+        <span class="italic-num">№ 01</span>
+        <span class="sep"></span>
+        <span>In dieser Ausgabe</span>
+      </div>
+      <ol class="toc-list">
+        <li><a href="#ausgangslage">Ausgangslage</a></li>
+        <li><a href="#saeulen">Das 5-Säulen-Modell</a></li>
+        <li><a href="#farbe">Markenfarbe</a></li>
+        <li><a href="#bildwelt">Eigene Bildwelt</a></li>
+        <li><a href="#stimme">Stimme aus dem Studio</a></li>
+        <li><a href="#alltag">Im Alltag sichtbar</a></li>
+        <li><a href="#outcomes">Was es bewegt hat</a></li>
+        <li><a href="#weiter">Eure Marke?</a></li>
+      </ol>
+    </nav>
   </div>
 </header>
 
@@ -406,7 +609,7 @@
 </section>
 
 <!-- AUSGANGSLAGE -->
-<section class="section">
+<section class="section" id="ausgangslage">
   <div class="wrap-narrow">
     <h2>Ausgangslage: <span class="italic">eine konservative Branche.</span></h2>
     <p class="section-lead">Physiotherapie ist in Deutschland eine Branche, die seit 20 Jahren visuell stehengeblieben ist. Weiße Wände, Stockfotos von älteren Patientinnen, austauschbare „Wir kümmern uns um Sie"-Sätze. Die Folge: Anbieter sind kaum unterscheidbar — und Mitarbeiter:innen suchen sich ihren Arbeitgeber eher nach Wegstrecke als nach Marke aus.</p>
@@ -415,42 +618,94 @@
 </section>
 
 <!-- 5-SÄULEN-MODELL -->
-<section class="section">
+<section class="section" id="saeulen">
   <div class="wrap">
     <h2>Das <span class="italic">5-Säulen-Modell.</span></h2>
-    <p class="section-lead">Aus einer Behandlungsphilosophie wurde ein Marken-Modell, das sowohl Patient:innen-Kommunikation als auch Mitarbeiter:innen-Recruiting trägt.</p>
-    <div class="saeulen">
-      <div class="saeule">
+    <p class="section-lead">Aus einer Behandlungsphilosophie wurde ein Marken-Modell, das sowohl Patient:innen-Kommunikation als auch Mitarbeiter:innen-Recruiting trägt. Fünf Säulen kreisen um das Signet — wie das Fünfeck der Markenform selbst.</p>
+
+    <!-- Pentagon-Visual (Desktop) -->
+    <div class="pentagon-wrap" aria-hidden="true">
+      <!-- Verbindungslinien -->
+      <svg class="pentagon-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <line x1="50" y1="50" x2="50" y2="10"  stroke="rgba(217,145,41,0.3)" stroke-width="0.5" stroke-dasharray="1,1"/>
+        <line x1="50" y1="50" x2="88" y2="42"  stroke="rgba(217,145,41,0.3)" stroke-width="0.5" stroke-dasharray="1,1"/>
+        <line x1="50" y1="50" x2="74" y2="90"  stroke="rgba(217,145,41,0.3)" stroke-width="0.5" stroke-dasharray="1,1"/>
+        <line x1="50" y1="50" x2="26" y2="90"  stroke="rgba(217,145,41,0.3)" stroke-width="0.5" stroke-dasharray="1,1"/>
+        <line x1="50" y1="50" x2="12" y2="42"  stroke="rgba(217,145,41,0.3)" stroke-width="0.5" stroke-dasharray="1,1"/>
+      </svg>
+
+      <!-- Zentrum: Signet -->
+      <div class="pentagon-center">
+        <img src="../rehab-signet.svg" alt="REHAB FIVE Signet" />
+      </div>
+
+      <!-- 5 Säulen auf den Pentagon-Spitzen -->
+      <div class="saeule-orbit s1">
         <div class="num">01</div>
         <h4>Training</h4>
         <p>Aktivierung für Muskeln und Gelenke.</p>
       </div>
-      <div class="saeule">
+      <div class="saeule-orbit s2">
         <div class="num">02</div>
         <h4>Therapie</h4>
         <p>Damit du wieder fit wirst.</p>
       </div>
-      <div class="saeule">
+      <div class="saeule-orbit s3">
         <div class="num">03</div>
         <h4>Prävention</h4>
         <p>Damit du fit bleibst.</p>
       </div>
-      <div class="saeule">
+      <div class="saeule-orbit s4">
         <div class="num">04</div>
         <h4>Diagnostik</h4>
         <p>Um herauszufinden, was zu tun ist.</p>
       </div>
-      <div class="saeule">
+      <div class="saeule-orbit s5">
         <div class="num">05</div>
         <h4>Athletik</h4>
         <p>So bleibst du stabil.</p>
+      </div>
+    </div>
+
+    <!-- Mobile-Fallback: Klassische Liste -->
+    <div class="saeulen-mobile">
+      <div class="saeule-mobile"><div class="num">01</div><h4>Training</h4><p>Aktivierung für Muskeln und Gelenke.</p></div>
+      <div class="saeule-mobile"><div class="num">02</div><h4>Therapie</h4><p>Damit du wieder fit wirst.</p></div>
+      <div class="saeule-mobile"><div class="num">03</div><h4>Prävention</h4><p>Damit du fit bleibst.</p></div>
+      <div class="saeule-mobile"><div class="num">04</div><h4>Diagnostik</h4><p>Um herauszufinden, was zu tun ist.</p></div>
+      <div class="saeule-mobile"><div class="num">05</div><h4>Athletik</h4><p>So bleibst du stabil.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKENFARBE-STORY -->
+<section class="color-story" id="farbe" aria-labelledby="farbe-heading">
+  <div class="wrap">
+    <div class="color-story-inner">
+      <span class="color-story-eyebrow">Markenfarbe · № 03</span>
+      <h2 id="farbe-heading">Orange als <span class="italic">Behauptung.</span></h2>
+      <p class="story-text">In einer Branche, die in Weiß-Grün und beruhigtem Blau erstarrt war, wurde Orange zum Statement. Wärme statt Klinik. Aktivität statt Stillstand. Ein klarer Ton, der sich auf 200 Meter Distanz von der medizinischen Konkurrenz unterscheidet — und gleichzeitig glaubwürdig zur Praxis-Welt gehört. Diese Farbe trägt heute jedes Schild, jede Visitenkarte, jeden Instagram-Post.</p>
+
+      <div class="color-specs">
+        <div class="color-spec">
+          <div class="label">HEX</div>
+          <div class="value">#D99129</div>
+        </div>
+        <div class="color-spec">
+          <div class="label">RGB</div>
+          <div class="value">217 · 145 · 41</div>
+        </div>
+        <div class="color-spec">
+          <div class="label">Pantone (Näherung)</div>
+          <div class="value">1385 C</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ILLUSTRATIONS-GALERIE -->
-<section class="section">
+<section class="section" id="bildwelt">
   <div class="wrap">
     <h2>Eine <span class="italic">eigene Bildwelt.</span></h2>
     <p class="section-lead">Statt Stockfotos: eine eigene Illustrations-Welt, die zur Marke gehört. Wiedererkennbar, warm, charakterstark — vom Behandlungszimmer bis zum Recruiting-Post.</p>
@@ -469,7 +724,7 @@
 </section>
 
 <!-- PULLQUOTE -->
-<div class="pullquote">
+<div class="pullquote" id="stimme">
   <div class="wrap">
     <p>„Aus einer Praxis wurde eine Marken-Welt — mit eigener Sprache, eigener Haltung, eigenem Publikum."</p>
     <span class="attrib">— Aric Brämswig, Gründer REHAB FIVE</span>
@@ -477,7 +732,7 @@
 </div>
 
 <!-- INSTAGRAM SLOTS -->
-<section class="section">
+<section class="section" id="alltag">
   <div class="wrap">
     <h2>Im <span class="italic">Alltag</span> sichtbar.</h2>
     <p class="section-lead">Wie sich das Markenversprechen auf Social Media übersetzt — sechs Eindrücke aus dem REHAB-FIVE-Instagram. <em style="color: var(--pink);">Embed-Codes werden hier von Aric eingesetzt — sobald die gewünschten Posts ausgewählt sind.</em></p>
@@ -493,7 +748,7 @@
 </section>
 
 <!-- STATS -->
-<section class="section">
+<section class="section" id="outcomes">
   <div class="wrap-narrow">
     <h2>Was es <span class="italic">bewegt</span> hat.</h2>
     <p class="section-lead">Konkrete Outcomes — was die Marke REHAB FIVE messbar verändert hat, seit es die Marke gibt.</p>
@@ -516,7 +771,7 @@
 </section>
 
 <!-- CTA -->
-<section class="case-cta">
+<section class="case-cta" id="weiter">
   <div class="wrap-narrow">
     <h2>Eure Marke,<br/><span class="italic">der nächste Case?</span></h2>
     <p>Wenn ihr eine Marke baut, die mehr verdient als das, was sie gerade ausstrahlt — wir hören gerne zu. 30 Minuten, kostenlos, ohne Verkaufsmasche.</p>
