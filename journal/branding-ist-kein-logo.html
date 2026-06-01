@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Branding ist kein Logo. Wofür man wirklich bezahlt. — Quint Journal</title>
+<meta name="description" content="Wir machen ein Logo manchmal in einer Woche, Branding in 8 bis 12. Der Unterschied erklärt, wofür Mittelständler bei einer Marken-Werkstatt eigentlich bezahlen." />
+<meta name="theme-color" content="#143C6B" />
+<link rel="canonical" href="https://abraemswig-wq.github.io/quint-marketing-preview/journal/branding-ist-kein-logo.html" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Branding ist kein Logo. Wofür man wirklich bezahlt." />
+<meta property="og:description" content="Wir machen ein Logo in einer Woche, Branding in 8 bis 12. Der Unterschied erklärt, wofür Mittelständler bei einer Marken-Werkstatt eigentlich bezahlen." />
+<meta property="og:image" content="https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png" />
+<meta property="og:locale" content="de_DE" />
+<meta property="article:published_time" content="2026-05-25" />
+<meta property="article:author" content="Aric Brämswig" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Branding ist kein Logo. Wofür man wirklich bezahlt.",
+  "description": "Wir machen ein Logo manchmal in einer Woche, Branding in 8 bis 12. Der Unterschied erklärt, wofür Mittelständler bei einer Marken-Werkstatt eigentlich bezahlen.",
+  "author": {
+    "@type": "Person",
+    "name": "Aric Brämswig",
+    "url": "https://abraemswig-wq.github.io/quint-marketing-preview/team-aric.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quint Marketing",
+    "url": "https://abraemswig-wq.github.io/quint-marketing-preview/"
+  },
+  "datePublished": "2026-05-25",
+  "image": "https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png",
+  "mainEntityOfPage": "https://abraemswig-wq.github.io/quint-marketing-preview/journal/branding-ist-kein-logo.html",
+  "articleSection": "Journal",
+  "inLanguage": "de-DE"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B;
+    --navy-deep: #0D2747;
+    --pink: #E89BB1;
+    --pink-soft: #F3C7D4;
+    --pink-strong: #D87A95;
+    --cream: #F4EFE7;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body.locked { overflow: hidden; height: 100vh; }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+  a { color: inherit; text-decoration: none; }
+  .wrap-article { max-width: 720px; margin: 0 auto; padding: 0 32px; }
+
+  /* LOADER (gleich wie überall) */
+  .loader { position: fixed; inset: 0; background: #0D2747; z-index: 9999; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .loader-content { text-align: center; position: relative; }
+  .loader-quint { font-size: clamp(80px, 14vw, 220px); font-weight: 700; letter-spacing: -0.05em; color: #ffffff; display: inline-flex; align-items: baseline; opacity: 0; animation: loaderFadeIn 0.8s cubic-bezier(.2,.8,.2,1) 0.1s forwards; }
+  .loader-dot { width: clamp(16px, 2.5vw, 40px); height: clamp(16px, 2.5vw, 40px); background: #E89BB1; border-radius: 50%; margin-left: 0.05em; transform: scale(0); animation: loaderDotPop 0.6s cubic-bezier(.34,1.56,.64,1) 0.9s forwards, loaderDotExpand 1s cubic-bezier(.6,0,.7,1) 2.1s forwards; }
+  @keyframes loaderFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes loaderDotPop { from { transform: scale(0); } to { transform: scale(1); } }
+  @keyframes loaderDotExpand { 0% { transform: scale(1); } 100% { transform: scale(200); } }
+  .loader-progress { position: absolute; bottom: -80px; left: 50%; transform: translateX(-50%); width: 200px; height: 2px; background: rgba(255,255,255,0.1); overflow: hidden; }
+  .loader-progress::after { content: ""; position: absolute; left: 0; top: 0; width: 0; height: 100%; background: #E89BB1; animation: loaderProgress 2s cubic-bezier(.2,.8,.2,1) forwards; }
+  @keyframes loaderProgress { from { width: 0; } to { width: 100%; } }
+  .loader.done { pointer-events: none; animation: loaderHide 0.8s cubic-bezier(.6,0,.7,1) 0.2s forwards; }
+  @keyframes loaderHide { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+  @media (prefers-reduced-motion: reduce) { .loader { display: none; } }
+
+  /* NAV */
+  nav.nav-bar {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(20, 60, 107, 0.85);
+    backdrop-filter: saturate(150%) blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; max-width: 1320px; margin: 0 auto; }
+  .nav-logo { font-weight: 700; font-size: 26px; letter-spacing: -0.04em; }
+  .nav-logo .dot { color: var(--pink); margin-right: 2px; }
+  .nav-back {
+    font-size: 13px; color: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 8px 16px; border-radius: 999px;
+  }
+  .nav-back:hover { background: var(--pink); color: var(--navy); border-color: var(--pink); }
+
+  /* ARTICLE HEAD */
+  .article-head {
+    padding: 80px 0 60px;
+  }
+  .breadcrumb {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 36px;
+  }
+  .breadcrumb a:hover { color: var(--pink); }
+  .breadcrumb-sep { margin: 0 10px; opacity: 0.4; }
+
+  .article-eyebrow {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 24px;
+  }
+  .article-eyebrow .num {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-weight: 400; font-size: 18px; letter-spacing: 0;
+  }
+  .article-eyebrow .sep { width: 30px; height: 1px; background: var(--pink); }
+
+  .article-head h1 {
+    font-size: clamp(36px, 5.5vw, 64px);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+  }
+  .article-head h1 .italic { color: var(--pink); }
+
+  .article-lead {
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-size: clamp(20px, 2vw, 26px);
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+    margin-bottom: 48px;
+    max-width: 640px;
+  }
+
+  .article-meta {
+    display: flex; align-items: center; gap: 16px;
+    padding: 24px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .author-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink-strong) 0%, var(--pink) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Fraunces", serif; font-style: italic;
+    font-weight: 600; color: var(--navy);
+    font-size: 18px;
+    text-decoration: none;
+  }
+  .meta-text { font-size: 13px; color: rgba(255,255,255,0.65); }
+  .meta-text strong { color: var(--white); font-weight: 500; }
+  .meta-text a { color: var(--pink); }
+  .meta-dot { display: inline-block; opacity: 0.4; margin: 0 4px; }
+
+  /* ARTICLE BODY */
+  .article-body {
+    padding: 60px 0 80px;
+  }
+  .article-body h2 {
+    font-size: clamp(24px, 2.6vw, 34px);
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 48px 0 18px;
+  }
+  .article-body h2 .italic { color: var(--pink); }
+  .article-body p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 20px;
+  }
+  .article-body p strong { color: var(--white); font-weight: 500; }
+  .article-body p em {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    color: var(--pink-soft);
+  }
+  .article-body p a {
+    color: var(--pink);
+    border-bottom: 1px solid rgba(232,155,177,0.4);
+    transition: border-color 0.2s;
+  }
+  .article-body p a:hover { border-color: var(--pink); }
+  .article-body ul {
+    margin: 16px 0 24px 0;
+    padding-left: 0;
+    list-style: none;
+  }
+  .article-body ul li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 17px;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.55;
+  }
+  .article-body ul li::before {
+    content: "→";
+    position: absolute; left: 0;
+    color: var(--pink);
+    font-family: "Fraunces", serif;
+    font-style: italic;
+  }
+
+  .pullquote {
+    margin: 48px -32px;
+    padding: 48px 56px;
+    background: rgba(232,155,177,0.08);
+    border-left: 3px solid var(--pink);
+    border-radius: 0 16px 16px 0;
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: clamp(22px, 2.5vw, 30px);
+    line-height: 1.3;
+    color: var(--white);
+  }
+  @media (max-width: 700px) { .pullquote { margin: 32px 0; padding: 28px 24px; } }
+
+  .article-body hr {
+    border: 0; height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 56px 0;
+  }
+
+  /* AUTHOR FOOTER */
+  .author-block {
+    margin-top: 64px;
+    padding: 40px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+  @media (max-width: 600px) { .author-block { grid-template-columns: 1fr; gap: 16px; text-align: center; } }
+  .author-block .big-avatar {
+    width: 96px; height: 96px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink-strong) 0%, var(--pink) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Fraunces", serif; font-style: italic;
+    font-weight: 400; color: var(--navy);
+    font-size: 44px;
+    flex-shrink: 0;
+  }
+  @media (max-width: 600px) { .author-block .big-avatar { margin: 0 auto; } }
+  .author-block .name {
+    font-size: 20px; font-weight: 700;
+    margin-bottom: 4px; letter-spacing: -0.015em;
+  }
+  .author-block .role {
+    font-family: "Fraunces", serif; font-style: italic;
+    color: var(--pink); font-size: 14px;
+    margin-bottom: 14px;
+  }
+  .author-block p { font-size: 14.5px; color: rgba(255,255,255,0.72); line-height: 1.55; }
+  .author-block .author-link { color: var(--pink); font-size: 13px; font-weight: 600; }
+
+  /* NEWSLETTER + RELATED */
+  .post-foot {
+    padding: 80px 0;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(232,155,177,0.07) 0%, transparent 60%),
+      var(--navy-deep);
+    border-top: 1px solid rgba(232,155,177,0.15);
+  }
+  .post-foot-inner { max-width: 760px; margin: 0 auto; padding: 0 32px; text-align: center; }
+  .post-foot h2 { font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; margin-bottom: 16px; letter-spacing: -0.02em; }
+  .post-foot h2 .italic { color: var(--pink); }
+  .post-foot p { color: rgba(255,255,255,0.7); margin-bottom: 28px; font-size: 16px; }
+  .post-foot form { display: flex; gap: 8px; flex-wrap: wrap; max-width: 480px; margin: 0 auto; }
+  .post-foot input[type="email"] {
+    flex: 1; min-width: 200px;
+    padding: 14px 18px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    color: var(--cream);
+    border: 1px solid rgba(255,255,255,0.15);
+    font-family: inherit; font-size: 14px;
+  }
+  .post-foot input[type="email"]:focus { outline: none; border-color: var(--pink); background: rgba(255,255,255,0.12); }
+  .post-foot button {
+    background: var(--pink); color: var(--navy); border: 0;
+    padding: 14px 22px; border-radius: 999px;
+    font-family: inherit; font-size: 14px; font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .post-foot button:hover { background: var(--cream); transform: translateY(-2px); }
+
+  footer {
+    padding: 32px;
+    background: var(--navy-deep);
+    color: rgba(244,239,231,0.4);
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  footer a:hover { color: var(--pink); }
+</style>
+</head>
+<body class="locked">
+
+<div class="loader" id="loader">
+  <div class="loader-content">
+    <div class="loader-quint">Quint<span class="loader-dot"></span></div>
+    <div class="loader-progress"></div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+    <a href="index.html" class="nav-back">← Journal</a>
+  </div>
+</nav>
+
+<header class="article-head">
+  <div class="wrap-article">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Quint</a><span class="breadcrumb-sep">/</span>
+      <a href="index.html">Journal</a><span class="breadcrumb-sep">/</span>
+      Branding ist kein Logo
+    </nav>
+
+    <div class="article-eyebrow">
+      <span class="num">№ 01</span>
+      <span class="sep"></span>
+      <span>25. Mai 2026 · 4 Min Lesezeit</span>
+    </div>
+
+    <h1>Branding ist kein Logo.<br/><span class="italic">Wofür man wirklich bezahlt.</span></h1>
+
+    <p class="article-lead">Wir machen ein Logo manchmal in einer Woche. Wir machen Branding in 8 bis 12. Der Unterschied erklärt, wofür Mittelständler bei einer Marken-Werkstatt eigentlich bezahlen — und warum die meisten KMU diesen Unterschied immer noch nicht sehen.</p>
+
+    <div class="article-meta">
+      <a href="../team-aric.html" class="author-avatar" aria-label="Aric Brämswig">AB</a>
+      <div class="meta-text">
+        <strong>Aric Brämswig</strong><span class="meta-dot">·</span> Gründer Quint &amp; REHAB FIVE<br/>
+        <a href="../team-aric.html">Profil ansehen</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+  <div class="wrap-article">
+
+    <p>Ein Gespräch, das ich in den letzten zwei Jahren ungefähr 50 Mal geführt habe — mit Praxisinhaber:innen, Vereinsvorständen, Steuerberater:innen. Es geht ungefähr so:</p>
+
+    <p><em>„Wir bräuchten ein neues Logo. Können Sie uns ein Angebot machen?"</em></p>
+
+    <p>Ich sage dann meistens das Gleiche: <strong>Ein Logo kann ich euch in einer Woche machen. Aber ich glaube, das ist nicht euer Problem.</strong></p>
+
+    <h2>Was ein Logo <span class="italic">tatsächlich</span> ist.</h2>
+
+    <p>Ein Logo ist ein Symbol. Eine grafische Verkürzung, die deine Marke vertritt, wenn keine Zeit für mehr ist — auf einer Visitenkarte, einem Briefumschlag, einem Bus-Schild. Es muss in zwei Sekunden funktionieren. Mehr nicht.</p>
+
+    <p>Ein Logo zu gestalten ist Handwerk. Es braucht Geschmack, Erfahrung, Werkzeuge. Aber es ist eine <strong>Übersetzungsarbeit</strong> — du übersetzt eine bereits existierende Marken-Idee in ein visuelles Zeichen.</p>
+
+    <p>Das Problem: bei den meisten KMU existiert die Marken-Idee nicht. Es existiert nur das Unternehmen. Das ist nicht dasselbe.</p>
+
+    <h2>Was Branding <span class="italic">wirklich</span> ist.</h2>
+
+    <p>Branding ist die Arbeit, <em>bevor</em> das Logo entsteht. Es ist die Klärung von vier Fragen, die niemand gern beantwortet, weil sie schmerzhaft sind:</p>
+
+    <ul>
+      <li><strong>Was wollen wir wirklich sein</strong> — und nicht nur in der Selbstwahrnehmung?</li>
+      <li><strong>Was wollen wir konsequent ablehnen</strong>, auch wenn der Kunde es bezahlen würde?</li>
+      <li><strong>Wofür sollen Kund:innen zu uns kommen</strong> — und wofür ganz bewusst nicht?</li>
+      <li><strong>Wie klingen wir, wenn niemand zuhört</strong> — wenn die Mitarbeiterin Konflikt-E-Mails schreibt, ohne Briefing?</li>
+    </ul>
+
+    <p>Das sind keine Marketing-Fragen. Das sind <em>Führungsfragen</em>. Und genau deshalb kann eine Werbeagentur sie nicht beantworten. Die kennt eure Marke nicht. Die kennt eure Konkurrenz, eure Werte-Folie, eure Lieblings-Adjektive — aber nicht euch.</p>
+
+    <div class="pullquote">
+      „Branding ist keine Optik. Es ist eine Haltung, die zufällig auch gut aussieht."
+    </div>
+
+    <h2>Wofür man bei Quint <span class="italic">tatsächlich</span> bezahlt.</h2>
+
+    <p>Wenn jemand zu uns kommt mit „Wir brauchen ein neues Logo", sagen wir meistens: <strong>Lass uns zwei Stunden über deine Marke reden. Wenn danach klar ist, dass du wirklich nur ein Logo brauchst, mache ich dir ein gutes — in einer Woche, faires Geld.</strong></p>
+
+    <p>In acht von zehn Fällen merken die Gesprächspartner:innen aber nach 20 Minuten: das Logo war nicht das Problem. Das Problem war, dass die Marke unklar ist. Dass sich Mitarbeiter:innen jeden Tag selbst entscheiden müssen, wie sie auftreten sollen — und jeder es anders entscheidet. Dass die Website das Gleiche behauptet wie 30 Wettbewerber. Dass die Konkurrenz schöner aussieht, obwohl sie schlechter arbeitet.</p>
+
+    <p>Dann sprechen wir über Branding. Und Branding kostet mehr Geld und braucht mehr Zeit. <em>Aber es löst tatsächlich das, was eigentlich gemeint war.</em></p>
+
+    <h2>Konkret: was passiert in den 8 bis 12 Wochen?</h2>
+
+    <p>Bei uns läuft es in vier Phasen:</p>
+
+    <ul>
+      <li><strong>Briefing &amp; Haltung</strong> — wir klären die vier Fragen oben. Ein bis zwei Workshops, kein 80-Seiten-Dokument am Ende, sondern ein Markenfundament auf einer Seite.</li>
+      <li><strong>Konzept</strong> — Positionierung, Tonalität, visuelle Richtung. Hier entstehen die ersten Skizzen, hier fällen wir Entscheidungen.</li>
+      <li><strong>Bau</strong> — Logo, Farben, Typografie, Bildsprache, Layouts. Web, Print, Social-Templates. Alles aus einer Hand.</li>
+      <li><strong>Übergabe</strong> — eine Markenwelt, mit der ihr selbstständig weiter arbeiten könnt. Plus Schulung, plus Guideline, plus offene Tür für Fragen.</li>
+    </ul>
+
+    <p>Am Ende habt ihr nicht ein Logo. Ihr habt ein <strong>System</strong>. Etwas, das auch noch trägt, wenn eine neue Mitarbeiterin morgen einen Instagram-Post macht und niemand sie brieft. Etwas, das eure Marke wiedererkennt — auf einem Schild, einer Visitenkarte, einer Website, einer Rechnung.</p>
+
+    <hr/>
+
+    <h2>Wann <span class="italic">reicht</span> ein Logo wirklich?</h2>
+
+    <p>Manchmal reicht es. Ehrlich gesagt: in drei Fällen.</p>
+
+    <ul>
+      <li>Wenn das Unternehmen jung ist und die Markenidentität noch eh in Bewegung ist — dann macht ein „gutes vorläufiges Logo" mehr Sinn als ein durchstrategisiertes System, das in einem Jahr eh nicht mehr passt.</li>
+      <li>Wenn die Marke längst klar ist und nur das visuelle Zeichen veraltet — z. B. weil das alte Logo schlicht hässlich geworden ist, aber alle wissen, wofür der Laden steht.</li>
+      <li>Wenn das Budget einfach nicht reicht — dann ein gutes Logo plus ein paar Farben und Schriften, fertig.</li>
+    </ul>
+
+    <p>In allen anderen Fällen ist „nur ein Logo" wie ein neues Schaufenster in ein Geschäft zu hängen, das innen noch genauso aussieht wie vorher. Es zieht kurz Aufmerksamkeit. Dann ist es wieder dasselbe.</p>
+
+    <h2>Der Test, ob ihr <span class="italic">eigentlich</span> Branding braucht.</h2>
+
+    <p>Ich gebe dir die einfachste Diagnose, die ich kenne. Stell dir vor, du wirst von einem Journalisten gefragt:</p>
+
+    <p><em>„Was unterscheidet euch von eurem direkten Wettbewerber drei Straßen weiter?"</em></p>
+
+    <p>Wenn du jetzt zehn Sekunden lang antwortest, ohne <strong>„individuell"</strong>, <strong>„persönlich"</strong>, <strong>„hochwertig"</strong> oder <strong>„familiengeführt"</strong> zu benutzen — dann ist deine Marke klar.</p>
+
+    <p>Wenn nicht — dann brauchst du Branding. Nicht ein Logo.</p>
+
+    <!-- Author block -->
+    <div class="author-block">
+      <a href="../team-aric.html" class="big-avatar" aria-label="Aric Brämswig Profil">AB</a>
+      <div>
+        <div class="name">Aric Brämswig</div>
+        <div class="role">Gründer Quint &amp; REHAB FIVE</div>
+        <p>Schreibt im Quint-Journal über Markenbau in konservativen Branchen — und gegen die Idee, dass Branding hauptsächlich Optik ist.</p>
+        <a href="../team-aric.html" class="author-link">Profil ansehen →</a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+<section class="post-foot">
+  <div class="post-foot-inner">
+    <h2>Nächster Beitrag direkt <span class="italic">in den Posteingang.</span></h2>
+    <p>1× im Monat ein Beitrag aus der Werkstatt. Plus eine Marken-Beobachtung dazu. Kein Newsletter-Bullshit, jederzeit abbestellbar.</p>
+    <form action="mailto:a.braemswig@rehab-five.com" method="post" enctype="text/plain">
+      <input type="email" name="email" placeholder="deine@email.de" required />
+      <button type="submit">Abonnieren →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  © 2026 QUINT · <a href="../index.html">Hauptseite</a> · <a href="index.html">Journal</a> · <a href="../team-aric.html">Aric</a>
+</footer>
+
+<script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    if (!loader) return;
+    const params = new URLSearchParams(window.location.search);
+    const skip = params.get('skip-loader') === '1';
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const delay = (skip || reduceMotion) ? 0 : 2800;
+    setTimeout(() => { loader.classList.add('done'); document.body.classList.remove('locked'); }, delay);
+  });
+</script>
+
+</body>
+</html>

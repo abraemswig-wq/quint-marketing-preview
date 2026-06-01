@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Journal — Beobachtungen aus der Quint-Werkstatt</title>
+<meta name="description" content="Quint-Journal — niedrigfrequentes Editorial über Branding, Social und Markenbau für Praxen, Vereine und inhabergeführte Dienstleister. Aus Münster, im DACH-Raum." />
+<meta name="theme-color" content="#143C6B" />
+<link rel="canonical" href="https://abraemswig-wq.github.io/quint-marketing-preview/journal/" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Quint Journal" />
+<meta property="og:description" content="Beobachtungen aus der Werkstatt — Branding, Social und Markenbau für KMU." />
+<meta property="og:image" content="https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png" />
+<meta property="og:locale" content="de_DE" />
+
+<!-- Schema.org Blog -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Quint Journal",
+  "description": "Beobachtungen aus der Quint-Werkstatt: Branding, Social und Markenbau für Praxen, Vereine und inhabergeführte Dienstleister.",
+  "url": "https://abraemswig-wq.github.io/quint-marketing-preview/journal/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quint Marketing",
+    "url": "https://abraemswig-wq.github.io/quint-marketing-preview/"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B;
+    --navy-deep: #0D2747;
+    --pink: #E89BB1;
+    --pink-soft: #F3C7D4;
+    --pink-strong: #D87A95;
+    --cream: #F4EFE7;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body.locked { overflow: hidden; height: 100vh; }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+  /* LOADER */
+  .loader { position: fixed; inset: 0; background: #0D2747; z-index: 9999; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .loader-content { text-align: center; position: relative; }
+  .loader-quint { font-size: clamp(80px, 14vw, 220px); font-weight: 700; letter-spacing: -0.05em; color: #ffffff; display: inline-flex; align-items: baseline; opacity: 0; animation: loaderFadeIn 0.8s cubic-bezier(.2,.8,.2,1) 0.1s forwards; }
+  .loader-dot { width: clamp(16px, 2.5vw, 40px); height: clamp(16px, 2.5vw, 40px); background: #E89BB1; border-radius: 50%; margin-left: 0.05em; transform: scale(0); animation: loaderDotPop 0.6s cubic-bezier(.34,1.56,.64,1) 0.9s forwards, loaderDotExpand 1s cubic-bezier(.6,0,.7,1) 2.1s forwards; }
+  @keyframes loaderFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes loaderDotPop { from { transform: scale(0); } to { transform: scale(1); } }
+  @keyframes loaderDotExpand { 0% { transform: scale(1); } 100% { transform: scale(200); } }
+  .loader-progress { position: absolute; bottom: -80px; left: 50%; transform: translateX(-50%); width: 200px; height: 2px; background: rgba(255,255,255,0.1); overflow: hidden; }
+  .loader-progress::after { content: ""; position: absolute; left: 0; top: 0; width: 0; height: 100%; background: #E89BB1; animation: loaderProgress 2s cubic-bezier(.2,.8,.2,1) forwards; }
+  @keyframes loaderProgress { from { width: 0; } to { width: 100%; } }
+  .loader.done { pointer-events: none; animation: loaderHide 0.8s cubic-bezier(.6,0,.7,1) 0.2s forwards; }
+  @keyframes loaderHide { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+  @media (prefers-reduced-motion: reduce) { .loader { display: none; } }
+
+  /* NAV */
+  nav.nav-bar {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(20, 60, 107, 0.85);
+    backdrop-filter: saturate(150%) blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; max-width: 1320px; margin: 0 auto; }
+  .nav-logo { font-weight: 700; font-size: 26px; letter-spacing: -0.04em; }
+  .nav-logo .dot { color: var(--pink); margin-right: 2px; }
+  .nav-back {
+    font-size: 13px; color: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 8px 16px; border-radius: 999px;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .nav-back:hover { background: var(--pink); color: var(--navy); border-color: var(--pink); }
+
+  /* HEAD */
+  .journal-head {
+    padding: 120px 0 60px;
+    text-align: center;
+  }
+  .head-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 28px;
+  }
+  .head-eyebrow-dot { width: 8px; height: 8px; background: var(--pink); border-radius: 50%; animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 0.45; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.15); } }
+  .journal-head h1 {
+    font-size: clamp(48px, 8vw, 110px);
+    line-height: 0.96;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+  .journal-head h1 .italic { color: var(--pink); }
+  .journal-head p.lead {
+    font-size: clamp(17px, 1.5vw, 22px);
+    color: rgba(255,255,255,0.72);
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.55;
+  }
+
+  /* MARQUEE */
+  .marquee {
+    margin: 60px 0;
+    overflow: hidden;
+    padding: 18px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .marquee-track {
+    display: flex; gap: 56px; white-space: nowrap;
+    animation: scroll 40s linear infinite;
+    font-size: 14px; letter-spacing: 0.22em; font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    align-items: center;
+  }
+  .marquee-track .italic-tag { font-family: "Fraunces", serif; font-style: italic; color: var(--pink-soft); font-weight: 400; letter-spacing: -0.01em; text-transform: none; font-size: 17px; }
+  .marquee-track .dot { width: 6px; height: 6px; background: var(--pink); border-radius: 50%; flex-shrink: 0; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* POSTS */
+  .posts {
+    padding: 60px 0 140px;
+  }
+  .post-list {
+    display: grid;
+    gap: 24px;
+  }
+  .post-card {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 48px;
+    align-items: start;
+    padding: 36px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    transition: border-color 0.3s;
+  }
+  .post-card:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .post-card.live:hover { border-color: var(--pink); }
+  .post-card.live { cursor: pointer; }
+  .post-card.upcoming { opacity: 0.55; }
+  @media (max-width: 800px) { .post-card { grid-template-columns: 1fr; gap: 16px; } }
+
+  .post-meta { font-size: 12px; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); }
+  .post-meta .num {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: 22px; color: var(--pink);
+    font-weight: 400; line-height: 1;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .post-card.upcoming .post-meta .num { color: rgba(255,255,255,0.4); }
+  .post-meta .tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+  .post-card.live .tag {
+    background: var(--pink);
+    color: var(--navy);
+  }
+  .post-card.upcoming .tag {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.5);
+  }
+
+  .post-body h2 {
+    font-size: clamp(24px, 2.6vw, 36px);
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    color: var(--white);
+    transition: color 0.3s;
+  }
+  .post-body h2 .italic { color: var(--pink); }
+  .post-card.live:hover .post-body h2 { color: var(--pink); }
+  .post-body p {
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    line-height: 1.55;
+    max-width: 680px;
+  }
+  .post-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 18px;
+    color: var(--pink);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .post-cta .arrow { font-family: "Fraunces", serif; font-style: italic; transition: transform 0.25s; }
+  .post-card.live:hover .post-cta .arrow { transform: translateX(4px); }
+
+  /* NEWSLETTER */
+  .nl {
+    padding: 80px 0;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(232,155,177,0.07) 0%, transparent 60%),
+      var(--navy-deep);
+    border-top: 1px solid rgba(232,155,177,0.15);
+  }
+  .nl-inner { max-width: 600px; margin: 0 auto; text-align: center; padding: 0 32px; }
+  .nl h2 {
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .nl h2 .italic { color: var(--pink); }
+  .nl p { color: rgba(255,255,255,0.7); margin-bottom: 28px; font-size: 16px; }
+  .nl form { display: flex; gap: 8px; flex-wrap: wrap; }
+  .nl input[type="email"] {
+    flex: 1; min-width: 200px;
+    padding: 14px 18px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    color: var(--cream);
+    border: 1px solid rgba(255,255,255,0.15);
+    font-family: inherit; font-size: 14px;
+  }
+  .nl input[type="email"]:focus { outline: none; border-color: var(--pink); background: rgba(255,255,255,0.12); }
+  .nl button {
+    background: var(--pink); color: var(--navy); border: 0;
+    padding: 14px 22px; border-radius: 999px;
+    font-family: inherit; font-size: 14px; font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .nl button:hover { background: var(--cream); transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    padding: 32px;
+    background: var(--navy-deep);
+    color: rgba(244,239,231,0.4);
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  footer a:hover { color: var(--pink); }
+</style>
+</head>
+<body class="locked">
+
+<div class="loader" id="loader">
+  <div class="loader-content">
+    <div class="loader-quint">Quint<span class="loader-dot"></span></div>
+    <div class="loader-progress"></div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+    <a href="../index.html" class="nav-back">← Hauptseite</a>
+  </div>
+</nav>
+
+<header class="journal-head">
+  <div class="wrap">
+    <div class="head-eyebrow"><span class="head-eyebrow-dot"></span>Quint Journal · 2026</div>
+    <h1>Beobachtungen<br/>aus der <span class="italic">Werkstatt.</span></h1>
+    <p class="lead">Niedrigfrequent, hochwertig. Ein Beitrag pro Monat — Markt-Diagnosen, Markenfehler, Lessons aus REHAB FIVE. Keine Listicles, kein „5 Tipps für besseres Social".</p>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>EDITORIAL</span><span class="dot"></span>
+    <span class="italic-tag">ohne Listicle</span><span class="dot"></span>
+    <span>1 POST / MONAT</span><span class="dot"></span>
+    <span class="italic-tag">dafür mit Substanz</span><span class="dot"></span>
+    <span>EDITORIAL</span><span class="dot"></span>
+    <span class="italic-tag">ohne Listicle</span><span class="dot"></span>
+    <span>1 POST / MONAT</span><span class="dot"></span>
+    <span class="italic-tag">dafür mit Substanz</span><span class="dot"></span>
+  </div>
+</div>
+
+<section class="posts">
+  <div class="wrap">
+    <div class="post-list">
+
+      <!-- LIVE POST -->
+      <a href="branding-ist-kein-logo.html" class="post-card live" aria-label="Beitrag öffnen — Branding ist kein Logo">
+        <div class="post-meta">
+          <span class="num">№ 01</span>
+          25. Mai 2026 · 4 Min<br/>
+          <span class="tag">Aktuell</span>
+        </div>
+        <div class="post-body">
+          <h2>Branding ist kein Logo. <span class="italic">Wofür man wirklich bezahlt.</span></h2>
+          <p>Wir machen ein Logo manchmal in einer Woche. Wir machen Branding in 8 bis 12. Der Unterschied erklärt, wofür Mittelständler bei einer Marken-Werkstatt eigentlich bezahlen — und warum die meisten KMU diesen Unterschied immer noch nicht sehen.</p>
+          <span class="post-cta">Beitrag lesen <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <!-- UPCOMING POSTS -->
+      <div class="post-card upcoming">
+        <div class="post-meta">
+          <span class="num">№ 02</span>
+          Demnächst<br/>
+          <span class="tag">In Arbeit</span>
+        </div>
+        <div class="post-body">
+          <h2>Markenstrategie auf <span class="italic">einer Seite.</span></h2>
+          <p>Das Quint-Format: alles, was eine Marke trägt, auf einem A4-Blatt. Inklusive Template zum Download.</p>
+        </div>
+      </div>
+
+      <div class="post-card upcoming">
+        <div class="post-meta">
+          <span class="num">№ 03</span>
+          Demnächst<br/>
+          <span class="tag">In Arbeit</span>
+        </div>
+        <div class="post-body">
+          <h2>Warum Praxen-Webseiten aussehen wie <span class="italic">2007.</span></h2>
+          <p>Diagnose einer konservativen Branche — und was Patient:innen daraus lesen, ohne es zu merken.</p>
+        </div>
+      </div>
+
+      <div class="post-card upcoming">
+        <div class="post-meta">
+          <span class="num">№ 04</span>
+          Demnächst<br/>
+          <span class="tag">In Arbeit</span>
+        </div>
+        <div class="post-body">
+          <h2>Was REHAB FIVE in 18 Monaten <span class="italic">gekostet hat</span> — und was es gebracht hat.</h2>
+          <p>Aric persönlich: Budget, Outcome, was er heute anders machen würde. Radikal transparent.</p>
+        </div>
+      </div>
+
+      <div class="post-card upcoming">
+        <div class="post-meta">
+          <span class="num">№ 05</span>
+          Demnächst<br/>
+          <span class="tag">In Arbeit</span>
+        </div>
+        <div class="post-body">
+          <h2>Drei Markenfehler, die wir bei jedem zweiten <span class="italic">Mittelständler</span> sehen.</h2>
+          <p>Anonyme echte Beispiele aus drei Welten. Konkret, kein Listicle.</p>
+        </div>
+      </div>
+
+      <div class="post-card upcoming">
+        <div class="post-meta">
+          <span class="num">№ 06</span>
+          Demnächst<br/>
+          <span class="tag">In Arbeit</span>
+        </div>
+        <div class="post-body">
+          <h2>Drei Wochen Logo-Konzept: <span class="italic">was passiert in dieser Zeit?</span></h2>
+          <p>Behind-the-Scenes der Werkstatt. Erwartungs-Management für Interessenten.</p>
+        </div>
+      </div>
+
+      <div class="post-card upcoming">
+        <div class="post-meta">
+          <span class="num">№ 07</span>
+          Demnächst<br/>
+          <span class="tag">In Arbeit</span>
+        </div>
+        <div class="post-body">
+          <h2>Der Sponsoring-Vertrag, den jeder Verein unterschreibt — und warum er die Marke <span class="italic">schwächt.</span></h2>
+          <p>Was beim klassischen Trikot-Sponsoring schief läuft. Mit Alternativen.</p>
+        </div>
+      </div>
+
+      <div class="post-card upcoming">
+        <div class="post-meta">
+          <span class="num">№ 08</span>
+          Demnächst<br/>
+          <span class="tag">In Arbeit</span>
+        </div>
+        <div class="post-body">
+          <h2>Was Mandanten <span class="italic">googeln,</span> bevor sie eine Kanzlei anrufen.</h2>
+          <p>Cluster Kanzleien: wie sich Vertrauen vor dem ersten Gespräch bildet.</p>
+        </div>
+      </div>
+
+      <div class="post-card upcoming">
+        <div class="post-meta">
+          <span class="num">№ 09</span>
+          Demnächst<br/>
+          <span class="tag">In Arbeit</span>
+        </div>
+        <div class="post-body">
+          <h2>8 Fragen, die du einer Agentur stellen solltest — <span class="italic">bevor du das Budget nennst.</span></h2>
+          <p>Anti-Bullshit-Voice. Plus PDF-Checkliste zum Mitnehmen.</p>
+        </div>
+      </div>
+
+      <div class="post-card upcoming">
+        <div class="post-meta">
+          <span class="num">№ 10</span>
+          Demnächst<br/>
+          <span class="tag">In Arbeit</span>
+        </div>
+        <div class="post-body">
+          <h2>Wie viele Kunden wir gleichzeitig betreuen — <span class="italic">und warum.</span></h2>
+          <p>Manifest-Punkt „Wenige Kunden, volle Aufmerksamkeit" ausgespielt. Konkrete Zahl.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="nl">
+  <div class="nl-inner">
+    <h2>Quint-<span class="italic">Notizen.</span></h2>
+    <p>1× im Monat eine kurze E-Mail mit dem aktuellen Beitrag plus einer Marken-Beobachtung dazu. Jederzeit abbestellbar.</p>
+    <form action="mailto:a.braemswig@rehab-five.com" method="post" enctype="text/plain">
+      <input type="email" name="email" placeholder="deine@email.de" required />
+      <button type="submit">Abonnieren →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  © 2026 QUINT · <a href="../index.html">Hauptseite</a> · <a href="../team-aric.html">Aric</a> · <a href="../team-rania.html">Rania</a>
+</footer>
+
+<script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    if (!loader) return;
+    const params = new URLSearchParams(window.location.search);
+    const skip = params.get('skip-loader') === '1';
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const delay = (skip || reduceMotion) ? 0 : 2800;
+    setTimeout(() => { loader.classList.add('done'); document.body.classList.remove('locked'); }, delay);
+  });
+</script>
+
+</body>
+</html>
