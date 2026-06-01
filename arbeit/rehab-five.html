@@ -281,13 +281,40 @@
   .saeule-orbit.s4 { bottom: 0; left: 14%; }
   .saeule-orbit.s5 { top: 38%; left: 0; }
 
+  .saeule-orbit .saeule-icon {
+    width: 36px; height: 36px;
+    border-radius: 12px;
+    background: rgba(232,155,177,0.15);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+    color: var(--pink);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .saeule-orbit:hover .saeule-icon {
+    background: var(--rehab-orange);
+    color: var(--navy-deep);
+    transform: rotate(-6deg) scale(1.06);
+  }
+  .saeule-orbit .saeule-icon svg { width: 20px; height: 20px; }
   .saeule-orbit .num {
     font-family: "Fraunces", serif; font-style: italic;
-    color: var(--pink); font-size: 22px;
-    margin-bottom: 8px; line-height: 1;
+    color: var(--pink); font-size: 18px;
+    margin-bottom: 6px; line-height: 1;
+    opacity: 0.7;
   }
   .saeule-orbit h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
   .saeule-orbit p { font-size: 12.5px; color: rgba(255,255,255,0.65); line-height: 1.4; }
+
+  /* Mobile-Icons */
+  .saeule-mobile .saeule-icon-mobile {
+    width: 32px; height: 32px;
+    border-radius: 10px;
+    background: rgba(217,145,41,0.18);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 10px;
+    color: var(--rehab-orange);
+  }
+  .saeule-mobile .saeule-icon-mobile svg { width: 18px; height: 18px; }
 
   /* Verbindungslinien zum Zentrum (SVG) */
   .pentagon-lines {
@@ -641,26 +668,66 @@
 
       <!-- 5 Säulen auf den Pentagon-Spitzen -->
       <div class="saeule-orbit s1">
+        <div class="saeule-icon" aria-hidden="true">
+          <!-- Training: Hantel -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="9" width="3" height="6" rx="1"/>
+            <rect x="19" y="9" width="3" height="6" rx="1"/>
+            <rect x="6" y="10" width="2" height="4" rx="0.5"/>
+            <rect x="16" y="10" width="2" height="4" rx="0.5"/>
+            <line x1="8" y1="12" x2="16" y2="12"/>
+          </svg>
+        </div>
         <div class="num">01</div>
         <h4>Training</h4>
         <p>Aktivierung für Muskeln und Gelenke.</p>
       </div>
       <div class="saeule-orbit s2">
+        <div class="saeule-icon" aria-hidden="true">
+          <!-- Therapie: Herz mit Puls -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            <polyline points="3.5 12 7 12 9 9 12 15 14 12 17 12"/>
+          </svg>
+        </div>
         <div class="num">02</div>
         <h4>Therapie</h4>
         <p>Damit du wieder fit wirst.</p>
       </div>
       <div class="saeule-orbit s3">
+        <div class="saeule-icon" aria-hidden="true">
+          <!-- Prävention: Schild mit Check -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+        </div>
         <div class="num">03</div>
         <h4>Prävention</h4>
         <p>Damit du fit bleibst.</p>
       </div>
       <div class="saeule-orbit s4">
+        <div class="saeule-icon" aria-hidden="true">
+          <!-- Diagnostik: Stethoskop -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2v6a4 4 0 0 0 8 0V2"/>
+            <line x1="6" y1="2" x2="6" y2="3"/>
+            <line x1="14" y1="2" x2="14" y2="3"/>
+            <path d="M10 12v3a5 5 0 0 0 5 5 4 4 0 0 0 4-4v-3"/>
+            <circle cx="19" cy="10" r="2"/>
+          </svg>
+        </div>
         <div class="num">04</div>
         <h4>Diagnostik</h4>
         <p>Um herauszufinden, was zu tun ist.</p>
       </div>
       <div class="saeule-orbit s5">
+        <div class="saeule-icon" aria-hidden="true">
+          <!-- Athletik: Blitz / Lightning -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
         <div class="num">05</div>
         <h4>Athletik</h4>
         <p>So bleibst du stabil.</p>
@@ -669,11 +736,26 @@
 
     <!-- Mobile-Fallback: Klassische Liste -->
     <div class="saeulen-mobile">
-      <div class="saeule-mobile"><div class="num">01</div><h4>Training</h4><p>Aktivierung für Muskeln und Gelenke.</p></div>
-      <div class="saeule-mobile"><div class="num">02</div><h4>Therapie</h4><p>Damit du wieder fit wirst.</p></div>
-      <div class="saeule-mobile"><div class="num">03</div><h4>Prävention</h4><p>Damit du fit bleibst.</p></div>
-      <div class="saeule-mobile"><div class="num">04</div><h4>Diagnostik</h4><p>Um herauszufinden, was zu tun ist.</p></div>
-      <div class="saeule-mobile"><div class="num">05</div><h4>Athletik</h4><p>So bleibst du stabil.</p></div>
+      <div class="saeule-mobile">
+        <div class="saeule-icon-mobile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="3" height="6" rx="1"/><rect x="19" y="9" width="3" height="6" rx="1"/><rect x="6" y="10" width="2" height="4" rx="0.5"/><rect x="16" y="10" width="2" height="4" rx="0.5"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
+        <div class="num">01</div><h4>Training</h4><p>Aktivierung für Muskeln und Gelenke.</p>
+      </div>
+      <div class="saeule-mobile">
+        <div class="saeule-icon-mobile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/><polyline points="3.5 12 7 12 9 9 12 15 14 12 17 12"/></svg></div>
+        <div class="num">02</div><h4>Therapie</h4><p>Damit du wieder fit wirst.</p>
+      </div>
+      <div class="saeule-mobile">
+        <div class="saeule-icon-mobile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <div class="num">03</div><h4>Prävention</h4><p>Damit du fit bleibst.</p>
+      </div>
+      <div class="saeule-mobile">
+        <div class="saeule-icon-mobile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v6a4 4 0 0 0 8 0V2"/><line x1="6" y1="2" x2="6" y2="3"/><line x1="14" y1="2" x2="14" y2="3"/><path d="M10 12v3a5 5 0 0 0 5 5 4 4 0 0 0 4-4v-3"/><circle cx="19" cy="10" r="2"/></svg></div>
+        <div class="num">04</div><h4>Diagnostik</h4><p>Um herauszufinden, was zu tun ist.</p>
+      </div>
+      <div class="saeule-mobile">
+        <div class="saeule-icon-mobile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div class="num">05</div><h4>Athletik</h4><p>So bleibst du stabil.</p>
+      </div>
     </div>
   </div>
 </section>
