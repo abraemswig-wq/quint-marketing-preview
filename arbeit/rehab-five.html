@@ -207,13 +207,13 @@
     justify-content: center;
     will-change: transform;
   }
-  /* Background — Studio-Bild scharf (Blur raus auf Wunsch) */
+  /* Background — Studio-Bild, vertikal so verschoben dass das Neon-Logo zentral landet */
   .scroll-expand-bg {
     position: absolute;
     inset: 0;
     background-image: url('../assets/rehab-studio.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: 50% 35%;
     filter: brightness(0.6) saturate(1.05);
     z-index: 0;
   }
@@ -258,7 +258,7 @@
   /* Asset: Studio-Foto in Pentagon-Form (REHAB-FIVE-Signet) — auf Neon-Logo-Position */
   .scroll-expand-asset {
     position: absolute;
-    top: calc(45% + 170px); left: calc(50% + 85px);
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%) scale(0.15);
     z-index: 2;
     width: 360px;
