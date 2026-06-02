@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quint Merch — vier Konzept-Vorschläge</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B; --navy-deep: #0D2747; --pink: #E89BB1;
+    --pink-strong: #D87A95; --cream: #F4EFE7; --rehab-green: #1F342D;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; }
+  a { color: inherit; text-decoration: none; }
+
+  .nav-bar {
+    padding: 20px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(13,39,71,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .nav-logo { font-weight: 700; font-size: 22px; letter-spacing: -0.04em; }
+  .nav-logo .dot { color: var(--pink); }
+  .nav-back {
+    font-size: 13px; color: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 8px 16px; border-radius: 999px;
+  }
+
+  .head {
+    padding: 100px 32px 60px;
+    text-align: center;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .head-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); margin-bottom: 28px;
+  }
+  .head-eyebrow-dot { width: 8px; height: 8px; background: var(--pink); border-radius: 50%; }
+  .head h1 {
+    font-size: clamp(40px, 7vw, 88px);
+    line-height: 0.98; font-weight: 700;
+    letter-spacing: -0.03em; margin-bottom: 20px;
+  }
+  .head h1 .italic { color: var(--pink); }
+  .head p { color: rgba(255,255,255,0.7); font-size: 17px; line-height: 1.55; max-width: 720px; margin: 0 auto; }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 32px 100px;
+  }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+  .pitch {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 28px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .pitch:hover { border-color: var(--pink); }
+  .pitch-head {
+    padding: 28px 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .pitch-nr {
+    display: inline-block;
+    background: var(--pink); color: var(--navy);
+    padding: 4px 12px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .pitch-head h2 {
+    font-size: 26px; font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .pitch-head h2 .italic { color: var(--pink); }
+  .pitch-head .item {
+    font-family: "Fraunces", serif; font-style: italic;
+    color: var(--pink-strong); font-size: 16px;
+  }
+
+  /* MOCKUP */
+  .mockup-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: rgba(0,0,0,0.2);
+  }
+  .mockup {
+    aspect-ratio: 4 / 5;
+    display: flex; align-items: center; justify-content: center;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .mockup-label {
+    position: absolute;
+    bottom: 16px; left: 50%; transform: translateX(-50%);
+    font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    background: rgba(0,0,0,0.5);
+    padding: 4px 10px; border-radius: 999px;
+    z-index: 10;
+  }
+
+  /* SHIRT/HOODIE SILHOUETTEN als CSS-shapes */
+  .garment {
+    width: 80%;
+    aspect-ratio: 4 / 5;
+    position: relative;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding-top: 18%;
+  }
+  /* T-Shirt-Form via clip-path */
+  .shirt {
+    --bg: var(--cream);
+    clip-path: polygon(
+      18% 18%,
+      0% 30%, 0% 38%, 12% 36%,
+      12% 100%, 88% 100%, 88% 36%,
+      100% 38%, 100% 30%, 82% 18%,
+      62% 14%, 62% 22%, 50% 26%, 38% 22%, 38% 14%
+    );
+    background: var(--bg);
+  }
+  /* Hoodie-Form mit Kapuze */
+  .hoodie {
+    --bg: var(--navy-deep);
+    clip-path: polygon(
+      30% 4%,
+      26% 14%, 16% 18%,
+      0% 32%, 0% 42%, 12% 40%,
+      12% 100%, 88% 100%, 88% 40%,
+      100% 42%, 100% 32%, 84% 18%,
+      74% 14%, 70% 4%,
+      62% 14%, 62% 22%, 50% 26%, 38% 22%, 38% 14%
+    );
+    background: var(--bg);
+  }
+
+  /* Print-Bereich auf dem Kleidungsstück */
+  .print {
+    position: absolute;
+    inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 10% 14%;
+  }
+  .print img { display: block; }
+  .print-small {
+    font-size: clamp(9px, 1.1vw, 13px);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+  .print-big {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: clamp(28px, 5vw, 64px);
+    line-height: 0.95;
+    font-weight: 400;
+    margin: 0;
+  }
+  .print-claim {
+    font-size: clamp(11px, 1.2vw, 14px);
+    letter-spacing: 0.05em;
+    margin-top: 12px;
+    line-height: 1.3;
+  }
+  .print-back-big {
+    font-size: clamp(22px, 3.5vw, 36px);
+    line-height: 0.95; font-weight: 700;
+    text-transform: uppercase; letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  /* PITCH-Body */
+  .pitch-body {
+    padding: 28px 32px 36px;
+  }
+  .pitch-body h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.01em; }
+  .pitch-body p {
+    font-size: 14.5px;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .pitch-specs {
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 8px 18px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 13px;
+  }
+  .pitch-specs .k { color: rgba(255,255,255,0.5); letter-spacing: 0.05em; text-transform: uppercase; font-size: 11px; }
+  .pitch-specs .v { color: var(--white); }
+  .pitch-specs .v .italic { color: var(--pink); }
+
+  /* Per-Pitch farb-Themen */
+  .pitch-1 .mockup { background: linear-gradient(180deg, #1a3a5e, #102845); }
+  .pitch-2 .mockup { background: linear-gradient(180deg, #d4ccba, #c0b69e); }
+  .pitch-3 .mockup { background: linear-gradient(180deg, #f2acba, #e89bb1); }
+  .pitch-4 .mockup { background: linear-gradient(180deg, #2a4f3e, #1f342d); }
+
+  /* Pitch 2 — Text Pink auf Cream */
+  .pitch-2 .print-big { color: var(--pink-strong); }
+  .pitch-2 .print-small { color: var(--navy); }
+  .pitch-2 .print-claim { color: var(--navy); }
+  /* Pitch 3 — Print Navy */
+  .pitch-3 .print-big, .pitch-3 .print-small, .pitch-3 .print-claim, .pitch-3 .print-back-big { color: var(--navy); }
+  /* Pitch 4 — Print Cream auf Grün */
+  .pitch-4 .print-big, .pitch-4 .print-small, .pitch-4 .print-claim, .pitch-4 .print-back-big { color: var(--cream); }
+  /* Pitch 1 — Print Weiß auf Navy (default) */
+
+  /* Dackel-Filter Helper */
+  .dackel-navy img { filter: brightness(0) saturate(100%) invert(11%) sepia(75%) saturate(1800%) hue-rotate(198deg) brightness(45%); }
+  .dackel-pink img { filter: brightness(0) saturate(100%) invert(72%) sepia(15%) saturate(883%) hue-rotate(298deg) brightness(95%); }
+  .dackel-cream img { filter: brightness(0) saturate(100%) invert(95%) sepia(11%) saturate(177%) hue-rotate(8deg) brightness(101%); }
+
+  /* My-Pick Banner */
+  .my-pick {
+    background: linear-gradient(135deg, var(--pink-strong), var(--pink));
+    color: var(--navy);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;
+    display: inline-block;
+    margin-left: 12px;
+  }
+
+  footer {
+    padding: 32px; background: var(--navy-deep);
+    color: rgba(255,255,255,0.4);
+    text-align: center; font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  footer a:hover { color: var(--pink); }
+</style>
+</head>
+<body>
+
+<header class="nav-bar">
+  <a href="index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+  <a href="index.html" class="nav-back">← Hauptseite</a>
+</header>
+
+<section class="head">
+  <div class="head-eyebrow"><span class="head-eyebrow-dot"></span>Merch · Konzept-Vorschläge</div>
+  <h1>Vier Hoodies,<br/>vier <span class="italic">Sprüche.</span></h1>
+  <p>Vier strategisch unterschiedliche Merch-Konzepte — von laut bis editorial, jedes mit einer anderen Dackel-Pose und einem anderen Marken-Ton. Skizzen-Mockups, keine finalen Produktfotos.</p>
+</section>
+
+<main class="grid">
+
+  <!-- PITCH 1: Wir jagen den Ball. -->
+  <article class="pitch pitch-1">
+    <div class="pitch-head">
+      <div class="pitch-nr">№ 01 · Hoodie</div>
+      <h2>„Wir jagen <span class="italic">den Ball.</span>"<span class="my-pick">Mein Pick</span></h2>
+      <div class="item">Statement-Hoodie · Navy</div>
+    </div>
+
+    <div class="mockup-row">
+      <div class="mockup">
+        <span class="mockup-label">Front</span>
+        <div class="garment hoodie">
+          <div class="print">
+            <img src="assets/Dackel-Maennchen.svg" alt="" style="width: 45%; height: auto;" />
+            <p class="print-claim">Wir jagen den Ball.</p>
+          </div>
+        </div>
+      </div>
+      <div class="mockup">
+        <span class="mockup-label">Back</span>
+        <div class="garment hoodie">
+          <div class="print" style="padding-top: 25%;">
+            <p class="print-big" style="font-size: clamp(36px, 7vw, 84px); font-style: normal; font-family: 'Familjen Grotesk', sans-serif; font-weight: 700; color: var(--white); letter-spacing: -0.03em;">Quint<span style="color: var(--pink);">.</span></p>
+            <p class="print-claim" style="margin-top: 18px; font-style: italic; font-family: 'Fraunces', serif;">Andere reden über die Wiese.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pitch-body">
+      <h3>Strategischer Pitch</h3>
+      <p>Der lauteste Vorschlag — direkt der Hero-Claim aufs Shirt. Männchen-Dackel zentral, Spruch klein drunter. Rücken trägt das Wortlogo groß. Für alle, die Quint <em>tragen</em> wollen, nicht nur kaufen.</p>
+      <div class="pitch-specs">
+        <span class="k">Material</span><span class="v">Heavy Hoodie, 380 gsm Bio-Baumwolle</span>
+        <span class="k">Farbe</span><span class="v">Navy <span class="italic">(#143C6B)</span></span>
+        <span class="k">Druck</span><span class="v">Siebdruck Weiß + Pink-Akzent (Punkt im „Quint.")</span>
+        <span class="k">Dackel</span><span class="v">Männchen-Pose</span>
+        <span class="k">Zielgruppe</span><span class="v">Aric, Rania, Bjoern + Markenbotschafter</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- PITCH 2: Hingabe. -->
+  <article class="pitch pitch-2">
+    <div class="pitch-head">
+      <div class="pitch-nr">№ 02 · T-Shirt</div>
+      <h2>„<span class="italic">Hingabe.</span>"</h2>
+      <div class="item">Editorial T-Shirt · Cream</div>
+    </div>
+
+    <div class="mockup-row">
+      <div class="mockup">
+        <span class="mockup-label">Front</span>
+        <div class="garment shirt">
+          <div class="print">
+            <p class="print-big">Hingabe.</p>
+            <div class="dackel-pink" style="width: 22%; margin-top: 14px;">
+              <img src="assets/Dackel-2.svg" alt="" style="width: 100%; height: auto;" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mockup">
+        <span class="mockup-label">Back</span>
+        <div class="garment shirt">
+          <div class="print" style="padding-top: 22%;">
+            <p class="print-small" style="color: var(--navy); opacity: 0.7;">— Quint —</p>
+            <p class="print-claim" style="margin-top: 10px; font-style: italic; font-family: 'Fraunces', serif; font-size: clamp(14px, 1.8vw, 18px); max-width: 70%;">Eine der vier Säulen, auf denen Marken stehen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pitch-body">
+      <h3>Strategischer Pitch</h3>
+      <p>Editorial &amp; selbstbewusst. Greift eines der vier H's (Haltung / Handwerk / Handschrift / Hingabe) als Statement auf. Großer Fraunces-Italic-Druck, kleiner Dackel nur als Akzent — die Schrift trägt das Shirt. Funktioniert auf Konferenzen, Workshops, als Geschenk.</p>
+      <div class="pitch-specs">
+        <span class="k">Material</span><span class="v">T-Shirt Heavy Cotton, 220 gsm</span>
+        <span class="k">Farbe</span><span class="v">Cream <span class="italic">(#F4EFE7)</span></span>
+        <span class="k">Druck</span><span class="v">Siebdruck Pink-Strong auf Cream</span>
+        <span class="k">Dackel</span><span class="v">Pose 2, klein als Akzent</span>
+        <span class="k">Erweiterbar</span><span class="v">Vier Editionen — Haltung, Handwerk, Handschrift, Hingabe</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- PITCH 3: Andere reden. Wir jagen. -->
+  <article class="pitch pitch-3">
+    <div class="pitch-head">
+      <div class="pitch-nr">№ 03 · Hoodie</div>
+      <h2>„Andere reden.<br/>Wir <span class="italic">jagen.</span>"</h2>
+      <div class="item">Bold-Statement Hoodie · Pink</div>
+    </div>
+
+    <div class="mockup-row">
+      <div class="mockup">
+        <span class="mockup-label">Front</span>
+        <div class="garment hoodie" style="--bg: var(--pink);">
+          <div class="print" style="padding-top: 22%;">
+            <div class="dackel-navy" style="width: 70%;">
+              <img src="assets/Dackel-1.svg" alt="" style="width: 100%; height: auto;" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mockup">
+        <span class="mockup-label">Back</span>
+        <div class="garment hoodie" style="--bg: var(--pink);">
+          <div class="print" style="padding-top: 22%; padding-left: 8%; padding-right: 8%;">
+            <p class="print-back-big" style="text-align: center;">Andere<br/>reden.<br/>Wir<br/><span class="italic" style="font-family: 'Fraunces', serif; text-transform: none; font-weight: 400;">jagen.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pitch-body">
+      <h3>Strategischer Pitch</h3>
+      <p>Maximales Statement. Pink als Hoodie-Farbe ist mutig — niemand sonst macht das in der Agentur-Welt. Vorderseite trägt nur den Dackel groß als „Wappentier". Rücken ist eine vier-Zeilen-Tirade. Für Events, Konferenzen, Brand-Walks.</p>
+      <div class="pitch-specs">
+        <span class="k">Material</span><span class="v">Premium Heavy Hoodie, 400 gsm</span>
+        <span class="k">Farbe</span><span class="v">Quint Pink <span class="italic">(#E89BB1)</span></span>
+        <span class="k">Druck</span><span class="v">Siebdruck Navy auf Pink — hoher Kontrast</span>
+        <span class="k">Dackel</span><span class="v">Pose 1 (groß auf der Brust)</span>
+        <span class="k">Risiko</span><span class="v"><span class="italic">Polariert — wer's trägt, will gesehen werden</span></span>
+      </div>
+    </div>
+  </article>
+
+  <!-- PITCH 4: Werkstatt. -->
+  <article class="pitch pitch-4">
+    <div class="pitch-head">
+      <div class="pitch-nr">№ 04 · T-Shirt</div>
+      <h2>„<span class="italic">Werkstatt</span><br/>für Marken."</h2>
+      <div class="item">Crew-Shirt · Forest Green</div>
+    </div>
+
+    <div class="mockup-row">
+      <div class="mockup">
+        <span class="mockup-label">Front</span>
+        <div class="garment shirt" style="--bg: var(--rehab-green);">
+          <div class="print" style="padding-top: 14%; align-items: flex-start; padding-left: 8%;">
+            <div class="dackel-cream" style="width: 18%;">
+              <img src="assets/Dackel-3.svg" alt="" style="width: 100%; height: auto;" />
+            </div>
+            <p class="print-small" style="text-align: left; margin-top: 10px;">Quint · Münster</p>
+          </div>
+        </div>
+      </div>
+      <div class="mockup">
+        <span class="mockup-label">Back</span>
+        <div class="garment shirt" style="--bg: var(--rehab-green);">
+          <div class="print" style="padding-top: 24%;">
+            <p class="print-back-big">Werkstatt<br/>für<br/>Marken.</p>
+            <p class="print-small" style="margin-top: 18px; opacity: 0.6;">— EST. 2026 —</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pitch-body">
+      <h3>Strategischer Pitch</h3>
+      <p>Die ruhigste, „erwachsenste" Variante. Self-Bezeichnung statt Slogan. Klein-aufdringliches Brust-Wappen + großes Rücken-Statement. Forest Green nimmt die REHAB-FIVE-Welt mit, signalisiert Aric's Wurzeln. Für Kunden-Geschenke, Team-Uniform, dezent zum Anzug.</p>
+      <div class="pitch-specs">
+        <span class="k">Material</span><span class="v">T-Shirt Heavy Cotton, 240 gsm</span>
+        <span class="k">Farbe</span><span class="v">Forest Green <span class="italic">(#1F342D, REHAB-FIVE-Primary)</span></span>
+        <span class="k">Druck</span><span class="v">Siebdruck Cream auf Grün</span>
+        <span class="k">Dackel</span><span class="v">Pose 3, klein als Brust-Wappen</span>
+        <span class="k">Stärkster Slot</span><span class="v">Kunden-Welcome-Geschenk &amp; Workshop-Outfit</span>
+      </div>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  © 2026 QUINT · <a href="index.html">Hauptseite</a> · <a href="dackel-uebersicht.html">Dackel-Set</a>
+</footer>
+
+</body>
+</html>
