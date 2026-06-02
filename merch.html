@@ -228,11 +228,49 @@
   .pitch-2 .mockup { background: linear-gradient(180deg, #d4ccba, #c0b69e); }
   .pitch-3 .mockup { background: linear-gradient(180deg, #f2acba, #e89bb1); }
   .pitch-4 .mockup { background: linear-gradient(180deg, #2a4f3e, #1f342d); }
-  .pitch-5 .mockup { background: linear-gradient(180deg, #1a3a5e, #102845); }
-  /* Pitch 5 — Print Pink + Weiss auf Navy */
-  .pitch-5 .print-back-big { color: var(--pink); }
 
-  /* Ball-Element für Pitch 5: rosa Kreis mit subtilem Glanz */
+  /* PITCH 5 — Trilogie: Navy / Cream / Pink Color-Ways */
+  .pitch-5 { grid-column: 1 / -1; }
+  .pitch-5 .trilogy {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: rgba(0,0,0,0.2);
+  }
+  @media (max-width: 900px) { .pitch-5 .trilogy { grid-template-columns: 1fr; } }
+  .colorway {
+    display: flex; flex-direction: column;
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+  .colorway:last-child { border-right: none; }
+  @media (max-width: 900px) {
+    .colorway { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .colorway:last-child { border-bottom: none; }
+  }
+  .colorway-head {
+    padding: 16px;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(0,0,0,0.15);
+  }
+  .colorway-head .swatch {
+    display: inline-block; width: 8px; height: 8px;
+    border-radius: 50%; margin-right: 8px;
+    vertical-align: middle;
+  }
+  .colorway-pair {
+    display: grid; grid-template-columns: 1fr 1fr;
+    background: rgba(0,0,0,0.1);
+  }
+  /* Background pro Color-Way */
+  .colorway-navy .mockup { background: linear-gradient(180deg, #1a3a5e, #102845); }
+  .colorway-cream .mockup { background: linear-gradient(180deg, #ebe4d4, #d8cfb9); }
+  .colorway-pink .mockup { background: linear-gradient(180deg, #f4b8c8, #e89bb1); }
+
+  /* Ball-Element: rosa Kreis mit Glanz */
   .ball-element {
     position: absolute;
     aspect-ratio: 1 / 1;
@@ -247,6 +285,11 @@
     top: 18%; left: 22%; width: 22%; height: 18%;
     background: rgba(255,255,255,0.5); border-radius: 50%;
     filter: blur(2px);
+  }
+  /* Ball-Variante Cream (für Pink-Hoodie) */
+  .ball-cream {
+    background: radial-gradient(circle at 35% 30%, #ffffff 0%, var(--cream) 50%, #d8cfb9 100%);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3), inset -2px -3px 8px rgba(0,0,0,0.06);
   }
 
   /* Pitch 2 — Text Pink auf Cream */
@@ -471,51 +514,119 @@
     </div>
   </article>
 
-  <!-- PITCH 5: CHASING THE BALL — Dackel macht Männchen, Ball schwebt -->
+  <!-- PITCH 5: CHASING THE BALL — Trilogie: Navy / Cream / Pink Color-Ways -->
   <article class="pitch pitch-5">
     <div class="pitch-head">
-      <div class="pitch-nr">№ 05 · Hoodie</div>
+      <div class="pitch-nr">№ 05 · Hoodie-Trilogie</div>
       <h2>„<span class="italic">Chasing</span> the Ball."<span class="my-pick">Mein Pick</span></h2>
-      <div class="item">Brand-Asset-Hoodie · Navy</div>
+      <div class="item">Brand-Asset-Hoodie · drei Color-Ways</div>
     </div>
 
-    <div class="mockup-row">
-      <div class="mockup">
-        <span class="mockup-label">Front</span>
-        <div class="garment hoodie">
-          <div class="print" style="padding-top: 18%;">
-            <!-- Dackel + Ball Komposition -->
-            <div style="position: relative; width: 64%; display: flex; justify-content: center;">
-              <img src="assets/Dackel-Maennchen.svg" alt="" style="width: 100%; height: auto; display: block; filter: brightness(0) invert(1);" />
-              <!-- Ball oben rechts über der Dackel-Schnauze -->
-              <div class="ball-element" style="width: 28%; top: -6%; right: -2%;"></div>
+    <div class="trilogy">
+
+      <!-- COLOR-WAY 1: NAVY -->
+      <div class="colorway colorway-navy">
+        <div class="colorway-head"><span class="swatch" style="background: var(--navy);"></span>Navy · #143C6B</div>
+        <div class="colorway-pair">
+          <div class="mockup">
+            <span class="mockup-label">Front</span>
+            <div class="garment hoodie" style="--bg: var(--navy-deep);">
+              <div class="print" style="padding-top: 20%;">
+                <div style="position: relative; width: 68%; display: flex; justify-content: center;">
+                  <img src="assets/Dackel-Maennchen.svg" alt="" style="width: 100%; height: auto; display: block; filter: brightness(0) invert(1);" />
+                  <!-- Ball auf der LINKEN Seite, da Dackel nach links schaut -->
+                  <div class="ball-element" style="width: 26%; top: -4%; left: -4%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mockup">
+            <span class="mockup-label">Back</span>
+            <div class="garment hoodie" style="--bg: var(--navy-deep);">
+              <div class="print" style="padding-top: 30%;">
+                <p style="font-family: 'Familjen Grotesk', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: -0.015em; line-height: 0.95; color: var(--pink); font-size: clamp(18px, 3.2vw, 36px); text-align: center;">
+                  Chasing<br/>The Ball.
+                </p>
+                <p style="margin-top: 14px; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.4);">Quint · Münster</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="mockup">
-        <span class="mockup-label">Back</span>
-        <div class="garment hoodie">
-          <div class="print" style="padding-top: 28%;">
-            <p style="font-family: 'Familjen Grotesk', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: -0.015em; line-height: 0.92; color: var(--pink); font-size: clamp(28px, 5.5vw, 66px); text-align: center;">
-              Chasing<br/>The<br/>Ball.
-            </p>
-            <p style="margin-top: 20px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.45);">— Quint · Münster —</p>
+
+      <!-- COLOR-WAY 2: CREAM -->
+      <div class="colorway colorway-cream">
+        <div class="colorway-head"><span class="swatch" style="background: var(--cream);"></span>Cream · #F4EFE7</div>
+        <div class="colorway-pair">
+          <div class="mockup">
+            <span class="mockup-label">Front</span>
+            <div class="garment hoodie" style="--bg: var(--cream);">
+              <div class="print" style="padding-top: 20%;">
+                <div style="position: relative; width: 68%; display: flex; justify-content: center;">
+                  <img src="assets/Dackel-Maennchen.svg" alt="" style="width: 100%; height: auto; display: block; filter: brightness(0) saturate(100%) invert(11%) sepia(75%) saturate(1800%) hue-rotate(198deg) brightness(45%);" />
+                  <!-- Ball links — Dackel-Blickrichtung -->
+                  <div class="ball-element" style="width: 26%; top: -4%; left: -4%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mockup">
+            <span class="mockup-label">Back</span>
+            <div class="garment hoodie" style="--bg: var(--cream);">
+              <div class="print" style="padding-top: 30%;">
+                <p style="font-family: 'Familjen Grotesk', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: -0.015em; line-height: 0.95; color: var(--navy); font-size: clamp(18px, 3.2vw, 36px); text-align: center;">
+                  Chasing<br/>The Ball.
+                </p>
+                <p style="margin-top: 14px; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(20,60,107,0.5);">Quint · Münster</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- COLOR-WAY 3: PINK -->
+      <div class="colorway colorway-pink">
+        <div class="colorway-head"><span class="swatch" style="background: var(--pink);"></span>Pink · #E89BB1</div>
+        <div class="colorway-pair">
+          <div class="mockup">
+            <span class="mockup-label">Front</span>
+            <div class="garment hoodie" style="--bg: var(--pink);">
+              <div class="print" style="padding-top: 20%;">
+                <div style="position: relative; width: 68%; display: flex; justify-content: center;">
+                  <img src="assets/Dackel-Maennchen.svg" alt="" style="width: 100%; height: auto; display: block; filter: brightness(0) saturate(100%) invert(11%) sepia(75%) saturate(1800%) hue-rotate(198deg) brightness(45%);" />
+                  <!-- Ball Cream auf Pink — Kontrast über Helligkeit -->
+                  <div class="ball-element ball-cream" style="width: 26%; top: -4%; left: -4%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mockup">
+            <span class="mockup-label">Back</span>
+            <div class="garment hoodie" style="--bg: var(--pink);">
+              <div class="print" style="padding-top: 30%;">
+                <p style="font-family: 'Familjen Grotesk', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: -0.015em; line-height: 0.95; color: var(--navy); font-size: clamp(18px, 3.2vw, 36px); text-align: center;">
+                  Chasing<br/>The Ball.
+                </p>
+                <p style="margin-top: 14px; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(20,60,107,0.55);">Quint · Münster</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <div class="pitch-body">
       <h3>Strategischer Pitch</h3>
-      <p>Der konzeptionell <em>dichteste</em> Pitch — und mein Favorit. Vorderseite ist ein direkter Echo des Logos: Dackel macht Männchen, rosa Ball schwebt vor seiner Schnauze — derselbe Punkt, den das „Q" als Ball trägt. Wer den Hoodie trägt, trägt das Logo als Szene, nicht als Wortmarke. Rücken bringt die offizielle Quint-Tagline groß in Pink. Funktioniert ohne ein einziges deutsches Wort — exportfähig, instagram-fähig, merch-fähig.</p>
+      <p>Der konzeptionell <em>dichteste</em> Pitch — und mein Favorit. Vorderseite ist ein direkter Echo des Logos: Dackel macht Männchen, Ball schwebt vor seiner Schnauze — derselbe Punkt, den das „Q" als Ball trägt. Wer den Hoodie trägt, trägt das Logo als Szene, nicht als Wortmarke. Drei Color-Ways decken die ganze CI ab.</p>
       <p style="margin-top: 8px; font-size: 13px; opacity: 0.65; font-style: italic; font-family: 'Fraunces', serif;">Warum Pick statt 01: Pitch 01 erzählt den Claim. Pitch 05 zeigt ihn.</p>
       <div class="pitch-specs">
         <span class="k">Material</span><span class="v">Heavy Hoodie, 400 gsm Bio-Baumwolle</span>
-        <span class="k">Farbe</span><span class="v">Navy <span class="italic">(#143C6B)</span></span>
-        <span class="k">Druck</span><span class="v">Siebdruck — Dackel Weiß, Ball Pink mit Verlauf, Tagline Pink</span>
-        <span class="k">Dackel</span><span class="v">Männchen-Pose, weiß auf Navy</span>
-        <span class="k">Detail</span><span class="v">Ball ist plastischer 3-Schicht-Druck (Highlight oben links für Volumen)</span>
+        <span class="k">Color-Way 1</span><span class="v">Navy · Dackel weiß · Ball pink</span>
+        <span class="k">Color-Way 2</span><span class="v">Cream · Dackel navy · Ball pink</span>
+        <span class="k">Color-Way 3</span><span class="v">Pink · Dackel navy · Ball cream</span>
+        <span class="k">Druck</span><span class="v">Siebdruck — Ball als 3-Schicht-Druck mit Highlight für Volumen</span>
+        <span class="k">Dackel</span><span class="v">Männchen-Pose, schaut nach links zum Ball</span>
         <span class="k">Zielgruppe</span><span class="v">Team, Kunden-Welcome, Bühnen-Outfit auf Konferenzen</span>
       </div>
     </div>
