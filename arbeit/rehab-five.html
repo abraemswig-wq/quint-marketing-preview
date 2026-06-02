@@ -188,11 +188,11 @@
   .case-meta-item .value { font-size: 15px; color: var(--white); line-height: 1.35; }
   .case-meta-item .value .italic { color: var(--pink-soft); }
 
-  /* SCROLL-EXPAND-STAGE — mit Oma-Illustration als Asset */
+  /* SCROLL-EXPAND-STAGE — Studio-Foto als Hintergrund + reinzoomendes Vordergrund-Bild */
   .scroll-expand-stage {
     position: relative;
     height: 280vh;
-    background: linear-gradient(180deg, var(--rehab-green) 0%, var(--rehab-green-deep) 100%);
+    background: var(--rehab-green-deep);
     margin: 60px 0;
   }
   .scroll-expand-sticky {
@@ -207,13 +207,25 @@
     justify-content: center;
     will-change: transform;
   }
+  /* Blurred Background — das gleiche Studio-Bild, weichgezeichnet */
   .scroll-expand-bg {
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(ellipse at 50% 40%, rgba(217,145,41,0.15) 0%, transparent 55%),
-      transparent;
+    background-image: url('../assets/rehab-studio.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(28px) brightness(0.55) saturate(1.05);
+    transform: scale(1.15);
     z-index: 0;
+  }
+  /* Color-Overlay — bringt REHAB-FIVE-Grün-Tönung rein und sorgt für Kontrast zum Vordergrund */
+  .scroll-expand-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 40%, rgba(217,145,41,0.18) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(20,40,34,0.4) 0%, rgba(20,40,34,0.65) 100%);
+    z-index: 1;
   }
   .scroll-expand-heading {
     position: relative;
@@ -240,22 +252,22 @@
   }
   .scroll-expand-heading h2 .italic { color: var(--rehab-orange); }
 
-  /* Asset: Bild (Illustration) statt Signet */
+  /* Asset: Studio-Foto im Querformat — wird vom kleinen Rahmen zum Vollbild gezoomt */
   .scroll-expand-asset {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%) scale(0.2);
     z-index: 2;
-    width: 360px;
+    width: 480px;
     max-width: 88vw;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 4 / 3;
     will-change: transform, opacity;
     pointer-events: none;
-    opacity: 0.55;
-    border-radius: 20px;
+    opacity: 0.6;
+    border-radius: 18px;
     overflow: hidden;
-    background: var(--cream);
-    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.45);
+    background: var(--rehab-green-deep);
+    box-shadow: 0 50px 100px -20px rgba(0,0,0,0.6);
   }
   .scroll-expand-asset img {
     width: 100%; height: 100%;
@@ -721,22 +733,23 @@
   </div>
 </header>
 
-<!-- SCROLL-EXPAND-STAGE — Mensch im Mittelpunkt -->
+<!-- SCROLL-EXPAND-STAGE — Studio-Foto: Markenwelt im Raum -->
 <section class="scroll-expand-stage" id="brand-stage" aria-label="Markenwelt-Inszenierung">
   <div class="scroll-expand-sticky">
     <div class="scroll-expand-bg" aria-hidden="true"></div>
+    <div class="scroll-expand-overlay" aria-hidden="true"></div>
 
     <div class="scroll-expand-heading" id="caseExpandHeading">
       <span class="scroll-eyebrow">Markenwelt</span>
-      <h2>Eine Marke beginnt bei den<br/><span class="italic">Menschen,</span> die sie betreut.</h2>
+      <h2>Eine Praxis, die <span class="italic">als Marke</span><br/>auftritt — auch im Raum.</h2>
     </div>
 
     <div class="scroll-expand-asset" id="caseExpandAsset">
-      <img src="../assets/rehab-oma.avif" alt="REHAB FIVE Illustration — Patientin im Training" />
+      <img src="../assets/rehab-studio.jpg" alt="REHAB FIVE Studio — Wandmalerei mit Neon-Logo, Trikots der Markenpartner USC und Bayer Giants im Hintergrund" />
     </div>
 
     <div class="scroll-expand-caption" id="caseExpandCaption">
-      <p>Mensch im Mittelpunkt — keine Stockfotos, eine eigene Bildwelt. Die Charaktere von REHAB FIVE haben Namen, Geschichten, Wiedererkennung.</p>
+      <p>REHAB FIVE — Wandbemalung statt Stockfoto-Poster, Neon-Logo statt graues Praxis-Schild. Die Marke beginnt am Eingang.</p>
     </div>
   </div>
 </section>
