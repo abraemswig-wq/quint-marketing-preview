@@ -217,6 +217,18 @@
     filter: brightness(0.6) saturate(1.05);
     z-index: 0;
   }
+  /* DEBUG-GRID — aktivierbar per URL-Parameter ?grid=1 */
+  .grid-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .scroll-expand-stage.show-grid .grid-overlay { opacity: 1; }
+  .grid-overlay svg { width: 100%; height: 100%; display: block; }
+
   /* Color-Overlay — bringt REHAB-FIVE-Grün-Tönung rein und sorgt für Kontrast zum Vordergrund */
   .scroll-expand-overlay {
     position: absolute;
@@ -739,6 +751,61 @@
     <div class="scroll-expand-bg" aria-hidden="true"></div>
     <div class="scroll-expand-overlay" aria-hidden="true"></div>
 
+    <!-- DEBUG-GRID: aktivierbar mit ?grid=1 in URL -->
+    <svg class="grid-overlay" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- 5%-Lines (subtle) -->
+      <g stroke="rgba(255,255,255,0.12)" stroke-width="0.06">
+        <line x1="5"  y1="0" x2="5"  y2="100"/><line x1="15" y1="0" x2="15" y2="100"/>
+        <line x1="25" y1="0" x2="25" y2="100"/><line x1="35" y1="0" x2="35" y2="100"/>
+        <line x1="45" y1="0" x2="45" y2="100"/><line x1="55" y1="0" x2="55" y2="100"/>
+        <line x1="65" y1="0" x2="65" y2="100"/><line x1="75" y1="0" x2="75" y2="100"/>
+        <line x1="85" y1="0" x2="85" y2="100"/><line x1="95" y1="0" x2="95" y2="100"/>
+        <line x1="0" y1="5"  x2="100" y2="5" /><line x1="0" y1="15" x2="100" y2="15"/>
+        <line x1="0" y1="25" x2="100" y2="25"/><line x1="0" y1="35" x2="100" y2="35"/>
+        <line x1="0" y1="45" x2="100" y2="45"/><line x1="0" y1="55" x2="100" y2="55"/>
+        <line x1="0" y1="65" x2="100" y2="65"/><line x1="0" y1="75" x2="100" y2="75"/>
+        <line x1="0" y1="85" x2="100" y2="85"/><line x1="0" y1="95" x2="100" y2="95"/>
+      </g>
+      <!-- 10%-Lines (visible) -->
+      <g stroke="rgba(255,255,255,0.4)" stroke-width="0.1">
+        <line x1="10" y1="0" x2="10" y2="100"/><line x1="20" y1="0" x2="20" y2="100"/>
+        <line x1="30" y1="0" x2="30" y2="100"/><line x1="40" y1="0" x2="40" y2="100"/>
+        <line x1="60" y1="0" x2="60" y2="100"/><line x1="70" y1="0" x2="70" y2="100"/>
+        <line x1="80" y1="0" x2="80" y2="100"/><line x1="90" y1="0" x2="90" y2="100"/>
+        <line x1="0" y1="10" x2="100" y2="10"/><line x1="0" y1="20" x2="100" y2="20"/>
+        <line x1="0" y1="30" x2="100" y2="30"/><line x1="0" y1="40" x2="100" y2="40"/>
+        <line x1="0" y1="60" x2="100" y2="60"/><line x1="0" y1="70" x2="100" y2="70"/>
+        <line x1="0" y1="80" x2="100" y2="80"/><line x1="0" y1="90" x2="100" y2="90"/>
+      </g>
+      <!-- Mittellinien 50/50 (highlight in Pink) -->
+      <line x1="50" y1="0" x2="50" y2="100" stroke="rgba(232,155,177,0.8)" stroke-width="0.18"/>
+      <line x1="0" y1="50" x2="100" y2="50" stroke="rgba(232,155,177,0.8)" stroke-width="0.18"/>
+      <!-- Labels: horizontale Positionen oben -->
+      <g font-size="1.6" fill="rgba(255,255,255,0.85)" font-family="monospace" font-weight="700">
+        <text x="10" y="3" text-anchor="middle">10</text>
+        <text x="20" y="3" text-anchor="middle">20</text>
+        <text x="30" y="3" text-anchor="middle">30</text>
+        <text x="40" y="3" text-anchor="middle">40</text>
+        <text x="50" y="3" text-anchor="middle" fill="#E89BB1">50</text>
+        <text x="60" y="3" text-anchor="middle">60</text>
+        <text x="70" y="3" text-anchor="middle">70</text>
+        <text x="80" y="3" text-anchor="middle">80</text>
+        <text x="90" y="3" text-anchor="middle">90</text>
+      </g>
+      <!-- Labels: vertikale Positionen links -->
+      <g font-size="1.6" fill="rgba(255,255,255,0.85)" font-family="monospace" font-weight="700">
+        <text x="1.5" y="10.5">10</text>
+        <text x="1.5" y="20.5">20</text>
+        <text x="1.5" y="30.5">30</text>
+        <text x="1.5" y="40.5">40</text>
+        <text x="1.5" y="50.5" fill="#E89BB1">50</text>
+        <text x="1.5" y="60.5">60</text>
+        <text x="1.5" y="70.5">70</text>
+        <text x="1.5" y="80.5">80</text>
+        <text x="1.5" y="90.5">90</text>
+      </g>
+    </svg>
+
     <div class="scroll-expand-heading" id="caseExpandHeading">
       <h2>Eine Praxis, die <span class="italic">als Marke</span><br/>auftritt — auch im Raum.</h2>
     </div>
@@ -1018,6 +1085,12 @@
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const delay = (skip || reduceMotion) ? 0 : 2800;
     setTimeout(() => { loader.classList.add('done'); document.body.classList.remove('locked'); }, delay);
+
+    // Debug-Grid aktivieren wenn ?grid=1 in URL
+    if (params.get('grid') === '1') {
+      const stage = document.getElementById('brand-stage');
+      if (stage) stage.classList.add('show-grid');
+    }
   });
 </script>
 
