@@ -255,26 +255,22 @@
   }
   .scroll-expand-heading h2 .italic { color: var(--rehab-orange); }
 
-  /* Asset: Studio-Foto im Querformat — wird vom kleinen Rahmen zum Vollbild gezoomt */
+  /* Asset: Studio-Foto in Pentagon-Form (REHAB-FIVE-Signet) — auf Neon-Logo-Position */
   .scroll-expand-asset {
     position: absolute;
-    top: 50%; left: 50%;
+    top: 45%; left: 50%;
     transform: translate(-50%, -50%) scale(0.15);
     z-index: 2;
-    width: 480px;
-    max-width: 88vw;
-    aspect-ratio: 4 / 3;
+    width: 360px;
+    max-width: 80vw;
+    aspect-ratio: 500 / 559;
     will-change: transform, opacity;
     pointer-events: none;
     opacity: 0.7;
-    border-radius: 18px;
-    overflow: hidden;
-    background: var(--rehab-green-deep);
-    box-shadow: 0 50px 100px -20px rgba(0,0,0,0.6);
+    filter: drop-shadow(0 40px 60px rgba(0,0,0,0.55));
   }
-  .scroll-expand-asset img {
+  .scroll-expand-asset svg {
     width: 100%; height: 100%;
-    object-fit: cover;
     display: block;
   }
   .scroll-expand-caption {
@@ -747,8 +743,19 @@
       <h2>Eine Praxis, die <span class="italic">als Marke</span><br/>auftritt — auch im Raum.</h2>
     </div>
 
-    <div class="scroll-expand-asset" id="caseExpandAsset">
-      <img src="../assets/rehab-studio.jpg" alt="REHAB FIVE Studio — Wandmalerei mit Neon-Logo, Trikots der Markenpartner USC und Bayer Giants im Hintergrund" />
+    <div class="scroll-expand-asset" id="caseExpandAsset" role="img" aria-label="REHAB FIVE Studio — Wandmalerei mit Neon-Logo in der Pentagon-Form des Signets">
+      <svg viewBox="0 0 500.188 559.164" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="signet-clip">
+            <path d="M493.946,139.181a69.65,69.65,0,0,0-48.019-64.472L225.77,3.378A69.388,69.388,0,0,0,145.578,32.5L10.668,246.866a69.482,69.482,0,0,0,1.894,76.851l144.4,205.866a69.383,69.383,0,0,0,81.907,24.867L455.77,470.543a69.482,69.482,0,0,0,44.392-66.454l-6.324-265.014.089.089Z"/>
+          </clipPath>
+        </defs>
+        <image href="../assets/rehab-studio.jpg"
+               x="0" y="0"
+               width="500.188" height="559.164"
+               preserveAspectRatio="xMidYMid slice"
+               clip-path="url(#signet-clip)" />
+      </svg>
     </div>
 
     <div class="scroll-expand-caption" id="caseExpandCaption">
