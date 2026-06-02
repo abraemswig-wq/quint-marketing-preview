@@ -207,15 +207,14 @@
     justify-content: center;
     will-change: transform;
   }
-  /* Blurred Background — das gleiche Studio-Bild, weichgezeichnet */
+  /* Background — Studio-Bild scharf (Blur raus auf Wunsch) */
   .scroll-expand-bg {
     position: absolute;
     inset: 0;
     background-image: url('../assets/rehab-studio.jpg');
     background-size: cover;
     background-position: center;
-    filter: blur(28px) brightness(0.55) saturate(1.05);
-    transform: scale(1.15);
+    filter: brightness(0.6) saturate(1.05);
     z-index: 0;
   }
   /* Color-Overlay — bringt REHAB-FIVE-Grün-Tönung rein und sorgt für Kontrast zum Vordergrund */
@@ -256,14 +255,14 @@
   .scroll-expand-asset {
     position: absolute;
     top: 50%; left: 50%;
-    transform: translate(-50%, -50%) scale(0.2);
+    transform: translate(-50%, -50%) scale(0.3);
     z-index: 2;
     width: 480px;
     max-width: 88vw;
     aspect-ratio: 4 / 3;
     will-change: transform, opacity;
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0.75;
     border-radius: 18px;
     overflow: hidden;
     background: var(--rehab-green-deep);
@@ -1036,9 +1035,9 @@
 
       const eased = 1 - Math.pow(1 - progress, 2);
 
-      // Bild: scale 0.2 → 3.2 (etwas weniger als beim Signet, weil Bild dichter wirkt), opacity 0.55 → 1
-      const scale = 0.2 + eased * 3.0;
-      const opacity = 0.55 + eased * 0.45;
+      // Bild: scale 0.3 (Start) → 3.3 (Ende), opacity 0.75 → 1
+      const scale = 0.3 + eased * 3.0;
+      const opacity = 0.75 + eased * 0.25;
       asset.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(3)})`;
       asset.style.opacity = opacity.toFixed(3);
 
