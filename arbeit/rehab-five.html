@@ -271,6 +271,14 @@
     line-height: 1;
   }
   .grid-label.center { color: var(--rehab-orange); background: rgba(0,0,0,0.75); }
+  /* Feinere 5%-Labels (subtle, kleiner) */
+  .grid-label.fine {
+    font-size: 8px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.55);
+    background: rgba(0,0,0,0.35);
+    padding: 1px 4px;
+  }
 
   /* Color-Overlay — bringt REHAB-FIVE-Grün-Tönung rein und sorgt für Kontrast zum Vordergrund */
   .scroll-expand-overlay {
@@ -313,7 +321,7 @@
   /* Asset: Studio-Foto in Pentagon-Form (REHAB-FIVE-Signet) — auf Neon-Logo-Position */
   .scroll-expand-asset {
     position: absolute;
-    top: 55%; left: 55%;
+    top: 50%; left: 55%;
     transform: translate(-50%, -50%) scale(0.15);
     z-index: 2;
     width: 360px;
@@ -1088,9 +1096,19 @@
       const stage = document.getElementById('brand-stage');
       const labelsContainer = document.getElementById('gridLabels');
       if (stage) stage.classList.add('show-grid');
-      // 100 Field-Labels generieren (jedes 10x10-Feld bekommt "x/y" in seiner Mitte)
+      // Labels generieren — Haupt-Labels in 10%-Schritten (100 Stück) + feinere in 5%-Schritten (300 zusätzliche)
       if (labelsContainer && labelsContainer.children.length === 0) {
         let html = '';
+        // Erst die feinen 5%-Labels — alle Mittelpunkte 2.5, 7.5, 12.5, ..., 97.5 — aber nur die NICHT auf den 10%-Hauptpositionen liegen
+        for (let y = 2.5; y < 100; y += 5) {
+          for (let x = 2.5; x < 100; x += 5) {
+            // Hauptlabels (Mittelpunkte 5, 15, 25 ...) werden später hinzugefügt, hier überspringen
+            const isMainLabel = (Math.abs((x - 5) % 10) < 0.01) && (Math.abs((y - 5) % 10) < 0.01);
+            if (isMainLabel) continue;
+            html += '<span class="grid-label fine" style="left:' + x + '%;top:' + y + '%">' + x + '/' + y + '</span>';
+          }
+        }
+        // Dann die kräftigeren 10%-Hauptlabels (überlagern die feinen)
         for (let y = 5; y < 100; y += 10) {
           for (let x = 5; x < 100; x += 10) {
             const isCenterField = (x === 55 && y === 55) || (x === 45 && y === 45) || (x === 45 && y === 55) || (x === 55 && y === 45);
