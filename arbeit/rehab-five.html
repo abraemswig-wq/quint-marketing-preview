@@ -227,7 +227,50 @@
     transition: opacity 0.3s;
   }
   .scroll-expand-stage.show-grid .grid-overlay { opacity: 1; }
-  .grid-overlay svg { width: 100%; height: 100%; display: block; }
+
+  /* 5%-Linien (subtle) */
+  .grid-lines-fine {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.12) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.12) 1px, transparent 1px);
+    background-size: 5% 5%;
+    background-position: 0 0;
+  }
+  /* 10%-Linien (visible) */
+  .grid-lines-bold {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.4) 1px, transparent 1px);
+    background-size: 10% 10%;
+    background-position: 0 0;
+  }
+  /* Mittellinien 50/50 in Pink */
+  .grid-center-v, .grid-center-h {
+    position: absolute;
+    background: rgba(232,155,177,0.8);
+    pointer-events: none;
+  }
+  .grid-center-v { left: 50%; top: 0; bottom: 0; width: 2px; transform: translateX(-50%); }
+  .grid-center-h { top: 50%; left: 0; right: 0; height: 2px; transform: translateY(-50%); }
+
+  /* Field-Labels: jeder Schnittpunkt-Mittelpunkt bekommt "x/y" */
+  .grid-labels { position: absolute; inset: 0; pointer-events: none; }
+  .grid-label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    background: rgba(0,0,0,0.55);
+    padding: 2px 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+    line-height: 1;
+  }
+  .grid-label.center { color: var(--rehab-orange); background: rgba(0,0,0,0.75); }
 
   /* Color-Overlay — bringt REHAB-FIVE-Grün-Tönung rein und sorgt für Kontrast zum Vordergrund */
   .scroll-expand-overlay {
@@ -751,60 +794,14 @@
     <div class="scroll-expand-bg" aria-hidden="true"></div>
     <div class="scroll-expand-overlay" aria-hidden="true"></div>
 
-    <!-- DEBUG-GRID: aktivierbar mit ?grid=1 in URL -->
-    <svg class="grid-overlay" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- 5%-Lines (subtle) -->
-      <g stroke="rgba(255,255,255,0.12)" stroke-width="0.06">
-        <line x1="5"  y1="0" x2="5"  y2="100"/><line x1="15" y1="0" x2="15" y2="100"/>
-        <line x1="25" y1="0" x2="25" y2="100"/><line x1="35" y1="0" x2="35" y2="100"/>
-        <line x1="45" y1="0" x2="45" y2="100"/><line x1="55" y1="0" x2="55" y2="100"/>
-        <line x1="65" y1="0" x2="65" y2="100"/><line x1="75" y1="0" x2="75" y2="100"/>
-        <line x1="85" y1="0" x2="85" y2="100"/><line x1="95" y1="0" x2="95" y2="100"/>
-        <line x1="0" y1="5"  x2="100" y2="5" /><line x1="0" y1="15" x2="100" y2="15"/>
-        <line x1="0" y1="25" x2="100" y2="25"/><line x1="0" y1="35" x2="100" y2="35"/>
-        <line x1="0" y1="45" x2="100" y2="45"/><line x1="0" y1="55" x2="100" y2="55"/>
-        <line x1="0" y1="65" x2="100" y2="65"/><line x1="0" y1="75" x2="100" y2="75"/>
-        <line x1="0" y1="85" x2="100" y2="85"/><line x1="0" y1="95" x2="100" y2="95"/>
-      </g>
-      <!-- 10%-Lines (visible) -->
-      <g stroke="rgba(255,255,255,0.4)" stroke-width="0.1">
-        <line x1="10" y1="0" x2="10" y2="100"/><line x1="20" y1="0" x2="20" y2="100"/>
-        <line x1="30" y1="0" x2="30" y2="100"/><line x1="40" y1="0" x2="40" y2="100"/>
-        <line x1="60" y1="0" x2="60" y2="100"/><line x1="70" y1="0" x2="70" y2="100"/>
-        <line x1="80" y1="0" x2="80" y2="100"/><line x1="90" y1="0" x2="90" y2="100"/>
-        <line x1="0" y1="10" x2="100" y2="10"/><line x1="0" y1="20" x2="100" y2="20"/>
-        <line x1="0" y1="30" x2="100" y2="30"/><line x1="0" y1="40" x2="100" y2="40"/>
-        <line x1="0" y1="60" x2="100" y2="60"/><line x1="0" y1="70" x2="100" y2="70"/>
-        <line x1="0" y1="80" x2="100" y2="80"/><line x1="0" y1="90" x2="100" y2="90"/>
-      </g>
-      <!-- Mittellinien 50/50 (highlight in Pink) -->
-      <line x1="50" y1="0" x2="50" y2="100" stroke="rgba(232,155,177,0.8)" stroke-width="0.18"/>
-      <line x1="0" y1="50" x2="100" y2="50" stroke="rgba(232,155,177,0.8)" stroke-width="0.18"/>
-      <!-- Labels: horizontale Positionen oben -->
-      <g font-size="1.6" fill="rgba(255,255,255,0.85)" font-family="monospace" font-weight="700">
-        <text x="10" y="3" text-anchor="middle">10</text>
-        <text x="20" y="3" text-anchor="middle">20</text>
-        <text x="30" y="3" text-anchor="middle">30</text>
-        <text x="40" y="3" text-anchor="middle">40</text>
-        <text x="50" y="3" text-anchor="middle" fill="#E89BB1">50</text>
-        <text x="60" y="3" text-anchor="middle">60</text>
-        <text x="70" y="3" text-anchor="middle">70</text>
-        <text x="80" y="3" text-anchor="middle">80</text>
-        <text x="90" y="3" text-anchor="middle">90</text>
-      </g>
-      <!-- Labels: vertikale Positionen links -->
-      <g font-size="1.6" fill="rgba(255,255,255,0.85)" font-family="monospace" font-weight="700">
-        <text x="1.5" y="10.5">10</text>
-        <text x="1.5" y="20.5">20</text>
-        <text x="1.5" y="30.5">30</text>
-        <text x="1.5" y="40.5">40</text>
-        <text x="1.5" y="50.5" fill="#E89BB1">50</text>
-        <text x="1.5" y="60.5">60</text>
-        <text x="1.5" y="70.5">70</text>
-        <text x="1.5" y="80.5">80</text>
-        <text x="1.5" y="90.5">90</text>
-      </g>
-    </svg>
+    <!-- DEBUG-GRID: aktivierbar mit ?grid=1 in URL — jedes Feld einzeln beschriftet -->
+    <div class="grid-overlay" aria-hidden="true">
+      <div class="grid-lines-fine"></div>
+      <div class="grid-lines-bold"></div>
+      <div class="grid-center-v"></div>
+      <div class="grid-center-h"></div>
+      <div class="grid-labels" id="gridLabels"></div>
+    </div>
 
     <div class="scroll-expand-heading" id="caseExpandHeading">
       <h2>Eine Praxis, die <span class="italic">als Marke</span><br/>auftritt — auch im Raum.</h2>
@@ -1089,7 +1086,19 @@
     // Debug-Grid aktivieren wenn ?grid=1 in URL
     if (params.get('grid') === '1') {
       const stage = document.getElementById('brand-stage');
+      const labelsContainer = document.getElementById('gridLabels');
       if (stage) stage.classList.add('show-grid');
+      // 100 Field-Labels generieren (jedes 10x10-Feld bekommt "x/y" in seiner Mitte)
+      if (labelsContainer && labelsContainer.children.length === 0) {
+        let html = '';
+        for (let y = 5; y < 100; y += 10) {
+          for (let x = 5; x < 100; x += 10) {
+            const isCenterField = (x === 55 && y === 55) || (x === 45 && y === 45) || (x === 45 && y === 55) || (x === 55 && y === 45);
+            html += '<span class="grid-label' + (isCenterField ? ' center' : '') + '" style="left:' + x + '%;top:' + y + '%">' + x + '/' + y + '</span>';
+          }
+        }
+        labelsContainer.innerHTML = html;
+      }
     }
   });
 </script>
