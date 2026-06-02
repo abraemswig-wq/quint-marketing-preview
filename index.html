@@ -513,6 +513,20 @@
     border-color: var(--pink);
     background: rgba(232,155,177,0.06);
   }
+  /* Dackel-Watermark im Pillar */
+  .pillar-wappen {
+    position: absolute;
+    bottom: -40px;
+    right: -40px;
+    width: 240px;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.4s, transform 0.4s;
+  }
+  .pillar-wappen img { width: 100%; height: auto; display: block; }
+  .pillar:hover .pillar-wappen { opacity: 0.12; transform: translate(-8px, -8px) scale(1.04); }
+  .pillar > *:not(.pillar-wappen) { position: relative; z-index: 1; }
   .pillar-num {
     font-family: "Fraunces", serif;
     font-style: italic;
@@ -945,6 +959,21 @@
   }
 
   /* MANIFESTO */
+  /* Manifest-Wappen: großer Dackel als Akzent auf Pink */
+  .manifesto-wappen {
+    position: absolute;
+    bottom: -60px;
+    right: -80px;
+    width: 480px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.18;
+    /* Dackel ist weiß — auf Pink würde er verschwinden. Filter macht ihn navy. */
+    filter: invert(14%) sepia(58%) saturate(1247%) hue-rotate(189deg) brightness(92%) contrast(96%);
+  }
+  .manifesto-wappen img { width: 100%; height: auto; display: block; }
+  @media (max-width: 800px) { .manifesto-wappen { width: 320px; opacity: 0.14; } }
+
   .manifesto {
     background: var(--pink);
     color: var(--navy);
@@ -1000,9 +1029,23 @@
     border-radius: 20px;
     background: rgba(255,255,255,0.02);
     position: relative;
+    overflow: hidden;
     transition: border-color 0.3s, background 0.3s;
   }
   .anti-item:hover { border-color: var(--pink); background: rgba(232,155,177,0.04); }
+  .anti-wappen {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 140px;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.3s;
+  }
+  .anti-wappen img { width: 100%; height: auto; display: block; }
+  .anti-item:hover .anti-wappen { opacity: 0.12; }
+  .anti-item > *:not(.anti-wappen) { position: relative; z-index: 1; }
   .anti-item .strike {
     display: inline-flex; align-items: center; gap: 10px;
     font-family: "Fraunces", serif; font-style: italic;
@@ -1541,6 +1584,7 @@
     </div>
     <div class="pillars">
       <div class="pillar reveal">
+        <div class="pillar-wappen" aria-hidden="true"><img src="assets/Dackel-4.svg" alt="" /></div>
         <div class="pillar-num">01</div>
         <h3>Branding</h3>
         <div class="pillar-sub">vom Fundament bis zum Pixel.</div>
@@ -1553,6 +1597,7 @@
         </ul>
       </div>
       <div class="pillar reveal">
+        <div class="pillar-wappen" aria-hidden="true"><img src="assets/Dackel-2.svg" alt="" /></div>
         <div class="pillar-num">02</div>
         <h3>Social Media</h3>
         <div class="pillar-sub">kein Posting-Kalender-Theater.</div>
@@ -1740,6 +1785,7 @@
 </section>
 
 <section class="manifesto" id="manifest">
+  <div class="manifesto-wappen" aria-hidden="true"><img src="assets/Dackel-3.svg" alt="" /></div>
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Manifest</div>
@@ -1781,21 +1827,25 @@
     </div>
     <div class="anti-list">
       <div class="anti-item reveal" data-scroll-reveal>
+        <div class="anti-wappen" aria-hidden="true"><img src="assets/Dackel-1.svg" alt="" /></div>
         <span class="strike">Kein 80-Seiten-Strategie-Deck</span>
         <h3>Strategie passt auf <span class="italic">eine Seite.</span></h3>
         <p>Wir liefern keine Theorie-Türme, die nach drei Wochen niemand mehr aufschlägt. Sondern ein Dokument, das du nach dem Lesen verstanden hast — und nach dem du arbeiten kannst.</p>
       </div>
       <div class="anti-item reveal" data-scroll-reveal>
+        <div class="anti-wappen" aria-hidden="true"><img src="assets/Dackel-2.svg" alt="" /></div>
         <span class="strike">Kein Praktikanten-Social</span>
         <h3>Dein Schaufenster ist <span class="italic">kein Spielplatz.</span></h3>
         <p>Social Media betreuen bei uns nicht die Jüngsten — sondern die, die deine Marke am besten verstanden haben. Jede Sekunde, in der du dort erscheinst, ist Markenkommunikation.</p>
       </div>
       <div class="anti-item reveal" data-scroll-reveal>
+        <div class="anti-wappen" aria-hidden="true"><img src="assets/Dackel-5.svg" alt="" /></div>
         <span class="strike">Kein Full-Service-Bauchladen</span>
         <h3>Wir machen <span class="italic">zwei Dinge.</span></h3>
         <p>Branding und Social Media. Nicht „auch noch eben Print, Messen, Eventfilm, Wartezimmer-TV". Wer alles macht, macht nichts richtig. Für den Rest haben wir Partner, denen wir vertrauen.</p>
       </div>
       <div class="anti-item reveal" data-scroll-reveal>
+        <div class="anti-wappen" aria-hidden="true"><img src="assets/Dackel-3.svg" alt="" /></div>
         <span class="strike">Kein Kunden-Hamsterrad</span>
         <h3>Wenige Marken, <span class="italic">volle Aufmerksamkeit.</span></h3>
         <p>Wir nehmen nicht 30 Etats an, um quartalsweise zu liefern. Wir nehmen wenige — und liefern dafür wöchentlich. Wenn wir zu voll sind, sagen wir es vor dem ersten Gespräch.</p>
