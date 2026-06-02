@@ -160,6 +160,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+
+<!-- Preload Above-the-Fold-Assets (Loader-Maennchen + Hero-Dackel) -->
+<link rel="preload" as="image" href="assets/Dackel-Maennchen.svg" type="image/svg+xml" fetchpriority="high">
+<link rel="preload" as="image" href="assets/Dackel-4.svg" type="image/svg+xml">
 <style>
   :root {
     --navy:        #143C6B;
@@ -335,7 +339,92 @@
     transition: transform 0.2s, background 0.2s;
   }
   .nav-cta:hover { transform: translateY(-2px); background: var(--pink-strong); }
-  @media (max-width: 800px) { .nav-links { display: none; } }
+
+  /* Hamburger-Button (default versteckt, mobile sichtbar) */
+  .nav-hamburger {
+    display: none;
+    width: 44px; height: 44px;
+    background: transparent; border: none;
+    cursor: pointer; padding: 10px;
+    position: relative; z-index: 1001;
+  }
+  .nav-hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--cream); margin: 5px auto;
+    transition: transform 0.3s, opacity 0.3s;
+    transform-origin: center;
+  }
+  body.menu-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  body.menu-open .nav-hamburger span:nth-child(2) { opacity: 0; }
+  body.menu-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile Slide-In Panel */
+  .mobile-menu {
+    position: fixed; top: 0; right: 0;
+    width: 100%; max-width: 420px; height: 100vh; height: 100dvh;
+    background: var(--navy-deep); z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 40px 40px;
+    box-shadow: -20px 0 60px rgba(0,0,0,0.4);
+  }
+  body.menu-open .mobile-menu { transform: translateX(0); }
+  .mobile-menu a {
+    color: var(--cream); font-size: 28px; font-weight: 600;
+    letter-spacing: -0.02em; padding: 14px 0;
+    border-bottom: 1px solid rgba(247,242,232,0.08);
+    transition: color 0.2s, padding-left 0.2s;
+  }
+  .mobile-menu a:active { color: var(--pink); padding-left: 8px; }
+  .mobile-menu .mobile-cta {
+    margin-top: 32px;
+    background: var(--pink); color: var(--navy);
+    padding: 18px 28px; border-radius: 999px;
+    font-size: 16px; font-weight: 700;
+    text-align: center; border: none;
+    display: block;
+  }
+  .mobile-menu .mobile-meta {
+    margin-top: auto; padding-top: 32px;
+    font-size: 13px; opacity: 0.5;
+    border-top: 1px solid rgba(247,242,232,0.08);
+  }
+  .menu-backdrop {
+    position: fixed; inset: 0; background: rgba(20,60,107,0.6);
+    backdrop-filter: blur(4px); z-index: 999;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.4s;
+  }
+  body.menu-open .menu-backdrop { opacity: 1; pointer-events: auto; }
+  body.menu-open { overflow: hidden; }
+
+  @media (max-width: 800px) {
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .nav-hamburger { display: block; }
+  }
+
+  /* Touch-Optimierung: Hover-Effekte nur wenn Hover unterstützt wird */
+  @media (hover: none) {
+    .nav-links a:hover { opacity: 0.7; }
+    .nav-links a:hover::after { transform: scaleX(0); }
+    .nav-cta:hover { transform: none; background: var(--pink); }
+  }
+
+  /* Mobile: Touch-Targets vergrößern, Loader kürzer, Spacing anpassen */
+  @media (max-width: 800px) {
+    .nav-cta, button, .pill, [role="button"] { min-height: 44px; min-width: 44px; }
+    /* Globale Section-Padding-Reduktion auf Mobile (Desktop 120-140px -> Mobile 80px) */
+    .hero { padding: 60px 0 80px; }
+    section.pillars-block,
+    .method-block,
+    .anti-marketing { padding: 80px 0; }
+    /* Mobile-Wrap: weniger Aussenpadding */
+    .wrap { padding: 0 22px; }
+    /* Hero-Headline mobil etwas straffer */
+    .hero h1 { font-size: clamp(40px, 11vw, 64px); }
+  }
 
   /* HERO */
   .hero { padding: 100px 0 140px; position: relative; overflow: hidden; }
@@ -1442,7 +1531,7 @@
 <div class="loader" id="loader">
   <div class="loader-content">
     <div class="loader-wappen" aria-hidden="true">
-      <img src="assets/Dackel-Maennchen.svg" alt="" />
+      <img src="assets/Dackel-Maennchen.svg" alt="" fetchpriority="high" decoding="async" />
     </div>
     <div class="loader-quint">Quint<span class="loader-dot"></span></div>
     <div class="loader-progress"></div>
@@ -1462,11 +1551,27 @@
       <a href="#faq">FAQ</a>
     </div>
     <a class="nav-cta" href="#kontakt" data-spring>Erstgespräch →</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
+<div class="menu-backdrop" id="menuBackdrop" aria-hidden="true"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true" aria-label="Mobile Navigation">
+  <a href="#leistungen" data-mobile-link>Leistungen</a>
+  <a href="#fuer-wen" data-mobile-link>Für wen</a>
+  <a href="#methode" data-mobile-link>Methode</a>
+  <a href="arbeit/" data-mobile-link>Arbeit</a>
+  <a href="#team" data-mobile-link>Team</a>
+  <a href="journal/" data-mobile-link>Journal</a>
+  <a href="#faq" data-mobile-link>FAQ</a>
+  <a class="mobile-cta" href="#kontakt" data-mobile-link>Erstgespräch →</a>
+  <div class="mobile-meta">Quint · Werkstatt für Marken · Münster</div>
+</aside>
+
 <header class="hero" id="top">
-  <div class="hero-wappen" aria-hidden="true"><img src="assets/Dackel-4.svg" alt="" /></div>
+  <div class="hero-wappen" aria-hidden="true"><img src="assets/Dackel-4.svg" alt="" fetchpriority="high" decoding="async" /></div>
   <div class="wrap">
     <div class="hero-content">
       <div class="eyebrow">Branding + Social für Praxen, Vereine, Kanzleien</div>
@@ -1529,7 +1634,7 @@
     </div>
     <div class="audience-grid">
       <div class="audience-card reveal" data-scroll-reveal data-tilt>
-        <div class="audience-wappen" aria-hidden="true"><img src="assets/Dackel-1.svg" alt="" /></div>
+        <div class="audience-wappen" aria-hidden="true"><img src="assets/Dackel-1.svg" alt="" loading="lazy" decoding="async" /></div>
         <div class="audience-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
@@ -1542,7 +1647,7 @@
       </div>
 
       <div class="audience-card reveal" data-scroll-reveal data-tilt>
-        <div class="audience-wappen" aria-hidden="true"><img src="assets/Dackel-2.svg" alt="" /></div>
+        <div class="audience-wappen" aria-hidden="true"><img src="assets/Dackel-2.svg" alt="" loading="lazy" decoding="async" /></div>
         <div class="audience-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/>
@@ -1557,7 +1662,7 @@
       </div>
 
       <div class="audience-card reveal" data-scroll-reveal data-tilt>
-        <div class="audience-wappen" aria-hidden="true"><img src="assets/Dackel-5.svg" alt="" /></div>
+        <div class="audience-wappen" aria-hidden="true"><img src="assets/Dackel-5.svg" alt="" loading="lazy" decoding="async" /></div>
         <div class="audience-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="7" width="18" height="13" rx="2"/>
@@ -1584,7 +1689,7 @@
     </div>
     <div class="pillars">
       <div class="pillar reveal">
-        <div class="pillar-wappen" aria-hidden="true"><img src="assets/Dackel-4.svg" alt="" /></div>
+        <div class="pillar-wappen" aria-hidden="true"><img src="assets/Dackel-4.svg" alt="" loading="lazy" decoding="async" /></div>
         <div class="pillar-num">01</div>
         <h3>Branding</h3>
         <div class="pillar-sub">vom Fundament bis zum Pixel.</div>
@@ -1597,7 +1702,7 @@
         </ul>
       </div>
       <div class="pillar reveal">
-        <div class="pillar-wappen" aria-hidden="true"><img src="assets/Dackel-2.svg" alt="" /></div>
+        <div class="pillar-wappen" aria-hidden="true"><img src="assets/Dackel-2.svg" alt="" loading="lazy" decoding="async" /></div>
         <div class="pillar-num">02</div>
         <h3>Social Media</h3>
         <div class="pillar-sub">kein Posting-Kalender-Theater.</div>
@@ -1732,7 +1837,7 @@
               <div class="case-stat-label">Marken-<br/>partner</div>
             </div>
           </div>
-          <img class="case-logo" src="rehab-logo-white.svg" alt="REHAB FIVE Logo" />
+          <img class="case-logo" src="rehab-logo-white.svg" alt="REHAB FIVE Logo" loading="lazy" decoding="async" />
         </div>
       </a>
       <div class="case-small reveal">
@@ -1785,7 +1890,7 @@
 </section>
 
 <section class="manifesto" id="manifest">
-  <div class="manifesto-wappen" aria-hidden="true"><img src="assets/Dackel-3.svg" alt="" /></div>
+  <div class="manifesto-wappen" aria-hidden="true"><img src="assets/Dackel-3.svg" alt="" loading="lazy" decoding="async" /></div>
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Manifest</div>
@@ -1827,25 +1932,25 @@
     </div>
     <div class="anti-list">
       <div class="anti-item reveal" data-scroll-reveal>
-        <div class="anti-wappen" aria-hidden="true"><img src="assets/Dackel-1.svg" alt="" /></div>
+        <div class="anti-wappen" aria-hidden="true"><img src="assets/Dackel-1.svg" alt="" loading="lazy" decoding="async" /></div>
         <span class="strike">Kein 80-Seiten-Strategie-Deck</span>
         <h3>Strategie passt auf <span class="italic">eine Seite.</span></h3>
         <p>Wir liefern keine Theorie-Türme, die nach drei Wochen niemand mehr aufschlägt. Sondern ein Dokument, das du nach dem Lesen verstanden hast — und nach dem du arbeiten kannst.</p>
       </div>
       <div class="anti-item reveal" data-scroll-reveal>
-        <div class="anti-wappen" aria-hidden="true"><img src="assets/Dackel-2.svg" alt="" /></div>
+        <div class="anti-wappen" aria-hidden="true"><img src="assets/Dackel-2.svg" alt="" loading="lazy" decoding="async" /></div>
         <span class="strike">Kein Praktikanten-Social</span>
         <h3>Dein Schaufenster ist <span class="italic">kein Spielplatz.</span></h3>
         <p>Social Media betreuen bei uns nicht die Jüngsten — sondern die, die deine Marke am besten verstanden haben. Jede Sekunde, in der du dort erscheinst, ist Markenkommunikation.</p>
       </div>
       <div class="anti-item reveal" data-scroll-reveal>
-        <div class="anti-wappen" aria-hidden="true"><img src="assets/Dackel-5.svg" alt="" /></div>
+        <div class="anti-wappen" aria-hidden="true"><img src="assets/Dackel-5.svg" alt="" loading="lazy" decoding="async" /></div>
         <span class="strike">Kein Full-Service-Bauchladen</span>
         <h3>Wir machen <span class="italic">zwei Dinge.</span></h3>
         <p>Branding und Social Media. Nicht „auch noch eben Print, Messen, Eventfilm, Wartezimmer-TV". Wer alles macht, macht nichts richtig. Für den Rest haben wir Partner, denen wir vertrauen.</p>
       </div>
       <div class="anti-item reveal" data-scroll-reveal>
-        <div class="anti-wappen" aria-hidden="true"><img src="assets/Dackel-3.svg" alt="" /></div>
+        <div class="anti-wappen" aria-hidden="true"><img src="assets/Dackel-3.svg" alt="" loading="lazy" decoding="async" /></div>
         <span class="strike">Kein Kunden-Hamsterrad</span>
         <h3>Wenige Marken, <span class="italic">volle Aufmerksamkeit.</span></h3>
         <p>Wir nehmen nicht 30 Etats an, um quartalsweise zu liefern. Wir nehmen wenige — und liefern dafür wöchentlich. Wenn wir zu voll sind, sagen wir es vor dem ersten Gespräch.</p>
@@ -1908,7 +2013,7 @@
 
 <section class="cta-block" id="kontakt">
   <div class="wrap-narrow" style="position: relative; z-index: 2;">
-    <div class="cta-wappen" aria-hidden="true"><img src="assets/Dackel-Maennchen.svg" alt="" /></div>
+    <div class="cta-wappen" aria-hidden="true"><img src="assets/Dackel-Maennchen.svg" alt="" loading="lazy" decoding="async" /></div>
     <div class="eyebrow" style="margin-bottom: 28px; color: var(--pink);">Bereit?</div>
     <h2>Bring den Ball<br/><span class="italic">ins Rollen.</span></h2>
     <p>30 Minuten. Kostenlos. Ohne Bullshit. Wir hören zu, du hörst zu — danach wissen wir beide, ob wir zusammenpassen.</p>
@@ -1937,7 +2042,7 @@
 <footer>
   <div class="wrap foot-inner">
     <div class="foot-wappen">
-      <img src="assets/Dackel-4.svg" alt="" aria-hidden="true" />
+      <img src="assets/Dackel-4.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" />
       <span>© 2026 Quint Marketing — Münster</span>
     </div>
     <div class="foot-links">
@@ -1968,7 +2073,9 @@
     const params = new URLSearchParams(window.location.search);
     const skip = params.get('skip-loader') === '1';
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const delay = (skip || reduceMotion) ? 0 : 2800;
+    const isMobile = window.matchMedia('(max-width: 800px)').matches;
+    // Desktop: 2800ms volles Spektakel. Mobile: 1800ms straffer.
+    const delay = (skip || reduceMotion) ? 0 : (isMobile ? 1800 : 2800);
     setTimeout(() => {
       loader.classList.add('done');
       document.body.classList.remove('locked');
@@ -1985,14 +2092,54 @@
     const params = new URLSearchParams(window.location.search);
     const skip = params.get('skip-loader') === '1';
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const delay = (skip || reduceMotion) ? 0 : 2800;
+    const isMobile = window.matchMedia('(max-width: 800px)').matches;
+    const delay = (skip || reduceMotion) ? 0 : (isMobile ? 1800 : 2800);
     setTimeout(() => {
       scrollReveal('[data-scroll-reveal]');
-      magneticHover('[data-magnet]', 0.18);
-      cardTilt('[data-tilt]', 4);
+      // Magnetic hover & tilt nur auf Geräten mit echtem Hover (Desktop)
+      if (window.matchMedia('(hover: hover)').matches) {
+        magneticHover('[data-magnet]', 0.18);
+        cardTilt('[data-tilt]', 4);
+      }
       buttonSpring('[data-spring]');
     }, delay + 200);
   });
+</script>
+
+<!-- Mobile Hamburger Menu -->
+<script>
+  (function() {
+    const hamburger = document.getElementById('navHamburger');
+    const menu = document.getElementById('mobileMenu');
+    const backdrop = document.getElementById('menuBackdrop');
+    if (!hamburger || !menu || !backdrop) return;
+
+    function setOpen(open) {
+      document.body.classList.toggle('menu-open', open);
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      hamburger.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+      menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
+    function toggle() { setOpen(!document.body.classList.contains('menu-open')); }
+
+    hamburger.addEventListener('click', toggle);
+    backdrop.addEventListener('click', () => setOpen(false));
+
+    // Schließen wenn ein Link geklickt wird
+    menu.querySelectorAll('[data-mobile-link]').forEach(link => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+
+    // ESC schließt
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && document.body.classList.contains('menu-open')) setOpen(false);
+    });
+
+    // Wenn Viewport > 800 wieder größer wird: Menü schließen
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 800 && document.body.classList.contains('menu-open')) setOpen(false);
+    });
+  })();
 </script>
 
 </body>
