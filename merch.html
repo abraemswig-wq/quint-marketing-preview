@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Quint Merch — vier Konzept-Vorschläge</title>
+<title>Quint Merch — fünf Konzept-Vorschläge</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -228,6 +228,26 @@
   .pitch-2 .mockup { background: linear-gradient(180deg, #d4ccba, #c0b69e); }
   .pitch-3 .mockup { background: linear-gradient(180deg, #f2acba, #e89bb1); }
   .pitch-4 .mockup { background: linear-gradient(180deg, #2a4f3e, #1f342d); }
+  .pitch-5 .mockup { background: linear-gradient(180deg, #1a3a5e, #102845); }
+  /* Pitch 5 — Print Pink + Weiss auf Navy */
+  .pitch-5 .print-back-big { color: var(--pink); }
+
+  /* Ball-Element für Pitch 5: rosa Kreis mit subtilem Glanz */
+  .ball-element {
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #f4b8c8 0%, var(--pink) 45%, var(--pink-strong) 100%);
+    box-shadow:
+      0 4px 14px rgba(0,0,0,0.25),
+      inset -2px -3px 8px rgba(0,0,0,0.08);
+  }
+  .ball-element::after {
+    content: ""; position: absolute;
+    top: 18%; left: 22%; width: 22%; height: 18%;
+    background: rgba(255,255,255,0.5); border-radius: 50%;
+    filter: blur(2px);
+  }
 
   /* Pitch 2 — Text Pink auf Cream */
   .pitch-2 .print-big { color: var(--pink-strong); }
@@ -273,8 +293,8 @@
 
 <section class="head">
   <div class="head-eyebrow"><span class="head-eyebrow-dot"></span>Merch · Konzept-Vorschläge</div>
-  <h1>Vier Hoodies,<br/>vier <span class="italic">Sprüche.</span></h1>
-  <p>Vier strategisch unterschiedliche Merch-Konzepte — von laut bis editorial, jedes mit einer anderen Dackel-Pose und einem anderen Marken-Ton. Skizzen-Mockups, keine finalen Produktfotos.</p>
+  <h1>Fünf Hoodies,<br/>fünf <span class="italic">Sprüche.</span></h1>
+  <p>Fünf strategisch unterschiedliche Merch-Konzepte — von laut bis editorial, jedes mit einer anderen Dackel-Pose und einem anderen Marken-Ton. Skizzen-Mockups, keine finalen Produktfotos.</p>
 </section>
 
 <main class="grid">
@@ -283,7 +303,7 @@
   <article class="pitch pitch-1">
     <div class="pitch-head">
       <div class="pitch-nr">№ 01 · Hoodie</div>
-      <h2>„Wir jagen <span class="italic">den Ball.</span>"<span class="my-pick">Mein Pick</span></h2>
+      <h2>„Wir jagen <span class="italic">den Ball.</span>"</h2>
       <div class="item">Statement-Hoodie · Navy</div>
     </div>
 
@@ -447,6 +467,56 @@
         <span class="k">Druck</span><span class="v">Siebdruck Cream auf Grün</span>
         <span class="k">Dackel</span><span class="v">Pose 3, klein als Brust-Wappen</span>
         <span class="k">Stärkster Slot</span><span class="v">Kunden-Welcome-Geschenk &amp; Workshop-Outfit</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- PITCH 5: CHASING THE BALL — Dackel macht Männchen, Ball schwebt -->
+  <article class="pitch pitch-5">
+    <div class="pitch-head">
+      <div class="pitch-nr">№ 05 · Hoodie</div>
+      <h2>„<span class="italic">Chasing</span> the Ball."<span class="my-pick">Mein Pick</span></h2>
+      <div class="item">Brand-Asset-Hoodie · Navy</div>
+    </div>
+
+    <div class="mockup-row">
+      <div class="mockup">
+        <span class="mockup-label">Front</span>
+        <div class="garment hoodie">
+          <div class="print" style="padding-top: 18%;">
+            <!-- Dackel + Ball Komposition -->
+            <div style="position: relative; width: 64%; display: flex; justify-content: center;">
+              <img src="assets/Dackel-Maennchen.svg" alt="" style="width: 100%; height: auto; display: block; filter: brightness(0) invert(1);" />
+              <!-- Ball oben rechts über der Dackel-Schnauze -->
+              <div class="ball-element" style="width: 28%; top: -6%; right: -2%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mockup">
+        <span class="mockup-label">Back</span>
+        <div class="garment hoodie">
+          <div class="print" style="padding-top: 28%;">
+            <p style="font-family: 'Familjen Grotesk', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: -0.015em; line-height: 0.92; color: var(--pink); font-size: clamp(28px, 5.5vw, 66px); text-align: center;">
+              Chasing<br/>The<br/>Ball.
+            </p>
+            <p style="margin-top: 20px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.45);">— Quint · Münster —</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pitch-body">
+      <h3>Strategischer Pitch</h3>
+      <p>Der konzeptionell <em>dichteste</em> Pitch — und mein Favorit. Vorderseite ist ein direkter Echo des Logos: Dackel macht Männchen, rosa Ball schwebt vor seiner Schnauze — derselbe Punkt, den das „Q" als Ball trägt. Wer den Hoodie trägt, trägt das Logo als Szene, nicht als Wortmarke. Rücken bringt die offizielle Quint-Tagline groß in Pink. Funktioniert ohne ein einziges deutsches Wort — exportfähig, instagram-fähig, merch-fähig.</p>
+      <p style="margin-top: 8px; font-size: 13px; opacity: 0.65; font-style: italic; font-family: 'Fraunces', serif;">Warum Pick statt 01: Pitch 01 erzählt den Claim. Pitch 05 zeigt ihn.</p>
+      <div class="pitch-specs">
+        <span class="k">Material</span><span class="v">Heavy Hoodie, 400 gsm Bio-Baumwolle</span>
+        <span class="k">Farbe</span><span class="v">Navy <span class="italic">(#143C6B)</span></span>
+        <span class="k">Druck</span><span class="v">Siebdruck — Dackel Weiß, Ball Pink mit Verlauf, Tagline Pink</span>
+        <span class="k">Dackel</span><span class="v">Männchen-Pose, weiß auf Navy</span>
+        <span class="k">Detail</span><span class="v">Ball ist plastischer 3-Schicht-Druck (Highlight oben links für Volumen)</span>
+        <span class="k">Zielgruppe</span><span class="v">Team, Kunden-Welcome, Bühnen-Outfit auf Konferenzen</span>
       </div>
     </div>
   </article>
