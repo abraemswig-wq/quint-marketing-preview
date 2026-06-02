@@ -967,12 +967,12 @@
     width: 480px;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.18;
-    /* Dackel ist weiß — auf Pink würde er verschwinden. Filter macht ihn navy. */
-    filter: invert(14%) sepia(58%) saturate(1247%) hue-rotate(189deg) brightness(92%) contrast(96%);
+    opacity: 0.9;
+    /* Dackel ist weiß — auf Pink würde er verschwinden. Filter macht ihn navy-deep, kräftig sichtbar. */
+    filter: brightness(0) saturate(100%) invert(11%) sepia(75%) saturate(1800%) hue-rotate(198deg) brightness(45%);
   }
   .manifesto-wappen img { width: 100%; height: auto; display: block; }
-  @media (max-width: 800px) { .manifesto-wappen { width: 320px; opacity: 0.14; } }
+  @media (max-width: 800px) { .manifesto-wappen { width: 320px; opacity: 0.85; } }
 
   .manifesto {
     background: var(--pink);
