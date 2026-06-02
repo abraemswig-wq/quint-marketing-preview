@@ -210,6 +210,17 @@
     overflow: hidden;
   }
   .loader-content { text-align: center; position: relative; }
+  .loader-wappen {
+    width: clamp(100px, 14vw, 180px);
+    margin: 0 auto 24px;
+    opacity: 0;
+    transform: translateY(20px) scale(0.92);
+    animation: loaderWappenIn 0.9s cubic-bezier(.2,.8,.2,1) 0.05s forwards;
+  }
+  .loader-wappen img { width: 100%; height: auto; display: block; }
+  @keyframes loaderWappenIn {
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
   .loader-quint {
     font-size: clamp(80px, 14vw, 220px);
     font-weight: 700;
@@ -329,6 +340,19 @@
   /* HERO */
   .hero { padding: 100px 0 140px; position: relative; overflow: hidden; }
   .hero-content { position: relative; z-index: 2; max-width: 1080px; }
+  /* Wappen-Dackel als Watermark rechts */
+  .hero-wappen {
+    position: absolute;
+    right: -80px;
+    bottom: 40px;
+    width: 620px;
+    pointer-events: none;
+    opacity: 0.08;
+    z-index: 0;
+  }
+  .hero-wappen img { width: 100%; height: auto; display: block; }
+  @media (max-width: 900px) { .hero-wappen { width: 420px; right: -60px; opacity: 0.05; } }
+  @media (max-width: 600px) { .hero-wappen { display: none; } }
   .hero h1 {
     font-size: clamp(56px, 9vw, 132px);
     line-height: 0.92;
@@ -763,7 +787,25 @@
     padding: 48px 36px;
     transition: transform 0.4s cubic-bezier(.2,.8,.2,1), border-color 0.3s, background 0.3s;
     position: relative;
+    overflow: hidden;
   }
+  /* Wappen-Dackel als Watermark unten rechts in jeder Card */
+  .audience-wappen {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 200px;
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.4s, transform 0.4s;
+  }
+  .audience-wappen img { width: 100%; height: auto; display: block; }
+  .audience-card:hover .audience-wappen {
+    opacity: 0.14;
+    transform: translate(-6px, -6px) scale(1.04);
+  }
+  .audience-card > *:not(.audience-wappen) { position: relative; z-index: 1; }
   .audience-card:hover {
     transform: translateY(-8px);
     border-color: var(--pink);
@@ -1316,6 +1358,15 @@
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px;
     align-items: center;
   }
+  .foot-wappen {
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .foot-wappen img {
+    width: 36px; height: auto;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+  }
+  .foot-wappen:hover img { opacity: 0.9; }
   .foot-links { display: flex; gap: 28px; }
   .foot-links a:hover { color: var(--pink); }
 
@@ -1338,6 +1389,9 @@
 <!-- CINEMATIC LOADER -->
 <div class="loader" id="loader">
   <div class="loader-content">
+    <div class="loader-wappen" aria-hidden="true">
+      <img src="assets/Dackel-3.svg" alt="" />
+    </div>
     <div class="loader-quint">Quint<span class="loader-dot"></span></div>
     <div class="loader-progress"></div>
   </div>
@@ -1360,6 +1414,7 @@
 </nav>
 
 <header class="hero" id="top">
+  <div class="hero-wappen" aria-hidden="true"><img src="assets/Dackel-4.svg" alt="" /></div>
   <div class="wrap">
     <div class="hero-content">
       <div class="eyebrow">Branding + Social für Praxen, Vereine, Kanzleien</div>
@@ -1422,6 +1477,7 @@
     </div>
     <div class="audience-grid">
       <div class="audience-card reveal" data-scroll-reveal data-tilt>
+        <div class="audience-wappen" aria-hidden="true"><img src="assets/Dackel-1.svg" alt="" /></div>
         <div class="audience-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
@@ -1434,6 +1490,7 @@
       </div>
 
       <div class="audience-card reveal" data-scroll-reveal data-tilt>
+        <div class="audience-wappen" aria-hidden="true"><img src="assets/Dackel-2.svg" alt="" /></div>
         <div class="audience-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/>
@@ -1448,6 +1505,7 @@
       </div>
 
       <div class="audience-card reveal" data-scroll-reveal data-tilt>
+        <div class="audience-wappen" aria-hidden="true"><img src="assets/Dackel-5.svg" alt="" /></div>
         <div class="audience-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="7" width="18" height="13" rx="2"/>
@@ -1818,7 +1876,10 @@
 
 <footer>
   <div class="wrap foot-inner">
-    <div>© 2026 Quint Marketing — Münster</div>
+    <div class="foot-wappen">
+      <img src="assets/Dackel-4.svg" alt="" aria-hidden="true" />
+      <span>© 2026 Quint Marketing — Münster</span>
+    </div>
     <div class="foot-links">
       <a href="#">Impressum</a>
       <a href="#">Datenschutz</a>
