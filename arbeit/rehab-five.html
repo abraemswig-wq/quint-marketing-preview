@@ -255,14 +255,14 @@
   .scroll-expand-asset {
     position: absolute;
     top: 50%; left: 50%;
-    transform: translate(-50%, -50%) scale(0.3);
+    transform: translate(-50%, -50%) scale(0.15);
     z-index: 2;
     width: 480px;
     max-width: 88vw;
     aspect-ratio: 4 / 3;
     will-change: transform, opacity;
     pointer-events: none;
-    opacity: 0.75;
+    opacity: 0.7;
     border-radius: 18px;
     overflow: hidden;
     background: var(--rehab-green-deep);
@@ -739,7 +739,6 @@
     <div class="scroll-expand-overlay" aria-hidden="true"></div>
 
     <div class="scroll-expand-heading" id="caseExpandHeading">
-      <span class="scroll-eyebrow">Markenwelt</span>
       <h2>Eine Praxis, die <span class="italic">als Marke</span><br/>auftritt — auch im Raum.</h2>
     </div>
 
@@ -1035,9 +1034,9 @@
 
       const eased = 1 - Math.pow(1 - progress, 2);
 
-      // Bild: scale 0.3 (Start) → 3.3 (Ende), opacity 0.75 → 1
-      const scale = 0.3 + eased * 3.0;
-      const opacity = 0.75 + eased * 0.25;
+      // Bild: scale 0.15 (Start, klein) → 3.15 (Ende, fast Vollbild), opacity 0.7 → 1
+      const scale = 0.15 + eased * 3.0;
+      const opacity = 0.7 + eased * 0.3;
       asset.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(3)})`;
       asset.style.opacity = opacity.toFixed(3);
 
