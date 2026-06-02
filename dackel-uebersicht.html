@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quint — Dackel-Wappen-Übersicht</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B; --navy-deep: #0D2747; --pink: #E89BB1;
+    --pink-strong: #D87A95; --cream: #F4EFE7; --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--navy); color: var(--white);
+    -webkit-font-smoothing: antialiased; line-height: 1.5;
+  }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; }
+  a { color: inherit; text-decoration: none; }
+
+  .nav-bar {
+    padding: 20px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(13,39,71,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .nav-logo { font-weight: 700; font-size: 22px; letter-spacing: -0.04em; }
+  .nav-logo .dot { color: var(--pink); }
+  .nav-back {
+    font-size: 13px; color: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 8px 16px; border-radius: 999px;
+  }
+
+  .head {
+    padding: 100px 32px 60px;
+    text-align: center;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .head-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); margin-bottom: 28px;
+  }
+  .head-eyebrow-dot { width: 8px; height: 8px; background: var(--pink); border-radius: 50%; }
+  .head h1 {
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 0.98; font-weight: 700;
+    letter-spacing: -0.03em; margin-bottom: 20px;
+  }
+  .head h1 .italic { color: var(--pink); }
+  .head p { color: rgba(255,255,255,0.7); font-size: 17px; line-height: 1.55; }
+
+  /* Dackel-Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 32px 100px;
+  }
+  @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 28px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .card:hover { border-color: var(--pink); }
+
+  /* Verschiedene Hintergründe pro Karte zum Testen, wie der Dackel wirkt */
+  .stage {
+    aspect-ratio: 16 / 9;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .stage-navy { background: var(--navy-deep); }
+  .stage-pink { background: linear-gradient(135deg, var(--pink-strong) 0%, var(--pink) 100%); }
+  .stage-green { background: linear-gradient(135deg, #1F342D 0%, #142822 100%); }
+  .stage-cream { background: var(--cream); }
+  .stage-cream svg path { fill: var(--navy) !important; }
+
+  .stage img { width: 60%; height: 80%; object-fit: contain; display: block; }
+
+  .info {
+    padding: 28px 32px;
+  }
+  .info .nr {
+    display: inline-block;
+    background: var(--pink); color: var(--navy);
+    padding: 4px 12px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .info h3 {
+    font-size: 22px; font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .info h3 .italic { color: var(--pink); }
+  .info p {
+    font-size: 14.5px; color: rgba(255,255,255,0.72);
+    line-height: 1.55;
+  }
+  .info .file {
+    margin-top: 14px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* Hintergrund-Variants — 4 verschiedene Stages pro Dackel */
+  .variants {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin-top: 20px;
+    padding: 0 32px 32px;
+  }
+  .variant {
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .variant img { width: 75%; height: 75%; object-fit: contain; }
+  .v-navy { background: var(--navy-deep); }
+  .v-pink { background: linear-gradient(135deg, var(--pink-strong), var(--pink)); }
+  .v-green { background: linear-gradient(135deg, #1F342D, #142822); }
+  .v-cream { background: var(--cream); }
+  .v-cream img { filter: invert(15%) sepia(43%) saturate(2247%) hue-rotate(189deg) brightness(95%); }
+
+  .legend {
+    text-align: center;
+    padding: 16px 32px;
+    color: rgba(255,255,255,0.45);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Vorschlag-Sektion */
+  .vorschlag {
+    padding: 100px 32px;
+    background: var(--navy-deep);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .vorschlag-inner { max-width: 880px; margin: 0 auto; }
+  .vorschlag h2 {
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.05; font-weight: 700;
+    letter-spacing: -0.025em; margin-bottom: 32px;
+  }
+  .vorschlag h2 .italic { color: var(--pink); }
+  .vorschlag ul {
+    list-style: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .vorschlag ul li {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+    align-items: center;
+    font-size: 15px;
+  }
+  .vorschlag .nr-small {
+    background: var(--pink); color: var(--navy);
+    padding: 4px 10px; border-radius: 6px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .vorschlag em {
+    font-family: "Fraunces", serif; font-style: italic;
+    color: var(--pink-soft, #F3C7D4);
+  }
+
+  footer {
+    padding: 32px; background: var(--navy-deep);
+    color: rgba(255,255,255,0.4);
+    text-align: center; font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  footer a:hover { color: var(--pink); }
+</style>
+</head>
+<body>
+
+<header class="nav-bar">
+  <a href="index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+  <a href="index.html" class="nav-back">← Hauptseite</a>
+</header>
+
+<section class="head">
+  <div class="head-eyebrow"><span class="head-eyebrow-dot"></span>Wappen-Set · Übersicht</div>
+  <h1>Fünf Dackel,<br/>ein <span class="italic">Wappen.</span></h1>
+  <p>Hier siehst du alle fünf Posen — jede in vier Hintergrund-Varianten getestet (Navy, Pink, Grün, Cream). Sag mir, welcher Dackel wo hin soll, dann baue ich ihn an die richtigen Stellen ein.</p>
+</section>
+
+<main class="grid">
+
+  <article class="card">
+    <div class="stage stage-navy"><img src="assets/Dackel-1.svg" alt="Dackel Pose 1" /></div>
+    <div class="info">
+      <div class="nr">Pose № 01</div>
+      <h3>Dackel <span class="italic">eins</span></h3>
+      <p>Vier Hintergrund-Varianten — schau, in welcher Umgebung diese Pose am stärksten wirkt.</p>
+      <div class="file">assets/Dackel-1.svg</div>
+    </div>
+    <div class="variants">
+      <div class="variant v-navy"><img src="assets/Dackel-1.svg" alt="" /></div>
+      <div class="variant v-pink"><img src="assets/Dackel-1.svg" alt="" /></div>
+      <div class="variant v-green"><img src="assets/Dackel-1.svg" alt="" /></div>
+      <div class="variant v-cream"><img src="assets/Dackel-1.svg" alt="" /></div>
+    </div>
+    <div class="legend">Navy · Pink · Grün · Cream (invertiert)</div>
+  </article>
+
+  <article class="card">
+    <div class="stage stage-pink"><img src="assets/Dackel-2.svg" alt="Dackel Pose 2" /></div>
+    <div class="info">
+      <div class="nr">Pose № 02</div>
+      <h3>Dackel <span class="italic">zwei</span></h3>
+      <p>Vier Hintergrund-Varianten — schau, in welcher Umgebung diese Pose am stärksten wirkt.</p>
+      <div class="file">assets/Dackel-2.svg</div>
+    </div>
+    <div class="variants">
+      <div class="variant v-navy"><img src="assets/Dackel-2.svg" alt="" /></div>
+      <div class="variant v-pink"><img src="assets/Dackel-2.svg" alt="" /></div>
+      <div class="variant v-green"><img src="assets/Dackel-2.svg" alt="" /></div>
+      <div class="variant v-cream"><img src="assets/Dackel-2.svg" alt="" /></div>
+    </div>
+    <div class="legend">Navy · Pink · Grün · Cream (invertiert)</div>
+  </article>
+
+  <article class="card">
+    <div class="stage stage-green"><img src="assets/Dackel-3.svg" alt="Dackel Pose 3" /></div>
+    <div class="info">
+      <div class="nr">Pose № 03</div>
+      <h3>Dackel <span class="italic">drei</span></h3>
+      <p>Vier Hintergrund-Varianten — schau, in welcher Umgebung diese Pose am stärksten wirkt.</p>
+      <div class="file">assets/Dackel-3.svg</div>
+    </div>
+    <div class="variants">
+      <div class="variant v-navy"><img src="assets/Dackel-3.svg" alt="" /></div>
+      <div class="variant v-pink"><img src="assets/Dackel-3.svg" alt="" /></div>
+      <div class="variant v-green"><img src="assets/Dackel-3.svg" alt="" /></div>
+      <div class="variant v-cream"><img src="assets/Dackel-3.svg" alt="" /></div>
+    </div>
+    <div class="legend">Navy · Pink · Grün · Cream (invertiert)</div>
+  </article>
+
+  <article class="card">
+    <div class="stage stage-cream"><img src="assets/Dackel-4.svg" alt="Dackel Pose 4" /></div>
+    <div class="info">
+      <div class="nr">Pose № 04</div>
+      <h3>Dackel <span class="italic">vier</span></h3>
+      <p>Vier Hintergrund-Varianten — schau, in welcher Umgebung diese Pose am stärksten wirkt.</p>
+      <div class="file">assets/Dackel-4.svg</div>
+    </div>
+    <div class="variants">
+      <div class="variant v-navy"><img src="assets/Dackel-4.svg" alt="" /></div>
+      <div class="variant v-pink"><img src="assets/Dackel-4.svg" alt="" /></div>
+      <div class="variant v-green"><img src="assets/Dackel-4.svg" alt="" /></div>
+      <div class="variant v-cream"><img src="assets/Dackel-4.svg" alt="" /></div>
+    </div>
+    <div class="legend">Navy · Pink · Grün · Cream (invertiert)</div>
+  </article>
+
+  <article class="card" style="grid-column: 1 / -1;">
+    <div class="stage stage-navy"><img src="assets/Dackel-5.svg" alt="Dackel Pose 5" /></div>
+    <div class="info">
+      <div class="nr">Pose № 05</div>
+      <h3>Dackel <span class="italic">fünf</span></h3>
+      <p>Vier Hintergrund-Varianten — schau, in welcher Umgebung diese Pose am stärksten wirkt.</p>
+      <div class="file">assets/Dackel-5.svg</div>
+    </div>
+    <div class="variants">
+      <div class="variant v-navy"><img src="assets/Dackel-5.svg" alt="" /></div>
+      <div class="variant v-pink"><img src="assets/Dackel-5.svg" alt="" /></div>
+      <div class="variant v-green"><img src="assets/Dackel-5.svg" alt="" /></div>
+      <div class="variant v-cream"><img src="assets/Dackel-5.svg" alt="" /></div>
+    </div>
+    <div class="legend">Navy · Pink · Grün · Cream (invertiert)</div>
+  </article>
+
+</main>
+
+<!-- VORSCHLAG -->
+<section class="vorschlag">
+  <div class="vorschlag-inner">
+    <h2>Mein Einsatz-<span class="italic">Vorschlag.</span></h2>
+    <p style="color: rgba(255,255,255,0.7); margin-bottom: 28px;">Sechs strategische Einsatzorte über die Site verteilt. Sag mir, welche Pose (1–5) wohin soll — dann baue ich es ein.</p>
+
+    <ul>
+      <li>
+        <span class="nr-small">Loader</span>
+        <span>Beim Page-Load erscheint der Wappendackel groß auf Navy — bevor der Pink-Punkt explodiert. <em>Welche Pose passt für den ersten Eindruck?</em></span>
+      </li>
+      <li>
+        <span class="nr-small">Hero</span>
+        <span>Dezenter Dackel rechts im Hero als Marken-Watermark. <em>Welche Pose als ruhiger Hintergrund-Anker?</em></span>
+      </li>
+      <li>
+        <span class="nr-small">ICP-Welt 1</span>
+        <span>Health &amp; Beauty (Praxen, Studios, Optiker). <em>Welche Pose passt zu „Mensch in Behandlung"?</em></span>
+      </li>
+      <li>
+        <span class="nr-small">ICP-Welt 2</span>
+        <span>Sport &amp; Vereine. <em>Welche Pose passt zu „Bewegung, Energie"?</em></span>
+      </li>
+      <li>
+        <span class="nr-small">ICP-Welt 3</span>
+        <span>Inhabergeführte Dienstleister (Kanzleien, Beratungen). <em>Welche Pose passt zu „seriös, aufmerksam"?</em></span>
+      </li>
+      <li>
+        <span class="nr-small">Footer</span>
+        <span>Kleine Brand-Signatur in den Footern aller Seiten. <em>Welche Pose als wiederkehrendes Wappen?</em></span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  © 2026 QUINT · <a href="index.html">Hauptseite</a> · <a href="arbeit/">Arbeit</a> · <a href="journal/">Journal</a>
+</footer>
+
+</body>
+</html>
