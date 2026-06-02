@@ -426,6 +426,13 @@
     .hero h1 { font-size: clamp(40px, 11vw, 64px); }
   }
 
+  /* Touch-Geräte: Wappen-Dackel deutlicher sichtbar, weil kein Hover-Boost */
+  @media (hover: none), (max-width: 800px) {
+    .anti-wappen { opacity: 0.22; }
+    .pillar-wappen { opacity: 0.18; }
+    .audience-wappen { opacity: 0.22; }
+  }
+
   /* HERO */
   .hero { padding: 100px 0 140px; position: relative; overflow: hidden; }
   .hero-content { position: relative; z-index: 2; max-width: 1080px; }
