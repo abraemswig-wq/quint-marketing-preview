@@ -226,22 +226,27 @@
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
   .loader-quint {
-    display: flex; flex-direction: column;
-    align-items: center; gap: 28px;
+    position: relative;
+    display: inline-block;
     opacity: 0;
     animation: loaderFadeIn 0.8s cubic-bezier(.2,.8,.2,1) 0.1s forwards;
   }
   .loader-quint img.loader-logo {
-    width: clamp(220px, 36vw, 520px);
+    width: clamp(260px, 42vw, 620px);
     height: auto;
     display: block;
   }
+  /* Animierter Pink-Punkt liegt EXAKT auf dem Q-Ball im Logo
+     Q-Ball-Center: (20.96%, 86.71%) · Durchmesser: 4.79% der Logo-Breite */
   .loader-dot {
-    width: clamp(16px, 2.5vw, 40px);
-    height: clamp(16px, 2.5vw, 40px);
+    position: absolute;
+    left: 20.96%;
+    top: 86.71%;
+    width: 4.79%;
+    aspect-ratio: 1 / 1;
     background: var(--pink);
     border-radius: 50%;
-    transform: scale(0);
+    transform: translate(-50%, -50%) scale(0);
     animation:
       loaderDotPop 0.6s cubic-bezier(.34,1.56,.64,1) 0.9s forwards,
       loaderDotExpand 1s cubic-bezier(.6,0,.7,1) 2.1s forwards;
@@ -251,12 +256,12 @@
     to   { opacity: 1; transform: translateY(0); }
   }
   @keyframes loaderDotPop {
-    from { transform: scale(0); }
-    to   { transform: scale(1); }
+    from { transform: translate(-50%, -50%) scale(0); }
+    to   { transform: translate(-50%, -50%) scale(1); }
   }
   @keyframes loaderDotExpand {
-    0%   { transform: scale(1); }
-    100% { transform: scale(200); }
+    0%   { transform: translate(-50%, -50%) scale(1); }
+    100% { transform: translate(-50%, -50%) scale(200); }
   }
   .loader-progress {
     position: absolute;
