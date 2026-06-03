@@ -161,9 +161,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
 
-<!-- Preload Above-the-Fold-Assets (Loader-Maennchen + Hero-Dackel) -->
+<!-- Preload Above-the-Fold-Assets (Loader-Maennchen + Hero-Maennchen + Logo) -->
 <link rel="preload" as="image" href="assets/Dackel-Maennchen.svg" type="image/svg+xml" fetchpriority="high">
-<link rel="preload" as="image" href="assets/Dackel-4.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="assets/quint-logo-white.png" fetchpriority="high">
 <style>
   :root {
     --navy:        #143C6B;
@@ -442,16 +442,48 @@
   /* Wappen-Dackel als Watermark rechts */
   .hero-wappen {
     position: absolute;
-    right: -80px;
-    bottom: 40px;
-    width: 620px;
+    right: 40px;
+    bottom: 80px;
+    width: 360px;
     pointer-events: none;
-    opacity: 0.08;
     z-index: 0;
   }
-  .hero-wappen img { width: 100%; height: auto; display: block; }
-  @media (max-width: 900px) { .hero-wappen { width: 420px; right: -60px; opacity: 0.05; } }
-  @media (max-width: 600px) { .hero-wappen { display: none; } }
+  .hero-wappen .hero-dackel {
+    width: 100%; height: auto; display: block;
+    opacity: 0.92;
+  }
+  .hero-wappen .hero-ball {
+    position: absolute;
+    top: -4%; left: -8%;
+    width: 24%; aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #f4b8c8 0%, var(--pink) 45%, var(--pink-strong) 100%);
+    box-shadow:
+      0 10px 28px rgba(13,39,71,0.45),
+      inset -2px -3px 8px rgba(0,0,0,0.08);
+    animation: heroBallBounce 2.4s cubic-bezier(.45,0,.55,1) infinite;
+    transform-origin: center;
+  }
+  .hero-wappen .hero-ball::after {
+    content: ""; position: absolute;
+    top: 18%; left: 22%; width: 22%; height: 18%;
+    background: rgba(255,255,255,0.55); border-radius: 50%;
+    filter: blur(2px);
+  }
+  @keyframes heroBallBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50%      { transform: translateY(-18px) scale(1.02); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-wappen .hero-ball { animation: none; }
+  }
+  @media (max-width: 1100px) { .hero-wappen { width: 300px; right: 20px; bottom: 60px; } }
+  @media (max-width: 900px) {
+    .hero-wappen { width: 240px; right: 0; bottom: 40px; }
+  }
+  @media (max-width: 600px) {
+    .hero-wappen { width: 180px; right: 8px; bottom: 24px; }
+  }
   .hero h1 {
     font-size: clamp(56px, 9vw, 132px);
     line-height: 0.92;
@@ -1584,7 +1616,10 @@
 </aside>
 
 <header class="hero" id="top">
-  <div class="hero-wappen" aria-hidden="true"><img src="assets/Dackel-4.svg" alt="" fetchpriority="high" decoding="async" /></div>
+  <div class="hero-wappen" aria-hidden="true">
+    <span class="hero-ball"></span>
+    <img class="hero-dackel" src="assets/Dackel-Maennchen.svg" alt="" fetchpriority="high" decoding="async" />
+  </div>
   <div class="wrap">
     <div class="hero-content">
       <div class="eyebrow">Branding + Social für Praxen, Vereine, Kanzleien</div>
