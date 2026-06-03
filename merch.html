@@ -33,7 +33,7 @@
     border-bottom: 1px solid rgba(255,255,255,0.06);
     position: sticky; top: 0; z-index: 50;
   }
-  .nav-logo { font-weight: 700; font-size: 22px; letter-spacing: -0.04em; }
+  .nav-logo { font-weight: 700; font-size: 22px; letter-spacing: -0.04em; } .nav-logo { display: inline-flex; align-items: center; } .nav-logo img { height: 28px; width: auto; display: block; }
   .nav-logo .dot { color: var(--pink); }
   .nav-back {
     font-size: 13px; color: rgba(255,255,255,0.6);
@@ -330,7 +330,7 @@
 <body>
 
 <header class="nav-bar">
-  <a href="index.html" class="nav-logo">Quint<span class="dot">.</span></a>
+  <a href="index.html" class="nav-logo" aria-label="Quint — Startseite"><img src="assets/quint-logo-white.png" alt="Quint" decoding="async" /></a>
   <a href="index.html" class="nav-back">← Hauptseite</a>
 </header>
 
@@ -363,9 +363,9 @@
       <div class="mockup">
         <span class="mockup-label">Back</span>
         <div class="garment hoodie">
-          <div class="print" style="padding-top: 25%;">
-            <p class="print-big" style="font-size: clamp(36px, 7vw, 84px); font-style: normal; font-family: 'Familjen Grotesk', sans-serif; font-weight: 700; color: var(--white); letter-spacing: -0.03em;">Quint<span style="color: var(--pink);">.</span></p>
-            <p class="print-claim" style="margin-top: 18px; font-style: italic; font-family: 'Fraunces', serif;">Andere reden über die Wiese.</p>
+          <div class="print" style="padding-top: 30%;">
+            <img src="assets/quint-logo-white.png" alt="Quint Logo" style="width: 78%; height: auto; display: block;" />
+            <p class="print-claim" style="margin-top: 22px; font-style: italic; font-family: 'Fraunces', serif;">Andere reden über die Wiese.</p>
           </div>
         </div>
       </div>
