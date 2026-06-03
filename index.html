@@ -644,6 +644,56 @@
     overflow: hidden;
     transition: transform 0.4s cubic-bezier(.2,.8,.2,1), border-color 0.3s, background 0.3s;
   }
+  /* Komplettes Leistungsverzeichnis — Teaser-Link nach den Pillars */
+  .pillars-deeper {
+    margin-top: 32px;
+    text-align: center;
+  }
+  .pillars-deeper .deeper-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 24px 36px;
+    border: 1px solid rgba(232,155,177,0.22);
+    border-radius: 18px;
+    background: rgba(232,155,177,0.04);
+    color: var(--cream);
+    transition: border-color 0.25s, background 0.25s, transform 0.2s;
+    max-width: 520px;
+  }
+  .pillars-deeper .deeper-link:hover {
+    border-color: var(--pink);
+    background: rgba(232,155,177,0.1);
+    transform: translateY(-2px);
+  }
+  @media (hover: none) {
+    .pillars-deeper .deeper-link:hover { transform: none; background: rgba(232,155,177,0.04); }
+  }
+  .pillars-deeper .deeper-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--pink);
+    font-weight: 700;
+  }
+  .pillars-deeper .deeper-text {
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.4;
+    color: rgba(244,239,231,0.85);
+  }
+  .pillars-deeper .deeper-arrow {
+    font-size: 24px;
+    color: var(--pink);
+    transition: transform 0.25s;
+    margin-top: 4px;
+  }
+  .pillars-deeper .deeper-link:hover .deeper-arrow { transform: translateX(4px); }
+  @media (hover: none) {
+    .pillars-deeper .deeper-link:hover .deeper-arrow { transform: none; }
+  }
   .pillar:hover {
     transform: translateY(-8px);
     border-color: var(--pink);
@@ -1785,6 +1835,14 @@
           <li>Performance & Community</li>
         </ul>
       </div>
+    </div>
+
+    <div class="pillars-deeper">
+      <a href="leistungen.html" class="deeper-link">
+        <span class="deeper-eyebrow">Komplettes Leistungsverzeichnis</span>
+        <span class="deeper-text">Was du genau bekommst, wie wir vorgehen, was du nicht bekommst</span>
+        <span class="deeper-arrow" aria-hidden="true">→</span>
+      </a>
     </div>
   </div>
 </section>
