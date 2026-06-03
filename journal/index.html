@@ -62,7 +62,7 @@
   /* LOADER */
   .loader { position: fixed; inset: 0; background: #0D2747; z-index: 9999; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .loader-content { text-align: center; position: relative; }
-  .loader-quint { font-size: clamp(80px, 14vw, 220px); font-weight: 700; letter-spacing: -0.05em; color: #ffffff; display: inline-flex; align-items: baseline; opacity: 0; animation: loaderFadeIn 0.8s cubic-bezier(.2,.8,.2,1) 0.1s forwards; } .loader-quint { flex-direction: column; gap: 24px; } .loader-quint img.loader-logo { width: clamp(220px, 36vw, 520px); height: auto; display: block; }
+  .loader-quint { font-size: clamp(80px, 14vw, 220px); font-weight: 700; letter-spacing: -0.05em; color: #ffffff; display: inline-flex; align-items: baseline; opacity: 0; animation: loaderFadeIn 0.8s cubic-bezier(.2,.8,.2,1) 0.1s forwards; } .loader-quint { flex-direction: column; gap: 24px; } .loader-quint img.loader-logo { width: clamp(260px, 42vw, 620px); height: auto; display: block; }
   .loader-dot { width: clamp(16px, 2.5vw, 40px); height: clamp(16px, 2.5vw, 40px); background: #E89BB1; border-radius: 50%; margin-left: 0.05em; transform: scale(0); animation: loaderDotPop 0.6s cubic-bezier(.34,1.56,.64,1) 0.9s forwards, loaderDotExpand 1s cubic-bezier(.6,0,.7,1) 2.1s forwards; }
   @keyframes loaderFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes loaderDotPop { from { transform: scale(0); } to { transform: scale(1); } }
@@ -277,7 +277,7 @@
 
 <div class="loader" id="loader">
   <div class="loader-content">
-    <div class="loader-quint"><img class="loader-logo" src="../assets/quint-logo-white.png" alt="Quint" fetchpriority="high" decoding="async" /><span class="loader-dot"></span></div>
+    <div class="loader-quint"><img class="loader-logo" src="../assets/quint-logo-claim-white.png" alt="Quint" fetchpriority="high" decoding="async" /><span class="loader-dot"></span></div>
     <div class="loader-progress"></div>
   </div>
 </div>
