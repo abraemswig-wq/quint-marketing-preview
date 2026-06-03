@@ -130,7 +130,57 @@
     main.legal { padding: 16px 22px 80px; }
     .nav-inner { padding: 14px 22px; }
   }
+
+  .crumbs {
+    max-width: 1200px; margin: 0 auto;
+    padding: 24px 32px 0;
+    font-size: 12px; letter-spacing: 0.06em;
+    color: rgba(244,239,231,0.55);
+    text-transform: uppercase;
+  }
+  .crumbs a { color: rgba(244,239,231,0.7); text-decoration: none; transition: color 0.2s; }
+  .crumbs a:hover { color: var(--pink); }
+  .crumbs .sep { margin: 0 8px; opacity: 0.4; }
+  .crumbs .current { color: var(--cream); }
+  @media (max-width: 600px) { .crumbs { padding: 18px 22px 0; font-size: 11px; } }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/impressum.html#page",
+  "name": "Impressum",
+  "description": "Impressum von Quint Marketing — Aric Brämswig, Münster.",
+  "url": "https://abraemswig-wq.github.io/quint-marketing-preview/impressum.html",
+  "inLanguage": "de-DE",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/#website",
+    "name": "Quint Marketing",
+    "url": "https://abraemswig-wq.github.io/quint-marketing-preview/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quint Marketing",
+    "founder": { "@type": "Person", "name": "Aric Brämswig" },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Scharnhorststraße 40",
+      "postalCode": "48151",
+      "addressLocality": "Münster",
+      "addressCountry": "DE"
+    },
+    "email": "hallo@quint-marketing.de",
+    "vatID": "DE308560771"
+  }
+}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Hauptseite","item":"https://abraemswig-wq.github.io/quint-marketing-preview/"},
+{"@type":"ListItem","position":2,"name":"Impressum","item":"https://abraemswig-wq.github.io/quint-marketing-preview/impressum.html"}
+]}
+</script>
 </head>
 <body>
 
@@ -140,6 +190,8 @@
     <a class="nav-back" href="index.html">← Hauptseite</a>
   </div>
 </nav>
+
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Hauptseite</a><span class="sep">/</span><span class="current">Impressum</span></nav>
 
 <section class="head">
   <div class="head-eyebrow"><span class="head-eyebrow-dot"></span>Rechtliches</div>

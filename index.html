@@ -1563,10 +1563,28 @@
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.9s cubic-bezier(.2,.8,.2,1), transform 0.9s cubic-bezier(.2,.8,.2,1);
+    /* Stagger: 120ms pro Index (via --stagger 0/1/2 auf dem Element) */
+    transition-delay: calc(var(--stagger, 0) * 120ms);
   }
   .reveal.in {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Breadcrumbs */
+  .crumbs {
+    max-width: 1320px; margin: 0 auto;
+    padding: 24px 32px 0;
+    font-size: 12px; letter-spacing: 0.06em;
+    color: rgba(244,239,231,0.55);
+    text-transform: uppercase;
+  }
+  .crumbs a { color: rgba(244,239,231,0.7); text-decoration: none; transition: color 0.2s; }
+  .crumbs a:hover { color: var(--pink); }
+  .crumbs .sep { margin: 0 8px; opacity: 0.4; }
+  .crumbs .current { color: var(--cream); }
+  @media (max-width: 600px) {
+    .crumbs { padding: 18px 22px 0; font-size: 11px; }
   }
 </style>
 </head>
@@ -1686,7 +1704,7 @@
       <p class="lead">Wir bauen keine Marken für alle. Wir bauen Marken für Inhaberinnen und Inhaber, die ihren Beruf ernst meinen — in drei Welten, in denen wir zuhause sind.</p>
     </div>
     <div class="audience-grid">
-      <div class="audience-card reveal" data-scroll-reveal data-tilt>
+      <div class="audience-card reveal" data-scroll-reveal data-tilt style="--stagger: 0">
         <div class="audience-wappen" aria-hidden="true"><img src="assets/Dackel-1.svg" alt="" loading="lazy" decoding="async" /></div>
         <div class="audience-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1699,7 +1717,7 @@
         <p>Inhabergeführte Praxen und Studios, die Premium-Qualität liefern — und endlich auch so aussehen wollen. Aric kommt selbst aus dieser Welt: REHAB FIVE ist seine Praxis.</p>
       </div>
 
-      <div class="audience-card reveal" data-scroll-reveal data-tilt>
+      <div class="audience-card reveal" data-scroll-reveal data-tilt style="--stagger: 1">
         <div class="audience-wappen" aria-hidden="true"><img src="assets/Dackel-2.svg" alt="" loading="lazy" decoding="async" /></div>
         <div class="audience-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1714,7 +1732,7 @@
         <p>Vereine und Sportmarken, die mehr sind als ihr Logo auf dem Trikot. Aric kennt die Welt aus erster Hand — über REHAB FIVE arbeitet er mit Partnern wie USC und UBC Münster.</p>
       </div>
 
-      <div class="audience-card reveal" data-scroll-reveal data-tilt>
+      <div class="audience-card reveal" data-scroll-reveal data-tilt style="--stagger: 2">
         <div class="audience-wappen" aria-hidden="true"><img src="assets/Dackel-5.svg" alt="" loading="lazy" decoding="async" /></div>
         <div class="audience-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1741,7 +1759,7 @@
       <p class="lead">Wir sind keine Full-Service-Bude, die alles ein bisschen macht. Wir sind die zwei Pfoten, die zählen, wenn ein Mittelständler endlich wie sich selbst aussehen will.</p>
     </div>
     <div class="pillars">
-      <div class="pillar reveal">
+      <div class="pillar reveal" style="--stagger: 0">
         <div class="pillar-wappen" aria-hidden="true"><img src="assets/Dackel-4.svg" alt="" loading="lazy" decoding="async" /></div>
         <div class="pillar-num">01</div>
         <h3>Branding</h3>
@@ -1754,7 +1772,7 @@
           <li>Webdesign & Launch</li>
         </ul>
       </div>
-      <div class="pillar reveal">
+      <div class="pillar reveal" style="--stagger: 1">
         <div class="pillar-wappen" aria-hidden="true"><img src="assets/Dackel-2.svg" alt="" loading="lazy" decoding="async" /></div>
         <div class="pillar-num">02</div>
         <h3>Social Media</h3>

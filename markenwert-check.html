@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Markenwert-Check für Inhaber · Quint</title>
+<meta name="description" content="10 Fragen, 3 Minuten. Ehrliches Selbst-Audit: Wie stark ist die Marke deiner inhabergeführten Praxis, deines Vereins, deiner Beratung — wirklich?" />
+<meta name="theme-color" content="#143C6B" />
+<link rel="canonical" href="https://abraemswig-wq.github.io/quint-marketing-preview/markenwert-check.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Markenwert-Check für Inhaber · Quint" />
+<meta property="og:description" content="10 Fragen, 3 Minuten. Wie stark ist deine Marke wirklich?" />
+<meta property="og:image" content="https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Quiz",
+  "name": "Markenwert-Check für Inhaber",
+  "description": "Ein 10-Fragen-Self-Check für inhabergeführte Praxen, Vereine und Berater im DACH-Raum.",
+  "about": { "@type": "Thing", "name": "Markenanalyse" },
+  "educationalUse": "Self-Assessment",
+  "audience": { "@type": "BusinessAudience", "audienceType": "Inhabergeführte KMU" }
+}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Hauptseite","item":"https://abraemswig-wq.github.io/quint-marketing-preview/"},
+{"@type":"ListItem","position":2,"name":"Markenwert-Check","item":"https://abraemswig-wq.github.io/quint-marketing-preview/markenwert-check.html"}
+]}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy:        #143C6B;
+    --navy-deep:   #0D2747;
+    --navy-soft:   #1E5191;
+    --pink:        #E89BB1;
+    --pink-strong: #D87A95;
+    --pink-soft:   #F3C7D4;
+    --cream:       #F4EFE7;
+    --cream-deep:  #E8DFCE;
+    --white:       #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--navy); color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  a { color: var(--pink); text-decoration: none; transition: color 0.2s; }
+  a:hover { color: var(--pink-strong); }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; }
+  button { font: inherit; cursor: pointer; }
+
+  /* Nav */
+  nav.topnav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(13,39,71,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 18px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo img { height: 28px; width: auto; display: block; }
+  .nav-back {
+    font-size: 13px; color: rgba(244,239,231,0.7);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 10px 18px; border-radius: 999px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .nav-back:hover { border-color: var(--pink); color: var(--cream); }
+
+  /* Breadcrumbs */
+  .crumbs {
+    max-width: 880px; margin: 0 auto;
+    padding: 24px 32px 0;
+    font-size: 12px; letter-spacing: 0.06em;
+    color: rgba(244,239,231,0.55);
+    text-transform: uppercase;
+  }
+  .crumbs a { color: rgba(244,239,231,0.7); }
+  .crumbs .sep { margin: 0 8px; opacity: 0.4; }
+  .crumbs .current { color: var(--cream); }
+
+  /* Head */
+  .head {
+    padding: 60px 32px 40px;
+    max-width: 880px; margin: 0 auto;
+  }
+  .head-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(244,239,231,0.7); margin-bottom: 28px;
+    background: rgba(232,155,177,0.08);
+  }
+  .head-eyebrow-dot { width: 8px; height: 8px; background: var(--pink); border-radius: 50%; }
+  .head h1 {
+    font-size: clamp(44px, 7vw, 80px);
+    line-height: 0.96; font-weight: 700;
+    letter-spacing: -0.03em; margin-bottom: 22px;
+  }
+  .head h1 .italic { color: var(--pink); }
+  .head .lead {
+    font-size: 19px; color: rgba(244,239,231,0.7);
+    max-width: 640px; line-height: 1.55;
+    margin-bottom: 16px;
+  }
+  .head .meta {
+    font-size: 13px; color: rgba(244,239,231,0.5);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-top: 24px;
+  }
+  .head .meta strong { color: var(--pink); }
+
+  /* Quiz area */
+  main.quiz {
+    max-width: 880px; margin: 0 auto;
+    padding: 32px 32px 100px;
+  }
+  .progress-bar {
+    height: 6px; background: rgba(255,255,255,0.08);
+    border-radius: 999px; overflow: hidden;
+    margin-bottom: 40px;
+  }
+  .progress-fill {
+    height: 100%; width: 0;
+    background: var(--pink);
+    transition: width 0.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .question-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 48px;
+    margin-bottom: 32px;
+    display: none;
+  }
+  .question-card.active { display: block; animation: fadeIn 0.45s cubic-bezier(.2,.8,.2,1); }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .q-num {
+    display: inline-block;
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: 18px; color: var(--pink);
+    margin-bottom: 16px;
+  }
+  .q-text {
+    font-size: clamp(22px, 3vw, 30px);
+    line-height: 1.3; font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+    color: var(--white);
+  }
+  .answers {
+    display: grid; gap: 12px;
+  }
+  .answer-btn {
+    background: rgba(255,255,255,0.04);
+    border: 2px solid rgba(255,255,255,0.1);
+    color: var(--cream);
+    padding: 18px 22px;
+    border-radius: 14px;
+    text-align: left;
+    font-size: 16px;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .answer-btn:hover {
+    border-color: var(--pink);
+    background: rgba(232,155,177,0.08);
+    transform: translateY(-2px);
+  }
+  @media (hover: none) {
+    .answer-btn:hover { transform: none; }
+  }
+  .answer-btn .scale {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(232,155,177,0.15);
+    color: var(--pink);
+    font-weight: 700; font-size: 13px;
+    flex-shrink: 0;
+  }
+  .answer-btn .answer-text { flex: 1; }
+
+  /* Result */
+  .result {
+    display: none;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 56px 48px;
+  }
+  .result.active { display: block; animation: fadeIn 0.6s cubic-bezier(.2,.8,.2,1); }
+  .result .score-num {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: clamp(80px, 14vw, 160px);
+    line-height: 0.9; color: var(--pink);
+    margin-bottom: 12px; letter-spacing: -0.04em;
+    text-align: center;
+  }
+  .result .score-out-of {
+    font-size: 16px; color: rgba(244,239,231,0.5);
+    text-align: center; margin-bottom: 32px;
+  }
+  .result h2 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 18px; line-height: 1.1;
+    text-align: center;
+  }
+  .result h2 .italic { color: var(--pink); }
+  .result .verdict {
+    font-size: 17px; line-height: 1.65;
+    color: rgba(244,239,231,0.85);
+    max-width: 600px; margin: 0 auto 32px;
+    text-align: center;
+  }
+  .result .recommendation {
+    background: rgba(232,155,177,0.08);
+    border: 1px solid rgba(232,155,177,0.18);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 36px;
+  }
+  .result .recommendation .label {
+    font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--pink);
+    margin-bottom: 12px;
+  }
+  .result .recommendation .text {
+    font-size: 18px; line-height: 1.5;
+    color: var(--cream);
+  }
+  .result .recommendation .text strong { color: var(--white); }
+  .result-cta-row {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    justify-content: center;
+  }
+  .cta {
+    display: inline-flex; align-items: center;
+    background: var(--pink); color: var(--navy);
+    padding: 16px 28px; border-radius: 999px;
+    font-size: 15px; font-weight: 700;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .cta:hover { transform: translateY(-2px); background: var(--pink-strong); }
+  @media (hover: none) { .cta:hover { transform: none; background: var(--pink); } }
+  .cta-ghost {
+    background: transparent; color: var(--cream);
+    border: 1px solid rgba(255,255,255,0.18);
+  }
+  .cta-ghost:hover { background: rgba(255,255,255,0.04); }
+  .restart {
+    margin-top: 36px; text-align: center;
+    font-size: 13px;
+  }
+  .restart a {
+    color: rgba(244,239,231,0.5);
+    border-bottom: 1px dashed rgba(244,239,231,0.3);
+    padding-bottom: 2px;
+  }
+  .restart a:hover { color: var(--pink); border-color: var(--pink); }
+
+  /* Footer */
+  footer {
+    background: var(--navy-deep);
+    padding: 48px 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .foot-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 24px;
+    font-size: 13px; color: rgba(244,239,231,0.5);
+  }
+  .foot-links { display: flex; gap: 24px; }
+  .foot-links a { color: rgba(244,239,231,0.55); }
+
+  @media (max-width: 700px) {
+    .head { padding: 40px 22px 30px; }
+    main.quiz { padding: 20px 22px 60px; }
+    .crumbs { padding: 18px 22px 0; font-size: 11px; }
+    .question-card, .result { padding: 32px 26px; border-radius: 18px; }
+    .nav-inner { padding: 14px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Quint — Startseite"><img src="assets/quint-logo-white.svg" alt="Quint" decoding="async" /></a>
+    <a class="nav-back" href="index.html">← Hauptseite</a>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <a href="index.html">Hauptseite</a>
+  <span class="sep">/</span>
+  <span class="current">Markenwert-Check</span>
+</nav>
+
+<section class="head">
+  <div class="head-eyebrow"><span class="head-eyebrow-dot"></span>Kostenfrei · Ohne Anmeldung</div>
+  <h1>Wie stark ist deine Marke <span class="italic">wirklich?</span></h1>
+  <p class="lead">10 Fragen, 3 Minuten. Ein ehrliches Selbst-Audit für Inhaberinnen und Inhaber von Praxen, Vereinen und Kanzleien im DACH-Raum.</p>
+  <p class="lead">Keine E-Mail nötig. Kein Newsletter-Trick. Nur eine Standortbestimmung — und am Ende eine Empfehlung, was als Nächstes Sinn macht.</p>
+  <div class="meta">Ergebnis: <strong>Sofort sichtbar.</strong> · Dauer: <strong>3 Minuten.</strong></div>
+</section>
+
+<main class="quiz" id="quizMain">
+
+  <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+  <!-- Fragen werden via JS gerendert -->
+  <div id="questionContainer"></div>
+
+  <div class="result" id="result">
+    <div class="score-num" id="scoreNum">0</div>
+    <div class="score-out-of">von 40 möglichen Punkten</div>
+    <h2 id="resultTitle">Dein Markenwert</h2>
+    <p class="verdict" id="resultVerdict"></p>
+    <div class="recommendation">
+      <div class="label">Was wir empfehlen</div>
+      <div class="text" id="resultRecommendation"></div>
+    </div>
+    <div class="result-cta-row">
+      <a class="cta" href="mailto:hallo@quint-marketing.de?subject=Markenwert-Check%20Ergebnis&body=Hallo%20Aric%2C%0A%0Aich%20habe%20gerade%20den%20Markenwert-Check%20gemacht%20und%20w%C3%BCrde%20gerne%20kurz%20sprechen.%0A%0AMein%20Score%3A%20" id="ctaMail">Erstgespräch buchen →</a>
+      <a class="cta cta-ghost" href="index.html">Zurück zur Hauptseite</a>
+    </div>
+    <div class="restart">
+      <a href="#" id="restartLink">Check noch einmal machen</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <span>© 2026 Quint Marketing — Münster</span>
+    <div class="foot-links">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="index.html">Hauptseite</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const questions = [
+  {
+    q: "Wenn drei Wunschkunden deine Marke beschreiben sollen — würden sie dieselben drei Worte nennen?",
+    a: [
+      { score: 0, text: "Wahrscheinlich nicht. Niemand könnte das so klar." },
+      { score: 1, text: "Ein, zwei Begriffe würden sich wiederholen — aber kein klares Bild." },
+      { score: 3, text: "Ja, die Grundrichtung wäre bei allen ähnlich." },
+      { score: 4, text: "Sehr wahrscheinlich. Wir wissen, wofür wir stehen — und das kommt an." }
+    ]
+  },
+  {
+    q: "Hast du ein schriftlich dokumentiertes Marken-Versprechen (kein Slogan, sondern was Kunden bei dir bekommen)?",
+    a: [
+      { score: 0, text: "Nein. Das war noch nie Thema." },
+      { score: 1, text: "Im Kopf ja, schriftlich nein." },
+      { score: 3, text: "Schriftlich, aber nicht aktiv verwendet." },
+      { score: 4, text: "Ja, schriftlich und im gesamten Team verankert." }
+    ]
+  },
+  {
+    q: "Wie konsistent ist dein visueller Auftritt — von Website über Instagram bis hin zu Rechnungs-PDF?",
+    a: [
+      { score: 0, text: "Sehr unterschiedlich. Vieles ist über die Jahre gewachsen." },
+      { score: 1, text: "Logo passt überall, der Rest variiert." },
+      { score: 3, text: "Im Großen und Ganzen einheitlich, mit kleinen Brüchen." },
+      { score: 4, text: "Hochkonsistent — alles fühlt sich nach einer Marke an." }
+    ]
+  },
+  {
+    q: "Wie würdest du die Tonalität deiner Texte (Website, Social, E-Mail) beschreiben?",
+    a: [
+      { score: 0, text: "Sehr professionell-distanziert. Klingt wie viele andere." },
+      { score: 1, text: "Versuchen freundlich zu klingen, aber ohne klare Linie." },
+      { score: 3, text: "Wir haben eine erkennbare Stimme, aber nicht durchgängig." },
+      { score: 4, text: "Klare, eigene Stimme — Kunden erkennen uns am Ton." }
+    ]
+  },
+  {
+    q: "Bringst du regelmäßig (mindestens monatlich) Inhalte raus, die deine Expertise zeigen?",
+    a: [
+      { score: 0, text: "Nein. Wenn was rausgeht, dann sporadisch." },
+      { score: 1, text: "Wir versuchen es, aber es ist mehr 'wir sind da' als 'hier ist Mehrwert'." },
+      { score: 3, text: "Ja, monatlich oder häufiger — aber unstrukturiert." },
+      { score: 4, text: "Regelmäßig, strategisch, mit klaren Themenwelten." }
+    ]
+  },
+  {
+    q: "Wenn du morgen 50.000€ Marketing-Budget bekämst — wüsstest du, wo es den größten Hebel hat?",
+    a: [
+      { score: 0, text: "Ehrlich gesagt nein. Ich würde mich erstmal beraten lassen." },
+      { score: 1, text: "Ich hätte zwei, drei Ideen — aber keine Priorisierung." },
+      { score: 3, text: "Ja, ich wüsste die Top-3 — aber nicht in welcher Reihenfolge." },
+      { score: 4, text: "Glasklar. Ich weiß genau, wo es zuerst hingehört." }
+    ]
+  },
+  {
+    q: "Wie würdest du deine Premium-Positionierung im Markt beschreiben?",
+    a: [
+      { score: 0, text: "Wir konkurrieren über Preis und Verfügbarkeit." },
+      { score: 1, text: "Wir sind gut, aber das sehen Kunden erst, wenn sie da sind." },
+      { score: 3, text: "Wir kommunizieren Premium, aber unsere Marke verstärkt es nicht." },
+      { score: 4, text: "Wir sind sichtbar Premium — und Kunden zahlen es auch." }
+    ]
+  },
+  {
+    q: "Hast du Empfehlungs-/Weiterempfehlungs-Raten oder Erfahrungsberichte, die du aktiv nutzt?",
+    a: [
+      { score: 0, text: "Nein, sammeln wir nicht systematisch." },
+      { score: 1, text: "Vereinzelt, aber nicht auf der Website sichtbar." },
+      { score: 3, text: "Ja, einige — aber unstrukturiert eingebunden." },
+      { score: 4, text: "Aktiv gesammelt, strategisch eingesetzt." }
+    ]
+  },
+  {
+    q: "Wenn ein Mitarbeiter morgen einen Beitrag schreiben soll — gibt es klare Spielregeln für die Marke?",
+    a: [
+      { score: 0, text: "Nein, jeder macht es nach Gefühl." },
+      { score: 1, text: "Mündliche Faustregeln, aber nichts Schriftliches." },
+      { score: 3, text: "Ein paar Vorlagen, aber kein echter Style-Guide." },
+      { score: 4, text: "Ja, klare Spielregeln und Tonalität schriftlich definiert." }
+    ]
+  },
+  {
+    q: "Wenn du deine Marke jetzt mit einer Note 1-6 bewerten müsstest — was würdest du ehrlich geben?",
+    a: [
+      { score: 0, text: "5 oder 6 — wir sind noch weit weg von dort, wo wir hin wollen." },
+      { score: 1, text: "4 — vieles funktioniert irgendwie, aber wirkt unfertig." },
+      { score: 3, text: "2 oder 3 — solide, mit Optimierungspotenzial." },
+      { score: 4, text: "1 — wir sind richtig stolz auf das Bild, das wir abgeben." }
+    ]
+  }
+];
+
+const verdicts = {
+  low: {
+    range: [0, 14],
+    title: "Großes <span class='italic'>Potenzial.</span>",
+    verdict: "Ehrlich: Da liegt sehr viel auf dem Tisch. Deine Substanz ist da — sonst wärst du nicht so weit gekommen — aber sie kommt aktuell nicht als Marke an. Das ist die schlechte und die gute Nachricht: Mit einem strukturierten Branding-Schritt machst du eine sehr sichtbare Veränderung.",
+    rec: "Ein <strong>Branding-Audit + neue Markenbasis</strong>. Wir würden mit dir die Substanz freilegen und in ein konsistentes Bild übersetzen. Sechs bis acht Wochen Projekt, klare Etappen, kein Theorie-Gewölk."
+  },
+  mid: {
+    range: [15, 28],
+    title: "Solide — mit <span class='italic'>Lücken.</span>",
+    verdict: "Du hast eine Basis. Manches funktioniert, manches noch nicht. Typisch für inhabergeführte Marken in dieser Phase: Die Substanz ist gut, aber die Konsistenz fehlt, und der Wachstumshebel ist nicht klar.",
+    rec: "Ein <strong>Brand-Refresh + Social-Strategie</strong>. Wir würden deine bestehende Marke schärfen statt neu aufsetzen — und gleichzeitig den Social-Auftritt so aufstellen, dass er aktiv neue Kunden bringt."
+  },
+  high: {
+    range: [29, 40],
+    title: "Stark. <span class='italic'>Weiter so.</span>",
+    verdict: "Deine Marke trägt. Das ist selten und respektabel. Was an dieser Stelle Sinn macht: nicht alles umwerfen, sondern den nächsten Hebel finden — den einen Bereich, der noch nicht das Niveau des Rests erreicht.",
+    rec: "Ein <strong>fokussiertes Sparring-Gespräch</strong>. Wir würden mit dir die zwei, drei verbleibenden Lücken identifizieren — vielleicht ist es Social, vielleicht ein konkretes Produkt-Branding. Kein Full-Branding-Projekt, sondern eine chirurgische Ergänzung."
+  }
+};
+
+let currentQ = 0;
+let answers = [];
+
+function render() {
+  const container = document.getElementById('questionContainer');
+  const result = document.getElementById('result');
+  const progress = document.getElementById('progress');
+
+  if (currentQ < questions.length) {
+    result.classList.remove('active');
+    const q = questions[currentQ];
+    container.innerHTML = `
+      <div class="question-card active">
+        <div class="q-num">Frage ${currentQ + 1} von ${questions.length}</div>
+        <h2 class="q-text">${q.q}</h2>
+        <div class="answers">
+          ${q.a.map((a, i) => `
+            <button class="answer-btn" data-score="${a.score}" data-index="${i}">
+              <span class="scale">${a.score}</span>
+              <span class="answer-text">${a.text}</span>
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    `;
+    container.querySelectorAll('.answer-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        answers[currentQ] = parseInt(btn.dataset.score);
+        currentQ++;
+        progress.style.width = `${(currentQ / questions.length) * 100}%`;
+        if (currentQ === questions.length) showResult();
+        else render();
+      });
+    });
+  }
+}
+
+function showResult() {
+  document.getElementById('questionContainer').innerHTML = '';
+  document.getElementById('progress').style.width = '100%';
+  const score = answers.reduce((a, b) => a + b, 0);
+  const result = document.getElementById('result');
+  let verdict;
+  if (score <= verdicts.low.range[1]) verdict = verdicts.low;
+  else if (score <= verdicts.mid.range[1]) verdict = verdicts.mid;
+  else verdict = verdicts.high;
+
+  // Animated score count-up
+  const scoreEl = document.getElementById('scoreNum');
+  let cur = 0;
+  const targetScore = score;
+  const interval = setInterval(() => {
+    cur += 1;
+    if (cur >= targetScore) {
+      scoreEl.textContent = targetScore;
+      clearInterval(interval);
+    } else {
+      scoreEl.textContent = cur;
+    }
+  }, 40);
+
+  document.getElementById('resultTitle').innerHTML = verdict.title;
+  document.getElementById('resultVerdict').textContent = verdict.verdict;
+  document.getElementById('resultRecommendation').innerHTML = verdict.rec;
+  document.getElementById('ctaMail').href = `mailto:hallo@quint-marketing.de?subject=${encodeURIComponent('Markenwert-Check Ergebnis: ' + score + '/40')}&body=${encodeURIComponent(`Hallo Aric,\n\nich habe den Markenwert-Check gemacht und ${score} von 40 Punkten erreicht.\n\nIch würde gerne kurz sprechen.\n\nViele Grüße`)}`;
+
+  result.classList.add('active');
+  // Scroll to top of result
+  setTimeout(() => result.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+}
+
+document.getElementById('restartLink').addEventListener('click', e => {
+  e.preventDefault();
+  currentQ = 0;
+  answers = [];
+  document.getElementById('result').classList.remove('active');
+  document.getElementById('progress').style.width = '0%';
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Init
+render();
+</script>
+
+</body>
+</html>

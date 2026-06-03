@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ball ist nicht hier · Quint</title>
+<meta name="description" content="Diese Seite gibt es nicht (mehr). Zurück zum Spielfeld." />
+<meta name="theme-color" content="#143C6B" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy:        #143C6B;
+    --navy-deep:   #0D2747;
+    --pink:        #E89BB1;
+    --pink-strong: #D87A95;
+    --cream:       #F4EFE7;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--navy); color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    min-height: 100vh; min-height: 100dvh;
+    display: flex; flex-direction: column;
+  }
+  a { color: inherit; text-decoration: none; }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; }
+
+  /* Nav (minimal) */
+  nav {
+    padding: 22px 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo img { height: 28px; width: auto; display: block; }
+
+  /* Main 404-Stage */
+  main {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    padding: 60px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stage {
+    max-width: 720px; text-align: center;
+    position: relative; z-index: 2;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(232,155,177,0.9);
+    margin-bottom: 28px;
+  }
+  .code {
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic; font-weight: 400;
+    font-size: clamp(96px, 22vw, 240px);
+    line-height: 0.9; letter-spacing: -0.04em;
+    color: var(--pink);
+    margin-bottom: 24px;
+    opacity: 0.95;
+  }
+  h1 {
+    font-size: clamp(36px, 6vw, 72px);
+    line-height: 0.98; font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 22px;
+  }
+  h1 .italic { color: var(--pink); }
+  .lead {
+    font-size: 18px;
+    color: rgba(244,239,231,0.7);
+    max-width: 520px; margin: 0 auto 40px;
+    line-height: 1.55;
+  }
+  .cta-row {
+    display: inline-flex; flex-wrap: wrap;
+    gap: 12px;
+  }
+  .cta {
+    display: inline-flex; align-items: center;
+    background: var(--pink); color: var(--navy);
+    padding: 14px 24px; border-radius: 999px;
+    font-size: 14px; font-weight: 700;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .cta:hover { transform: translateY(-2px); background: var(--pink-strong); }
+  .cta-ghost {
+    background: transparent; color: var(--cream);
+    border: 1px solid rgba(255,255,255,0.18);
+  }
+  .cta-ghost:hover { background: rgba(255,255,255,0.04); transform: translateY(-2px); }
+  @media (hover: none) {
+    .cta:hover { transform: none; background: var(--pink); }
+    .cta-ghost:hover { background: transparent; transform: none; }
+  }
+
+  /* Stage-Background: Dackel + Ball */
+  .scene {
+    position: absolute;
+    right: 5%; bottom: 0;
+    width: clamp(260px, 32vw, 460px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .scene img.dackel {
+    width: 100%; height: auto;
+    opacity: 0.45;
+    display: block;
+  }
+  .scene .ball {
+    position: absolute;
+    top: 6%; left: 4%;
+    width: 14%; aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #f4b8c8 0%, var(--pink) 45%, var(--pink-strong) 100%);
+    box-shadow: 0 12px 32px rgba(13,39,71,0.5), inset -2px -3px 8px rgba(0,0,0,0.08);
+    animation: ballBob 2.4s cubic-bezier(.45,0,.55,1) infinite;
+  }
+  .scene .ball::after {
+    content: ""; position: absolute;
+    top: 18%; left: 22%; width: 22%; height: 18%;
+    background: rgba(255,255,255,0.55); border-radius: 50%;
+    filter: blur(2px);
+  }
+  @keyframes ballBob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-14px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scene .ball { animation: none; }
+  }
+  @media (max-width: 700px) {
+    .scene { display: none; }
+  }
+
+  /* Footer */
+  footer {
+    padding: 24px 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 12px;
+    color: rgba(244,239,231,0.4);
+    text-align: center;
+  }
+  footer a { color: rgba(244,239,231,0.55); }
+  footer a:hover { color: var(--pink); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/quint-marketing-preview/" class="nav-logo" aria-label="Quint — Startseite"><img src="/quint-marketing-preview/assets/quint-logo-white.svg" alt="Quint" decoding="async" /></a>
+    <a href="/quint-marketing-preview/" class="cta cta-ghost" style="font-size: 12px; padding: 10px 18px;">← Hauptseite</a>
+  </div>
+</nav>
+
+<main>
+  <div class="scene" aria-hidden="true">
+    <span class="ball"></span>
+    <img class="dackel" src="/quint-marketing-preview/assets/Dackel-Maennchen.svg" alt="" decoding="async" />
+  </div>
+  <div class="stage">
+    <span class="eyebrow">Ball ist nicht hier</span>
+    <div class="code">404<span class="italic">.</span></div>
+    <h1>Diese Seite jagt <span class="italic">woanders.</span></h1>
+    <p class="lead">Vielleicht hat der Dackel sie verbuddelt, vielleicht hat sie nie existiert. So oder so — wir bringen dich zurück aufs Spielfeld.</p>
+    <div class="cta-row">
+      <a href="/quint-marketing-preview/" class="cta">Zur Hauptseite →</a>
+      <a href="/quint-marketing-preview/journal/" class="cta cta-ghost">Journal lesen</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Quint Marketing — Münster · <a href="/quint-marketing-preview/impressum.html">Impressum</a> · <a href="/quint-marketing-preview/datenschutz.html">Datenschutz</a>
+</footer>
+
+</body>
+</html>

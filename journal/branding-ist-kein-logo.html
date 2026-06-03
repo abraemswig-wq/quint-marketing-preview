@@ -315,7 +315,27 @@
     letter-spacing: 0.1em;
   }
   footer a:hover { color: var(--pink); }
+
+  .crumbs {
+    max-width: 1200px; margin: 0 auto;
+    padding: 24px 32px 0;
+    font-size: 12px; letter-spacing: 0.06em;
+    color: rgba(244,239,231,0.55);
+    text-transform: uppercase;
+  }
+  .crumbs a { color: rgba(244,239,231,0.7); text-decoration: none; transition: color 0.2s; }
+  .crumbs a:hover { color: var(--pink); }
+  .crumbs .sep { margin: 0 8px; opacity: 0.4; }
+  .crumbs .current { color: var(--cream); }
+  @media (max-width: 600px) { .crumbs { padding: 18px 22px 0; font-size: 11px; } }
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Hauptseite","item":"https://abraemswig-wq.github.io/quint-marketing-preview/"},
+{"@type":"ListItem","position":2,"name":"Journal","item":"https://abraemswig-wq.github.io/quint-marketing-preview/journal/"},
+{"@type":"ListItem","position":3,"name":"Branding ist kein Logo","item":"https://abraemswig-wq.github.io/quint-marketing-preview/journal/branding-ist-kein-logo.html"}
+]}
+</script>
 </head>
 <body class="locked">
 
@@ -332,6 +352,8 @@
     <a href="index.html" class="nav-back">← Journal</a>
   </div>
 </nav>
+
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../">Hauptseite</a><span class="sep">/</span><a href="./">Journal</a><span class="sep">/</span><span class="current">Branding ist kein Logo</span></nav>
 
 <header class="article-head">
   <div class="wrap-article">
