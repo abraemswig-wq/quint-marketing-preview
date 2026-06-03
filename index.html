@@ -469,31 +469,6 @@
     animation: heroBallBounce 2.4s cubic-bezier(.45,0,.55,1) infinite;
     transform-origin: center;
   }
-  /* Schwanz-Wedeln: zusätzlicher weisser Pfad ueber dem Original-Schwanz,
-     rotiert am Ansatz-Punkt. Position empirisch auf den Schwanzansatz gesetzt. */
-  .hero-wappen .hero-tail {
-    position: absolute;
-    /* Schwanzansatz am Po — visuell ermittelt aus dem Dackel-Rendering */
-    left: 55%; top: 72%;
-    width: 16%; height: auto;
-    transform-origin: 50% 6%;
-    animation: heroTailWag 0.55s cubic-bezier(.45,.05,.55,.95) infinite alternate;
-    pointer-events: none;
-    z-index: 2;
-  }
-  .hero-wappen .hero-tail path {
-    stroke: var(--cream);
-    stroke-width: 11;
-    stroke-linecap: round;
-    fill: none;
-  }
-  @keyframes heroTailWag {
-    from { transform: rotate(-22deg); }
-    to   { transform: rotate(22deg); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-wappen .hero-tail { animation: none; transform: rotate(0); }
-  }
   .hero-wappen .hero-ball::after {
     content: ""; position: absolute;
     top: 18%; left: 22%; width: 22%; height: 18%;
@@ -1649,9 +1624,6 @@
   <div class="hero-wappen" aria-hidden="true">
     <span class="hero-ball"></span>
     <img class="hero-dackel" src="assets/Dackel-Maennchen.svg" alt="" fetchpriority="high" decoding="async" />
-    <svg class="hero-tail" viewBox="0 0 60 100" aria-hidden="true">
-      <path d="M 30 5 Q 38 30, 42 55 Q 46 78, 50 95" />
-    </svg>
   </div>
   <div class="wrap">
     <div class="hero-content">
