@@ -1066,11 +1066,41 @@
   /* TEAM */
   .team-block { padding: 160px 0; background: var(--navy); }
   .team-grid {
-    display: grid; grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px; margin-top: 64px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 22px; margin-top: 64px;
   }
-  @media (max-width: 1000px) { .team-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 700px) { .team-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 1100px) { .team-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr; } }
+
+  /* Dackel-Karte — eigene Optik, da kein Mensch */
+  .person.dackel-person { padding-bottom: 36px; }
+  .person.dackel-person .dackel-portrait {
+    width: 100%;
+    aspect-ratio: 1.4 / 1;
+    background: rgba(232,155,177,0.08);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 28px;
+    overflow: hidden;
+    position: relative;
+  }
+  .person.dackel-person .dackel-portrait img {
+    width: 64%;
+    height: auto;
+    opacity: 0.92;
+    display: block;
+    filter: invert(1);
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .person.dackel-person:hover .dackel-portrait img { transform: scale(1.05); }
+  .person.dackel-person .dackel-portrait::before {
+    content: ""; position: absolute;
+    top: 10%; left: 12%;
+    width: 14%; aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #f4b8c8 0%, var(--pink) 45%, var(--pink-strong) 100%);
+    box-shadow: 0 4px 12px rgba(13,39,71,0.4);
+  }
   .person {
     background: rgba(255,255,255,0.035);
     border: 1px solid rgba(255,255,255,0.08);
@@ -1986,8 +2016,8 @@
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Wer wir sind</div>
-      <h2>Drei Menschen.<br/><span class="italic">Eine Handschrift.</span></h2>
-      <p class="lead">Quint ist kein Kollektiv und keine Agentur-Maschine. Wir sind drei — Strategie, Design, Logo-Handwerk. Wer mit uns arbeitet, arbeitet mit uns. Nicht mit einem Account Manager.</p>
+      <h2>Drei Menschen. Ein <span class="italic">Wappentier.</span><br/>Eine Handschrift.</h2>
+      <p class="lead">Quint ist kein Kollektiv und keine Agentur-Maschine. Wir sind drei — Strategie, Design, Logo-Handwerk. Und ein Dackel, der nie strategisch geplant war. Wer mit uns arbeitet, arbeitet mit uns. Nicht mit einem Account Manager.</p>
     </div>
     <div class="team-grid">
       <a href="team-aric.html" class="person reveal person-link" aria-label="Aric Brämswig — Profil öffnen">
@@ -2013,6 +2043,16 @@
         <div class="person-role">Logodesign · Illustration · Painting</div>
         <p class="person-bio">Wenn aus Markenidee Markenmarke wird — wenn aus Konzept ein Logo wird, das auch in zehn Jahren noch funktioniert — geht das durch Bjoerns Hand. Logo-Entwicklung, illustrative Bildwelten und Painting-Arbeiten sind seine Domäne.</p>
         <span class="person-cta">Profil ansehen <span class="arrow">→</span></span>
+      </a>
+      <a href="team-dackel.html" class="person dackel-person reveal person-link" aria-label="Dackel — Wappentier · Geschichte öffnen">
+        <div class="person-decoration"></div>
+        <div class="dackel-portrait" aria-hidden="true">
+          <img src="assets/Dackel-Maennchen.svg" alt="" decoding="async" />
+        </div>
+        <div class="person-name">Dackel</div>
+        <div class="person-role">Wappentier · Chief Spielfreude</div>
+        <p class="person-bio">Kam nicht aus einem Marken-Workshop. Kam, weil Rania und Bjoern Dackel mögen — und Aric das zugelassen hat. Geblieben, weil Marken so beginnen sollten: aus echtem Stoff, nicht aus Workshop-Folien.</p>
+        <span class="person-cta">Geschichte lesen <span class="arrow">→</span></span>
       </a>
     </div>
   </div>
