@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Datenschutz · Quint</title>
+<meta name="description" content="Datenschutzerklärung von Quint Marketing." />
+<meta name="theme-color" content="#143C6B" />
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://abraemswig-wq.github.io/quint-marketing-preview/datenschutz.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy:        #143C6B;
+    --navy-deep:   #0D2747;
+    --navy-soft:   #1E5191;
+    --pink:        #E89BB1;
+    --pink-strong: #D87A95;
+    --cream:       #F4EFE7;
+    --white:       #ffffff;
+    --ink:         #0a1f3a;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--navy); color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+  a { color: var(--pink); text-decoration: none; transition: color 0.2s; }
+  a:hover { color: var(--pink-strong); }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; }
+
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(13,39,71,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 18px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo { display: inline-flex; align-items: center; }
+  .nav-logo img { height: 28px; width: auto; display: block; }
+  .nav-back {
+    font-size: 13px; color: rgba(244,239,231,0.7);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 10px 18px; border-radius: 999px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .nav-back:hover { border-color: var(--pink); color: var(--cream); }
+
+  .head {
+    padding: 80px 32px 40px;
+    max-width: 720px; margin: 0 auto;
+  }
+  .head-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(244,239,231,0.6); margin-bottom: 24px;
+  }
+  .head-eyebrow-dot { width: 8px; height: 8px; background: var(--pink); border-radius: 50%; }
+  .head h1 {
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 0.98; font-weight: 700;
+    letter-spacing: -0.03em; margin-bottom: 18px;
+  }
+  .head h1 .italic { color: var(--pink); }
+  .head .lead {
+    font-size: 18px; color: rgba(244,239,231,0.7);
+    max-width: 600px;
+  }
+
+  /* Disclaimer-Box */
+  .disclaimer {
+    max-width: 720px; margin: 0 auto;
+    padding: 0 32px 32px;
+  }
+  .disclaimer-box {
+    background: rgba(232,155,177,0.08);
+    border: 1px solid rgba(232,155,177,0.2);
+    border-radius: 12px;
+    padding: 20px 24px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(244,239,231,0.82);
+  }
+  .disclaimer-box strong { color: var(--pink); }
+
+  main.legal {
+    max-width: 720px; margin: 0 auto;
+    padding: 24px 32px 120px;
+  }
+  .legal h2 {
+    font-size: 22px; font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 56px 0 18px;
+    color: var(--white);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 32px;
+  }
+  .legal h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .legal h3 {
+    font-size: 17px; font-weight: 600;
+    margin: 28px 0 10px; color: var(--cream);
+  }
+  .legal p { margin-bottom: 14px; font-size: 16px; }
+  .legal ul { margin: 0 0 14px 22px; }
+  .legal ul li { margin-bottom: 6px; font-size: 16px; }
+  .legal .meta { color: rgba(244,239,231,0.55); font-size: 14px; }
+  .legal address {
+    font-style: normal;
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid var(--pink);
+    padding: 18px 22px;
+    border-radius: 4px;
+    margin: 16px 0;
+  }
+  .legal address strong { display: block; font-weight: 600; margin-bottom: 4px; color: var(--white); }
+
+  footer {
+    background: var(--navy-deep);
+    padding: 48px 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .foot-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 24px;
+    font-size: 13px; color: rgba(244,239,231,0.5);
+  }
+  .foot-links { display: flex; gap: 24px; }
+  .foot-links a { color: rgba(244,239,231,0.55); }
+  .foot-links a:hover { color: var(--pink); }
+
+  @media (max-width: 600px) {
+    .head { padding: 56px 22px 32px; }
+    .disclaimer { padding: 0 22px 24px; }
+    main.legal { padding: 16px 22px 80px; }
+    .nav-inner { padding: 14px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Quint — Startseite"><img src="assets/quint-logo-white.svg" alt="Quint" decoding="async" /></a>
+    <a class="nav-back" href="index.html">← Hauptseite</a>
+  </div>
+</nav>
+
+<section class="head">
+  <div class="head-eyebrow"><span class="head-eyebrow-dot"></span>Rechtliches</div>
+  <h1>Datenschutz<span class="italic">.</span></h1>
+  <p class="lead">Wie wir mit personenbezogenen Daten umgehen — DSGVO-konform und auf das Nötigste reduziert.</p>
+</section>
+
+<div class="disclaimer">
+  <div class="disclaimer-box">
+    <strong>Hinweis zur Rechtsverbindlichkeit:</strong> Dieser Text ist ein sorgfältiger Erst-Entwurf, ersetzt aber keine juristische Prüfung. Vor Live-Schaltung bitte mit einer Anwaltskanzlei oder einem Generator wie eRecht24 abgleichen.
+  </div>
+</div>
+
+<main class="legal">
+
+  <h2>1. Verantwortlicher</h2>
+  <p>Verantwortlich für die Datenverarbeitung auf dieser Website im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:</p>
+  <address>
+    <strong>Aric Brämswig</strong>
+    Quint Marketing (Einzelunternehmen)<br/>
+    Scharnhorststraße 40<br/>
+    48151 Münster<br/>
+    Deutschland<br/>
+    E-Mail: <a href="mailto:hallo@quint-marketing.de">hallo@quint-marketing.de</a>
+  </address>
+
+  <h2>2. Allgemeine Hinweise</h2>
+  <p>Wir nehmen den Schutz Ihrer persönlichen Daten ernst und behandeln Ihre personenbezogenen Daten vertraulich, entsprechend den gesetzlichen Datenschutzvorschriften (DSGVO, BDSG, TTDSG) sowie dieser Datenschutzerklärung.</p>
+  <p>Diese Website wird über <strong>GitHub Pages</strong> (GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) gehostet. Beim Aufruf einer Seite werden technisch bedingt Zugriffsdaten (insb. IP-Adresse, Datum, Uhrzeit, aufgerufene Ressource, User-Agent) an die GitHub-Server übermittelt und dort temporär gespeichert. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem stabilen Betrieb).</p>
+
+  <h2>3. Datenerhebung auf dieser Website</h2>
+
+  <h3>3.1 Server-Logs (über GitHub Pages)</h3>
+  <p>Der Hosting-Anbieter erhebt und speichert automatisch Informationen in „Server-Log-Dateien":</p>
+  <ul>
+    <li>Browsertyp und -version</li>
+    <li>verwendetes Betriebssystem</li>
+    <li>Referrer-URL</li>
+    <li>Hostname des zugreifenden Rechners</li>
+    <li>Uhrzeit der Serveranfrage</li>
+    <li>IP-Adresse</li>
+  </ul>
+  <p>Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Wir selbst haben auf diese Daten keinen unmittelbaren Zugriff.</p>
+
+  <h3>3.2 Google Fonts</h3>
+  <p>Diese Website nutzt Schriftarten von Google Fonts (Familjen Grotesk, Fraunces) zur einheitlichen Darstellung. Beim Aufruf der Seite werden die Schriften vom Server der Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA) geladen. Hierbei wird Ihre IP-Adresse an Google übertragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer einheitlichen, professionellen Darstellung der Website).</p>
+  <p>Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.</p>
+
+  <h3>3.3 Kontaktaufnahme</h3>
+  <p>Wenn Sie uns per E-Mail kontaktieren (<a href="mailto:hallo@quint-marketing.de">hallo@quint-marketing.de</a>), werden Ihre Angaben zur Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) bzw. lit. f DSGVO (berechtigtes Interesse an der Bearbeitung Ihrer Anfrage). Wir geben diese Daten nicht ohne Ihre Einwilligung weiter und löschen sie, sobald sie für die Bearbeitung nicht mehr erforderlich sind.</p>
+
+  <h2>4. Cookies & Tracking</h2>
+  <p>Diese Website setzt aktuell <strong>keine eigenen Cookies</strong> ein und nutzt <strong>kein Web-Analytics-Tool</strong> (kein Google Analytics, Plausible, Matomo o.ä.). Sollten sich diese Verfahren ändern, aktualisieren wir diese Erklärung und holen — wo erforderlich — Ihre Einwilligung per Cookie-Banner ein.</p>
+
+  <h2>5. Ihre Rechte als Betroffener</h2>
+  <p>Sie haben jederzeit das Recht auf:</p>
+  <ul>
+    <li><strong>Auskunft</strong> über die zu Ihrer Person gespeicherten Daten (Art. 15 DSGVO)</li>
+    <li><strong>Berichtigung</strong> unrichtiger Daten (Art. 16 DSGVO)</li>
+    <li><strong>Löschung</strong> Ihrer Daten (Art. 17 DSGVO)</li>
+    <li><strong>Einschränkung</strong> der Verarbeitung (Art. 18 DSGVO)</li>
+    <li><strong>Datenübertragbarkeit</strong> (Art. 20 DSGVO)</li>
+    <li><strong>Widerspruch</strong> gegen die Verarbeitung (Art. 21 DSGVO)</li>
+    <li><strong>Widerruf</strong> erteilter Einwilligungen mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)</li>
+    <li><strong>Beschwerde</strong> bei der zuständigen Aufsichtsbehörde (Art. 77 DSGVO) — für uns: Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen, <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer">ldi.nrw.de</a></li>
+  </ul>
+  <p>Zur Ausübung Ihrer Rechte genügt eine formlose E-Mail an <a href="mailto:hallo@quint-marketing.de">hallo@quint-marketing.de</a>.</p>
+
+  <h2>6. SSL-/TLS-Verschlüsselung</h2>
+  <p>Diese Seite nutzt aus Sicherheitsgründen eine SSL-/TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie am „https://" in der Adresszeile Ihres Browsers.</p>
+
+  <h2>7. Aktualität & Änderung dieser Erklärung</h2>
+  <p>Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Juni 2026. Durch die Weiterentwicklung der Website oder geänderte gesetzliche Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern. Die jeweils aktuelle Version ist stets unter dieser URL abrufbar.</p>
+
+  <p class="meta">Stand: Juni 2026</p>
+
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <span>© 2026 Quint Marketing — Münster</span>
+    <div class="foot-links">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="index.html">Hauptseite</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
