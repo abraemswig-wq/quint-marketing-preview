@@ -510,15 +510,50 @@
   @media (max-width: 800px) {
     .nav-cta, button, .pill, [role="button"] { min-height: 44px; min-width: 44px; }
     /* Globale Section-Padding-Reduktion auf Mobile (Desktop 120-140px -> Mobile 80px) */
-    .hero { padding: 60px 0 80px; }
+    .hero { padding: 40px 0 60px; }
     section.pillars-block,
     .method-block,
-    .anti-marketing { padding: 80px 0; }
+    .anti-marketing { padding: 70px 0; }
     /* Mobile-Wrap: weniger Aussenpadding */
     .wrap { padding: 0 22px; }
     /* Hero-Headline mobil etwas straffer */
-    .hero h1 { font-size: clamp(40px, 11vw, 64px); }
+    .hero h1 { font-size: clamp(38px, 10.5vw, 60px); margin: 22px 0 28px; }
+    /* Cards & Person Padding auf Mobile reduzieren — zu viel Whitespace innen */
+    .person { padding: 32px 26px; }
+    .pillar, .audience-card { padding: 32px 26px; }
+    .anti-item { padding: 28px 24px; }
+    /* Bottom-Padding fuer Floating-CTA Platz schaffen */
+    body { padding-bottom: 80px; }
   }
+  @media (max-width: 600px) {
+    /* Auf ganz schmalen Phones noch luftiger oben */
+    .hero { padding: 28px 0 48px; }
+    /* Lead-Texte mobil etwas kleiner damit nicht zu viel Block-Text */
+    .hero .lead { font-size: 17px; }
+  }
+
+  /* === Mobile-Floating-CTA ===
+     Sichtbarer "Erstgespraech buchen"-Button unten auf Mobile,
+     scrollt mit dem User mit. Erscheint nach 200px Scroll. */
+  .mobile-fab {
+    display: none;
+    position: fixed;
+    bottom: 16px; left: 50%;
+    transform: translateX(-50%) translateY(120%);
+    z-index: 60;
+    background: var(--pink);
+    color: var(--navy);
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-weight: 700; font-size: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 1px 0 rgba(232,155,177,0.2);
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1), background 0.2s;
+    white-space: nowrap;
+  }
+  body.fab-visible .mobile-fab { transform: translateX(-50%) translateY(0); }
+  body.menu-open .mobile-fab { transform: translateX(-50%) translateY(160%); }
+  @media (max-width: 800px) { .mobile-fab { display: inline-flex; align-items: center; gap: 6px; } }
+  .mobile-fab:active { background: var(--pink-strong); }
 
   /* Touch-Geräte: Wappen-Dackel deutlicher sichtbar, weil kein Hover-Boost */
   @media (hover: none), (max-width: 800px) {
@@ -2017,7 +2052,7 @@
         <div class="audience-num">01.</div>
         <h3>Health & Beauty</h3>
         <div class="audience-sub">Praxen, Studios, Optiker.</div>
-        <p>Inhabergeführte Praxen und Studios, die Premium-Qualität liefern — und endlich auch so aussehen wollen. Aric kommt selbst aus dieser Welt: REHAB FIVE ist seine Praxis.</p>
+        <p>Inhabergeführte Praxen und Studios, die Premium-Qualität liefern — und endlich auch so aussehen wollen. Wir kennen die Branche und ihre Konventionen — und wissen, wo sich Mut wirklich auszahlt.</p>
       </div>
 
       <div class="audience-card reveal" data-scroll-reveal data-tilt style="--stagger: 1">
@@ -2032,7 +2067,7 @@
         <div class="audience-num">02.</div>
         <h3>Sport & Vereine</h3>
         <div class="audience-sub">Clubs, Verbände, Sportstätten.</div>
-        <p>Vereine und Sportmarken, die mehr sind als ihr Logo auf dem Trikot. Aric kennt die Welt aus erster Hand — über REHAB FIVE arbeitet er mit Partnern wie USC und UBC Münster.</p>
+        <p>Vereine und Sportmarken, die mehr sind als ihr Logo auf dem Trikot. Wir kennen die Welt aus erster Hand — wir wissen, was bei Vereinen funktioniert und was nicht.</p>
       </div>
 
       <div class="audience-card reveal" data-scroll-reveal data-tilt style="--stagger: 2">
@@ -2567,14 +2602,23 @@
   });
 </script>
 
-<!-- Sticky-Nav Shrink beim Scroll (rAF-throttled, passive listener) -->
+<!-- Mobile Floating-CTA (erscheint nach 200px Scroll, versteckt sich beim Hamburger-Open) -->
+<a href="#kontakt" class="mobile-fab" aria-label="Erstgespräch buchen">
+  Erstgespräch buchen <span aria-hidden="true">→</span>
+</a>
+
+<!-- Sticky-Nav Shrink + Floating-CTA Sichtbarkeit (rAF-throttled, passive listener) -->
 <script>
   (function() {
     let ticking = false;
-    const threshold = 80;
+    const navThreshold = 80;
+    const fabThreshold = 200;
     function update() {
-      const shrunk = window.scrollY > threshold;
-      document.body.classList.toggle('nav-shrunk', shrunk);
+      const y = window.scrollY;
+      document.body.classList.toggle('nav-shrunk', y > navThreshold);
+      // FAB sichtbar zwischen 200px scroll und kurz vor Footer
+      const nearBottom = (window.innerHeight + y) > (document.body.scrollHeight - 200);
+      document.body.classList.toggle('fab-visible', y > fabThreshold && !nearBottom);
       ticking = false;
     }
     window.addEventListener('scroll', () => {
