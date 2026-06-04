@@ -152,6 +152,30 @@
         "@type": "Answer",
         "text": "Quint hat seinen Sitz in Münster, arbeitet aber ortsunabhängig. Remote-Zusammenarbeit funktioniert problemlos. Für Kunden aus der Region sind persönliche Treffen jederzeit möglich. Kunden aus ganz Deutschland sind willkommen."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Was kostet ein Branding-Projekt bei Quint?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es kommt auf den Umfang an. Quint macht Werkstatt-Arbeit, keine Pauschalen und keine Stundensätze von der Stange. Ein vollständiges Branding-Projekt (Markenfundament, visuelle Identität, Anwendung, Übergabe) ist eine substanzielle Investition. Wer einen Logo-Refresh für 2.000 € sucht, ist bei Quint nicht richtig. Wer eine Marke baut, die zehn Jahre trägt, klärt Scope und Budget im kostenfreien Erstgespräch — bevor ein Angebot erstellt wird."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was kostet Social-Media-Betreuung bei Quint pro Monat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Der Preis hängt von der Anzahl der Kanäle, dem Anteil an Eigenproduktion versus Vollservice und der Frage ab, ob Community-Management dabei ist. Quint liegt weder im Billig-Segment (kein Posting nach Schema F) noch im Konzern-Berater-Bereich. Mindestlaufzeit sind drei Monate, weil Social-Arbeit erst dann messbar wird. Ein konkretes Angebot folgt nach kurzem Status-Check der vorhandenen Kanäle im Erstgespräch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was passiert im Erstgespräch mit Quint?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Das Erstgespräch dauert 45 Minuten und ist kostenfrei. Es findet per Video oder vor Ort in Münster statt. Quint hört zuerst zu: Was ist die aktuelle Lage, was sind die Ziele, was wurde bereits probiert. Dann ehrliche Einschätzung, ob Quint der richtige Partner ist — und wenn nicht, wer es wäre. Wenn ja, gibt es zwei bis drei konkrete Hebel zum Mitnehmen und ein klares Angebot innerhalb einer Woche. Kein Sales-Pitch."
+      }
     }
   ]
 }
@@ -1427,6 +1451,111 @@
     background: var(--navy);
     border-top: 1px solid rgba(255,255,255,0.06);
   }
+
+  /* MARKENWERT-CHECK TEASER */
+  .check-teaser {
+    padding: 0 0 60px;
+    background: var(--navy);
+  }
+  .check-teaser-card {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 48px 56px;
+    background: linear-gradient(135deg, rgba(232,155,177,0.12) 0%, rgba(232,155,177,0.04) 100%);
+    border: 1px solid rgba(232,155,177,0.22);
+    border-radius: 28px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 36px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1), border-color 0.3s, background 0.3s;
+  }
+  .check-teaser-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--pink);
+    background: linear-gradient(135deg, rgba(232,155,177,0.18) 0%, rgba(232,155,177,0.06) 100%);
+  }
+  @media (hover: none) {
+    .check-teaser-card:hover { transform: none; background: linear-gradient(135deg, rgba(232,155,177,0.12) 0%, rgba(232,155,177,0.04) 100%); }
+  }
+  .check-teaser-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--pink);
+    font-weight: 700;
+    white-space: nowrap;
+    align-self: start;
+    padding-top: 8px;
+    position: relative; z-index: 2;
+  }
+  .check-teaser-body { position: relative; z-index: 2; }
+  .check-teaser-body h2 {
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+  .check-teaser-body h2 .italic { color: var(--pink); }
+  .check-teaser-body p {
+    font-size: 16px;
+    color: rgba(244,239,231,0.75);
+    line-height: 1.5;
+    max-width: 520px;
+  }
+  .check-teaser-cta {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: var(--pink);
+    color: var(--navy);
+    padding: 22px 28px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: background 0.2s;
+    position: relative; z-index: 2;
+    flex-shrink: 0;
+  }
+  .check-teaser-card:hover .check-teaser-cta { background: var(--pink-strong); }
+  @media (hover: none) {
+    .check-teaser-card:hover .check-teaser-cta { background: var(--pink); }
+  }
+  .check-teaser-cta .cta-arrow {
+    font-size: 20px;
+    transition: transform 0.3s;
+  }
+  .check-teaser-card:hover .check-teaser-cta .cta-arrow { transform: translateX(4px); }
+  @media (hover: none) {
+    .check-teaser-card:hover .check-teaser-cta .cta-arrow { transform: none; }
+  }
+  .check-teaser-ball {
+    position: absolute;
+    top: 12%; right: 24%;
+    width: 80px; aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #f4b8c8 0%, var(--pink) 45%, var(--pink-strong) 100%);
+    opacity: 0.18;
+    z-index: 1;
+    pointer-events: none;
+  }
+  @media (max-width: 900px) {
+    .check-teaser-card { grid-template-columns: 1fr; gap: 24px; padding: 40px 32px; text-align: left; }
+    .check-teaser-cta { flex-direction: row; padding: 16px 24px; align-self: start; }
+    .check-teaser-cta .cta-arrow { font-size: 18px; }
+    .check-teaser-ball { display: none; }
+  }
+  @media (max-width: 600px) {
+    .check-teaser-card { padding: 32px 24px; border-radius: 20px; }
+  }
+
   .journal-teaser-card {
     max-width: 1080px;
     margin: 0 auto;
@@ -2134,7 +2263,7 @@
     <div class="section-head reveal" data-scroll-reveal>
       <div class="eyebrow">Häufige Fragen</div>
       <h2 id="faq-heading">Was meistens als <span class="italic">Nächstes</span> kommt.</h2>
-      <p class="lead">Sechs Fragen, die wir in Erstgesprächen am häufigsten hören. Antworten direkt von Aric &amp; Rania.</p>
+      <p class="lead">Neun Fragen, die wir in Erstgesprächen am häufigsten hören. Antworten direkt von Aric &amp; Rania.</p>
     </div>
     <div class="faq-list">
       <details class="faq-item">
@@ -2161,7 +2290,37 @@
         <summary class="faq-q">Arbeitet ihr nur in Münster oder auch deutschlandweit? <span class="faq-icon" aria-hidden="true">+</span></summary>
         <div class="faq-a">Unser Zuhause ist Münster — aber wir arbeiten ortsunabhängig. <em>Remote klappt bei uns problemlos.</em> Für Kunden aus der Region sind persönliche Treffen jederzeit möglich. Kunden aus ganz Deutschland sind herzlich willkommen.</div>
       </details>
+      <details class="faq-item">
+        <summary class="faq-q">Was kostet ein Branding-Projekt bei Quint? <span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-a">Ehrliche Antwort: es kommt drauf an. Was wir sagen können: Wir machen Werkstatt-Arbeit, keine Pauschalen, keine Stundensätze von der Stange. Ein <strong>vollständiges Branding-Projekt</strong> (Fundament, Identität, Anwendung, Übergabe — siehe <a href="leistungen.html">Leistungsverzeichnis</a>) ist eine substanzielle Investition. Wenn du einen Logo-Refresh für 2.000 € suchst, sind wir nicht der Partner. Wenn du eine Marke baust, die zehn Jahre trägt, klären wir Scope und Budget im Erstgespräch — bevor wir Stunden anbieten.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Was kostet Social-Betreuung pro Monat? <span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-a">Hängt davon ab, wie viele Kanäle, wie viel Eigenproduktion vs. Vollservice, ob mit oder ohne Community-Management. Wir liegen weder im Billig-Segment (kein Posting nach Schema F) noch im Konzern-Berater-Bereich. <em>Mindestlaufzeit drei Monate</em> — alles drunter ist verbranntes Geld, weil Social-Arbeit erst dann messbar wird. Konkretes Angebot erstellen wir im Erstgespräch nach kurzem Status-Check eurer Kanäle.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Was passiert im Erstgespräch? <span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-a"><strong>45 Minuten, kostenfrei, per Video oder vor Ort in Münster.</strong> Wir hören erst zu: Was ist eure Lage, wo wollt ihr hin, was habt ihr schon probiert. Dann sagen wir ehrlich, ob wir der richtige Partner sind — und wenn nicht, wer es wäre. Wenn ja: zwei bis drei konkrete Hebel als Mitnehmsel, plus ein klares Angebot innerhalb einer Woche. <em>Kein Sales-Pitch, kein „Wir lassen uns das nochmal durch den Kopf gehen".</em></div>
+      </details>
     </div>
+  </div>
+</section>
+
+<!-- MARKENWERT-CHECK TEASER (Lead-Magnet) -->
+<section class="check-teaser" aria-labelledby="check-teaser-heading">
+  <div class="wrap">
+    <a href="markenwert-check.html" class="check-teaser-card reveal" aria-label="Markenwert-Check starten">
+      <div class="check-teaser-eyebrow">Kostenfrei · Ohne Anmeldung</div>
+      <div class="check-teaser-body">
+        <h2 id="check-teaser-heading">Noch unsicher, <span class="italic">wo deine Marke steht?</span></h2>
+        <p>10 Fragen, 3 Minuten, sofort eine Empfehlung. Kein Newsletter-Trick, keine E-Mail-Pflicht.</p>
+      </div>
+      <span class="check-teaser-cta">
+        <span class="cta-label">Markenwert-Check starten</span>
+        <span class="cta-arrow" aria-hidden="true">→</span>
+      </span>
+      <div class="check-teaser-ball" aria-hidden="true"></div>
+    </a>
   </div>
 </section>
 
