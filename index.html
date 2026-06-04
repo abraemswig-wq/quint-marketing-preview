@@ -255,7 +255,17 @@
     --radius-tag: 999px;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    /* Verhindert hartes Springen am Anchor-Ziel — Offset fuer Sticky-Nav */
+    scroll-padding-top: 80px;
+    /* Apple Safari: bessere Touch-Reaktivitaet, kein verzoegerter Click */
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* Globale Touch-Optimierung: kein blauer iOS-Tap-Flash */
+  a, button, [role="button"], summary, .answer-btn, .nav-cta, .cta, .mobile-fab {
+    -webkit-tap-highlight-color: transparent;
+  }
   body {
     font-family: "Familjen Grotesk", system-ui, sans-serif;
     background: var(--navy);
@@ -264,7 +274,7 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
-  body.locked { overflow: hidden; height: 100vh; }
+  body.locked { overflow: hidden; height: 100vh; height: 100dvh; }
   a { color: inherit; text-decoration: none; }
 
   /* CINEMATIC LOADER */
@@ -468,9 +478,29 @@
     color: var(--cream); font-size: 28px; font-weight: 600;
     letter-spacing: -0.02em; padding: 14px 0;
     border-bottom: 1px solid rgba(247,242,232,0.08);
-    transition: color 0.2s, padding-left 0.2s;
+    transition: color 0.2s, padding-left 0.2s, opacity 0.4s cubic-bezier(.2,.8,.2,1), transform 0.4s cubic-bezier(.2,.8,.2,1);
+    /* Stagger: jeder Link ist zunaechst versteckt und fadet ein */
+    opacity: 0;
+    transform: translateX(20px);
+    transition-delay: 0ms;
   }
+  body.menu-open .mobile-menu a {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  /* Stagger-Reihenfolge — 50ms Versatz */
+  body.menu-open .mobile-menu a:nth-child(1) { transition-delay: 120ms; }
+  body.menu-open .mobile-menu a:nth-child(2) { transition-delay: 170ms; }
+  body.menu-open .mobile-menu a:nth-child(3) { transition-delay: 220ms; }
+  body.menu-open .mobile-menu a:nth-child(4) { transition-delay: 270ms; }
+  body.menu-open .mobile-menu a:nth-child(5) { transition-delay: 320ms; }
+  body.menu-open .mobile-menu a:nth-child(6) { transition-delay: 370ms; }
+  body.menu-open .mobile-menu a:nth-child(7) { transition-delay: 420ms; }
+  body.menu-open .mobile-menu a:nth-child(8) { transition-delay: 470ms; }
   .mobile-menu a:active { color: var(--pink); padding-left: 8px; }
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu a { transition: color 0.2s, padding-left 0.2s; opacity: 1; transform: none; }
+  }
   .mobile-menu .mobile-cta {
     margin-top: 32px;
     background: var(--pink); color: var(--navy);
@@ -522,23 +552,29 @@
     .person { padding: 32px 26px; }
     .pillar, .audience-card { padding: 32px 26px; }
     .anti-item { padding: 28px 24px; }
-    /* Bottom-Padding fuer Floating-CTA Platz schaffen */
-    body { padding-bottom: 80px; }
+    /* Bottom-Padding fuer Floating-CTA Platz schaffen — inkl. iPhone Safe-Area */
+    body { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
   }
   @media (max-width: 600px) {
     /* Auf ganz schmalen Phones noch luftiger oben */
     .hero { padding: 28px 0 48px; }
     /* Lead-Texte mobil etwas kleiner damit nicht zu viel Block-Text */
-    .hero .lead { font-size: 17px; }
+    .hero .lead { font-size: 17px; line-height: 1.5; }
+    /* Headline noch etwas straffer */
+    .hero h1 { font-size: clamp(34px, 9.5vw, 50px); }
+    /* Section-Headlines auf 600px straffer fuer bessere Hierarchie */
+    section h2 { font-size: clamp(28px, 7vw, 42px); line-height: 1.05; }
   }
 
   /* === Mobile-Floating-CTA ===
      Sichtbarer "Erstgespraech buchen"-Button unten auf Mobile,
-     scrollt mit dem User mit. Erscheint nach 200px Scroll. */
+     scrollt mit dem User mit. Erscheint nach 200px Scroll.
+     Bottom-Inset respektiert iPhone X+ Home-Indicator. */
   .mobile-fab {
     display: none;
     position: fixed;
-    bottom: 16px; left: 50%;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    left: 50%;
     transform: translateX(-50%) translateY(120%);
     z-index: 60;
     background: var(--pink);
