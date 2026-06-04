@@ -358,6 +358,21 @@
   }
   /* Skip-Link bleibt funktional */
 
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 10000;
+    padding: 12px 18px;
+    background: var(--pink);
+    color: var(--navy);
+    font-weight: 700;
+    border-radius: 0 0 12px 0;
+    font-size: 14px;
+  }
+  .skip-link:focus, .skip-link:focus-visible { left: 0; }
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -374,6 +389,8 @@
 <meta name="twitter:image" content="https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png" />
 </head>
 <body class="locked">
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
 
 <div class="loader" id="loader">
   <div class="loader-content">
@@ -524,7 +541,7 @@
   </div>
 </article>
 
-<section class="post-foot">
+<section class="post-foot" id="main">
   <div class="post-foot-inner">
     <h2>Nächster Beitrag direkt <span class="italic">in den Posteingang.</span></h2>
     <p>1× im Monat ein Beitrag aus der Werkstatt. Plus eine Marken-Beobachtung dazu. Kein Newsletter-Bullshit, jederzeit abbestellbar.</p>

@@ -363,6 +363,21 @@
   }
   /* Skip-Link bleibt funktional */
 
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 10000;
+    padding: 12px 18px;
+    background: var(--pink);
+    color: var(--navy);
+    font-weight: 700;
+    border-radius: 0 0 12px 0;
+    font-size: 14px;
+  }
+  .skip-link:focus, .skip-link:focus-visible { left: 0; }
+
 </style>
 <script type="application/ld+json">
 {
@@ -394,6 +409,8 @@
 </head>
 <body>
 
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
 <header class="nav-bar">
   <a href="index.html" class="nav-logo" aria-label="Quint — Startseite"><img src="assets/quint-logo-white.svg" alt="Quint" decoding="async" /></a>
   <a href="index.html" class="nav-back">← Hauptseite</a>
@@ -405,7 +422,7 @@
   <p>Fünf strategisch unterschiedliche Merch-Konzepte — von laut bis editorial, jedes mit einer anderen Dackel-Pose und einem anderen Marken-Ton. Skizzen-Mockups, keine finalen Produktfotos.</p>
 </section>
 
-<main class="grid">
+<main id="main" class="grid">
 
   <!-- PITCH 1: Wir jagen den Ball. -->
   <article class="pitch pitch-1">

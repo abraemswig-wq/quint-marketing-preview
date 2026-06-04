@@ -329,6 +329,21 @@
   }
   /* Skip-Link bleibt funktional */
 
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 10000;
+    padding: 12px 18px;
+    background: var(--pink);
+    color: var(--navy);
+    font-weight: 700;
+    border-radius: 0 0 12px 0;
+    font-size: 14px;
+  }
+  .skip-link:focus, .skip-link:focus-visible { left: 0; }
+
 </style>
 
 <!-- Twitter Card -->
@@ -338,6 +353,8 @@
 <meta name="twitter:image" content="https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png" />
 </head>
 <body class="locked">
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
 
 <!-- LOADER -->
 <div class="loader" id="loader">
@@ -379,7 +396,7 @@
 </header>
 
 <!-- WORAN ICH ARBEITE -->
-<section class="section">
+<section class="section" id="main">
   <div class="wrap">
     <h2>Woran ich <span class="italic">arbeite.</span></h2>
     <p>Wenn ihr mit Quint sprecht, bin ich der erste Anruf: <strong>Strategie, Positionierung, Markenkern.</strong> Was soll diese Marke behaupten? Was lehnt sie konsequent ab? Welche Sprache passt zu ihrem Wesen?</p>

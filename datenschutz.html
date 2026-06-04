@@ -192,6 +192,21 @@
   }
   /* Skip-Link bleibt funktional */
 
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 10000;
+    padding: 12px 18px;
+    background: var(--pink);
+    color: var(--navy);
+    font-weight: 700;
+    border-radius: 0 0 12px 0;
+    font-size: 14px;
+  }
+  .skip-link:focus, .skip-link:focus-visible { left: 0; }
+
 </style>
 <script type="application/ld+json">
 {
@@ -218,6 +233,8 @@
 </head>
 <body>
 
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="Quint — Startseite"><img src="assets/quint-logo-white.svg" alt="Quint" decoding="async" /></a>
@@ -239,7 +256,7 @@
   </div>
 </div>
 
-<main class="legal">
+<main id="main" class="legal">
 
   <h2>1. Verantwortlicher</h2>
   <p>Verantwortlich für die Datenverarbeitung auf dieser Website im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:</p>

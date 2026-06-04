@@ -186,9 +186,26 @@
   }
   /* Skip-Link bleibt funktional */
 
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 10000;
+    padding: 12px 18px;
+    background: var(--pink);
+    color: var(--navy);
+    font-weight: 700;
+    border-radius: 0 0 12px 0;
+    font-size: 14px;
+  }
+  .skip-link:focus, .skip-link:focus-visible { left: 0; }
+
 </style>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
 
 <nav>
   <div class="nav-inner">
@@ -197,7 +214,7 @@
   </div>
 </nav>
 
-<main>
+<main id="main">
   <div class="scene" aria-hidden="true">
     <span class="ball"></span>
     <img class="dackel" src="/quint-marketing-preview/assets/Dackel-Maennchen.svg" alt="" decoding="async" />

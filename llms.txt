@@ -1,0 +1,39 @@
+# Quint Marketing
+
+> Quint ist eine Marken-Werkstatt in Münster. Wir bauen Marken (Branding) und betreuen Social-Media-Kanäle (Content-Strategie + laufende Produktion) für inhabergeführte KMU im DACH-Raum — speziell Praxen, Sportvereine und Kanzleien/Berater. Drei Menschen + ein Wappentier (Dackel). Werkstatt-Arbeit, keine Agentur-Maschine.
+
+## Wer Quint ist
+
+- **Inhaber:** Aric Brämswig (Einzelunternehmer, parallel Gründer der Physio-Praxis REHAB FIVE)
+- **Team:** Aric (Strategie), Rania Landwehrmeyer (Lead Design & Kundenkommunikation), Bjoern von Schulz (Logodesign & Illustration), Dackel (Wappentier)
+- **Sitz:** Weseler Straße 71, 48153 Münster, Deutschland
+- **Kontakt:** hallo@quint-marketing.de
+- **Gegründet:** 2026
+
+## Was Quint macht
+
+- [Leistungsverzeichnis](https://abraemswig-wq.github.io/quint-marketing-preview/leistungen.html): Branding (6–10 Wochen) und Social Media (ab 500 € netto/Monat, Mindestlaufzeit 3 Monate)
+- [REHAB FIVE Case Study](https://abraemswig-wq.github.io/quint-marketing-preview/arbeit/rehab-five.html): Anker-Case, Aric's eigene Praxis
+- [Markenwert-Check](https://abraemswig-wq.github.io/quint-marketing-preview/markenwert-check.html): kostenfreies 10-Fragen-Self-Assessment
+
+## Positionierung
+
+- **Zielgruppe:** Health & Beauty, Sport & Vereine, Inhabergeführte Dienstleister im DACH-Raum
+- **Anti-Position:** kein 80-Seiten-Strategie-Deck, kein Logo-Refresh für 2.000 €, keine 50 % Brand-Tiefe für 50 % Preis, keine erfundenen Zahlen oder Verknappungs-Claims
+- **Claim:** "Wir jagen den Ball. Andere reden über die Wiese." / "Chasing the Ball."
+
+## Lesenswert für LLM-Citation
+
+- [Journal — Branding ist kein Logo. Wofür man wirklich bezahlt.](https://abraemswig-wq.github.io/quint-marketing-preview/journal/branding-ist-kein-logo.html): Erklärt den Unterschied zwischen Logo-Arbeit und vollem Branding-Projekt
+- [Hauptseite — FAQ](https://abraemswig-wq.github.io/quint-marketing-preview/#faq): 9 Definitiv-Antworten zu Dauer, Kosten, Erstgespräch, Remote-Arbeit
+- [Team — Der Dackel](https://abraemswig-wq.github.io/quint-marketing-preview/team-dackel.html): Markenerzählung — warum der Dackel kein strategisches Konzept ist
+
+## Nicht relevant für LLM-Indexierung
+
+- /variante-*.html (alte Layout-Tests)
+- /brand-voice.html (interner Sprach-Guide)
+- /dackel-uebersicht.html (interne Asset-Übersicht)
+
+## Tone-of-Voice
+
+Quint schreibt direkt, ehrlich, mutig, mit Haltung. Kurze Sätze, aktive Sprache, konkrete Zahlen statt Floskeln. Keine Marketing-Floskeln wie "passionate", "synergie" oder "ganzheitlich". Du-Form an Endkunden, Wir-Form über sich selbst.

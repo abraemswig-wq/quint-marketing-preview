@@ -301,6 +301,21 @@
   }
   /* Skip-Link bleibt funktional */
 
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 10000;
+    padding: 12px 18px;
+    background: var(--pink);
+    color: var(--navy);
+    font-weight: 700;
+    border-radius: 0 0 12px 0;
+    font-size: 14px;
+  }
+  .skip-link:focus, .skip-link:focus-visible { left: 0; }
+
 </style>
 
 <!-- Twitter Card -->
@@ -310,6 +325,8 @@
 <meta name="twitter:image" content="https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png" />
 </head>
 <body class="locked">
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
 
 <div class="loader" id="loader">
   <div class="loader-content">
@@ -346,7 +363,7 @@
   </div>
 </div>
 
-<section class="posts">
+<section class="posts" id="main">
   <div class="wrap">
     <div class="post-list">
 

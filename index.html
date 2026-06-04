@@ -68,9 +68,47 @@
   ],
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Weseler Straße 71",
+    "postalCode": "48153",
     "addressLocality": "Münster",
     "addressRegion": "Nordrhein-Westfalen",
     "addressCountry": "DE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 51.9416,
+    "longitude": 7.6285
+  },
+  "vatID": "DE308560771",
+  "email": "hallo@quint-marketing.de",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Quint Leistungen",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Branding für inhabergeführte KMU",
+          "description": "Markenfundament, visuelle Identität, Anwendung, Übergabe — 6 bis 10 Wochen Projekt."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Social Media Betreuung",
+          "description": "Strategie, Content-Plan, Produktion, Reporting — ab 500 € netto/Monat, Mindestlaufzeit 3 Monate."
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "500",
+          "priceCurrency": "EUR",
+          "unitText": "MON",
+          "minPrice": "500"
+        }
+      }
+    ]
   },
   "areaServed": [
     { "@type": "Country", "name": "Deutschland" },
@@ -1664,7 +1702,7 @@
     border-radius: 0 0 12px 0;
     font-size: 14px;
   }
-  .skip-link:focus { left: 0; }
+  .skip-link:focus, .skip-link:focus-visible { left: 0; }
 
   /* CTA */
   .cta-block {
@@ -2046,6 +2084,46 @@
     </h2>
   </div>
 </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Wie Quint Marken baut — Die Vier-H-Methode",
+  "description": "Quint's Branding-Methode in vier Etappen: Haltung, Handwerk, Handschrift, Hingabe.",
+  "totalTime": "PT8W",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Haltung",
+      "text": "Klären, was die Marke behaupten soll — und was sie konsequent ablehnt. Ohne Haltung kein Profil.",
+      "url": "https://abraemswig-wq.github.io/quint-marketing-preview/#methode"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Handwerk",
+      "text": "Design, Copy, Video aus einer Hand, alles nach dem gleichen Maßstab gefertigt. Keine Lieferketten-Kompromisse.",
+      "url": "https://abraemswig-wq.github.io/quint-marketing-preview/#methode"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Handschrift",
+      "text": "Wiedererkennbar in jedem Satz, jedem Bild, jeder Geste — kein Template, sondern Werkstatt-Arbeit mit eigener Spur.",
+      "url": "https://abraemswig-wq.github.io/quint-marketing-preview/#methode"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Hingabe",
+      "text": "Eine der vier Säulen, auf denen Marken stehen. Wir liefern wöchentlich statt quartalsweise — und meinen es ernst.",
+      "url": "https://abraemswig-wq.github.io/quint-marketing-preview/#methode"
+    }
+  ]
+}
+</script>
 
 <section class="method-block" id="methode">
   <div class="wrap">
