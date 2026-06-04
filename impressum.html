@@ -188,6 +188,44 @@
   }
   .skip-link:focus, .skip-link:focus-visible { left: 0; }
 
+
+  /* === Print-Stylesheet: optimiert fuer Papier (B2B-Druck) === */
+  @media print {
+    body {
+      background: white !important;
+      color: #000 !important;
+      font-size: 11pt;
+      line-height: 1.5;
+    }
+    /* Navigation, Footer-Links, Skip-Link weg */
+    nav.topnav, .crumbs, .skip-link, footer .foot-links { display: none !important; }
+    /* Sichtbarer Header mit Logo-Ersatz als Text */
+    .head { padding: 20pt 0 16pt !important; max-width: 100% !important; }
+    .head-eyebrow { background: none !important; border: 1px solid #888 !important; color: #444 !important; }
+    .head-eyebrow-dot { background: #d87a95 !important; }
+    .head h1 { color: #000 !important; font-size: 24pt !important; }
+    .head h1 .italic { color: #d87a95 !important; }
+    .head .lead { color: #333 !important; font-size: 12pt !important; }
+    main.legal { padding: 0 !important; max-width: 100% !important; }
+    .legal h2 { color: #000 !important; border-top: 1px solid #ccc !important; padding-top: 14pt !important; margin-top: 20pt !important; font-size: 13pt !important; }
+    .legal h2:first-of-type { border-top: none !important; padding-top: 0 !important; }
+    .legal p, .legal ul li { color: #000 !important; font-size: 11pt !important; }
+    .legal a { color: #000 !important; text-decoration: underline; }
+    .legal a[href^="http"]:after { content: " (" attr(href) ")"; font-size: 9pt; color: #555; }
+    .legal a[href^="mailto:"]:after { content: ""; }
+    .legal address { background: #f7f5f0 !important; border-left: 3px solid #d87a95 !important; color: #000 !important; padding: 8pt 12pt !important; }
+    .legal address strong { color: #000 !important; }
+    /* Disclaimer-Box im Datenschutz */
+    .disclaimer-box { background: #fdf5f7 !important; border: 1px solid #d87a95 !important; color: #000 !important; }
+    .disclaimer-box strong { color: #d87a95 !important; }
+    /* Footer: nur Copyright bleibt */
+    footer { background: white !important; color: #000 !important; padding: 12pt 0 !important; border-top: 1px solid #ccc !important; text-align: left; }
+    footer .foot-inner { display: block !important; }
+    /* Page-break Hints */
+    h2 { page-break-after: avoid; }
+    p, address, ul { page-break-inside: avoid; }
+  }
+
 </style>
 <script type="application/ld+json">
 {
