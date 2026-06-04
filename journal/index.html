@@ -271,7 +271,43 @@
     letter-spacing: 0.1em;
   }
   footer a:hover { color: var(--pink); }
+
+  /* === FOCUS-STATES für Tastatur-Navigation ===
+     :focus-visible erscheint nur bei Tab/Pfeil-Navigation, nicht bei Mausklick */
+  *:focus { outline: none; }
+  *:focus-visible {
+    outline: 2px solid var(--pink);
+    outline-offset: 3px;
+    border-radius: 4px;
+    transition: outline-offset 0.15s;
+  }
+  /* Cards mit eigenem Border — anderer Offset damit der Outline aussen liegt */
+  .person:focus-visible,
+  .pillar:focus-visible,
+  .audience-card:focus-visible,
+  .anti-item:focus-visible,
+  .journal-teaser-card:focus-visible,
+  .check-teaser-card:focus-visible,
+  details.faq-item:focus-within { outline-offset: 5px; }
+  /* CTA-Buttons (pill-shaped) — outline soll der Pill-Form folgen */
+  .nav-cta:focus-visible,
+  .cta:focus-visible,
+  .mobile-cta:focus-visible { outline-offset: 4px; border-radius: 999px; }
+  /* FAQ-Summary — sichtbarer Fokus auf der Frage */
+  .faq-item summary:focus-visible {
+    outline: 2px solid var(--pink);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  /* Skip-Link bleibt funktional */
+
 </style>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Quint Journal" />
+<meta name="twitter:description" content="Beobachtungen aus der Werkstatt — Branding, Social und Markenbau für KMU." />
+<meta name="twitter:image" content="https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png" />
 </head>
 <body class="locked">
 

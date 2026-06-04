@@ -1,10 +1,11 @@
 User-agent: *
 Allow: /
 
-# Konzept-Vorschauen — werden später wahrscheinlich aus dem Index genommen
+# Konzept-Vorschauen und interne Prototypen — nicht indexieren
 Disallow: /variante-
 Disallow: /idee-
 Disallow: /scroll-expand-demo.html
 Disallow: /varianten-vergleich.html
+Disallow: /dackel-uebersicht.html
 
 Sitemap: https://abraemswig-wq.github.io/quint-marketing-preview/sitemap.xml
