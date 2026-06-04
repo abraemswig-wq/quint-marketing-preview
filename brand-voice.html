@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Brand-Voice-Guide · Quint (intern)</title>
+<meta name="description" content="Interner Sprach- und Ton-Guide für das Quint-Team. Wann Du/Sie, was wir sagen, was nicht." />
+<meta name="theme-color" content="#143C6B" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy:        #143C6B;
+    --navy-deep:   #0D2747;
+    --navy-soft:   #1E5191;
+    --pink:        #E89BB1;
+    --pink-strong: #D87A95;
+    --pink-soft:   #F3C7D4;
+    --cream:       #F4EFE7;
+    --cream-deep:  #E8DFCE;
+    --white:       #ffffff;
+    --good:        #84c19a;
+    --bad:         #d87a95;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--navy); color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+  a { color: var(--pink); text-decoration: none; transition: color 0.2s; }
+  a:hover { color: var(--pink-strong); }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; }
+
+  nav.topnav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(13,39,71,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 18px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo img { height: 28px; width: auto; display: block; }
+  .nav-back {
+    font-size: 13px; color: rgba(244,239,231,0.7);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 10px 18px; border-radius: 999px;
+    transition: border-color 0.2s;
+  }
+  .nav-back:hover { border-color: var(--pink); }
+
+  /* Intern-Banner */
+  .intern-banner {
+    background: rgba(232,155,177,0.1);
+    border-bottom: 1px solid rgba(232,155,177,0.2);
+    color: var(--pink-soft);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 32px;
+    font-weight: 600;
+  }
+  .intern-banner span { color: var(--pink); margin: 0 8px; }
+
+  /* Head */
+  .head {
+    padding: 80px 32px 40px;
+    max-width: 880px; margin: 0 auto;
+  }
+  .head-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(244,239,231,0.7); margin-bottom: 28px;
+  }
+  .head-eyebrow-dot { width: 8px; height: 8px; background: var(--pink); border-radius: 50%; }
+  .head h1 {
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 0.96; font-weight: 700;
+    letter-spacing: -0.03em; margin-bottom: 22px;
+  }
+  .head h1 .italic { color: var(--pink); }
+  .head .lead {
+    font-size: 19px; color: rgba(244,239,231,0.72);
+    max-width: 680px; line-height: 1.55;
+  }
+
+  /* TOC */
+  .toc {
+    max-width: 880px; margin: 0 auto;
+    padding: 0 32px 32px;
+  }
+  .toc-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 28px 32px;
+  }
+  .toc-card h3 {
+    font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--pink); margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .toc-card ol {
+    list-style: none; padding: 0;
+    counter-reset: toc-counter;
+  }
+  .toc-card ol li {
+    counter-increment: toc-counter;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .toc-card ol li:last-child { border-bottom: none; }
+  .toc-card ol li a {
+    display: flex; gap: 16px; align-items: baseline;
+    color: var(--cream); font-size: 15px;
+    transition: color 0.2s;
+  }
+  .toc-card ol li a:hover { color: var(--pink); }
+  .toc-card ol li a::before {
+    content: counter(toc-counter, decimal-leading-zero) ".";
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    color: var(--pink);
+    flex-shrink: 0;
+    width: 30px;
+  }
+
+  /* Content sections */
+  main.guide {
+    max-width: 880px; margin: 0 auto;
+    padding: 40px 32px 100px;
+  }
+  .section {
+    margin-bottom: 80px;
+  }
+  .section h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 24px; line-height: 1.05;
+    color: var(--white);
+    scroll-margin-top: 80px;
+  }
+  .section h2 .num {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-weight: 400;
+    color: var(--pink);
+    margin-right: 12px;
+  }
+  .section h2 .italic { color: var(--pink); }
+  .section > p {
+    font-size: 17px; color: rgba(244,239,231,0.88);
+    line-height: 1.65; margin-bottom: 22px;
+    max-width: 720px;
+  }
+  .section h3 {
+    font-size: 20px; font-weight: 600;
+    color: var(--cream); margin: 36px 0 14px;
+    letter-spacing: -0.01em;
+  }
+
+  /* Prinzipien */
+  .prinzipien {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  @media (max-width: 700px) { .prinzipien { grid-template-columns: 1fr; } }
+  .prinzip {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 22px 24px;
+  }
+  .prinzip .label {
+    font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--pink);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .prinzip .text {
+    font-size: 16px; color: var(--cream);
+    line-height: 1.5;
+  }
+  .prinzip .text strong { color: var(--white); }
+
+  /* Tone-Tabelle */
+  table.tone {
+    width: 100%; border-collapse: collapse;
+    margin-top: 24px;
+    font-size: 14px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  table.tone th, table.tone td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    vertical-align: top;
+  }
+  table.tone th {
+    background: rgba(232,155,177,0.1);
+    color: var(--pink);
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  table.tone tr:last-child td { border-bottom: none; }
+  table.tone tr:hover td { background: rgba(255,255,255,0.02); }
+  table.tone td:first-child {
+    font-weight: 600; color: var(--white);
+    white-space: nowrap;
+  }
+  table.tone td em {
+    font-family: "Fraunces", serif; font-style: italic;
+    color: var(--pink-soft);
+  }
+  @media (max-width: 700px) {
+    table.tone { font-size: 13px; }
+    table.tone th, table.tone td { padding: 10px 12px; }
+  }
+
+  /* Vokabular */
+  .vokabel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 24px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  @media (max-width: 700px) { .vokabel-grid { grid-template-columns: 1fr; } }
+  .vokabel-grid > div {
+    padding: 20px 24px;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .vokabel-grid > div:nth-child(2n) { border-right: none; }
+  @media (max-width: 700px) {
+    .vokabel-grid > div { border-right: none; }
+  }
+  .vokabel-grid .vokabel-bad {
+    background: rgba(216,122,149,0.06);
+    color: rgba(244,239,231,0.6);
+    text-decoration: line-through;
+    text-decoration-color: rgba(216,122,149,0.5);
+  }
+  .vokabel-grid .vokabel-good {
+    background: rgba(132,193,154,0.05);
+    color: var(--cream);
+  }
+  .vokabel-grid .label-mini {
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .vokabel-bad .label-mini { color: rgba(216,122,149,0.9); }
+  .vokabel-good .label-mini { color: rgba(132,193,154,0.9); }
+  .vokabel-text { font-size: 15px; line-height: 1.4; }
+  .vokabel-good .vokabel-text strong { color: var(--white); }
+
+  /* Don'ts */
+  .donts {
+    background: rgba(216,122,149,0.06);
+    border: 1px solid rgba(216,122,149,0.18);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-top: 24px;
+  }
+  .donts h3 {
+    color: var(--bad);
+    font-size: 12px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .donts ul { list-style: none; padding: 0; }
+  .donts ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(216,122,149,0.1);
+    font-size: 15px;
+    color: rgba(244,239,231,0.75);
+    display: flex; gap: 12px;
+  }
+  .donts ul li:last-child { border-bottom: none; }
+  .donts ul li::before {
+    content: "×"; color: var(--bad);
+    font-weight: 700; flex-shrink: 0;
+  }
+  .donts ul li strong { color: var(--cream); font-weight: 600; }
+
+  /* Beispiele Off vs On */
+  .beispiel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  @media (max-width: 700px) { .beispiel { grid-template-columns: 1fr; } }
+  .beispiel-card {
+    border-radius: 14px;
+    padding: 24px 26px;
+  }
+  .beispiel-bad {
+    background: rgba(216,122,149,0.06);
+    border: 1px solid rgba(216,122,149,0.18);
+  }
+  .beispiel-good {
+    background: rgba(132,193,154,0.05);
+    border: 1px solid rgba(132,193,154,0.18);
+  }
+  .beispiel-card .badge {
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; font-weight: 700;
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+  .beispiel-bad .badge { color: var(--bad); }
+  .beispiel-good .badge { color: var(--good); }
+  .beispiel-card .quote {
+    font-size: 17px; line-height: 1.55;
+    color: var(--cream);
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+  }
+  .beispiel-bad .quote { color: rgba(244,239,231,0.6); }
+
+  /* Footer */
+  footer {
+    background: var(--navy-deep);
+    padding: 36px 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+  }
+  footer p {
+    max-width: 720px; margin: 0 auto;
+    font-size: 13px; color: rgba(244,239,231,0.5);
+    line-height: 1.55;
+  }
+
+  /* Focus-States für Tastatur-Navigation */
+  *:focus { outline: none; }
+  *:focus-visible {
+    outline: 2px solid var(--pink);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 700px) {
+    .head { padding: 56px 22px 30px; }
+    .toc { padding: 0 22px 24px; }
+    main.guide { padding: 28px 22px 80px; }
+    .section { margin-bottom: 60px; }
+    .nav-inner { padding: 14px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Quint — Startseite"><img src="assets/quint-logo-white.svg" alt="Quint" decoding="async" /></a>
+    <a class="nav-back" href="index.html">← Hauptseite</a>
+  </div>
+</nav>
+
+<div class="intern-banner">
+  <span>●</span>Interne Referenz<span>·</span>Für Aric, Rania &amp; Bjoern<span>●</span>
+</div>
+
+<section class="head">
+  <div class="head-eyebrow"><span class="head-eyebrow-dot"></span>Brand-Voice-Guide</div>
+  <h1>Wie wir <span class="italic">klingen,</span> wenn wir Quint sind.</h1>
+  <p class="lead">Damit jeder Brief, jeder Post, jede Kunden-Mail unverkennbar Quint klingt — egal wer ihn schreibt. Lebendiges Dokument, nicht in Stein.</p>
+</section>
+
+<section class="toc">
+  <div class="toc-card">
+    <h3>Schnell zu</h3>
+    <ol>
+      <li><a href="#prinzipien">Fünf Prinzipien</a></li>
+      <li><a href="#du-sie">Du, Sie und Wir</a></li>
+      <li><a href="#tonalitaet">Tonalität nach Kontext</a></li>
+      <li><a href="#vokabular">Vokabular — was wir sagen, was nicht</a></li>
+      <li><a href="#donts">Phrasen, die wir nie schreiben</a></li>
+      <li><a href="#sprachregeln">Sprach-Mechanik</a></li>
+      <li><a href="#beispiele">Off-Brand vs. On-Brand</a></li>
+    </ol>
+  </div>
+</section>
+
+<main class="guide">
+
+  <!-- 1. PRINZIPIEN -->
+  <section class="section" id="prinzipien">
+    <h2><span class="num">01.</span>Fünf <span class="italic">Prinzipien.</span></h2>
+    <p>Bevor du einen Satz schreibst — ist er <em>direkt, ehrlich, mutig, nah und in Münster gewurzelt?</em> Wenn nicht, schreib ihn nochmal.</p>
+    <div class="prinzipien">
+      <div class="prinzip">
+        <div class="label">01 · Direkt &amp; ehrlich</div>
+        <div class="text">Kein Agentur-Bullshit. Wenn etwas <strong>schwer</strong> ist, sagen wir „schwer". Wenn wir <strong>nicht wissen</strong>, sagen wir „weiß ich nicht". Wir <strong>filtern</strong> Wahrheit nicht durch Marketing-Sprech.</div>
+      </div>
+      <div class="prinzip">
+        <div class="label">02 · Mutig</div>
+        <div class="text">Social <strong>ohne Beige</strong>. Branding mit Kanten. Lieber polarisieren als langweilen. Wir trauen uns Sätze zu, die der Mitbewerb nicht schreibt.</div>
+      </div>
+      <div class="prinzip">
+        <div class="label">03 · Mit Haltung</div>
+        <div class="text">Wir haben Meinung. Wir <strong>kritisieren auch Kunden</strong>, wenn es sein muss. Wir sind keine Ja-Sager, sondern <strong>Sparringspartner</strong>.</div>
+      </div>
+      <div class="prinzip">
+        <div class="label">04 · Nah</div>
+        <div class="text">Für KMU, nicht Konzerne. Wir sprechen Inhaberinnen und Inhaber direkt an — keine anonymen <em>„Entscheidungsträger"</em>. Konkrete Sätze, konkrete Menschen.</div>
+      </div>
+      <div class="prinzip">
+        <div class="label">05 · Münster</div>
+        <div class="text">Regional verwurzelt. Wir sind <strong>in Münster zuhause</strong> und verstecken das nicht. „Wir bei Quint in Münster" ist erlaubt. „Wir, die global agierende Werkstatt" ist verboten.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. DU vs SIE -->
+  <section class="section" id="du-sie">
+    <h2><span class="num">02.</span>Du, Sie und <span class="italic">Wir.</span></h2>
+
+    <h3>Du — Standard für Web, Social, Erstgespräch, laufende Mails</h3>
+    <p>Quint ist nah. Wir duzen Inhaber. Auf der Website, in Instagram-Posts, in LinkedIn-Texten, ab dem zweiten Kontakt per Mail. <em>„Was du genau bekommst", „Mach den Check", „Wir liefern dir wöchentlich."</em></p>
+
+    <h3>Sie — bei Erstkontakt-Mails, formellen Briefen, älteren Zielgruppen</h3>
+    <p>Wenn jemand sich per Sie an uns wendet, bleiben wir vorerst beim Sie. Im Erstgespräch klären wir das ab — meistens duzen wir uns nach 10 Minuten. Briefe an Behörden, AVV-Anhänge, Rechnungen: <strong>Sie</strong>.</p>
+
+    <h3>Wir — wenn Quint spricht</h3>
+    <p>„Wir bauen Marken", nicht „Quint baut Marken". Drei Menschen + ein Wappentier, und das ist immer „wir". <strong>Nie „ich"</strong>, auch wenn Aric allein schreibt — der Auftritt ist Wir.</p>
+
+    <h3>Ausnahme: Team-Profile</h3>
+    <p>Auf den einzelnen Team-Seiten (Aric, Rania, Bjoern, Dackel) ist <strong>„ich"</strong> erlaubt, weil dort eine Einzelperson spricht.</p>
+  </section>
+
+  <!-- 3. TONALITÄT -->
+  <section class="section" id="tonalitaet">
+    <h2><span class="num">03.</span>Tonalität nach <span class="italic">Kontext.</span></h2>
+    <p>Die Stimme bleibt, der Pegel ändert sich. Eine Instagram-Story ist kein AVV. Beides klingt aber nach Quint.</p>
+    <table class="tone">
+      <thead>
+        <tr>
+          <th>Kontext</th>
+          <th>Du/Sie</th>
+          <th>Tonalität</th>
+          <th>Beispiel</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Website</td>
+          <td>Du</td>
+          <td>Direkt, spielerisch</td>
+          <td><em>„Wir jagen den Ball. Andere reden über die Wiese."</em></td>
+        </tr>
+        <tr>
+          <td>Instagram</td>
+          <td>Du</td>
+          <td>Frech, kurz, ein Gedanke pro Post</td>
+          <td><em>„Branding ist keine Optik. Branding ist Haltung, die zufällig auch gut aussieht."</em></td>
+        </tr>
+        <tr>
+          <td>LinkedIn</td>
+          <td>Sie/Wir</td>
+          <td>Beobachtend, mit Pointe</td>
+          <td><em>„Wir haben einen Kunden beim Erstgespräch gefragt: ‚Was würden Sie selbst nie über Ihre Praxis sagen?' Die Antwort war seine beste Positionierung."</em></td>
+        </tr>
+        <tr>
+          <td>Erstgespräch-Mail (Erstkontakt)</td>
+          <td>Sie</td>
+          <td>Höflich, klar, ohne Sales-Geste</td>
+          <td><em>„Hallo Frau Müller, danke für Ihre Anfrage. Hier sind drei Termine, die bei uns funktionieren — wählen Sie gerne aus."</em></td>
+        </tr>
+        <tr>
+          <td>Laufende Projekt-Mail</td>
+          <td>Du</td>
+          <td>Locker, konkret, sachorientiert</td>
+          <td><em>„Hier ist der erste Entwurf. Zwei Sachen sind absichtlich anders als besprochen — ich erklär's am Mittwoch."</em></td>
+        </tr>
+        <tr>
+          <td>Pitch-Deck</td>
+          <td>Sie</td>
+          <td>Klar, nüchtern, ehrliche Ranges</td>
+          <td><em>„Wir liefern in 6–10 Wochen. Schneller geht — aber dann auf Kosten der Substanz, und das machen wir nicht."</em></td>
+        </tr>
+        <tr>
+          <td>Rechnungen, AVV, Briefe</td>
+          <td>Sie</td>
+          <td>Geschäftlich-korrekt</td>
+          <td><em>„Sehr geehrte Damen und Herren, anbei finden Sie..."</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 4. VOKABULAR -->
+  <section class="section" id="vokabular">
+    <h2><span class="num">04.</span>Was wir sagen, <span class="italic">was nicht.</span></h2>
+    <p>Manche Wörter sind verbrannt, weil jede Agentur sie benutzt. Wir bauen unsere Sprache aus Werkstatt-Bildern statt aus Marketing-Floskeln.</p>
+    <div class="vokabel-grid">
+      <div class="vokabel-bad">
+        <div class="label-mini">Sagen wir nicht</div>
+        <div class="vokabel-text">passionate, leidenschaftlich</div>
+      </div>
+      <div class="vokabel-good">
+        <div class="label-mini">Sagen wir</div>
+        <div class="vokabel-text"><strong>ernst meinen</strong>, „wir meinen es ernst"</div>
+      </div>
+
+      <div class="vokabel-bad">
+        <div class="label-mini">Sagen wir nicht</div>
+        <div class="vokabel-text">Synergie, ganzheitlich, kompetent</div>
+      </div>
+      <div class="vokabel-good">
+        <div class="label-mini">Sagen wir</div>
+        <div class="vokabel-text"><strong>handwerklich, strategisch, sauber</strong></div>
+      </div>
+
+      <div class="vokabel-bad">
+        <div class="label-mini">Sagen wir nicht</div>
+        <div class="vokabel-text">Customer Journey, Touchpoints</div>
+      </div>
+      <div class="vokabel-good">
+        <div class="label-mini">Sagen wir</div>
+        <div class="vokabel-text"><strong>Anlässe, Berührungspunkte</strong>, „wo deine Kunden bei dir landen"</div>
+      </div>
+
+      <div class="vokabel-bad">
+        <div class="label-mini">Sagen wir nicht</div>
+        <div class="vokabel-text">Awareness, Markenbekanntheit</div>
+      </div>
+      <div class="vokabel-good">
+        <div class="label-mini">Sagen wir</div>
+        <div class="vokabel-text"><strong>Sichtbarkeit</strong>, „dass man dich kennt"</div>
+      </div>
+
+      <div class="vokabel-bad">
+        <div class="label-mini">Sagen wir nicht</div>
+        <div class="vokabel-text">hochwertig, individuell, premium</div>
+      </div>
+      <div class="vokabel-good">
+        <div class="label-mini">Sagen wir</div>
+        <div class="vokabel-text">Konkret werden. <strong>„400 gsm Bio-Baumwolle"</strong>, nicht „hochwertige Hoodies".</div>
+      </div>
+
+      <div class="vokabel-bad">
+        <div class="label-mini">Sagen wir nicht</div>
+        <div class="vokabel-text">entwickeln, kreieren</div>
+      </div>
+      <div class="vokabel-good">
+        <div class="label-mini">Sagen wir</div>
+        <div class="vokabel-text"><strong>bauen, machen, schreiben, zeichnen</strong></div>
+      </div>
+
+      <div class="vokabel-bad">
+        <div class="label-mini">Sagen wir nicht</div>
+        <div class="vokabel-text">disruptiv, out of the box, next level</div>
+      </div>
+      <div class="vokabel-good">
+        <div class="label-mini">Sagen wir</div>
+        <div class="vokabel-text">Konkret werden statt Schlagworten. <strong>„Anders" reicht.</strong></div>
+      </div>
+
+      <div class="vokabel-bad">
+        <div class="label-mini">Sagen wir nicht</div>
+        <div class="vokabel-text">Tonalität (im Kundengespräch)</div>
+      </div>
+      <div class="vokabel-good">
+        <div class="label-mini">Sagen wir</div>
+        <div class="vokabel-text"><strong>Stimme</strong>, „wie es klingt", „der Ton" — intern darf Tonalität bleiben</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. DON'TS -->
+  <section class="section" id="donts">
+    <h2><span class="num">05.</span>Phrasen, die wir <span class="italic">nie schreiben.</span></h2>
+    <p>Diese sind absolut tabu — egal in welchem Kanal, egal wer schreibt.</p>
+    <div class="donts">
+      <h3>Schwarze Liste</h3>
+      <ul>
+        <li><strong>„Wir sind passionate / leidenschaftlich"</strong> — ersatzlos streichen oder „wir meinen es ernst"</li>
+        <li><strong>„Wir lieben es zu …"</strong> — nein, niemand liebt Kundenprojekte. Wir machen sie gerne, ehrlich.</li>
+        <li><strong>„Out of the box / Querdenken"</strong> — leeres Versprechen</li>
+        <li><strong>„Disruptiv"</strong> — gehört Konzernen, nicht uns</li>
+        <li><strong>„Ganzheitlich"</strong> — bedeutet nichts</li>
+        <li><strong>„Mit Herzblut"</strong> — Bauch-Geste statt Aussage</li>
+        <li><strong>„Branding-Strategie auf einem höheren Level"</strong> — Marketing-Lärm</li>
+        <li><strong>„Wir freuen uns über Ihre Kontaktaufnahme"</strong> — kalt-höflich, klingt nach Dienstleister-Floskel. Statt: „Schreib uns, wenn du dazu eine Frage hast."</li>
+        <li><strong>Erfundene Zahlen</strong> — niemals „2-3 Marken pro Jahr" oder „seit 200 Projekten". Wir erfinden keine Track-Records.</li>
+        <li><strong>REHAB FIVE als Quint-Eigentum framen</strong> — REHAB FIVE ist Aric's Praxis, nicht Quint-Klientel. Immer attribuieren.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6. SPRACH-MECHANIK -->
+  <section class="section" id="sprachregeln">
+    <h2><span class="num">06.</span>Sprach-<span class="italic">Mechanik.</span></h2>
+
+    <h3>Kurze Sätze. Eine Behauptung pro Satz.</h3>
+    <p><strong>Schlecht:</strong> Wir sind eine Werkstatt, die für inhabergeführte Praxen, Vereine und Berater Branding und Social macht, und das immer mit Handschrift, weil wir keine Templates verwenden.<br/>
+    <strong>Gut:</strong> Wir bauen Marken für inhabergeführte KMU. Branding und Social. Keine Templates — Werkstatt-Arbeit.</p>
+
+    <h3>Aktiv statt passiv</h3>
+    <p><strong>Schlecht:</strong> Es wird viel über Marken geredet. <br/>
+    <strong>Gut:</strong> Andere reden über die Wiese. Wir jagen den Ball.</p>
+
+    <h3>Konkret statt abstrakt</h3>
+    <p>„8 Wochen", nicht „schnell". „Heavy Hoodie 380 gsm", nicht „hochwertig". „Drei Cluster: Health, Sport, Dienstleister", nicht „verschiedene Zielgruppen".</p>
+
+    <h3>Bilder statt Begriffe</h3>
+    <p>Wir nutzen Werkstatt-Metaphern. <em>Handschrift, Werkstatt, Ball jagen, Wiese, Spielfeld, Wappen.</em> Aber sparsam — keine Metaphern-Inflation.</p>
+
+    <h3>Englisch sparsam</h3>
+    <p>Standard: <strong>Deutsch</strong>. Englisch nur wo unumgänglich: <em>Branding</em>, <em>Social</em>, <em>Performance</em>, <em>Reels</em>. Und der Marken-Claim: <em>CHASING THE BALL</em>. Sonst kein Denglisch.</p>
+
+    <h3>Fraunces-Italic = Schmuck-Schrift, sparsam einsetzen</h3>
+    <p>Italic-Worte sind <em>Akzent</em>, nicht Lärm. <strong>Maximal eines pro Satz</strong>. Wenn alles italic ist, ist nichts italic.</p>
+  </section>
+
+  <!-- 7. BEISPIELE -->
+  <section class="section" id="beispiele">
+    <h2><span class="num">07.</span>Off-Brand vs. <span class="italic">On-Brand.</span></h2>
+    <p>Drei reale Szenarien, beide Versionen nebeneinander. Lies sie laut, dann verstehst du, warum Quint <em>diese</em> Stimme braucht.</p>
+
+    <h3>Szenario A — Instagram-Post zur neuen Praxis-Marke</h3>
+    <div class="beispiel">
+      <div class="beispiel-card beispiel-bad">
+        <span class="badge">× Off-Brand</span>
+        <p class="quote">„Wir freuen uns sehr, das neue Branding für die Praxis Müller zu präsentieren! Ein hochwertiges Design, das die Werte der Praxis ganzheitlich widerspiegelt. #Branding #Hochwertig"</p>
+      </div>
+      <div class="beispiel-card beispiel-good">
+        <span class="badge">✓ On-Brand</span>
+        <p class="quote">„Drei Monate. Eine neue Marke für die Praxis Müller in Münster. Was vorher wie eine Praxis aussah, sieht jetzt aus wie das, was sie kann."</p>
+      </div>
+    </div>
+
+    <h3>Szenario B — Antwort auf Anfrage zu Pricing</h3>
+    <div class="beispiel">
+      <div class="beispiel-card beispiel-bad">
+        <span class="badge">× Off-Brand</span>
+        <p class="quote">„Vielen Dank für Ihr Interesse! Unsere Pakete starten ab einem niedrigen Investment und werden individuell auf Ihre Bedürfnisse zugeschnitten. Lassen Sie uns dazu gerne in einem unverbindlichen Gespräch ins Detail gehen."</p>
+      </div>
+      <div class="beispiel-card beispiel-good">
+        <span class="badge">✓ On-Brand</span>
+        <p class="quote">„Hallo Frau Müller, ehrliche Antwort: Ein vollständiges Branding bei uns ist eine substanzielle Investition. Wenn du einen Logo-Refresh für 2.000 € suchst, sind wir nicht der Partner. Wenn du eine Marke baust, die zehn Jahre trägt — hier sind drei Termine fürs Erstgespräch."</p>
+      </div>
+    </div>
+
+    <h3>Szenario C — Mail an Bestandskunden, Projekt verzögert sich</h3>
+    <div class="beispiel">
+      <div class="beispiel-card beispiel-bad">
+        <span class="badge">× Off-Brand</span>
+        <p class="quote">„Aufgrund unvorhersehbarer Umstände müssen wir leider den ursprünglich geplanten Liefertermin nach hinten verschieben. Wir bitten dies zu entschuldigen und sind bemüht, das Projekt schnellstmöglich abzuschließen."</p>
+      </div>
+      <div class="beispiel-card beispiel-good">
+        <span class="badge">✓ On-Brand</span>
+        <p class="quote">„Hey, wir liegen eine Woche hinter Plan. Grund: Wir haben den Anfang noch nicht so, wie er sein muss — und liefern lieber später als halbgar. Neuer Termin: Freitag, 14. Juni. Sorry für die Wartezeit."</p>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>Dieser Guide ist ein lebendes Dokument. Wenn etwas in der Praxis nicht funktioniert oder du eine bessere Formulierung hast — meld dich bei Aric. Stand: Juni 2026.</p>
+</footer>
+
+</body>
+</html>
