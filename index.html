@@ -1096,34 +1096,11 @@
   @media (max-width: 1100px) { .team-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr; } }
 
-  /* Dackel-Karte — eigene Optik, da kein Mensch */
-  .person.dackel-person { padding-bottom: 36px; }
-  .person.dackel-person .dackel-portrait {
-    width: 100%;
-    aspect-ratio: 1.4 / 1;
-    background: rgba(232,155,177,0.08);
-    border-radius: 16px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 28px;
-    overflow: hidden;
-    position: relative;
-  }
-  .person.dackel-person .dackel-portrait img {
-    width: 64%;
-    height: auto;
-    opacity: 0.92;
-    display: block;
-    filter: invert(1);
-    transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
-  }
-  .person.dackel-person:hover .dackel-portrait img { transform: scale(1.05); }
-  .person.dackel-person .dackel-portrait::before {
-    content: ""; position: absolute;
-    top: 10%; left: 12%;
-    width: 14%; aspect-ratio: 1;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #f4b8c8 0%, var(--pink) 45%, var(--pink-strong) 100%);
-    box-shadow: 0 4px 12px rgba(13,39,71,0.4);
+  /* Pink-Dot am Dackel-Initial — Echo zum Quint-Logo-Ball */
+  .person-initials .initial-dot {
+    color: var(--pink);
+    display: inline-block;
+    margin-left: -0.05em;
   }
   .person {
     background: rgba(255,255,255,0.035);
@@ -2173,11 +2150,9 @@
         <p class="person-bio">Wenn aus Markenidee Markenmarke wird — wenn aus Konzept ein Logo wird, das auch in zehn Jahren noch funktioniert — geht das durch Bjoerns Hand. Logo-Entwicklung, illustrative Bildwelten und Painting-Arbeiten sind seine Domäne.</p>
         <span class="person-cta">Profil ansehen <span class="arrow">→</span></span>
       </a>
-      <a href="team-dackel.html" class="person dackel-person reveal person-link" aria-label="Dackel — Wappentier · Geschichte öffnen">
+      <a href="team-dackel.html" class="person reveal person-link" aria-label="Dackel — Wappentier · Geschichte öffnen">
         <div class="person-decoration"></div>
-        <div class="dackel-portrait" aria-hidden="true">
-          <img src="assets/Dackel-Maennchen.svg" alt="" decoding="async" />
-        </div>
+        <div class="person-initials">D<span class="initial-dot">.</span></div>
         <div class="person-name">Dackel</div>
         <div class="person-role">Wappentier · Chief Spielfreude</div>
         <p class="person-bio">Kam nicht aus einem Marken-Workshop. Kam, weil Rania und Bjoern Dackel mögen — und Aric das zugelassen hat. Geblieben, weil Marken so beginnen sollten: aus echtem Stoff, nicht aus Workshop-Folien.</p>
