@@ -390,31 +390,47 @@
     backdrop-filter: saturate(150%) blur(16px);
     -webkit-backdrop-filter: saturate(150%) blur(16px);
     border-bottom: 1px solid rgba(255,255,255,0.06);
+    /* SMOOTH SHRINK — alle Properties die sich aendern bekommen Transitions */
+    transition:
+      background 0.32s cubic-bezier(.2,.8,.2,1),
+      box-shadow 0.32s cubic-bezier(.2,.8,.2,1),
+      border-color 0.32s cubic-bezier(.2,.8,.2,1);
+    /* GPU-Hint fuer butter-smooth Rendering bei Scroll */
+    will-change: background;
   }
   .nav-inner {
     display: flex; align-items: center; justify-content: space-between;
     padding: 18px 0;
-    transition: padding 0.3s cubic-bezier(.2,.8,.2,1);
+    transition: padding 0.32s cubic-bezier(.2,.8,.2,1);
   }
   body.nav-shrunk nav .nav-inner { padding: 6px 0; }
   body.nav-shrunk nav {
     background: rgba(13,39,71,0.96);
     box-shadow: 0 1px 0 rgba(232,155,177,0.18), 0 12px 32px rgba(0,0,0,0.35);
     backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-color: rgba(232,155,177,0.08);
   }
   body.nav-shrunk nav .nav-links { font-size: 13px; gap: 24px; }
   body.nav-shrunk nav .nav-cta { padding: 8px 16px; font-size: 12px; }
+  /* Smooth Transitions auf den schrumpfenden Elementen — kein Layout-Klacken */
+  .nav-links {
+    transition: font-size 0.32s cubic-bezier(.2,.8,.2,1),
+                gap 0.32s cubic-bezier(.2,.8,.2,1);
+  }
+  /* nav-cta-Transition wird unten erweitert */
   .logo {
     font-weight: 700; font-size: 26px; letter-spacing: -0.04em;
     display: inline-flex; align-items: center;
-    /* Mikro-Animation: Logo poppt subtle beim Page-Load (1x pro Visit) */
-    animation: logoPop 0.85s cubic-bezier(.34,1.56,.64,1) 3.1s both;
+    /* Mikro-Animation: Logo fadet subtle ein (Pop-Geste raus — kollidierte mit Sticky-Shrink) */
+    animation: logoFadeIn 0.6s cubic-bezier(.2,.8,.2,1) 3.0s both;
   }
   body.locked .logo { animation: none; }
-  @keyframes logoPop {
-    0%   { transform: scale(0.94); opacity: 0; }
-    60%  { transform: scale(1.02); opacity: 1; }
-    100% { transform: scale(1); opacity: 1; }
+  /* Wenn User schon vor Animations-Ende scrollt -> Animation killen, kein Konflikt mit Shrink */
+  body.nav-shrunk .logo { animation: none; opacity: 1; }
+  @keyframes logoFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
   @media (prefers-reduced-motion: reduce) {
     .logo { animation: none; }
@@ -440,7 +456,11 @@
     background: var(--pink); color: var(--navy);
     padding: 12px 22px; border-radius: 999px;
     font-size: 13px; font-weight: 700;
-    transition: transform 0.2s, background 0.2s;
+    transition:
+      transform 0.2s,
+      background 0.2s,
+      padding 0.32s cubic-bezier(.2,.8,.2,1),
+      font-size 0.32s cubic-bezier(.2,.8,.2,1);
   }
   .nav-cta:hover { transform: translateY(-2px); background: var(--pink-strong); }
 
@@ -2606,14 +2626,32 @@
 <script>
   (function() {
     let ticking = false;
-    const navThreshold = 80;
-    const fabThreshold = 200;
+    let isShrunk = false;
+    // Hysterese: nav schrumpft ab 90px, kehrt erst unter 50px zurueck. Verhindert Flicker am Threshold.
+    const shrinkEnter = 90;
+    const shrinkExit = 50;
+    const fabEnter = 220;
+    const fabExit = 180;
+    let isFab = false;
     function update() {
       const y = window.scrollY;
-      document.body.classList.toggle('nav-shrunk', y > navThreshold);
-      // FAB sichtbar zwischen 200px scroll und kurz vor Footer
+      // Nav-Shrink mit Hysterese
+      if (!isShrunk && y > shrinkEnter) {
+        isShrunk = true;
+        document.body.classList.add('nav-shrunk');
+      } else if (isShrunk && y < shrinkExit) {
+        isShrunk = false;
+        document.body.classList.remove('nav-shrunk');
+      }
+      // FAB mit Hysterese + Near-Bottom-Hide
       const nearBottom = (window.innerHeight + y) > (document.body.scrollHeight - 200);
-      document.body.classList.toggle('fab-visible', y > fabThreshold && !nearBottom);
+      if (!isFab && y > fabEnter && !nearBottom) {
+        isFab = true;
+        document.body.classList.add('fab-visible');
+      } else if (isFab && (y < fabExit || nearBottom)) {
+        isFab = false;
+        document.body.classList.remove('fab-visible');
+      }
       ticking = false;
     }
     window.addEventListener('scroll', () => {
