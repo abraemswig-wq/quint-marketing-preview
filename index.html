@@ -226,6 +226,7 @@
 <!-- Preload Above-the-Fold-Assets (Loader-Maennchen + Hero-Maennchen + Logo) -->
 <link rel="preload" as="image" href="assets/Dackel-Maennchen.svg" type="image/svg+xml" fetchpriority="high">
 <link rel="preload" as="image" href="assets/quint-logo-claim-white.png" fetchpriority="high">
+<link rel="preload" as="image" href="assets/quint-logo-white.svg" type="image/svg+xml" fetchpriority="high">
 <style>
   :root {
     --navy:        #143C6B;
@@ -422,18 +423,7 @@
   .logo {
     font-weight: 700; font-size: 26px; letter-spacing: -0.04em;
     display: inline-flex; align-items: center;
-    /* Mikro-Animation: Logo fadet subtle ein (Pop-Geste raus — kollidierte mit Sticky-Shrink) */
-    animation: logoFadeIn 0.6s cubic-bezier(.2,.8,.2,1) 3.0s both;
-  }
-  body.locked .logo { animation: none; }
-  /* Wenn User schon vor Animations-Ende scrollt -> Animation killen, kein Konflikt mit Shrink */
-  body.nav-shrunk .logo { animation: none; opacity: 1; }
-  @keyframes logoFadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .logo { animation: none; }
+    /* Logo ist sofort sichtbar — keine verzoegerte Fade-Animation mehr */
   }
   .logo .dot { color: var(--pink); margin-right: 2px; }
   .logo img {
@@ -2000,7 +1990,7 @@
 
 <nav>
   <div class="wrap nav-inner">
-    <a href="#top" class="logo" aria-label="Quint — Startseite"><img src="assets/quint-logo-white.svg" alt="Quint" fetchpriority="high" decoding="async" /></a>
+    <a href="#top" class="logo" aria-label="Quint — Startseite"><img src="assets/quint-logo-white.svg" alt="Quint" fetchpriority="high" decoding="sync" /></a>
     <div class="nav-links">
       <a href="#leistungen">Leistungen</a>
       <a href="#fuer-wen">Für wen</a>
