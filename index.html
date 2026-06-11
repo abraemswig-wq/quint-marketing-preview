@@ -298,8 +298,35 @@
     opacity: 0;
     transition: opacity 0.4s ease;
   }
+  /* Pink-Punkt-Outro: erscheint exakt wo der Ball im Video endet
+     (zentriert, da das Video centered ist). Wird via JS aktiv. */
+  .loader-outro-dot {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: clamp(40px, 6vw, 80px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #f4b8c8 0%, var(--pink) 45%, var(--pink-strong) 100%);
+    box-shadow: 0 10px 30px rgba(13,39,71,0.5), inset -2px -3px 8px rgba(0,0,0,0.08);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+    pointer-events: none;
+    z-index: 3;
+    transition: opacity 0.6s cubic-bezier(.2,.8,.2,1), transform 0.6s cubic-bezier(.2,.8,.2,1);
+  }
+  body.loader-outro-active .loader-outro-dot {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  body.loader-outro-fading .loader-outro-dot {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
   body.loader-video-mode .loader-intro { opacity: 1; }
   body.loader-video-mode #loaderContent { display: none; }
+  /* Outro-Phase: Video fadet aus damit der Pink-Punkt isoliert ueber Navy bleibt */
+  body.loader-outro-active .loader-intro,
+  body.loader-outro-fading .loader-intro { opacity: 0; transition: opacity 0.4s ease; }
   .loader-content { text-align: center; position: relative; }
   .loader-wappen {
     width: clamp(100px, 14vw, 180px);
@@ -2018,6 +2045,8 @@
   <video class="loader-intro" id="loaderIntro" muted playsinline preload="auto" aria-hidden="true">
     <source src="assets/loader-intro.mp4" type="video/mp4" />
   </video>
+  <!-- Pink-Punkt-Outro: erscheint am Ende des Videos und fadet aus -->
+  <span class="loader-outro-dot" id="loaderOutroDot" aria-hidden="true"></span>
   <!-- Pink-Ball-Reveal (uebernimmt am Ende des Videos ODER bei Wiederbesuchen) -->
   <div class="loader-content" id="loaderContent">
     <div class="loader-wappen" aria-hidden="true">
@@ -2642,8 +2671,17 @@
           setTimeout(finish, 2800);
         });
       }
-      // Video fertig -> sofort die Seite zeigen, kein Pink-Ball-Reveal mehr dazwischen
-      intro.addEventListener('ended', finish);
+      // Video fertig -> Pink-Punkt-Outro: erscheint, haelt kurz, fadet aus, Page erscheint
+      intro.addEventListener('ended', () => {
+        // 1) Video fadet aus, Pink-Punkt erscheint (scale 0.85 -> 1, opacity 0 -> 1)
+        document.body.classList.add('loader-outro-active');
+        // 2) Nach 600ms: Pink-Punkt fadet aus (scale 1 -> 0.7, opacity 1 -> 0)
+        setTimeout(() => {
+          document.body.classList.add('loader-outro-fading');
+        }, 600);
+        // 3) Nach insgesamt 1300ms: Loader weg, Page sichtbar
+        setTimeout(finish, 1300);
+      });
       // Notausgang: falls Video haengt
       setTimeout(() => { if (!loader.classList.contains('done')) finish(); }, 8000);
     } else {
