@@ -225,7 +225,7 @@
 
 <!-- Preload Above-the-Fold-Assets (Loader-Maennchen + Hero-Maennchen + Logo) -->
 <link rel="preload" as="image" href="assets/Dackel-Maennchen.svg" type="image/svg+xml" fetchpriority="high">
-<link rel="preload" as="video" href="assets/loader-dackel-wag.mp4" type="video/mp4">
+<link rel="preload" as="image" href="assets/quint-dackel-loader.png" fetchpriority="high">
 <link rel="preload" as="image" href="assets/quint-logo-claim-white.png" fetchpriority="high">
 <link rel="preload" as="image" href="assets/quint-logo-white.svg" type="image/svg+xml" fetchpriority="high">
 <style>
@@ -296,12 +296,8 @@
     animation: loaderWappenIn 0.9s cubic-bezier(.2,.8,.2,1) 0.05s forwards;
   }
   .loader-wappen img { width: 100%; height: auto; display: block; }
-  .loader-wappen .loader-dackel-vid {
+  .loader-wappen .loader-dackel-img {
     width: 100%; height: auto; display: block;
-    /* Schwarz im Video wird transparent (Loader-Background scheint durch) */
-    mix-blend-mode: screen;
-    /* H264-Kompressions-Reste rauszieren */
-    filter: contrast(1.2) brightness(1.05);
   }
   @keyframes loaderWappenIn {
     to { opacity: 1; transform: translateY(0) scale(1); }
@@ -2010,9 +2006,7 @@
 <div class="loader" id="loader">
   <div class="loader-content" id="loaderContent">
     <div class="loader-wappen" aria-hidden="true">
-      <video class="loader-dackel-vid" autoplay muted playsinline loop preload="auto">
-        <source src="assets/loader-dackel-wag.mp4" type="video/mp4" />
-      </video>
+      <img class="loader-dackel-img" src="assets/quint-dackel-loader.png" alt="" fetchpriority="high" decoding="async" />
     </div>
     <div class="loader-quint">
       <img class="loader-logo" src="assets/quint-logo-claim-white.png" alt="Quint" fetchpriority="high" decoding="async" />
