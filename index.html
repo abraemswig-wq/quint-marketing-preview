@@ -2613,24 +2613,17 @@
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // CINEMATIC LOADER — First-Visit-Video + Pink-Punkt-Expansion (Follow-up-Visits)
+  // CINEMATIC LOADER — Video als komplette Ladesequenz, am Ende direkt Page
   window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
     if (!loader) return;
     const params = new URLSearchParams(window.location.search);
     const skip = params.get('skip-loader') === '1';
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobile = window.matchMedia('(max-width: 800px)').matches;
-    // Save-Data API: bei langsamer Verbindung kein Video
     const saveData = navigator.connection && navigator.connection.saveData;
-    // Erste-Besuch-Detection via localStorage
-    let isFirstVisit = false;
-    try {
-      isFirstVisit = !localStorage.getItem('quint-visited');
-      if (isFirstVisit) localStorage.setItem('quint-visited', '1');
-    } catch (e) { /* localStorage blocked — fallback: kein Video */ }
 
-    const useVideo = isFirstVisit && !skip && !reduceMotion && !saveData && !isMobile;
+    // Skip-Faelle: ?skip-loader=1, prefers-reduced-motion, Save-Data
+    const skipVideo = skip || reduceMotion || saveData;
     const intro = document.getElementById('loaderIntro');
 
     function finish() {
@@ -2638,32 +2631,24 @@
       document.body.classList.remove('locked');
     }
 
-    if (useVideo && intro) {
-      // Video-Modus: Video abspielen, dann Pink-Ball-Reveal nahtlos uebernehmen
+    if (!skipVideo && intro) {
+      // Video-Modus: Video laeuft, am Ende sofort auf die Seite
       document.body.classList.add('loader-video-mode');
       const playPromise = intro.play();
       if (playPromise && playPromise.catch) {
         playPromise.catch(() => {
-          // Autoplay blocked — fallback zum Standard-Loader
+          // Autoplay blocked (vor allem Safari ohne User-Gesture) — Fallback Standard-Loader
           document.body.classList.remove('loader-video-mode');
           setTimeout(finish, 2800);
         });
       }
-      // Wenn Video fertig: Body unlock + Pink-Ball-Expansion uebernimmt
-      intro.addEventListener('ended', () => {
-        // Sanfter Uebergang: erst Standard-Loader-Content einblenden,
-        // dann nach kurzem Pop die Page revealen
-        document.body.classList.remove('loader-video-mode');
-        // Kurzer Buffer fuer Pink-Ball-Pop+Expand (1.5s Animation)
-        setTimeout(finish, 1500);
-      });
-      // Fallback: falls Video > 8s laeuft (sollte 5s sein) — Notausgang
-      setTimeout(() => {
-        if (!loader.classList.contains('done')) finish();
-      }, 8000);
+      // Video fertig -> sofort die Seite zeigen, kein Pink-Ball-Reveal mehr dazwischen
+      intro.addEventListener('ended', finish);
+      // Notausgang: falls Video haengt
+      setTimeout(() => { if (!loader.classList.contains('done')) finish(); }, 8000);
     } else {
-      // Standard-Loader: Logo + Pink-Punkt-Expansion
-      const delay = (skip || reduceMotion) ? 0 : (isMobile ? 1800 : 2800);
+      // Fallback: Standard-Loader-Reveal (Logo + Pink-Punkt)
+      const delay = skip || reduceMotion ? 0 : 2800;
       setTimeout(finish, delay);
     }
   });
