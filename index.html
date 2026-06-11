@@ -288,12 +288,12 @@
     display: flex; align-items: center; justify-content: center;
     overflow: hidden;
   }
-  /* First-Visit-Video: Vollbild, faellt evtl. an den Raendern an */
+  /* Loader-Video: angepasst (contain) — Aspect-Ratio bleibt erhalten, Letterbox auf Navy */
   .loader-intro {
     position: absolute;
     inset: 0;
     width: 100%; height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     background: var(--navy-deep);
     opacity: 0;
     transition: opacity 0.4s ease;
