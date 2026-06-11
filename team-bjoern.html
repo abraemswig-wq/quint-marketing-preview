@@ -130,6 +130,32 @@
   .section p { font-size: 17px; color: rgba(255,255,255,0.78); line-height: 1.6; max-width: 680px; margin-bottom: 18px; }
   .section p strong { color: var(--white); font-weight: 500; }
 
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 40px;
+    max-width: 720px;
+  }
+  .bullet-list li {
+    padding: 16px 0 16px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(244,239,231,0.85);
+    position: relative;
+  }
+  .bullet-list li:last-child { border-bottom: none; }
+  .bullet-list li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: var(--pink);
+    font-size: 14px;
+    top: 18px;
+  }
+  .bullet-list li strong { color: var(--white); font-weight: 600; }
+  .section h2 + p { font-size: 18px; line-height: 1.6; color: rgba(244,239,231,0.85); margin-bottom: 16px; }
+  .section h2:not(:first-of-type) { margin-top: 56px; }
   .pending {
     margin-top: 32px;
     padding: 24px 28px;
@@ -266,12 +292,22 @@
 
 <section class="section" id="main">
   <div class="wrap">
-    <h2>Ein <span class="italic">vollständigeres Bild</span> folgt.</h2>
-    <p>Bjoern ist der Logo- und Design-Kopf von Quint. Was oben steht, ist eine erste Annäherung — geschrieben von Aric, weil Bjoern seine eigene Stimme nicht von außen formulieren lassen will.</p>
+    <h2>Was Bjoern bei Quint <span class="italic">übernimmt.</span></h2>
+    <p>Drei Domänen, in denen jeder Strich durch seine Hand geht:</p>
+
+    <ul class="bullet-list">
+      <li><strong>Logo-Entwicklung.</strong> Aus Markenidee wird Wortmarke, Bildmarke, Wappen. Logos, die in zehn Jahren noch funktionieren, nicht nur in der nächsten Saison.</li>
+      <li><strong>Illustration &amp; Bildwelten.</strong> Wenn eine Marke ihr eigenes Bildvokabular braucht, baut Bjoern es. Vom Wappentier bis zur Icon-Familie.</li>
+      <li><strong>Painting &amp; gestalterische Umsetzung.</strong> Wo Software endet, fängt sein Handwerk an. Texturen, Oberflächen, das, was Marken anfassbar macht.</li>
+    </ul>
+
+    <h2>Wie er <span class="italic">denkt.</span></h2>
+    <p>Bjoern ist der Geduldige im Team. Während Aric strategisch und Rania kommunikativ schnell sind, lebt Bjoern in der dritten Geschwindigkeit: tief, präzise, ohne Eile.</p>
+    <p>Ein Logo, das in zehn Jahren noch trägt, baut man nicht in drei Tagen. Bjoern weiß das. Wir auch. Deshalb geht jeder Auftrag, der bei uns durch eine Logo-Phase muss, durch seine Hand und nicht durch eine Vorlage.</p>
 
     <div class="pending">
-      <strong>Bio in Arbeit</strong>
-      Bjoern ergänzt diese Seite mit Werdegang, ausgewählten Logo-Projekten und seiner Sicht auf gute Gestaltung — sobald er dafür Zeit hat. Bis dahin: alle Anfragen rund um Quint erreichen ihn über Aric.
+      <strong>Seine eigene Stimme — kommt noch.</strong>
+      Was du oben liest, ist von Aric formuliert. Bjoern ergänzt diese Seite mit Werdegang, ausgewählten Logo-Arbeiten und seiner Sicht auf gute Gestaltung, sobald die Zeit dafür da ist. Bis dahin erreichst du ihn auch über Aric.
     </div>
   </div>
 </section>
@@ -279,8 +315,8 @@
 <section class="profile-cta">
   <div class="wrap">
     <h2>Erst Quint <span class="italic">kennenlernen?</span></h2>
-    <p>30 Minuten, kostenlos. Mit Aric, Rania oder Bjoern — je nachdem, was zu eurem Projekt passt.</p>
-    <a class="email-pill" href="mailto:a.braemswig@rehab-five.com">Erstgespräch anfragen →</a>
+    <p>45 Minuten, kostenlos. Mit Aric, Rania oder Bjoern, je nachdem, was zu eurem Projekt passt.</p>
+    <a class="email-pill" href="mailto:hallo@quint-marketing.de">Erstgespräch anfragen →</a>
   </div>
 </section>
 

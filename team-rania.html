@@ -198,6 +198,32 @@
   .section p strong { color: var(--white); font-weight: 500; }
 
   /* Bio-Pending-Notice */
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 40px;
+    max-width: 720px;
+  }
+  .bullet-list li {
+    padding: 16px 0 16px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(244,239,231,0.85);
+    position: relative;
+  }
+  .bullet-list li:last-child { border-bottom: none; }
+  .bullet-list li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: var(--pink);
+    font-size: 14px;
+    top: 18px;
+  }
+  .bullet-list li strong { color: var(--white); font-weight: 600; }
+  .section h2 + p { font-size: 18px; line-height: 1.6; color: rgba(244,239,231,0.85); margin-bottom: 16px; }
+  .section h2:not(:first-of-type) { margin-top: 56px; }
   .pending {
     margin-top: 32px;
     padding: 24px 28px;
@@ -361,15 +387,25 @@
   </div>
 </header>
 
-<!-- BIO-PENDING -->
+<!-- WAS RANIA BEI QUINT ÜBERNIMMT -->
 <section class="section" id="main">
   <div class="wrap">
-    <h2>Ein <span class="italic">vollständigeres Bild</span> folgt.</h2>
-    <p>Rania ist der gestalterische Kopf hinter Quint. Was du oben siehst, ist eine erste Annäherung — geschrieben von Aric, weil Rania ihre eigene Stimme nicht von außen formulieren lassen will.</p>
+    <h2>Was Rania bei Quint <span class="italic">übernimmt.</span></h2>
+    <p>Drei klare Verantwortungen, die nicht verhandelbar sind:</p>
+
+    <ul class="bullet-list">
+      <li><strong>Visuelle Identität.</strong> Logo bis Bildwelt, Schrift-System bis Farb-Anwendung. Jede Quint-Marke läuft durch ihre Hand, bevor sie das Studio verlässt.</li>
+      <li><strong>Kundenkommunikation.</strong> Erste Ansprechpartnerin bei laufenden Projekten. Wenn Aric in Strategie-Gesprächen ist, hält Rania den Kanal offen.</li>
+      <li><strong>Stellvertretung.</strong> In Geschäfts­führungs-Themen vertritt sie Aric, wenn er nicht erreichbar ist. Entscheidungs­fähig, nicht nur Antworten-fähig.</li>
+    </ul>
+
+    <h2>Wie sie <span class="italic">arbeitet.</span></h2>
+    <p>Rania denkt Design nicht als Optik, sondern als Übersetzung. Aric schärft das „Was" und „Warum" einer Marke. Rania übersetzt es in Form, Stimme und Geste.</p>
+    <p>Das bedeutet konkret: Keine Vorlagen-Anwendung. Keine Trend-Mitnahmen. Jeder Auftrag beginnt mit einem leeren Blatt und der Frage, was diese Marke konkret braucht. Nicht was sich Designer wünschen.</p>
 
     <div class="pending">
-      <strong>Bio in Arbeit</strong>
-      Rania ergänzt diese Seite mit Werdegang, Lieblings-Projekten und ihrer eigenen Sicht auf gute Marken — sobald sie dafür Zeit hat. Bis dahin: alle Quint-Anfragen erreichen sie auch über Aric.
+      <strong>Ihre eigene Stimme — kommt noch.</strong>
+      Was du oben liest, ist von Aric formuliert. Rania ergänzt diese Seite mit Werdegang, ausgewählten Arbeiten und ihrer eigenen Sicht auf gute Gestaltung, sobald die Zeit dafür da ist. Bis dahin erreichst du sie auch über Aric.
     </div>
   </div>
 </section>
@@ -378,8 +414,8 @@
 <section class="profile-cta">
   <div class="wrap">
     <h2>Erst Quint <span class="italic">kennenlernen?</span></h2>
-    <p>30 Minuten, kostenlos. Mit Aric oder beiden — je nachdem, was zu eurem Projekt passt.</p>
-    <a class="email-pill" href="mailto:a.braemswig@rehab-five.com">Erstgespräch anfragen →</a>
+    <p>45 Minuten, kostenlos. Mit Aric oder beiden, je nachdem, was zu eurem Projekt passt.</p>
+    <a class="email-pill" href="mailto:hallo@quint-marketing.de">Erstgespräch anfragen →</a>
   </div>
 </section>
 
