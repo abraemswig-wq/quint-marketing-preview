@@ -227,8 +227,6 @@
 <link rel="preload" as="image" href="assets/Dackel-Maennchen.svg" type="image/svg+xml" fetchpriority="high">
 <link rel="preload" as="image" href="assets/quint-logo-claim-white.png" fetchpriority="high">
 <link rel="preload" as="image" href="assets/quint-logo-white.svg" type="image/svg+xml" fetchpriority="high">
-<!-- Loader-Intro-Video: nur First-Visit gestartet, aber preload damit kein Stutter -->
-<link rel="preload" as="video" href="assets/loader-intro.mp4" type="video/mp4">
 <style>
   :root {
     --navy:        #143C6B;
@@ -283,57 +281,11 @@
   /* CINEMATIC LOADER */
   .loader {
     position: fixed; inset: 0;
-    background: #033870; /* identisch zur Video-Hintergrund-Farbe, kein Letterbox-Sprung */
+    background: var(--navy-deep);
     z-index: 9999;
     display: flex; align-items: center; justify-content: center;
     overflow: hidden;
   }
-  /* Loader-Video: zeigt das Video in Original-Aufloesung, zentriert.
-     Kein Hochskalieren = keine Qualitaetsverluste.
-     Bei zu kleinem Viewport wird es mit max-width/-height angepasst. */
-  .loader-intro {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: auto; height: auto;
-    max-width: 90vw;
-    max-height: 90vh;
-    background: #033870; /* identisch zum Loader-Container */
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-  /* Pink-Punkt-Outro: erscheint nach dem Video an der Ball-Position,
-     expandiert dann (wie der urspruengliche Pink-Ball-Reveal) auf scale(200) */
-  .loader-outro-dot {
-    position: absolute;
-    top: 50%; left: 50%;
-    width: clamp(20px, 2.5vw, 40px); /* etwa so gross wie der Video-Ball am Ende */
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    background: var(--pink);
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0);
-    pointer-events: none;
-    z-index: 3;
-    transform-origin: center;
-  }
-  /* Phase 1: Pop — Ball erscheint sanft, scale 0 -> 1 */
-  body.loader-outro-active .loader-outro-dot {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    transition: opacity 0.3s ease, transform 0.5s cubic-bezier(.34,1.56,.64,1);
-  }
-  /* Phase 2: Expand — Ball wird gigantisch und uebernimmt den Screen */
-  body.loader-outro-expanding .loader-outro-dot {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(200);
-    transition: transform 1s cubic-bezier(.6,0,.7,1);
-  }
-  body.loader-video-mode .loader-intro { opacity: 1; }
-  body.loader-video-mode #loaderContent { display: none; }
-  /* Outro-Phase: Video fadet aus damit der Pink-Ball isoliert bleibt + expandieren kann */
-  body.loader-outro-active .loader-intro,
-  body.loader-outro-expanding .loader-intro { opacity: 0; transition: opacity 0.3s ease; }
   .loader-content { text-align: center; position: relative; }
   .loader-wappen {
     width: clamp(100px, 14vw, 180px);
@@ -2048,12 +2000,6 @@
 
 <!-- CINEMATIC LOADER -->
 <div class="loader" id="loader">
-  <!-- First-Visit-Video (wird via JS aktiviert, sonst hidden) -->
-  <video class="loader-intro" id="loaderIntro" muted playsinline preload="auto" aria-hidden="true">
-    <source src="assets/loader-intro.mp4" type="video/mp4" />
-  </video>
-  <!-- Pink-Punkt-Outro: erscheint am Ende des Videos und fadet aus -->
-  <span class="loader-outro-dot" id="loaderOutroDot" aria-hidden="true"></span>
   <!-- Pink-Ball-Reveal (uebernimmt am Ende des Videos ODER bei Wiederbesuchen) -->
   <div class="loader-content" id="loaderContent">
     <div class="loader-wappen" aria-hidden="true">
@@ -2649,56 +2595,19 @@
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // CINEMATIC LOADER — Video als komplette Ladesequenz, am Ende direkt Page
+  // CINEMATIC LOADER — Logo + Pink-Punkt-Expansion
   window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
     if (!loader) return;
     const params = new URLSearchParams(window.location.search);
     const skip = params.get('skip-loader') === '1';
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const saveData = navigator.connection && navigator.connection.saveData;
-
-    // Skip-Faelle: ?skip-loader=1, prefers-reduced-motion, Save-Data
-    const skipVideo = skip || reduceMotion || saveData;
-    const intro = document.getElementById('loaderIntro');
-
-    function finish() {
+    const isMobile = window.matchMedia('(max-width: 800px)').matches;
+    const delay = (skip || reduceMotion) ? 0 : (isMobile ? 1800 : 2800);
+    setTimeout(() => {
       loader.classList.add('done');
       document.body.classList.remove('locked');
-    }
-
-    if (!skipVideo && intro) {
-      // Video-Modus: Video laeuft, am Ende sofort auf die Seite
-      document.body.classList.add('loader-video-mode');
-      const playPromise = intro.play();
-      if (playPromise && playPromise.catch) {
-        playPromise.catch(() => {
-          // Autoplay blocked (vor allem Safari ohne User-Gesture) — Fallback Standard-Loader
-          document.body.classList.remove('loader-video-mode');
-          setTimeout(finish, 2800);
-        });
-      }
-      // Video fertig -> Pink-Ball-Expansion-Reveal:
-      // 1) Video fadet aus, Pink-Ball poppt aus der Ball-Position (300ms)
-      // 2) Ball expandiert auf scale(200), uebernimmt den Screen (1000ms)
-      // 3) Loader fadet aus, Page sichtbar
-      intro.addEventListener('ended', () => {
-        // Phase 1: Pop-In
-        document.body.classList.add('loader-outro-active');
-        // Phase 2: Expand (300ms nach Pop)
-        setTimeout(() => {
-          document.body.classList.add('loader-outro-expanding');
-        }, 300);
-        // Phase 3: Finish (Pop 300ms + Expand 1000ms)
-        setTimeout(finish, 1300);
-      });
-      // Notausgang: falls Video haengt
-      setTimeout(() => { if (!loader.classList.contains('done')) finish(); }, 8000);
-    } else {
-      // Fallback: Standard-Loader-Reveal (Logo + Pink-Punkt)
-      const delay = skip || reduceMotion ? 0 : 2800;
-      setTimeout(finish, delay);
-    }
+    }, delay);
   });
 </script>
 
