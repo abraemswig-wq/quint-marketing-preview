@@ -227,6 +227,8 @@
 <link rel="preload" as="image" href="assets/Dackel-Maennchen.svg" type="image/svg+xml" fetchpriority="high">
 <link rel="preload" as="image" href="assets/quint-logo-claim-white.png" fetchpriority="high">
 <link rel="preload" as="image" href="assets/quint-logo-white.svg" type="image/svg+xml" fetchpriority="high">
+<!-- Loader-Intro-Video: nur First-Visit gestartet, aber preload damit kein Stutter -->
+<link rel="preload" as="video" href="assets/loader-intro.mp4" type="video/mp4">
 <style>
   :root {
     --navy:        #143C6B;
@@ -286,6 +288,18 @@
     display: flex; align-items: center; justify-content: center;
     overflow: hidden;
   }
+  /* First-Visit-Video: groesster sichtbarer Bereich, behalten aspect ratio */
+  .loader-intro {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: contain;
+    background: var(--navy-deep);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  body.loader-video-mode .loader-intro { opacity: 1; }
+  body.loader-video-mode #loaderContent { display: none; }
   .loader-content { text-align: center; position: relative; }
   .loader-wappen {
     width: clamp(100px, 14vw, 180px);
@@ -2000,7 +2014,12 @@
 
 <!-- CINEMATIC LOADER -->
 <div class="loader" id="loader">
-  <div class="loader-content">
+  <!-- First-Visit-Video (wird via JS aktiviert, sonst hidden) -->
+  <video class="loader-intro" id="loaderIntro" muted playsinline preload="auto" aria-hidden="true">
+    <source src="assets/loader-intro.mp4" type="video/mp4" />
+  </video>
+  <!-- Pink-Ball-Reveal (uebernimmt am Ende des Videos ODER bei Wiederbesuchen) -->
+  <div class="loader-content" id="loaderContent">
     <div class="loader-wappen" aria-hidden="true">
       <img src="assets/Dackel-Maennchen.svg" alt="" fetchpriority="high" decoding="async" />
     </div>
@@ -2594,7 +2613,7 @@
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // CINEMATIC LOADER — Pink-Punkt-Expansion
+  // CINEMATIC LOADER — First-Visit-Video + Pink-Punkt-Expansion (Follow-up-Visits)
   window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
     if (!loader) return;
@@ -2602,12 +2621,51 @@
     const skip = params.get('skip-loader') === '1';
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isMobile = window.matchMedia('(max-width: 800px)').matches;
-    // Desktop: 2800ms volles Spektakel. Mobile: 1800ms straffer.
-    const delay = (skip || reduceMotion) ? 0 : (isMobile ? 1800 : 2800);
-    setTimeout(() => {
+    // Save-Data API: bei langsamer Verbindung kein Video
+    const saveData = navigator.connection && navigator.connection.saveData;
+    // Erste-Besuch-Detection via localStorage
+    let isFirstVisit = false;
+    try {
+      isFirstVisit = !localStorage.getItem('quint-visited');
+      if (isFirstVisit) localStorage.setItem('quint-visited', '1');
+    } catch (e) { /* localStorage blocked — fallback: kein Video */ }
+
+    const useVideo = isFirstVisit && !skip && !reduceMotion && !saveData && !isMobile;
+    const intro = document.getElementById('loaderIntro');
+
+    function finish() {
       loader.classList.add('done');
       document.body.classList.remove('locked');
-    }, delay);
+    }
+
+    if (useVideo && intro) {
+      // Video-Modus: Video abspielen, dann Pink-Ball-Reveal nahtlos uebernehmen
+      document.body.classList.add('loader-video-mode');
+      const playPromise = intro.play();
+      if (playPromise && playPromise.catch) {
+        playPromise.catch(() => {
+          // Autoplay blocked — fallback zum Standard-Loader
+          document.body.classList.remove('loader-video-mode');
+          setTimeout(finish, 2800);
+        });
+      }
+      // Wenn Video fertig: Body unlock + Pink-Ball-Expansion uebernimmt
+      intro.addEventListener('ended', () => {
+        // Sanfter Uebergang: erst Standard-Loader-Content einblenden,
+        // dann nach kurzem Pop die Page revealen
+        document.body.classList.remove('loader-video-mode');
+        // Kurzer Buffer fuer Pink-Ball-Pop+Expand (1.5s Animation)
+        setTimeout(finish, 1500);
+      });
+      // Fallback: falls Video > 8s laeuft (sollte 5s sein) — Notausgang
+      setTimeout(() => {
+        if (!loader.classList.contains('done')) finish();
+      }, 8000);
+    } else {
+      // Standard-Loader: Logo + Pink-Punkt-Expansion
+      const delay = (skip || reduceMotion) ? 0 : (isMobile ? 1800 : 2800);
+      setTimeout(finish, delay);
+    }
   });
 </script>
 
@@ -2621,16 +2679,24 @@
     const skip = params.get('skip-loader') === '1';
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isMobile = window.matchMedia('(max-width: 800px)').matches;
-    const delay = (skip || reduceMotion) ? 0 : (isMobile ? 1800 : 2800);
-    setTimeout(() => {
+    // Polling: warten bis Loader 'done' ist (deckt auch den Video-Pfad ab)
+    const initMotion = () => {
       scrollReveal('[data-scroll-reveal]');
-      // Magnetic hover & tilt nur auf Geräten mit echtem Hover (Desktop)
       if (window.matchMedia('(hover: hover)').matches) {
         magneticHover('[data-magnet]', 0.18);
         cardTilt('[data-tilt]', 4);
       }
       buttonSpring('[data-spring]');
-    }, delay + 200);
+    };
+    const waitForLoader = () => {
+      const loader = document.getElementById('loader');
+      if (!loader || loader.classList.contains('done') || skip || reduceMotion) {
+        initMotion();
+      } else {
+        setTimeout(waitForLoader, 200);
+      }
+    };
+    waitForLoader();
   });
 </script>
 
