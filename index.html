@@ -1139,6 +1139,30 @@
     padding: 160px 0;
     background: var(--navy-deep);
     position: relative;
+    overflow: hidden;
+  }
+  /* Wappentier-Po-Dackel als grosser Section-Akzent rechts oben */
+  .audience-po-dackel {
+    position: absolute;
+    top: 60px;
+    right: -90px;
+    width: 460px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.08;
+    transition: opacity 0.4s ease;
+  }
+  .audience-po-dackel img { width: 100%; height: auto; display: block; }
+  .audience-block:hover .audience-po-dackel { opacity: 0.14; }
+  .audience-block > .wrap { position: relative; z-index: 1; }
+  @media (max-width: 1100px) {
+    .audience-po-dackel { width: 360px; right: -100px; top: 80px; }
+  }
+  @media (max-width: 800px) {
+    .audience-po-dackel { width: 260px; right: -60px; top: 30px; opacity: 0.10; }
+  }
+  @media (max-width: 600px) {
+    .audience-po-dackel { width: 200px; right: -50px; opacity: 0.12; }
   }
   .audience-grid {
     display: grid;
@@ -2049,6 +2073,9 @@
 
 
 <section class="audience-block" id="fuer-wen" aria-labelledby="fuer-wen-heading">
+  <div class="audience-po-dackel" aria-hidden="true">
+    <img src="assets/Dackel-Po.svg" alt="" loading="lazy" decoding="async" />
+  </div>
   <div class="wrap">
     <div class="section-head reveal" data-scroll-reveal>
       <div class="eyebrow">Für wen wir bauen</div>
