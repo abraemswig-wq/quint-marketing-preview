@@ -298,8 +298,11 @@
   .loader-wappen img { width: 100%; height: auto; display: block; }
   .loader-wappen .loader-dackel-vid {
     width: 100%; height: auto; display: block;
-    /* Schwarzer Background des Videos verschwindet auf Navy via lighten-Blend */
-    mix-blend-mode: lighten;
+    /* Schwarz im Video wird komplett transparent, der Navy-Seiten-Hintergrund kommt durch */
+    mix-blend-mode: screen;
+    /* Falls die schwarzen Pixel nicht 100% rein sind (H264-Kompression),
+       contrast leicht hoch + brightness leicht runter -> Schwarz wird "noch schwaerzer" */
+    filter: contrast(1.15) brightness(1.05);
   }
   @keyframes loaderWappenIn {
     to { opacity: 1; transform: translateY(0) scale(1); }
