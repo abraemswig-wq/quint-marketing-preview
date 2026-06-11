@@ -225,7 +225,8 @@
 
 <!-- Preload Above-the-Fold-Assets (Loader-Maennchen + Hero-Maennchen + Logo) -->
 <link rel="preload" as="image" href="assets/Dackel-Maennchen.svg" type="image/svg+xml" fetchpriority="high">
-<link rel="preload" as="image" href="assets/quint-dackel-loader.png" fetchpriority="high">
+<link rel="preload" as="image" href="assets/quint-dackel-body.png" fetchpriority="high">
+<link rel="preload" as="image" href="assets/quint-dackel-tail.png" fetchpriority="high">
 <link rel="preload" as="image" href="assets/quint-logo-claim-white.png" fetchpriority="high">
 <link rel="preload" as="image" href="assets/quint-logo-white.svg" type="image/svg+xml" fetchpriority="high">
 <style>
@@ -296,9 +297,25 @@
     animation: loaderWappenIn 0.9s cubic-bezier(.2,.8,.2,1) 0.05s forwards;
   }
   .loader-wappen img { width: 100%; height: auto; display: block; }
-  .loader-wappen .loader-dackel-img {
+  /* Body + Tail liegen uebereinander, Tail wird separat animiert (Wedel) */
+  .loader-wappen { position: relative; }
+  .loader-wappen .loader-dackel-body,
+  .loader-wappen .loader-dackel-tail {
     width: 100%; height: auto; display: block;
-    /* Transparente PNG — schwebt sauber auf dem Navy-Background, kein Blend-Mode-Hack noetig */
+  }
+  .loader-wappen .loader-dackel-tail {
+    position: absolute; top: 0; left: 0;
+    /* Drehpunkt am Schwanz-Ansatz (visuell ermittelt) */
+    transform-origin: 72.5% 40.7%;
+    animation: loaderTailWag 0.55s cubic-bezier(.45,.05,.55,.95) infinite alternate;
+    animation-delay: 0.6s;
+  }
+  @keyframes loaderTailWag {
+    from { transform: rotate(-18deg); }
+    to   { transform: rotate(18deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .loader-wappen .loader-dackel-tail { animation: none; transform: none; }
   }
   @keyframes loaderWappenIn {
     to { opacity: 1; transform: translateY(0) scale(1); }
@@ -2007,7 +2024,8 @@
 <div class="loader" id="loader">
   <div class="loader-content" id="loaderContent">
     <div class="loader-wappen" aria-hidden="true">
-      <img class="loader-dackel-img" src="assets/quint-dackel-loader.png" alt="" fetchpriority="high" decoding="async" />
+      <img class="loader-dackel-body" src="assets/quint-dackel-body.png" alt="" fetchpriority="high" decoding="async" />
+      <img class="loader-dackel-tail" src="assets/quint-dackel-tail.png" alt="" fetchpriority="high" decoding="async" />
     </div>
     <div class="loader-quint">
       <img class="loader-logo" src="assets/quint-logo-claim-white.png" alt="Quint" fetchpriority="high" decoding="async" />
