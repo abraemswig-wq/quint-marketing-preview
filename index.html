@@ -1245,12 +1245,67 @@
 
   /* TEAM */
   .team-block { padding: 160px 0; background: var(--navy); }
+  /* TEAM-CAROUSEL: horizontaler Swipe statt Grid (mit 5 Personen waere 4-Spalten zu eng) */
+  .team-carousel-wrap { position: relative; margin-top: 64px; }
   .team-grid {
-    display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 22px; margin-top: 64px;
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 32px;
+    /* Iphone-/Android-Swipe-Smoothness */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* Padding rechts/links damit Karten am Rand nicht hart abschneiden */
+    padding: 8px 32px 32px;
+    margin: 0 -32px;
   }
-  @media (max-width: 1100px) { .team-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr; } }
+  .team-grid::-webkit-scrollbar { display: none; }
+  .team-grid > .person {
+    /* 4 Karten sichtbar auf Desktop (gap einberechnet) */
+    flex: 0 0 calc((100% - 32px * 2 - 22px * 3) / 4);
+    scroll-snap-align: start;
+    min-width: 240px;
+  }
+  @media (max-width: 1100px) {
+    .team-grid > .person { flex-basis: calc((100% - 32px * 2 - 22px * 2) / 3); }
+  }
+  @media (max-width: 900px) {
+    .team-grid > .person { flex-basis: calc((100% - 32px * 2 - 22px) / 2); }
+  }
+  @media (max-width: 600px) {
+    .team-grid { padding: 8px 22px 24px; margin: 0 -22px; gap: 14px; }
+    .team-grid > .person { flex-basis: calc(100% - 22px * 2 - 40px); }
+  }
+  /* Carousel-Pfeile (Desktop) */
+  .team-nav {
+    display: flex; justify-content: flex-end; gap: 10px;
+    margin-top: 20px;
+  }
+  .team-nav button {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.03);
+    color: var(--cream);
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .team-nav button:hover { background: rgba(232,155,177,0.1); border-color: var(--pink); }
+  .team-nav button:active { transform: scale(0.95); }
+  .team-nav button:disabled { opacity: 0.3; cursor: not-allowed; }
+  @media (hover: none) { .team-nav { display: none; } }
+  /* Scroll-Hint auf Mobile */
+  .team-hint {
+    display: none;
+    text-align: center;
+    margin-top: 14px;
+    font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(244,239,231,0.5);
+  }
+  @media (hover: none) { .team-hint { display: block; } }
 
   /* Pink-Dot am Dackel-Initial — Echo zum Quint-Logo-Ball */
   .person-initials .initial-dot {
@@ -2339,7 +2394,8 @@
       <h2>Vier Menschen. Ein <span class="italic">Wappentier.</span><br/>Eine Handschrift.</h2>
       <p class="lead">Quint ist kein Kollektiv und keine Agentur-Maschine. Stand heute sind wir vier: Strategie, Design, Logo-Handwerk, Fotografie. Plus ein Dackel, der einfach dazugehört. Wir wachsen kontrolliert weiter, „kleines Team" bleibt aber unser Prinzip. Wer mit uns arbeitet, arbeitet mit uns. Nicht mit einem Account Manager.</p>
     </div>
-    <div class="team-grid">
+    <div class="team-carousel-wrap">
+    <div class="team-grid" id="teamGrid" role="region" aria-label="Team-Mitglieder, horizontal scrollbar">
       <a href="team-aric.html" class="person reveal person-link" aria-label="Aric Brämswig — Profil öffnen">
         <div class="person-decoration"></div>
         <div class="person-initials">AB</div>
@@ -2380,6 +2436,12 @@
         <p class="person-bio">Kam nicht aus einem Marken-Workshop. Kam, weil Rania und Bjoern Dackel mögen und Aric das zugelassen hat. Geblieben, weil Marken so beginnen sollten: aus echtem Stoff, nicht aus Workshop-Folien.</p>
         <span class="person-cta">Geschichte lesen <span class="arrow">→</span></span>
       </a>
+    </div>
+    <nav class="team-nav" aria-label="Team-Carousel-Navigation">
+      <button type="button" id="teamPrev" aria-label="Vorherige Karte">←</button>
+      <button type="button" id="teamNext" aria-label="Nächste Karte">→</button>
+    </nav>
+    <div class="team-hint" aria-hidden="true">Wisch zur Seite ↔</div>
     </div>
   </div>
 </section>
@@ -2679,6 +2741,30 @@
     window.addEventListener('scroll', () => {
       if (!ticking) { requestAnimationFrame(update); ticking = true; }
     }, { passive: true });
+    update();
+  })();
+</script>
+
+<!-- Team-Carousel Navigation (Pfeile + Disabled-State) -->
+<script>
+  (function() {
+    const grid = document.getElementById('teamGrid');
+    const prev = document.getElementById('teamPrev');
+    const next = document.getElementById('teamNext');
+    if (!grid || !prev || !next) return;
+    function step() {
+      const card = grid.querySelector('.person');
+      if (!card) return 280;
+      return card.getBoundingClientRect().width + 22;
+    }
+    function update() {
+      prev.disabled = grid.scrollLeft <= 4;
+      next.disabled = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 4;
+    }
+    prev.addEventListener('click', () => grid.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => grid.scrollBy({ left: step(), behavior: 'smooth' }));
+    grid.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
     update();
   })();
 </script>
