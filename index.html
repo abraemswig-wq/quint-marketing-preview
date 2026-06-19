@@ -949,8 +949,9 @@
 
   /* Ring-Badge (REHAB-FIVE-style) */
   .step-badge-wrap {
-    display: flex; align-items: center; gap: 18px;
+    display: flex; align-items: center; gap: 36px;
     margin-bottom: 28px;
+    flex-wrap: wrap;
   }
   .step-badge {
     position: relative;
@@ -1003,6 +1004,7 @@
   .step-tag {
     color: var(--pink); font-weight: 700; font-size: 13px;
     letter-spacing: 0.18em; text-transform: uppercase;
+    position: relative; z-index: 5;
   }
   .step h4 {
     font-size: clamp(28px, 3vw, 40px);
@@ -1277,25 +1279,50 @@
     .team-grid { padding: 8px 22px 24px; margin: 0 -22px; gap: 14px; }
     .team-grid > .person { flex-basis: calc(100% - 22px * 2 - 40px); }
   }
-  /* Carousel-Pfeile (Desktop) */
+  /* Carousel-Pfeile (Desktop) — weicher, organischer */
   .team-nav {
-    display: flex; justify-content: flex-end; gap: 10px;
-    margin-top: 20px;
+    display: flex; justify-content: flex-end; gap: 14px;
+    margin-top: 24px;
+    padding: 8px 4px;
   }
   .team-nav button {
-    width: 44px; height: 44px;
+    width: 52px; height: 52px;
     border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.18);
-    background: rgba(255,255,255,0.03);
+    border: none;
+    background: rgba(255,255,255,0.06);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.04) inset,
+      0 0 0 1px rgba(255,255,255,0.08),
+      0 8px 24px rgba(0,0,0,0.18);
     color: var(--cream);
-    font-size: 20px;
+    font-size: 22px;
     cursor: pointer;
-    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    transition: background 0.35s cubic-bezier(.2,.8,.2,1),
+                box-shadow 0.35s cubic-bezier(.2,.8,.2,1),
+                transform 0.35s cubic-bezier(.2,.8,.2,1),
+                color 0.25s;
     display: flex; align-items: center; justify-content: center;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
   }
-  .team-nav button:hover { background: rgba(232,155,177,0.1); border-color: var(--pink); }
-  .team-nav button:active { transform: scale(0.95); }
-  .team-nav button:disabled { opacity: 0.3; cursor: not-allowed; }
+  .team-nav button:hover {
+    background: rgba(232,155,177,0.18);
+    color: var(--pink);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.06) inset,
+      0 0 0 1px rgba(232,155,177,0.35),
+      0 14px 32px rgba(0,0,0,0.28),
+      0 0 24px rgba(232,155,177,0.18);
+    transform: translateY(-2px);
+  }
+  .team-nav button:active { transform: scale(0.94); }
+  .team-nav button:disabled {
+    opacity: 0.25; cursor: not-allowed;
+    transform: none;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.02) inset,
+      0 0 0 1px rgba(255,255,255,0.05);
+  }
   @media (hover: none) { .team-nav { display: none; } }
   /* Scroll-Hint auf Mobile */
   .team-hint {
@@ -1413,7 +1440,15 @@
     filter: brightness(0) saturate(100%) invert(11%) sepia(75%) saturate(1800%) hue-rotate(198deg) brightness(45%);
   }
   .manifesto-wappen img { width: 100%; height: auto; display: block; }
-  @media (max-width: 800px) { .manifesto-wappen { width: 320px; opacity: 0.85; } }
+  /* Mid-Range-Viewports: Dackel deutlich kleiner und weiter raus, damit Text frei bleibt */
+  @media (max-width: 1200px) {
+    .manifesto-wappen { width: 360px; right: -120px; bottom: -80px; opacity: 0.7; }
+  }
+  @media (max-width: 1000px) {
+    .manifesto-wappen { width: 280px; right: -100px; bottom: -60px; opacity: 0.55; }
+  }
+  @media (max-width: 800px) { .manifesto-wappen { width: 240px; right: -80px; opacity: 0.45; } }
+  @media (max-width: 600px) { .manifesto-wappen { width: 180px; right: -60px; opacity: 0.35; } }
 
   .manifesto {
     background: var(--pink);
@@ -1722,18 +1757,19 @@
   }
   .check-teaser-cta {
     display: inline-flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     background: var(--pink);
     color: var(--navy);
-    padding: 22px 28px;
+    padding: 14px 24px;
     border-radius: 999px;
     font-weight: 700;
     font-size: 14px;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.2s;
     position: relative; z-index: 2;
     flex-shrink: 0;
+    white-space: nowrap;
   }
   .check-teaser-card:hover .check-teaser-cta { background: var(--pink-strong); }
   @media (hover: none) {
