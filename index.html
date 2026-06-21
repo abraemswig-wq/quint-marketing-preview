@@ -1171,21 +1171,23 @@
     position: relative;
     overflow: hidden;
   }
-  /* Wappen-Dackel als Watermark unten rechts in jeder Card */
+  /* Wappen-Dackel als Watermark unten rechts in jeder Card — tief in der Ecke,
+     damit er auf Hover den Text nicht überlagert (besonders Card 03 mit längerem p-Text). */
   .audience-wappen {
     position: absolute;
-    bottom: -30px;
-    right: -30px;
-    width: 200px;
-    opacity: 0.06;
+    bottom: -60px;
+    right: -60px;
+    width: 180px;
+    opacity: 0.05;
     pointer-events: none;
     z-index: 0;
     transition: opacity 0.4s, transform 0.4s;
   }
   .audience-wappen img { width: 100%; height: auto; display: block; }
+  /* Hover-Reveal bleibt spielerisch, aber subtiler — Dackel bleibt in der Ecke statt unter den Text zu wandern */
   .audience-card:hover .audience-wappen {
-    opacity: 0.14;
-    transform: translate(-6px, -6px) scale(1.04);
+    opacity: 0.09;
+    transform: translate(-2px, -2px) scale(1.02);
   }
   .audience-card > *:not(.audience-wappen) { position: relative; z-index: 1; }
   .audience-card:hover {
