@@ -138,12 +138,9 @@
     padding: 0 32px;
   }
   .portrait {
-    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
-    border: 1px solid rgba(232,155,177,0.15);
-    border-radius: 28px;
-    padding: 80px 40px;
+    /* Kein Hintergrund-Feld mehr — Dackel + Ball sitzen frei auf der Page-Fläche */
+    padding: 60px 40px;
     position: relative;
-    overflow: hidden;
     text-align: center;
   }
   .portrait img.dackel-large {
@@ -157,12 +154,13 @@
   }
   .portrait .floating-ball {
     position: absolute;
-    top: 18%; left: 30%;
-    width: clamp(60px, 8vw, 100px);
+    /* Ball deutlich kleiner — passt proportional zum Dackel-Maul, nicht zum Körper */
+    top: 24%; left: 38%;
+    width: clamp(28px, 3.5vw, 52px);
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     background: radial-gradient(circle at 35% 30%, #f4b8c8 0%, var(--pink) 45%, var(--pink-strong) 100%);
-    box-shadow: 0 12px 32px rgba(13,39,71,0.5), inset -2px -3px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 20px rgba(13,39,71,0.45), inset -2px -3px 6px rgba(0,0,0,0.08);
     z-index: 1;
     animation: ballFloat 3s cubic-bezier(.45,0,.55,1) infinite;
   }
@@ -301,7 +299,7 @@
     .crumbs { padding: 18px 22px 0; font-size: 11px; }
     .hero { padding: 36px 22px 22px; }
     .portrait-block { padding: 0 22px; }
-    .portrait { padding: 50px 22px; border-radius: 20px; }
+    .portrait { padding: 36px 22px; }
     main.story { padding: 36px 22px 60px; }
   }
 
