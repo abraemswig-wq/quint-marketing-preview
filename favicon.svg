@@ -1,5 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#143C6B"/>
-  <text x="50%" y="50%" font-family="Familjen Grotesk, Helvetica, Arial, sans-serif" font-size="38" font-weight="800" fill="#ffffff" text-anchor="middle" dominant-baseline="central" letter-spacing="-1">Q</text>
-  <circle cx="22" cy="44" r="6" fill="#E89BB1"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="638 388 240 240">
+  <!-- Navy-Hintergrund mit abgerundeten Ecken -->
+  <rect x="638" y="388" width="240" height="240" rx="50" fill="#143C6B"/>
+  <!-- Quint-Q (echte Brand-Letterform aus assets/quint-logo-white.svg) -->
+  <path transform="matrix(1,0,0,-1,800.8165,498.75929)" d="M0 0C0 25.593-18.312 48.317-44.568 48.317-70.601 48.317-88.914 26.474-88.914 .661-88.914-26.255-70.601-47.877-43.905-47.877-18.092-47.877 0-26.035 0 0M-130.613-3.531C-130.613 46.994-94.209 84.942-44.568 84.942 3.089 84.942 41.7 48.097 41.7 1.324 41.7-46.995 4.192-84.501-42.581-84.501-88.031-84.501-130.613-51.848-130.613-3.531" fill="#ffffff"/>
+  <!-- Pink-Ball: identische Position und Größe wie im Original-Logo -->
+  <circle cx="824.61" cy="581.88" r="19.86" fill="#E89BB1"/>
 </svg>
