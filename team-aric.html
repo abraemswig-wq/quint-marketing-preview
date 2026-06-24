@@ -121,6 +121,7 @@
   }
   @media (max-width: 800px) { .profile-hero { grid-template-columns: 1fr; gap: 32px; } }
 
+  /* Aric-Variation: Pink-Gradient (Quint-Farbsignal) — Layout-Maße identisch zu Bjoern/Dario/Rania */
   .profile-initials-block {
     position: relative;
     background: linear-gradient(135deg, var(--pink-strong) 0%, var(--pink) 100%);
@@ -142,7 +143,7 @@
     font-family: "Fraunces", serif;
     font-style: italic;
     font-weight: 400;
-    font-size: clamp(160px, 22vw, 280px);
+    font-size: clamp(120px, 18vw, 220px);
     color: var(--navy);
     line-height: 0.9;
     letter-spacing: -0.05em;
@@ -151,7 +152,7 @@
   }
   .profile-photo-stamp {
     position: absolute;
-    bottom: 24px; left: 24px;
+    bottom: 24px; left: 50%; transform: translateX(-50%);
     background: var(--navy);
     color: var(--cream);
     padding: 8px 14px;
@@ -162,96 +163,48 @@
     font-weight: 700;
     z-index: 3;
   }
-  .profile-meta-eyebrow {
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--pink);
-    margin-bottom: 20px;
-  }
-  .profile-name {
-    font-size: clamp(44px, 6vw, 78px);
-    line-height: 0.96;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    margin-bottom: 20px;
-  }
+  .profile-meta-eyebrow { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--pink); margin-bottom: 20px; }
+  .profile-name { font-size: clamp(40px, 5.5vw, 72px); line-height: 0.96; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 20px; }
   .profile-role {
-    font-family: "Fraunces", serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(22px, 2.2vw, 30px);
-    color: var(--pink);
-    margin-bottom: 28px;
-    line-height: 1.25;
+    font-family: "Fraunces", serif; font-style: italic; font-weight: 400;
+    font-size: clamp(22px, 2.2vw, 30px); color: var(--pink);
+    margin-bottom: 28px; line-height: 1.25;
   }
-  .profile-lead {
-    font-size: clamp(17px, 1.4vw, 20px);
-    color: rgba(255,255,255,0.78);
-    line-height: 1.55;
-    max-width: 520px;
-  }
+  .profile-lead { font-size: clamp(17px, 1.4vw, 20px); color: rgba(255,255,255,0.78); line-height: 1.55; max-width: 520px; }
 
   /* SECTIONS */
   .section { padding: 100px 0; border-top: 1px solid rgba(255,255,255,0.06); }
-  .section h2 {
-    font-size: clamp(28px, 3.5vw, 48px);
-    line-height: 1.05;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 36px;
-  }
+  .section h2 { font-size: clamp(28px, 3.5vw, 48px); line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 36px; }
   .section h2 .italic { color: var(--pink); }
   .section p { font-size: 17px; color: rgba(255,255,255,0.78); line-height: 1.6; max-width: 680px; margin-bottom: 18px; }
   .section p strong { color: var(--white); font-weight: 500; }
 
-  .facts-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-top: 40px;
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 40px;
+    max-width: 720px;
   }
-  @media (max-width: 700px) { .facts-grid { grid-template-columns: 1fr; } }
-  .fact {
-    padding: 28px 24px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px;
+  .bullet-list li {
+    padding: 16px 0 16px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(244,239,231,0.85);
+    position: relative;
   }
-  .fact-label {
-    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--pink); margin-bottom: 12px;
-  }
-  .fact-value {
-    font-size: 18px;
-    color: var(--white);
-    line-height: 1.4;
-  }
-  .fact-value .italic { color: var(--pink-soft); }
-
-  /* Anti-Block (Was ich nicht bin) */
-  .anti {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 36px;
-  }
-  @media (max-width: 700px) { .anti { grid-template-columns: 1fr; } }
-  .anti-line {
-    padding: 18px 22px;
-    background: rgba(232,155,177,0.06);
-    border-left: 2px solid var(--pink);
-    border-radius: 0 16px 16px 0;
-    font-size: 15.5px;
-    color: rgba(255,255,255,0.85);
-  }
-  .anti-line .x {
-    display: inline-block;
-    margin-right: 10px;
+  .bullet-list li:last-child { border-bottom: none; }
+  .bullet-list li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
     color: var(--pink);
-    font-weight: 700;
+    font-size: 14px;
+    top: 18px;
   }
+  .bullet-list li strong { color: var(--white); font-weight: 600; }
+  .section h2 + p { font-size: 18px; line-height: 1.6; color: rgba(244,239,231,0.85); margin-bottom: 16px; }
+  .section h2:not(:first-of-type) { margin-top: 56px; }
 
   /* CTA */
   .profile-cta {
@@ -389,69 +342,39 @@
         <div class="profile-meta-eyebrow">Gründer &amp; Inhaber Quint</div>
         <h1 class="profile-name">Aric Brämswig</h1>
         <p class="profile-role">Strategie &amp; Markenführung — <span class="italic">die strategische Schärfe von Quint.</span></p>
-        <p class="profile-lead">Inhaber und Gründer von REHAB FIVE in Münster. Hat eine konservative Branche modern gedacht — Premium-Positionierung, eigenes Marken-System, in zwei Städten skaliert. Macht jetzt mit Quint das Gleiche für andere KMU: Praxen, Vereine, inhabergeführte Dienstleister. Schließt 2026 die Ausbildung zum systemischen Coach ab.</p>
+        <p class="profile-lead">Inhaber und Gründer von REHAB FIVE in Münster. Hat eine konservative Branche modern gedacht — Premium-Positionierung, eigenes Marken-System, an zwei Standorten in Münster skaliert. Macht jetzt mit Quint das Gleiche für andere KMU: Praxen, Vereine, inhabergeführte Dienstleister. Schließt 2026 die Ausbildung zum systemischen Coach ab.</p>
       </div>
     </div>
   </div>
 </header>
 
-<!-- WORAN ICH ARBEITE -->
 <section class="section" id="main">
   <div class="wrap">
-    <h2>Woran ich <span class="italic">arbeite.</span></h2>
-    <p>Wenn ihr mit Quint sprecht, bin ich der erste Anruf: <strong>Strategie, Positionierung, Markenkern.</strong> Was soll diese Marke behaupten? Was lehnt sie konsequent ab? Welche Sprache passt zu ihrem Wesen?</p>
-    <p>Rania übernimmt anschließend die <strong>visuelle und sprachliche Übersetzung</strong>. Aber die strategische Grundentscheidung — wofür eine Marke steht — fällt mit mir.</p>
+    <h2>Was Aric bei Quint <span class="italic">übernimmt.</span></h2>
+    <p>Drei Aufgaben, die bei ihm landen, bevor irgendwo ein Strich gemacht wird:</p>
 
-    <div class="facts-grid">
-      <div class="fact">
-        <div class="fact-label">Sitz</div>
-        <div class="fact-value">Münster, NRW<br/><span class="italic">arbeitet im DACH-Raum.</span></div>
-      </div>
-      <div class="fact">
-        <div class="fact-label">Bei Quint</div>
-        <div class="fact-value">Gründer &amp; Inhaber<br/><span class="italic">Strategie &amp; Markenführung.</span></div>
-      </div>
-      <div class="fact">
-        <div class="fact-label">Bei REHAB FIVE</div>
-        <div class="fact-value">Gründer &amp; CEO<br/><span class="italic">2 Standorte in Münster.</span></div>
-      </div>
-      <div class="fact">
-        <div class="fact-label">Branchen-Heimat</div>
-        <div class="fact-value">Health &amp; Sport<br/><span class="italic">über REHAB FIVE.</span></div>
-      </div>
-      <div class="fact">
-        <div class="fact-label">Zusatzqualifikation</div>
-        <div class="fact-value">Systemischer Coach<br/><span class="italic">Abschluss 2026.</span></div>
-      </div>
-    </div>
+    <ul class="bullet-list">
+      <li><strong>Strategie &amp; Positionierung.</strong> Was soll die Marke behaupten? Was lehnt sie konsequent ab? Welche Sprache passt zu ihrem Wesen? Hier fällt die Grundentscheidung — alles andere baut darauf auf.</li>
+      <li><strong>Markenführung &amp; Sparring.</strong> Wenn es im Projekt grundsätzlich wird — Tonfall, Architektur, Konsequenz — bleibt der Faden bei ihm. Er denkt mit, nicht erst, wenn das Briefing schon steht.</li>
+      <li><strong>Geschäftsführung Quint.</strong> Wer Quint bucht, schließt mit Aric den Vertrag. Bei Budget-, Beziehungs- oder Richtungsfragen ist er die Adresse.</li>
+    </ul>
+
+    <h2>Wie er <span class="italic">denkt.</span></h2>
+    <p>Aric kommt nicht aus der Agentur-Welt, sondern aus dem Unternehmertum. REHAB FIVE hat er mit eigenem Geld aufgebaut, in einer konservativen Branche modern positioniert und an zwei Standorten in Münster skaliert. Das prägt, wie er auf Marken schaut: weniger Theorie-Sprech, mehr die Frage „was bewegt das Geschäft".</p>
+    <p>Sein Modus ist schnell entscheiden, sauber begründen, ehrlich revidieren. Wenn er nicht der Richtige für ein Projekt ist, sagt er es im selben Gespräch. Wenn er es ist, sitzt Quint vom Klarheits-Workshop bis zum Launch mit am Tisch.</p>
   </div>
 </section>
 
-<!-- ANTI -->
-<section class="section">
-  <div class="wrap">
-    <h2>Wofür ich <span class="italic">nicht der Richtige</span> bin.</h2>
-    <p>Damit wir uns nicht missverstehen — die Selbst-Disqualifikations-Liste:</p>
-    <div class="anti">
-      <div class="anti-line"><span class="x">✗</span>Schnelle Logo-Skizze ohne strategische Grundlage</div>
-      <div class="anti-line"><span class="x">✗</span>Marken-Refresh, der „nur ein neuer Look" sein soll</div>
-      <div class="anti-line"><span class="x">✗</span>Reine Performance-Werbung ohne Marken-Fundament</div>
-      <div class="anti-line"><span class="x">✗</span>Projekte mit über 5 Entscheider:innen am Tisch</div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
 <section class="profile-cta">
   <div class="wrap">
-    <h2>Direkter Draht — <span class="italic">30 Minuten, kostenlos.</span></h2>
-    <p>Wenn du eine Marke baust und merkst, dass die Optik nur die Spitze ist — schreib mir.</p>
-    <a class="email-pill" href="mailto:a.braemswig@rehab-five.com">a.braemswig@rehab-five.com →</a>
+    <h2>Erst Quint <span class="italic">kennenlernen?</span></h2>
+    <p>45 Minuten, kostenlos. Mit Aric, Rania oder Bjoern, je nachdem, was zu eurem Projekt passt.</p>
+    <a class="email-pill" href="mailto:hallo@quint-marketing.de">Erstgespräch anfragen →</a>
   </div>
 </section>
 
 <footer>
-  © 2026 QUINT · <a href="index.html">Hauptseite</a> · <a href="team-rania.html">Rania kennenlernen</a>
+  © 2026 QUINT · <a href="index.html">Hauptseite</a> · <a href="team-rania.html">Rania</a> · <a href="team-bjoern.html">Bjoern</a> · <a href="team-dario.html">Dario</a>
 </footer>
 
 <script>
