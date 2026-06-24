@@ -672,6 +672,14 @@
     line-height: 0.92;
     margin: 28px 0 36px;
   }
+  /* Responsive Overrides MÜSSEN nach der Base-Rule kommen, sonst gewinnt die Base
+     (gleiche Specificity, später-im-Source = Sieger). */
+  @media (max-width: 800px) {
+    .hero h1 { font-size: clamp(38px, 10.5vw, 60px); margin: 22px 0 28px; }
+  }
+  @media (max-width: 600px) {
+    .hero h1 { font-size: clamp(28px, 8vw, 48px); }
+  }
   .hero h1 .accent {
     color: var(--pink);
     font-family: "Fraunces", Georgia, serif;
