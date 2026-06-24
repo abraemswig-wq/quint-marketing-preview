@@ -162,8 +162,11 @@
     margin-bottom: 20px;
   }
   .profile-name {
-    /* Rania Landwehrmeyer ist lang — max etwas runter, damit nicht auf Desktop umbricht */
-    font-size: clamp(40px, 5vw, 60px);
+    /* Rania Landwehrmeyer ist 19 Zeichen lang — max bewusst auf 50px
+       damit der Name auf Desktop in die ~540px-breite rechte Hero-Spalte
+       einzeilig passt. Bjoern/Dario haben deutlich kürzere Namen, daher
+       muss diese Datei eigene clamp() haben (Layout-Grid bleibt identisch). */
+    font-size: clamp(36px, 4.5vw, 50px);
     line-height: 0.96;
     font-weight: 700;
     letter-spacing: -0.03em;
