@@ -176,10 +176,13 @@
   .paket-num {
     font-family: "Fraunces", serif;
     font-style: italic; font-weight: 400;
-    font-size: clamp(72px, 9vw, 132px);
+    /* etwas zurückgenommen, damit das h2 nicht visuell konkurriert.
+       Vorher: clamp(72px, 9vw, 132px) — sprang dem Titel die Show */
+    font-size: clamp(54px, 6.5vw, 96px);
     color: var(--pink);
     line-height: 0.85;
     letter-spacing: -0.04em;
+    opacity: 0.85;
   }
   .paket-title-block h2 {
     font-size: clamp(36px, 5vw, 56px);
@@ -394,7 +397,10 @@
     main.pakete { padding: 22px 22px 60px; }
     .paket { padding: 36px 26px 32px; border-radius: 20px; }
     .paket-head { gap: 16px; padding-bottom: 28px; margin-bottom: 28px; }
-    .paket-wappen { width: 180px; }
+    /* Mobile: Dackel-Wappen kleiner damit er nicht hinter dem Titel-Block durchscheint */
+    .paket-wappen { width: 140px; opacity: 0.04; }
+    /* Mobile: paket-num auf Phone deutlich kleiner — visueller Vorrang ans h2 */
+    .paket-num { font-size: clamp(42px, 11vw, 64px); }
     .klammer-section { padding: 40px 22px; }
     .klammer { padding: 28px 24px; }
     .cta-section { padding: 40px 22px 60px; }

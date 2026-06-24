@@ -580,8 +580,8 @@
     .hero { padding: 28px 0 48px; }
     /* Lead-Texte mobil etwas kleiner damit nicht zu viel Block-Text */
     .hero .lead { font-size: 17px; line-height: 1.5; }
-    /* Headline noch etwas straffer */
-    .hero h1 { font-size: clamp(34px, 9.5vw, 50px); }
+    /* Headline noch etwas straffer — bei 375px sonst Ueberlauf am rechten Rand */
+    .hero h1 { font-size: clamp(28px, 8vw, 48px); }
     /* Section-Headlines auf 600px straffer fuer bessere Hierarchie */
     section h2 { font-size: clamp(28px, 7vw, 42px); line-height: 1.05; }
   }
