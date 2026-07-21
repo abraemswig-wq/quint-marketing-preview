@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>REHAB FIVE — Anker-Case · Quint Werkstatt</title>
-<meta name="description" content="REHAB FIVE — Premium-Positionierung einer konservativen Branche. Eine Case-Study aus der Quint-Werkstatt: 5-Säulen-Modell, zwei Standorte, Markenpartner USC und UBC Münster." />
+<meta name="description" content="REHAB FIVE — Case-Study: Premium-Positionierung in einer konservativen Branche. 5-Säulen-Modell, zwei Standorte, aus der Quint-Werkstatt." />
 <meta name="theme-color" content="#143C6B" />
 <link rel="canonical" href="https://abraemswig-wq.github.io/quint-marketing-preview/arbeit/rehab-five.html" />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
@@ -51,7 +51,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,400;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #143C6B; --navy-deep: #0D2747; --pink: #E89BB1; --pink-soft: #F3C7D4;
@@ -197,7 +197,7 @@
   @media (max-width: 700px) { .case-meta-grid { grid-template-columns: 1fr 1fr; } }
   .case-meta-item .label {
     font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
-    color: rgba(255,255,255,0.5); margin-bottom: 8px;
+    color: rgba(255,255,255,0.6); margin-bottom: 8px;
   }
   .case-meta-item .value { font-size: 15px; color: var(--white); line-height: 1.35; }
   .case-meta-item .value .italic { color: var(--pink-soft); }
@@ -225,7 +225,12 @@
   .scroll-expand-bg {
     position: absolute;
     inset: 0;
+    /* WebP-first mit JPG-Fallback fuer Browser die WebP nicht koennen (dank image-set). */
     background-image: url('../assets/rehab-studio.jpg');
+    background-image: image-set(
+      url('../assets/rehab-studio.webp') type('image/webp'),
+      url('../assets/rehab-studio.jpg') type('image/jpeg')
+    );
     background-size: cover;
     background-position: center;
     filter: brightness(0.6) saturate(1.05);
@@ -508,7 +513,7 @@
   .color-spec.accent { border-color: rgba(217,145,41,0.4); }
   .color-spec .role-label {
     font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: rgba(255,255,255,0.5); margin-bottom: 14px; font-weight: 700;
+    color: rgba(255,255,255,0.6); margin-bottom: 14px; font-weight: 700;
   }
   .color-spec.accent .role-label { color: var(--rehab-orange); }
   .color-spec .color-swatch {
@@ -560,7 +565,7 @@
   .illu-meta {
     margin-top: 14px;
     font-size: 12px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.6);
     letter-spacing: 0.05em;
   }
   .illu-meta strong { color: var(--white); font-weight: 500; }
@@ -582,7 +587,7 @@
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     padding: 24px;
     text-align: center;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.6);
     font-size: 13px;
   }
   .insta-slot .icon {
@@ -663,7 +668,7 @@
   .related-link {
     display: inline-flex; align-items: center; gap: 8px;
     margin-top: 32px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.6);
     font-size: 13px;
     border-bottom: 1px solid rgba(255,255,255,0.15);
     padding-bottom: 4px;
@@ -841,7 +846,7 @@
             <path d="M493.946,139.181a69.65,69.65,0,0,0-48.019-64.472L225.77,3.378A69.388,69.388,0,0,0,145.578,32.5L10.668,246.866a69.482,69.482,0,0,0,1.894,76.851l144.4,205.866a69.383,69.383,0,0,0,81.907,24.867L455.77,470.543a69.482,69.482,0,0,0,44.392-66.454l-6.324-265.014.089.089Z"/>
           </clipPath>
         </defs>
-        <image href="../assets/rehab-studio.jpg"
+        <image href="../assets/rehab-studio.webp"
                x="0" y="0"
                width="500.188" height="559.164"
                preserveAspectRatio="xMidYMid slice"

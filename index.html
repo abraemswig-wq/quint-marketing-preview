@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Quint — Branding & Social für KMU, die auffallen wollen</title>
-<meta name="description" content="Branding & Social Media für Praxen, Sportvereine und inhabergeführte Dienstleister im DACH-Raum. Wir bauen Marken, die nicht aussehen wie alle anderen. Aus Münster." />
+<meta name="description" content="Branding & Social Media für Praxen, Sportvereine und inhabergeführte Dienstleister im DACH-Raum. Marken mit Haltung, aus Münster." />
 <meta name="author" content="Aric Brämswig" />
 <meta name="keywords" content="Branding Praxis, Branding Sportverein, Branding Steuerberater, Branding Anwaltskanzlei, Markenagentur Münster, Social Media Praxis, Health Beauty Branding, Markenstrategie Mittelstand DACH" />
 <meta name="theme-color" content="#143C6B" />
@@ -227,7 +227,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,400;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
 
 <!-- Preload Above-the-Fold-Assets (Loader-Maennchen + Hero-Maennchen + Logo) -->
 <link rel="preload" as="image" href="assets/Dackel-Po.svg" type="image/svg+xml" fetchpriority="high">
@@ -2021,7 +2021,7 @@
     border-top: 1px solid rgba(255,255,255,0.08);
     padding: 48px 0;
     font-size: 14px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.6);
   }
   .foot-inner {
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px;
@@ -2138,11 +2138,9 @@
 <div class="loader" id="loader">
   <div class="loader-content" id="loaderContent">
     <div class="loader-wappen" aria-hidden="true">
-      <picture>
-        <!-- Animiertes WebP (kleiner, hochwertiger) — Fallback GIF fuer Safari < 14 -->
-        <source srcset="assets/loader-dackel-wag.webp" type="image/webp" />
-        <img class="loader-dackel-img" src="assets/loader-dackel-wag.gif" alt="" fetchpriority="high" decoding="async" />
-      </picture>
+      <!-- Animiertes WebP direkt — alle modernen Browser (Chrome 88+, Safari 14+, Firefox 65+) supporten das.
+           GIF-Fallback (856 KB) entfernt fuer Performance. -->
+      <img class="loader-dackel-img" src="assets/loader-dackel-wag.webp" alt="" fetchpriority="high" decoding="async" />
     </div>
     <div class="loader-quint">
       <img class="loader-logo" src="assets/quint-logo-claim-white.png" alt="Quint" fetchpriority="high" decoding="async" />
