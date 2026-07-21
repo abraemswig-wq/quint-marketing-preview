@@ -736,6 +736,53 @@
   }
   .skip-link:focus, .skip-link:focus-visible { left: 0; }
 
+
+  /* SUB-NAV: ICP-Cross-Linking auf allen Sub-Pages */
+  .sub-icp-nav {
+    background: rgba(0,0,0,0.15);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .sub-icp-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+    flex-wrap: wrap;
+  }
+  .sub-icp-label {
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: rgba(244,239,231,0.6);
+    font-size: 11px;
+  }
+  .sub-icp-nav a {
+    color: rgba(244,239,231,0.82);
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    text-decoration: none;
+  }
+  .sub-icp-nav a:hover {
+    background: rgba(232,155,177,0.12);
+    color: #E89BB1;
+    border-color: rgba(232,155,177,0.5);
+  }
+  .sub-icp-nav a.active {
+    background: #E89BB1;
+    color: #143C6B;
+    border-color: #E89BB1;
+    font-weight: 600;
+  }
+  @media (max-width: 700px) {
+    .sub-icp-inner { padding: 10px 22px; gap: 8px; }
+    .sub-icp-nav a { padding: 4px 10px; font-size: 12px; }
+    .sub-icp-label { font-size: 10px; }
+  }
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -766,6 +813,14 @@
   <div class="nav-inner">
     <a href="../index.html" class="nav-logo" aria-label="Quint — Startseite"><img src="../assets/quint-logo-white.svg" alt="Quint" decoding="async" /></a>
     <a href="index.html" class="nav-back">← Arbeit</a>
+  </div>
+</nav>
+<nav class="sub-icp-nav" aria-label="Zielgruppen-Navigation">
+  <div class="sub-icp-inner">
+    <span class="sub-icp-label">Für:</span>
+    <a href="../fuer-praxen.html">Praxen</a>
+    <a href="../fuer-vereine.html">Vereine</a>
+    <a href="../fuer-kanzleien.html">Kanzleien</a>
   </div>
 </nav>
 
@@ -816,12 +871,14 @@
       </div>
       <ol class="toc-list">
         <li><a href="#ausgangslage">Ausgangslage</a></li>
+        <li><a href="#prozess">Der Werkstatt-Prozess</a></li>
         <li><a href="#saeulen">Das 5-Säulen-Modell</a></li>
         <li><a href="#farbe">Markenfarbe</a></li>
         <li><a href="#bildwelt">Eigene Bildwelt</a></li>
-        <li><a href="#stimme">Stimme aus dem Studio</a></li>
         <li><a href="#alltag">Im Alltag sichtbar</a></li>
         <li><a href="#outcomes">Was es bewegt hat</a></li>
+        <li><a href="#learnings">Was wir gelernt haben</a></li>
+        <li><a href="#uebertragung">Übertragung auf andere</a></li>
         <li><a href="#weiter">Eure Marke?</a></li>
       </ol>
     </nav>
@@ -866,6 +923,30 @@
     <h2>Ausgangslage: <span class="italic">eine konservative Branche.</span></h2>
     <p class="section-lead">Physiotherapie ist in Deutschland eine Branche, die seit 20 Jahren visuell stehengeblieben ist. Weiße Wände, Stockfotos von älteren Patientinnen, austauschbare „Wir kümmern uns um Sie"-Sätze. Die Folge: Anbieter sind kaum unterscheidbar und Mitarbeiter:innen suchen sich ihren Arbeitgeber eher nach Wegstrecke als nach Marke aus.</p>
     <p class="section-lead">REHAB FIVE wollte das Gegenteil sein: eine moderne Praxis-Marke, die Patient:innen und Therapeut:innen aktiv anzieht — nicht zufällig vorbeischwemmt.</p>
+  </div>
+</section>
+
+<!-- WERKSTATT-PROZESS -->
+<section class="section" id="prozess">
+  <div class="wrap-narrow">
+    <h2>Der <span class="italic">Werkstatt-Prozess</span> in vier Phasen.</h2>
+    <p class="section-lead">Die REHAB-FIVE-Marke ist nicht in einem Sprint entstanden. Sie ist über mehrere Wochen in vier Phasen gewachsen — dieselbe Methode, die wir heute bei jedem Quint-Projekt anwenden.</p>
+
+    <div class="stats-grid" style="margin-top: 32px;">
+      <div class="stat">
+        <div class="big" style="font-size: 48px;">01</div>
+        <div class="desc"><strong>Klarheit</strong> — Positionierungs-Fragen, Zielgruppen-Schärfung, was die Marke bewusst NICHT sein soll.</div>
+      </div>
+      <div class="stat">
+        <div class="big" style="font-size: 48px;">02</div>
+        <div class="desc"><strong>Fundament</strong> — Marken-Kern schriftlich: Haltung, Ton, Werteversprechen. Vor jeder Optik.</div>
+      </div>
+      <div class="stat">
+        <div class="big" style="font-size: 48px;">03</div>
+        <div class="desc"><strong>Identität</strong> — Signet, Farbwelt, Schrift-System, Bildwelten. Drei Richtungen, eine Entscheidung, saubere Verfeinerung.</div>
+      </div>
+    </div>
+    <p class="section-lead" style="margin-top: 32px;">Phase 4 (Anwendung + Übergabe) läuft bei REHAB FIVE nicht in Wochen, sondern <strong>bis heute</strong> — die Marke wird laufend im Alltag gepflegt, mit neuen Touchpoints (Trikots, Kooperationen, neue Standorte) erweitert.</p>
   </div>
 </section>
 
@@ -1090,12 +1171,56 @@
   </div>
 </section>
 
+<!-- LEARNINGS -->
+<section class="section" id="learnings">
+  <div class="wrap-narrow">
+    <h2>Was wir dabei <span class="italic">gelernt haben.</span></h2>
+    <p class="section-lead">Sechs Jahre REHAB-FIVE-Aufbau haben eine Handvoll Lektionen ergeben, die wir heute in jedes Quint-Projekt mitnehmen. Die wichtigsten in Kurzform:</p>
+
+    <ol class="toc-list" style="margin-top: 32px; grid-template-columns: 1fr;">
+      <li><a href="../journal/premium-positionierung-rehab-five.html">Premium beginnt im Wartezimmer, nicht im Logo.</a></li>
+      <li><a href="../journal/premium-positionierung-rehab-five.html">Nein sagen ist die eigentliche Positionierung — Ja sagen ist der Marktdurchschnitt.</a></li>
+      <li><a href="../journal/premium-positionierung-rehab-five.html">Preise sind Positionierungs-Signale, nicht nur Umsatz-Hebel.</a></li>
+      <li><a href="../journal/premium-positionierung-rehab-five.html">Was das Team sagt, ist Markenkommunikation — auch am Empfang.</a></li>
+      <li><a href="../journal/premium-positionierung-rehab-five.html">Multi-Brand ist sauberer als Kompromiss-Marke bei divergierenden Zielgruppen.</a></li>
+      <li><a href="../journal/premium-positionierung-rehab-five.html">HWG-konform und mutig sind kein Widerspruch — nur ungewohnt.</a></li>
+    </ol>
+
+    <p class="section-lead" style="margin-top: 28px;">Wer die volle Ableitung lesen möchte: <a href="../journal/premium-positionierung-rehab-five.html">im Journal steht der Deep-Dive</a> mit konkreten Beispielen und Übertragungen.</p>
+  </div>
+</section>
+
+<!-- ÜBERTRAGUNG -->
+<section class="section" id="uebertragung">
+  <div class="wrap-narrow">
+    <h2>Was das für <span class="italic">andere Marken</span> heißt.</h2>
+    <p class="section-lead">REHAB FIVE ist Health &amp; Beauty. Aber die Werkstatt-Methode und die Grundprinzipien tragen bei Sportvereinen genauso wie bei Kanzleien — nur die Sprache ändert sich, nicht die Logik.</p>
+
+    <div class="stats-grid" style="margin-top: 32px;">
+      <div class="stat">
+        <div class="big" style="font-size: 42px;">→</div>
+        <div class="desc"><strong>Für Praxen</strong> — Selbstzahler-Positionierung, HWG-Rahmen, Team-Signale.<br/><a href="../fuer-praxen.html" style="color: var(--rehab-orange);">Für Praxen ansehen →</a></div>
+      </div>
+      <div class="stat">
+        <div class="big" style="font-size: 42px;">→</div>
+        <div class="desc"><strong>Für Vereine</strong> — Sponsor-Argumentation, Ehrenamt-taugliche Übergabe, Vereinsheim-Realität.<br/><a href="../fuer-vereine.html" style="color: var(--rehab-orange);">Für Vereine ansehen →</a></div>
+      </div>
+      <div class="stat">
+        <div class="big" style="font-size: 42px;">→</div>
+        <div class="desc"><strong>Für Kanzleien</strong> — Positionierung vor Optik, Sachlichkeit ohne Langeweile.<br/><a href="../fuer-kanzleien.html" style="color: var(--rehab-orange);">Für Kanzleien ansehen →</a></div>
+      </div>
+    </div>
+
+    <p class="section-lead" style="margin-top: 32px;">Was Quint-Projekte alle teilen: <strong>Klarheit-Workshop in Woche 1, Fundament in Wochen 2-3, Identität in Wochen 4-7, Anwendung in Wochen 8-10.</strong> Die Werkstatt-Struktur ist stabil — die Marke, die daraus entsteht, immer eigenständig.</p>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="case-cta" id="weiter">
   <div class="wrap-narrow">
     <h2>Eure Marke,<br/><span class="italic">der nächste Case?</span></h2>
-    <p>Wenn ihr eine Marke baut, die mehr verdient als das, was sie gerade ausstrahlt — wir hören gerne zu. 30 Minuten, kostenlos, ohne Verkaufsmasche.</p>
-    <a class="email-pill" href="mailto:a.braemswig@rehab-five.com">Erstgespräch anfragen →</a>
+    <p>Wenn ihr eine Marke baut, die mehr verdient als das, was sie gerade ausstrahlt — wir hören gerne zu. 45 Minuten, kostenlos, ohne Verkaufsmasche.</p>
+    <a class="email-pill" href="mailto:hallo@quint-marketing.de?subject=Erstgespr%C3%A4ch%20nach%20REHAB-FIVE-Case">Erstgespräch anfragen →</a>
     <br/>
     <a class="related-link" href="index.html">← zurück zur Arbeit</a>
   </div>

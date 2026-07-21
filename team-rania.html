@@ -340,6 +340,53 @@
   }
   .skip-link:focus, .skip-link:focus-visible { left: 0; }
 
+
+  /* SUB-NAV: ICP-Cross-Linking auf allen Sub-Pages */
+  .sub-icp-nav {
+    background: rgba(0,0,0,0.15);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .sub-icp-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+    flex-wrap: wrap;
+  }
+  .sub-icp-label {
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: rgba(244,239,231,0.6);
+    font-size: 11px;
+  }
+  .sub-icp-nav a {
+    color: rgba(244,239,231,0.82);
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    text-decoration: none;
+  }
+  .sub-icp-nav a:hover {
+    background: rgba(232,155,177,0.12);
+    color: #E89BB1;
+    border-color: rgba(232,155,177,0.5);
+  }
+  .sub-icp-nav a.active {
+    background: #E89BB1;
+    color: #143C6B;
+    border-color: #E89BB1;
+    font-weight: 600;
+  }
+  @media (max-width: 700px) {
+    .sub-icp-inner { padding: 10px 22px; gap: 8px; }
+    .sub-icp-nav a { padding: 4px 10px; font-size: 12px; }
+    .sub-icp-label { font-size: 10px; }
+  }
 </style>
 
 <!-- Twitter Card -->
@@ -364,6 +411,14 @@
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="Quint — Startseite"><img src="assets/quint-logo-white.svg" alt="Quint" decoding="async" /></a>
     <a href="index.html#team" class="nav-back">← Team</a>
+  </div>
+</nav>
+<nav class="sub-icp-nav" aria-label="Zielgruppen-Navigation">
+  <div class="sub-icp-inner">
+    <span class="sub-icp-label">Für:</span>
+    <a href="fuer-praxen.html">Praxen</a>
+    <a href="fuer-vereine.html">Vereine</a>
+    <a href="fuer-kanzleien.html">Kanzleien</a>
   </div>
 </nav>
 
