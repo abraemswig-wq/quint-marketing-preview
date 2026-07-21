@@ -230,6 +230,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,400;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
 
 <!-- Preload Above-the-Fold-Assets (Loader-Maennchen + Hero-Maennchen + Logo) -->
+<link rel="preload" as="image" href="assets/quint-chase-hero-poster.webp" fetchpriority="high">
+<link rel="preload" as="video" href="assets/quint-chase-hero.mp4" type="video/mp4">
 <link rel="preload" as="image" href="assets/Dackel-Po.svg" type="image/svg+xml" fetchpriority="high">
 <link rel="preload" as="image" href="assets/loader-dackel-wag.webp" fetchpriority="high">
 <link rel="preload" as="image" href="assets/quint-logo-claim-white.png" fetchpriority="high">
@@ -621,51 +623,50 @@
   /* HERO */
   .hero { padding: 100px 0 140px; position: relative; overflow: hidden; }
   .hero-content { position: relative; z-index: 2; max-width: 1080px; }
-  /* Wappen-Dackel als Watermark rechts */
+  /* Hero-Wappen: enthält jetzt das Chasing-The-Ball-Video (Higgsfield) */
   .hero-wappen {
     position: absolute;
     right: 40px;
-    bottom: 80px;
-    width: 360px;
+    bottom: 60px;
+    width: 440px;
+    max-width: 40vw;
+    aspect-ratio: 1 / 1;
     pointer-events: none;
     z-index: 0;
-  }
-  .hero-wappen .hero-dackel {
-    width: 100%; height: auto; display: block;
-    opacity: 0.92;
-  }
-  .hero-wappen .hero-ball {
-    position: absolute;
-    /* Po-Dackel schaut nach links-unten — Ball davor platzieren */
-    bottom: 4%; left: -8%;
-    width: 14%; aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #f4b8c8 0%, var(--pink) 45%, var(--pink-strong) 100%);
+    border-radius: 28px;
+    overflow: hidden;
+    /* Video-Container-Shadow — subtiler Pink-Glow damit's zur CI passt */
     box-shadow:
-      0 10px 28px rgba(13,39,71,0.45),
-      inset -2px -3px 8px rgba(0,0,0,0.08);
-    animation: heroBallBounce 2.4s cubic-bezier(.45,0,.55,1) infinite;
-    transform-origin: center;
+      0 24px 64px rgba(13,39,71,0.4),
+      0 0 0 1px rgba(232,155,177,0.15);
   }
-  .hero-wappen .hero-ball::after {
-    content: ""; position: absolute;
-    top: 18%; left: 22%; width: 22%; height: 18%;
-    background: rgba(255,255,255,0.55); border-radius: 50%;
-    filter: blur(2px);
+  .hero-chase-video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    /* Video-Background matched Navy (#033870 in Higgsfield-Original leicht anders als
+       Quint-Navy #143C6B) — box-shadow inset überbrückt die Kante subtiler */
+    background: #033870;
   }
-  @keyframes heroBallBounce {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50%      { transform: translateY(-18px) scale(1.02); }
+  .hero-chase-video img {
+    /* Fallback img bei Video-Support = 0: nimmt vollen Container ein */
+    width: 100%; height: 100%; object-fit: cover; display: block;
   }
   @media (prefers-reduced-motion: reduce) {
-    .hero-wappen .hero-ball { animation: none; }
+    /* Wenn User Motion aus hat: Video pausieren, Poster zeigen */
+    .hero-chase-video { animation: none; }
+    /* Browser handhaben das oft nicht automatisch — via JS unten pausieren */
   }
-  @media (max-width: 1100px) { .hero-wappen { width: 300px; right: 20px; bottom: 60px; } }
+  @media (max-width: 1100px) {
+    .hero-wappen { width: 340px; right: 20px; bottom: 50px; }
+  }
   @media (max-width: 900px) {
-    .hero-wappen { width: 240px; right: 0; bottom: 40px; }
+    .hero-wappen { width: 260px; right: 12px; bottom: 40px; }
   }
   @media (max-width: 600px) {
-    .hero-wappen { width: 180px; right: 8px; bottom: 24px; }
+    /* Mobile: Video über Text — max-width 60vw damit rechte Ecke bleibt */
+    .hero-wappen { width: 200px; right: 8px; bottom: 32px; border-radius: 20px; }
   }
   .hero h1 {
     font-size: clamp(56px, 9vw, 132px);
@@ -2201,8 +2202,17 @@
 
 <header class="hero" id="top">
   <div class="hero-wappen" aria-hidden="true">
-    <span class="hero-ball"></span>
-    <img class="hero-dackel" src="assets/Dackel-Po.svg" alt="" fetchpriority="high" decoding="async" />
+    <!-- Chasing-The-Ball Brand-Animation (Higgsfield-generiert):
+         Autoplay + loop + muted + playsinline (iOS-Autoplay-Anforderung).
+         Poster als Fallback beim Laden UND bei prefers-reduced-motion. -->
+    <video class="hero-chase-video"
+           autoplay muted loop playsinline
+           poster="assets/quint-chase-hero-poster.webp"
+           preload="metadata"
+           aria-label="Quint Chasing The Ball — Dackel jagt den pinken Ball ins Logo">
+      <source src="assets/quint-chase-hero.mp4" type="video/mp4" />
+      <img src="assets/quint-chase-hero-poster.jpg" alt="" />
+    </video>
   </div>
   <div class="wrap">
     <div class="hero-content">
@@ -2786,6 +2796,24 @@
       document.body.classList.remove('locked');
     }, delay);
   });
+
+  // HERO CHASE-VIDEO — pausieren bei prefers-reduced-motion oder Save-Data
+  (function() {
+    const video = document.querySelector('.hero-chase-video');
+    if (!video) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const saveData = navigator.connection && navigator.connection.saveData;
+    if (reduceMotion || saveData) {
+      video.pause();
+      video.removeAttribute('autoplay');
+      video.setAttribute('preload', 'none');
+    }
+    // Video pausieren wenn Tab nicht sichtbar (Battery-Save)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { video.pause(); }
+      else if (!reduceMotion && !saveData) { video.play().catch(() => {}); }
+    });
+  })();
 </script>
 
 <!-- Motion One: Senior-Designer-Animation-Pass (Framer-Motion-Äquivalent für Vanilla JS) -->
