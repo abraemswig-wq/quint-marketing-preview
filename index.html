@@ -1254,7 +1254,22 @@
     color: rgba(255,255,255,0.72);
     font-size: 15px;
     line-height: 1.55;
+    margin-bottom: 20px;
   }
+  .audience-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--pink);
+    letter-spacing: 0.02em;
+    transition: gap 0.25s, color 0.2s;
+    position: relative;
+    z-index: 1;
+  }
+  .audience-more:hover { color: var(--pink-strong); gap: 12px; }
+  .audience-card:hover .audience-more { gap: 12px; }
   .audience-foot {
     margin-top: 32px;
     font-family: "Fraunces", serif;
@@ -2229,6 +2244,7 @@
         <h3>Health & Beauty</h3>
         <div class="audience-sub">Praxen, Studios, Optiker.</div>
         <p>Inhabergeführte Praxen und Studios, die Premium-Qualität liefern die endlich auch so aussehen wollen. Wir kennen die Branche und ihre Konventionen und wissen, wo sich Mut wirklich auszahlt.</p>
+        <a class="audience-more" href="fuer-praxen.html">Mehr für Praxen <span aria-hidden="true">→</span></a>
       </div>
 
       <div class="audience-card reveal" data-scroll-reveal data-tilt style="--stagger: 1">
@@ -2244,6 +2260,7 @@
         <h3>Sport & Vereine</h3>
         <div class="audience-sub">Clubs, Verbände, Sportstätten.</div>
         <p>Vereine und Sportmarken, die mehr sind als ihr Logo auf dem Trikot. Wir kennen die Welt aus erster Hand und wissen, was bei Vereinen funktioniert und was nicht.</p>
+        <a class="audience-more" href="fuer-vereine.html">Mehr für Vereine <span aria-hidden="true">→</span></a>
       </div>
 
       <div class="audience-card reveal" data-scroll-reveal data-tilt style="--stagger: 2">
@@ -2259,6 +2276,7 @@
         <h3>Inhabergeführte Dienstleister</h3>
         <div class="audience-sub">Kanzleien, Beratungen, Steuerbüros.</div>
         <p>Anwaltskanzleien, Steuerbüros, Beratungen, die merken: Mandanten googeln vor dem ersten Anruf. Wir machen aus Expertise eine Marke, die das auch ausstrahlt.</p>
+        <a class="audience-more" href="fuer-kanzleien.html">Mehr für Kanzleien <span aria-hidden="true">→</span></a>
       </div>
     </div>
     <p class="audience-foot reveal" data-scroll-reveal>Du siehst deine Welt nicht? Schreib uns trotzdem. Wenn die Haltung passt, passt der Rest.</p>
