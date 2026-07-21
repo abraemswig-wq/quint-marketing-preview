@@ -1302,97 +1302,109 @@
 
   /* TEAM */
   .team-block { padding: 160px 0; background: var(--navy); }
-  /* TEAM-CAROUSEL: horizontaler Swipe statt Grid (mit 5 Personen waere 4-Spalten zu eng) */
-  .team-carousel-wrap { position: relative; margin-top: 64px; }
-  .team-grid {
-    display: flex;
+
+  /* 4+1-Layout: 4 Menschen im Grid, Dackel als eigenes breiteres Element drunter.
+     Loest die alte 5-Karten-Carousel-Loesung ab (die musste sein weil 5 nicht in 4-Spalten passt). */
+  .team-people {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 22px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding: 0 32px;
-    /* Iphone-/Android-Swipe-Smoothness */
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    /* Padding rechts/links damit Karten am Rand nicht hart abschneiden */
-    padding: 8px 32px 32px;
-    margin: 0 -32px;
+    margin-top: 64px;
   }
-  .team-grid::-webkit-scrollbar { display: none; }
-  .team-grid > .person {
-    /* 4 Karten sichtbar auf Desktop (gap einberechnet) */
-    flex: 0 0 calc((100% - 32px * 2 - 22px * 3) / 4);
-    scroll-snap-align: start;
-    min-width: 240px;
-  }
-  @media (max-width: 1100px) {
-    .team-grid > .person { flex-basis: calc((100% - 32px * 2 - 22px * 2) / 3); }
-  }
-  @media (max-width: 900px) {
-    .team-grid > .person { flex-basis: calc((100% - 32px * 2 - 22px) / 2); }
-  }
-  /* Mobile: KEIN horizontaler Swipe — der hijackt das vertikale Page-Scrolling.
-     Stattdessen vertikale Karten-Liste, alle 5 Profile direkt sichtbar. */
-  @media (max-width: 600px) {
-    .team-grid {
-      display: flex;
-      flex-direction: column;
-      overflow-x: visible;
-      scroll-snap-type: none;
-      padding: 8px 0 8px;
-      margin: 0;
-      gap: 16px;
-    }
-    .team-grid > .person {
-      flex: 0 0 auto;
-      width: 100%;
-      min-width: 0;
-    }
-    .team-hint { display: none; }
-  }
-  /* Carousel-Pfeile (Desktop) — weicher, organischer */
-  /* Carousel-Buttons: klare Pink-Outline statt grauer Glow-Buttons.
-     Kein box-shadow / backdrop-filter mehr — das hatte einen sichtbaren
-     dunklen Balken hinter den Buttons erzeugt. */
-  .team-nav {
-    display: flex; justify-content: flex-end; gap: 12px;
-    margin-top: 28px;
-  }
-  .team-nav button {
-    width: 52px; height: 52px;
-    border-radius: 50%;
-    border: 2px solid var(--pink);
-    background: transparent;
+  @media (max-width: 1100px) { .team-people { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+  @media (max-width: 600px)  { .team-people { grid-template-columns: 1fr; gap: 16px; } }
+
+  /* Divider zwischen den 4 Menschen und dem Dackel-Element */
+  .team-divider {
+    margin: 48px 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-size: clamp(18px, 1.8vw, 24px);
     color: var(--pink);
-    font-size: 22px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.25s, color 0.25s, transform 0.2s, border-color 0.25s;
-    display: flex; align-items: center; justify-content: center;
-    line-height: 1;
-  }
-  .team-nav button:hover {
-    background: var(--pink);
-    color: var(--navy);
-    transform: translateY(-2px);
-  }
-  .team-nav button:active { transform: scale(0.94); }
-  .team-nav button:disabled {
-    opacity: 0.25;
-    cursor: not-allowed;
-    transform: none;
-    background: transparent;
-    color: var(--pink);
-  }
-  @media (hover: none) { .team-nav { display: none; } }
-  /* Scroll-Hint auf Mobile */
-  .team-hint {
-    display: none;
     text-align: center;
-    margin-top: 14px;
-    font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
-    color: rgba(244,239,231,0.5);
+    justify-content: center;
   }
-  @media (hover: none) { .team-hint { display: block; } }
+  .team-divider::before, .team-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(232,155,177,0.4), transparent);
+    max-width: 200px;
+  }
+
+  /* Der Dackel bekommt einen anderen visuellen Rahmen — bewusst NICHT wie eine der
+     4 Menschen-Karten. Breiter, mit Portrait-Aspect, Cream-Akzent statt weisser Border. */
+  .team-dackel-card {
+    display: grid;
+    grid-template-columns: minmax(200px, 280px) 1fr;
+    gap: 40px;
+    align-items: center;
+    padding: 44px 48px;
+    background: linear-gradient(135deg, rgba(232,155,177,0.08), rgba(232,155,177,0.03));
+    border: 1px solid rgba(232,155,177,0.2);
+    border-radius: 28px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.35s cubic-bezier(.2,.8,.2,1), border-color 0.3s, background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .team-dackel-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(232,155,177,0.5);
+    background: linear-gradient(135deg, rgba(232,155,177,0.12), rgba(232,155,177,0.05));
+  }
+  @media (hover: none) { .team-dackel-card:hover { transform: none; } }
+  .team-dackel-visual {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: rgba(255,255,255,0.05);
+    border-radius: 22px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .team-dackel-visual img {
+    width: 78%; height: 78%; object-fit: contain;
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.25));
+  }
+  .team-dackel-content h3 {
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 700; letter-spacing: -0.02em;
+    line-height: 1.05; margin-bottom: 12px;
+    color: var(--white);
+  }
+  .team-dackel-content h3 .italic { color: var(--pink); }
+  .team-dackel-role {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: 16px; color: var(--pink);
+    margin-bottom: 18px;
+    letter-spacing: -0.005em;
+  }
+  .team-dackel-bio {
+    font-size: 16px; line-height: 1.55;
+    color: rgba(244,239,231,0.82);
+    margin-bottom: 22px;
+    max-width: 560px;
+  }
+  .team-dackel-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 600;
+    color: var(--pink); letter-spacing: 0.02em;
+    transition: gap 0.25s;
+  }
+  .team-dackel-card:hover .team-dackel-cta { gap: 14px; }
+  @media (max-width: 800px) {
+    .team-dackel-card {
+      grid-template-columns: 1fr;
+      gap: 28px; padding: 36px 28px;
+    }
+    .team-dackel-visual { max-width: 200px; margin: 0 auto; }
+    .team-dackel-content { text-align: center; }
+    .team-dackel-bio { margin-left: auto; margin-right: auto; }
+  }
 
   /* Pink-Dot am Dackel-Initial — Echo zum Quint-Logo-Ball */
   .person-initials .initial-dot {
@@ -2544,8 +2556,8 @@
       <h2>Vier Menschen. Ein <span class="italic">Wappentier.</span><br/>Eine Handschrift.</h2>
       <p class="lead">Quint ist kein Kollektiv und keine Agentur-Maschine. Stand heute sind wir vier: Strategie, Design, Logo-Handwerk, Fotografie. Plus ein Dackel, der einfach dazugehört. Wir wachsen kontrolliert weiter, „kleines Team" bleibt aber unser Prinzip. Wer mit uns arbeitet, arbeitet mit uns. Nicht mit einem Account Manager.</p>
     </div>
-    <div class="team-carousel-wrap">
-    <div class="team-grid" id="teamGrid" role="region" aria-label="Team-Mitglieder, horizontal scrollbar">
+    <!-- 4 Menschen als sauberes 4-Spalten-Grid -->
+    <div class="team-people">
       <a href="team-aric.html" class="person reveal person-link" aria-label="Aric Brämswig — Profil öffnen">
         <div class="person-decoration"></div>
         <div class="person-initials">AB</div>
@@ -2578,21 +2590,23 @@
         <p class="person-bio">Werbe- und Businessfotograf aus Münster. Hat Marken wie Flaschenpost, COMPO, BASF und Nike vor der Linse gehabt. Bei Quint sorgt er dafür, dass Marken nicht nur klingen wie sie selbst, sondern auch so aussehen.</p>
         <span class="person-cta">Profil ansehen <span class="arrow">→</span></span>
       </a>
-      <a href="team-dackel.html" class="person reveal person-link" aria-label="Dackel — Wappentier · Geschichte öffnen">
-        <div class="person-decoration"></div>
-        <div class="person-initials">D<span class="initial-dot">.</span></div>
-        <div class="person-name">Dackel</div>
-        <div class="person-role">Wappentier · Chief Spielfreude</div>
-        <p class="person-bio">Kam nicht aus einem Marken-Workshop. Kam, weil Rania und Bjoern Dackel mögen und Aric das zugelassen hat. Geblieben, weil Marken so beginnen sollten: aus echtem Stoff, nicht aus Workshop-Folien.</p>
-        <span class="person-cta">Geschichte lesen <span class="arrow">→</span></span>
-      </a>
     </div>
-    <nav class="team-nav" aria-label="Team-Carousel-Navigation">
-      <button type="button" id="teamPrev" aria-label="Vorherige Karte">←</button>
-      <button type="button" id="teamNext" aria-label="Nächste Karte">→</button>
-    </nav>
-    <div class="team-hint" aria-hidden="true">Wisch zur Seite ↔</div>
-    </div>
+
+    <!-- Divider zwischen Menschen und Wappentier -->
+    <div class="team-divider reveal" aria-hidden="true">+ ein Wappentier</div>
+
+    <!-- Dackel bewusst als eigenes, visuell anderes Element -->
+    <a href="team-dackel.html" class="team-dackel-card reveal" aria-label="Der Dackel — Wappentier · Geschichte öffnen">
+      <div class="team-dackel-visual">
+        <img src="assets/Dackel-Po.svg" alt="Quint-Wappen: Dackel von hinten mit X-Markierung" loading="lazy" decoding="async" />
+      </div>
+      <div class="team-dackel-content">
+        <h3>Der <span class="italic">Dackel.</span></h3>
+        <div class="team-dackel-role">Wappentier · Chief Spielfreude</div>
+        <p class="team-dackel-bio">Kam nicht aus einem Marken-Workshop. Kam, weil Rania und Bjoern Dackel mögen und Aric das zugelassen hat. Geblieben, weil Marken so beginnen sollten: aus echtem Stoff, nicht aus Workshop-Folien.</p>
+        <span class="team-dackel-cta">Ganze Geschichte lesen <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -2923,29 +2937,8 @@
   })();
 </script>
 
-<!-- Team-Carousel Navigation (Pfeile + Disabled-State) -->
-<script>
-  (function() {
-    const grid = document.getElementById('teamGrid');
-    const prev = document.getElementById('teamPrev');
-    const next = document.getElementById('teamNext');
-    if (!grid || !prev || !next) return;
-    function step() {
-      const card = grid.querySelector('.person');
-      if (!card) return 280;
-      return card.getBoundingClientRect().width + 22;
-    }
-    function update() {
-      prev.disabled = grid.scrollLeft <= 4;
-      next.disabled = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 4;
-    }
-    prev.addEventListener('click', () => grid.scrollBy({ left: -step(), behavior: 'smooth' }));
-    next.addEventListener('click', () => grid.scrollBy({ left: step(), behavior: 'smooth' }));
-    grid.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-    update();
-  })();
-</script>
+<!-- Team-Carousel JS entfernt: mit 4+1-Layout kein Carousel mehr noetig -->
+
 
 <!-- Mobile Hamburger Menu -->
 <script>
