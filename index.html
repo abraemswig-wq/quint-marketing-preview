@@ -623,50 +623,68 @@
   /* HERO */
   .hero { padding: 100px 0 140px; position: relative; overflow: hidden; }
   .hero-content { position: relative; z-index: 2; max-width: 1080px; }
-  /* Hero-Wappen: enthält jetzt das Chasing-The-Ball-Video (Higgsfield) */
+
+  /* Hero-Video-Background: Dackel-Video über volle Hero-Fläche.
+     Nav bleibt darüber sichtbar (nav hat höheren z-index + backdrop-blur). */
   .hero-wappen {
     position: absolute;
-    right: 40px;
-    bottom: 60px;
-    width: 440px;
-    max-width: 40vw;
-    aspect-ratio: 1 / 1;
-    pointer-events: none;
+    inset: 0;
     z-index: 0;
-    border-radius: 28px;
+    pointer-events: none;
     overflow: hidden;
-    /* Video-Container-Shadow — subtiler Pink-Glow damit's zur CI passt */
-    box-shadow:
-      0 24px 64px rgba(13,39,71,0.4),
-      0 0 0 1px rgba(232,155,177,0.15);
   }
   .hero-chase-video {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
-    /* Video zeigt echten Dackel-Welpen auf weißem Studio-Hintergrund —
-       Container-BG matched das Weiß damit während Load kein Farbsprung */
+    object-position: center;
+    /* Weißer Studio-Hintergrund während Load — verhindert Farb-Sprung */
     background: #f4efe7;
   }
   .hero-chase-video img {
-    /* Fallback img bei Video-Support = 0: nimmt vollen Container ein */
     width: 100%; height: 100%; object-fit: cover; display: block;
   }
-  @media (prefers-reduced-motion: reduce) {
-    /* Wenn User Motion aus hat: Video pausieren, Poster zeigen */
-    .hero-chase-video { animation: none; }
-    /* Browser handhaben das oft nicht automatisch — via JS unten pausieren */
+  /* Overlay-Layer: dunkler Navy-Gradient über dem Video für Text-Lesbarkeit.
+     Linke Seite (wo Text steht) stärker abgedunkelt, rechte Seite transparenter
+     damit Dackel im rechten Drittel möglichst frei sichtbar bleibt.
+     Zusätzlicher vertikaler Verlauf: oben stärker abgedunkelt (unter Nav)
+     für Nav-Kontrast, unten transparenter für Video-Sichtbarkeit. */
+  .hero-wappen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      /* Radial-Highlight rechts: hält Dackel-Bereich hell */
+      radial-gradient(ellipse 70% 90% at 80% 60%, rgba(20,60,107,0.15) 0%, rgba(20,60,107,0.75) 100%),
+      /* Horizontaler Gradient: links dunkel für Text, rechts transparent */
+      linear-gradient(90deg, rgba(20,60,107,0.92) 0%, rgba(20,60,107,0.85) 35%, rgba(20,60,107,0.45) 65%, rgba(20,60,107,0.35) 100%);
   }
-  @media (max-width: 1100px) {
-    .hero-wappen { width: 340px; right: 20px; bottom: 50px; }
+  /* Zusätzliche vertikale Vignette für Nav-Kontrast oben + Footer-Fade unten */
+  .hero-wappen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg,
+      rgba(13,39,71,0.55) 0%,
+      rgba(13,39,71,0.0) 15%,
+      rgba(13,39,71,0.0) 70%,
+      rgba(20,60,107,0.6) 100%);
+    pointer-events: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-chase-video { animation: none; }
   }
   @media (max-width: 900px) {
-    .hero-wappen { width: 260px; right: 12px; bottom: 40px; }
-  }
-  @media (max-width: 600px) {
-    /* Mobile: Video über Text — max-width 60vw damit rechte Ecke bleibt */
-    .hero-wappen { width: 200px; right: 8px; bottom: 32px; border-radius: 20px; }
+    /* Mobile: Text ist wichtiger — Overlay stärker, Video subtiler durchscheinend */
+    .hero-wappen::before {
+      background:
+        linear-gradient(180deg, rgba(20,60,107,0.75) 0%, rgba(20,60,107,0.6) 40%, rgba(20,60,107,0.85) 100%);
+    }
+    /* Video-Position anpassen: Dackel rechts-mittig für Landscape-Crop */
+    .hero-chase-video { object-position: 65% center; }
   }
   .hero h1 {
     font-size: clamp(56px, 9vw, 132px);
