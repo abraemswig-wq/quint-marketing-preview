@@ -1,6 +1,6 @@
 # Quint Marketing
 
-> Quint ist eine Marken-Werkstatt in Münster. Wir bauen Marken (Branding) und betreuen Social-Media-Kanäle (Content-Strategie + laufende Produktion) für inhabergeführte KMU im DACH-Raum — speziell Praxen, Sportvereine und Kanzleien/Berater. Aktuell vier Menschen + ein Wappentier (Dackel), wachsend auf 5 bis August 2026. Werkstatt-Arbeit, keine Agentur-Maschine.
+> Quint ist eine Marken-Werkstatt in Münster. Wir bauen Marken (Branding), betreuen Social-Media-Kanäle (Content-Strategie + laufende Produktion) und produzieren Print &amp; Objekt (Visitenkarten, Broschüren, Verpackungen, Geschenkboxen) für inhabergeführte KMU im DACH-Raum — speziell Praxen, Sportvereine und Kanzleien/Berater. Aktuell vier Menschen + ein Wappentier (Dackel), wachsend auf 5 bis August 2026. Werkstatt-Arbeit, keine Agentur-Maschine.
 
 ## Wer Quint ist
 
@@ -12,7 +12,7 @@
 
 ## Was Quint macht
 
-- [Leistungsverzeichnis](https://abraemswig-wq.github.io/quint-marketing-preview/leistungen.html): Branding (6–10 Wochen) und Social Media (ab 500 € netto/Monat, Mindestlaufzeit 3 Monate)
+- [Leistungsverzeichnis](https://abraemswig-wq.github.io/quint-marketing-preview/leistungen.html): Branding (6–10 Wochen, ab 8.500 € netto), Social Media (ab 500 € netto/Monat, Mindestlaufzeit 3 Monate), Print &amp; Objekt (Visitenkarten, Broschüren, Verpackungen, Geschenkboxen — ab 2.500 € netto, als Branding-Add-on –20 %)
 - [REHAB FIVE Case Study](https://abraemswig-wq.github.io/quint-marketing-preview/arbeit/rehab-five.html): Anker-Case, Aric's eigene Praxis
 - [Markenwert-Check](https://abraemswig-wq.github.io/quint-marketing-preview/markenwert-check.html): kostenfreies 10-Fragen-Self-Assessment
 
