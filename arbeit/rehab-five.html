@@ -604,7 +604,16 @@
     gap: 24px;
     margin-top: 56px;
   }
-  @media (max-width: 700px) { .stats-grid { grid-template-columns: 1fr; } }
+  /* Prozess-Grid speziell: 4 Karten, responsive Fallback 2x2 dann 1x4 */
+  .stats-grid.prozess-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 900px) { .stats-grid.prozess-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .stats-grid.prozess-grid { grid-template-columns: 1fr; }
+  }
   .stat {
     text-align: center;
     padding: 36px 24px;
@@ -932,21 +941,24 @@
     <h2>Der <span class="italic">Werkstatt-Prozess</span> in vier Phasen.</h2>
     <p class="section-lead">Die REHAB-FIVE-Marke ist nicht in einem Sprint entstanden. Sie ist über mehrere Wochen in vier Phasen gewachsen — dieselbe Methode, die wir heute bei jedem Quint-Projekt anwenden.</p>
 
-    <div class="stats-grid" style="margin-top: 32px;">
+    <div class="stats-grid prozess-grid" style="margin-top: 32px;">
       <div class="stat">
         <div class="big" style="font-size: 48px;">01</div>
-        <div class="desc"><strong>Klarheit</strong> — Positionierungs-Fragen, Zielgruppen-Schärfung, was die Marke bewusst NICHT sein soll.</div>
+        <div class="desc"><strong>Klarheit</strong><br/>Positionierungs-Fragen, Zielgruppen-Schärfung, was die Marke bewusst NICHT sein soll.</div>
       </div>
       <div class="stat">
         <div class="big" style="font-size: 48px;">02</div>
-        <div class="desc"><strong>Fundament</strong> — Marken-Kern schriftlich: Haltung, Ton, Werteversprechen. Vor jeder Optik.</div>
+        <div class="desc"><strong>Fundament</strong><br/>Marken-Kern schriftlich: Haltung, Ton, Werteversprechen. Vor jeder Optik.</div>
       </div>
       <div class="stat">
         <div class="big" style="font-size: 48px;">03</div>
-        <div class="desc"><strong>Identität</strong> — Signet, Farbwelt, Schrift-System, Bildwelten. Drei Richtungen, eine Entscheidung, saubere Verfeinerung.</div>
+        <div class="desc"><strong>Identität</strong><br/>Signet, Farbwelt, Schrift-System, Bildwelten. Drei Richtungen, eine Entscheidung, saubere Verfeinerung.</div>
+      </div>
+      <div class="stat">
+        <div class="big" style="font-size: 48px;">04</div>
+        <div class="desc"><strong>Anwendung</strong><br/>Läuft bei REHAB FIVE bis heute — die Marke wird laufend im Alltag gepflegt, mit neuen Touchpoints (Trikots, Kooperationen, Standorte) erweitert.</div>
       </div>
     </div>
-    <p class="section-lead" style="margin-top: 32px;">Phase 4 (Anwendung + Übergabe) läuft bei REHAB FIVE nicht in Wochen, sondern <strong>bis heute</strong> — die Marke wird laufend im Alltag gepflegt, mit neuen Touchpoints (Trikots, Kooperationen, neue Standorte) erweitert.</p>
   </div>
 </section>
 
