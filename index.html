@@ -1200,6 +1200,168 @@
   .case-small p { color: rgba(255,255,255,0.7); margin-bottom: 32px; font-size: 15px; line-height: 1.55; }
   .case-small .case-tag { background: rgba(232,155,177,0.15); color: var(--pink); }
 
+  /* Foto-Overlay in der REHAB-FIVE-Karte — rechte Haelfte, weich ins Pink gefadet */
+  .case-big-photo {
+    position: absolute;
+    top: 0; right: 0;
+    width: 60%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .case-big-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.62;
+    mix-blend-mode: multiply;
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0.6) 75%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0.6) 75%, rgba(0,0,0,0) 100%);
+  }
+  @media (max-width: 900px) {
+    .case-big-photo { width: 100%; opacity: 0.35; }
+    .case-big-photo img {
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,1) 100%);
+              mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,1) 100%);
+    }
+  }
+
+  /* ============================================================
+     CASE-BLICKWINKEL-STACK: 4 Slides mit alternierendem Layout
+     ============================================================ */
+  .case-slides {
+    padding: 40px 0 140px;
+    background: var(--navy);
+    position: relative;
+  }
+  .case-slides-intro { padding: 80px 0 20px; }
+  .case-slides-intro .cs-eyebrow {
+    color: var(--pink);
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 22px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .case-slides-intro .cs-eyebrow::before {
+    content: ""; display: inline-block;
+    width: 32px; height: 1px; background: var(--pink);
+  }
+  .case-slides-intro h3 {
+    font-size: clamp(30px, 3.8vw, 48px);
+    line-height: 1.05; font-weight: 700; letter-spacing: -0.02em;
+    max-width: 820px; color: var(--cream);
+  }
+  .case-slides-intro h3 .italic { color: var(--pink); font-weight: 400; }
+  .case-slide {
+    min-height: 78vh;
+    padding: 80px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .case-slide:nth-child(odd of .case-slide) .case-slide-visual { order: 2; }
+  .case-slide:nth-child(odd of .case-slide) .case-slide-copy { order: 1; }
+  /* Fallback fuer Browser ohne :nth-child(of ...) — Layout alterniert per data-attribut */
+  .case-slide[data-swap="true"] .case-slide-visual { order: 1; }
+  .case-slide[data-swap="true"] .case-slide-copy { order: 2; }
+  .case-slide[data-swap="false"] .case-slide-visual { order: 2; }
+  .case-slide[data-swap="false"] .case-slide-copy { order: 1; }
+  @media (max-width: 900px) {
+    .case-slide {
+      grid-template-columns: 1fr;
+      gap: 36px; min-height: auto; padding: 64px 0;
+    }
+    .case-slide[data-swap="true"] .case-slide-visual,
+    .case-slide[data-swap="false"] .case-slide-visual { order: 1; }
+    .case-slide[data-swap="true"] .case-slide-copy,
+    .case-slide[data-swap="false"] .case-slide-copy { order: 2; }
+  }
+  .case-slide-visual {
+    aspect-ratio: 4 / 5;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    background: var(--navy-deep);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.35);
+  }
+  .case-slide-visual > img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .case-slide-copy .slide-num {
+    font-family: "Fraunces", serif;
+    font-style: italic; font-weight: 400;
+    font-size: 20px; color: var(--pink);
+    letter-spacing: 0.05em; margin-bottom: 16px;
+  }
+  .case-slide-copy h4 {
+    font-size: clamp(30px, 3.6vw, 46px);
+    line-height: 1.05; font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 22px; color: var(--cream);
+  }
+  .case-slide-copy h4 .italic { color: var(--pink); font-weight: 400; }
+  .case-slide-copy p {
+    font-size: 17px; line-height: 1.62;
+    color: rgba(244,239,231,0.78); max-width: 480px;
+  }
+  .case-slide-copy p + p { margin-top: 14px; }
+
+  /* Signet-Slide */
+  .slide-signet {
+    background: linear-gradient(135deg, #1e4633 0%, #133023 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .slide-signet > img {
+    object-fit: contain;
+    padding: 18%;
+    filter: invert(1) brightness(1.6);
+  }
+
+  /* Illustrations-Slide */
+  .slide-illus {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1.4fr 1fr 1fr;
+    gap: 10px;
+    padding: 24px;
+  }
+  .slide-illus > img {
+    object-fit: contain;
+    width: 100%; height: 100%;
+    padding: 4px;
+  }
+  .slide-illus > img:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 2; }
+  .slide-illus > img:nth-child(2) { grid-column: 1 / 2; grid-row: 2 / 3; }
+  .slide-illus > img:nth-child(3) { grid-column: 2 / 3; grid-row: 2 / 3; }
+  .slide-illus > img:nth-child(4) { grid-column: 1 / 2; grid-row: 3 / 4; }
+  .slide-illus > img:nth-child(5) { grid-column: 2 / 3; grid-row: 3 / 4; }
+
+  /* Partner-Slide: Typo-Composition */
+  .slide-partner {
+    background: radial-gradient(ellipse at 50% 40%, #1e5191 0%, #0D2747 70%);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 20px; padding: 40px; text-align: center;
+  }
+  .slide-partner .partner-name {
+    font-family: "Fraunces", serif;
+    font-style: italic; font-weight: 400;
+    font-size: clamp(28px, 3.6vw, 48px);
+    color: var(--cream); line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .slide-partner .partner-name:nth-child(2) { color: rgba(244,239,231,0.75); }
+  .slide-partner .partner-name:nth-child(3) { color: rgba(244,239,231,0.55); }
+  .slide-partner .partner-name + .partner-name { margin-top: -4px; }
+  .slide-partner .partner-hint {
+    margin-top: 24px;
+    font-family: "Familjen Grotesk", sans-serif;
+    font-style: normal;
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--pink);
+    font-weight: 600;
+  }
+
   /* AUDIENCE / ICP */
   .audience-block {
     padding: 160px 0;
@@ -2541,6 +2703,9 @@
     </div>
     <div class="case-wrap">
       <a href="arbeit/rehab-five.html" class="case-big reveal" style="text-decoration: none; color: inherit;" aria-label="REHAB FIVE Case-Study öffnen">
+        <div class="case-big-photo" aria-hidden="true">
+          <img src="assets/rehab-studio.webp" alt="" loading="lazy" decoding="async" />
+        </div>
         <div style="position: relative; z-index: 1;">
           <div class="case-tag">Case Study →</div>
           <h3>REHAB FIVE</h3>
@@ -2577,6 +2742,71 @@
           <p>Du hast eine Marke, die mehr verdient als das, was sie gerade ausstrahlt? Dann lass uns reden: kostenlos, unverbindlich, 45 Minuten.</p>
         </div>
         <a class="btn-primary" style="align-self: flex-start;" href="#kontakt">Erstgespräch <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REHAB FIVE — vier Blickwinkel als vertikaler Stack -->
+<section class="case-slides" id="rehab-blickwinkel" aria-labelledby="rehab-blickwinkel-h">
+  <div class="wrap">
+    <div class="case-slides-intro reveal">
+      <div class="cs-eyebrow">REHAB FIVE — Vier Blickwinkel</div>
+      <h3 id="rehab-blickwinkel-h">Vom Signet bis zum <span class="italic">Sponsorendeal</span> — die Marke in <span class="italic">Anwendung.</span></h3>
+    </div>
+
+    <div class="case-slide reveal" data-swap="false">
+      <div class="case-slide-visual">
+        <img src="assets/rehab-studio.webp" alt="Innenraum REHAB FIVE mit Neon-Signet und Marken-Wandmalerei" loading="lazy" decoding="async" />
+      </div>
+      <div class="case-slide-copy">
+        <div class="slide-num">— № 01 · Raum</div>
+        <h4>Die Marke wird <span class="italic">Raum.</span></h4>
+        <p>Neon-Signet auf Streifen-Mural, Marken-Farben in Möbeln und Licht. Jeder, der die Praxis betritt, betritt zuerst die Marke — dann erst die Therapie.</p>
+        <p>So bleibt sie in Erinnerung, auch nach dem letzten Termin.</p>
+      </div>
+    </div>
+
+    <div class="case-slide reveal" data-swap="true">
+      <div class="case-slide-visual slide-signet">
+        <img src="rehab-signet.svg" alt="REHAB FIVE Signet — fünfeckiger Kern mit Bewegungslinien" loading="lazy" decoding="async" />
+      </div>
+      <div class="case-slide-copy">
+        <div class="slide-num">— № 02 · Signet</div>
+        <h4>Ein Signet, das <span class="italic">trägt.</span></h4>
+        <p>Fünf Ecken für fünf Säulen. Klar genug, um am Kittel zu funktionieren; präsent genug, um auf einer Stadion-Bande zu bestehen.</p>
+        <p>Kein modisches Zeichen, sondern eins, das in zehn Jahren noch trägt.</p>
+      </div>
+    </div>
+
+    <div class="case-slide reveal" data-swap="false">
+      <div class="case-slide-visual slide-illus">
+        <img src="assets/rehab-physio.avif" alt="Illustration: Physiotherapie" loading="lazy" decoding="async" />
+        <img src="assets/rehab-personal.avif" alt="Illustration: Personal Training" loading="lazy" decoding="async" />
+        <img src="assets/rehab-diagnostik.avif" alt="Illustration: Diagnostik" loading="lazy" decoding="async" />
+        <img src="assets/rehab-athletik.avif" alt="Illustration: Athletik-Training" loading="lazy" decoding="async" />
+        <img src="assets/rehab-oma.avif" alt="Illustration: Senioren-Training" loading="lazy" decoding="async" />
+      </div>
+      <div class="case-slide-copy">
+        <div class="slide-num">— № 03 · Bildsprache</div>
+        <h4>Fünf Säulen, fünf <span class="italic">Illustrationen.</span></h4>
+        <p>Jede Leistungssäule bekommt ihre eigene Bildmarke. Kein Stock, kein Icon-Set — ein eigenes System, das Physio, Personal Training, Diagnostik, Athletik und Senioren-Training als eine Familie zeigt.</p>
+        <p>Damit fällt Content-Produktion leicht: Instagram, Website, Flyer — alles greift auf die gleichen Zeichen zurück.</p>
+      </div>
+    </div>
+
+    <div class="case-slide reveal" data-swap="true">
+      <div class="case-slide-visual slide-partner">
+        <div class="partner-name">USC Münster</div>
+        <div class="partner-name">UBC Münster</div>
+        <div class="partner-name">Deutscher Ruderverband</div>
+        <div class="partner-hint">Aktive Marken-Partner</div>
+      </div>
+      <div class="case-slide-copy">
+        <div class="slide-num">— № 04 · Partnerschaften</div>
+        <h4>Wenn Vereine deine Marke <span class="italic">wollen.</span></h4>
+        <p>Zwei Erstliga-Vereine aus Münster und der Deutsche Ruderverband haben REHAB FIVE als Partner. Nicht wegen Rabatten — wegen Passung. Eine Praxis-Marke, die neben einem Vereinslogo bestehen kann.</p>
+        <p>Das ist die Prüfung, die eine Marke bestehen muss: Steht sie neben anderen — oder verschwindet sie?</p>
       </div>
     </div>
   </div>
