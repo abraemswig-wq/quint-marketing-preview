@@ -153,6 +153,17 @@
     font-weight: 700;
     z-index: 3;
   }
+  .profile-signature-mark {
+    position: absolute;
+    top: 24px; right: 24px;
+    width: clamp(56px, 8vw, 84px);
+    height: clamp(56px, 8vw, 84px);
+    color: var(--navy);
+    opacity: 0.28;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .profile-signature-mark svg { width: 100%; height: 100%; }
   .profile-meta-eyebrow {
     font-size: 12px;
     letter-spacing: 0.2em;
@@ -432,6 +443,13 @@
 
     <div class="profile-hero">
       <div class="profile-initials-block">
+        <div class="profile-signature-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <circle cx="22" cy="36" r="13" stroke="currentColor" stroke-width="2.5"/>
+            <circle cx="42" cy="36" r="13" stroke="currentColor" stroke-width="2.5"/>
+            <circle cx="32" cy="20" r="13" stroke="currentColor" stroke-width="2.5"/>
+          </svg>
+        </div>
         <div class="profile-initials">RL</div>
         <span class="profile-photo-stamp">Foto folgt</span>
       </div>

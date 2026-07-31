@@ -163,6 +163,18 @@
     font-weight: 700;
     z-index: 3;
   }
+  /* Signature-Icon oben rechts im Portrait-Block */
+  .profile-signature-mark {
+    position: absolute;
+    top: 24px; right: 24px;
+    width: clamp(56px, 8vw, 84px);
+    height: clamp(56px, 8vw, 84px);
+    color: var(--navy);
+    opacity: 0.32;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .profile-signature-mark svg { width: 100%; height: 100%; }
   .profile-meta-eyebrow { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--pink); margin-bottom: 20px; }
   .profile-name { font-size: clamp(40px, 5.5vw, 72px); line-height: 0.96; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 20px; }
   .profile-role {
@@ -389,6 +401,14 @@
 
     <div class="profile-hero">
       <div class="profile-initials-block">
+        <div class="profile-signature-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <circle cx="42" cy="32" r="14" fill="currentColor"/>
+            <path d="M4 32 L26 32" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+            <path d="M10 24 L24 26" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.32"/>
+            <path d="M10 40 L24 38" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.32"/>
+          </svg>
+        </div>
         <div class="profile-initials">AB</div>
         <span class="profile-photo-stamp">Foto folgt</span>
       </div>

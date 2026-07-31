@@ -291,6 +291,47 @@
     .sub-icp-nav a { padding: 4px 10px; font-size: 12px; }
     .sub-icp-label { font-size: 10px; }
   }
+
+  /* Manifest-Ankermenue — dezent, unter dem Hero */
+  .story-anchor-nav {
+    position: sticky; top: 0; z-index: 45;
+    background: rgba(13,39,71,0.92);
+    backdrop-filter: saturate(150%) blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .story-anchor-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 12px 32px;
+    display: flex; align-items: center; gap: 10px;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .story-anchor-inner::-webkit-scrollbar { display: none; }
+  .story-anchor-label {
+    font-size: 10px; letter-spacing: 0.24em;
+    text-transform: uppercase; font-weight: 700;
+    color: var(--pink); margin-right: 6px;
+    white-space: nowrap;
+  }
+  .story-anchor-nav a {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px; font-weight: 600;
+    color: rgba(244,239,231,0.72);
+    border: 1px solid rgba(255,255,255,0.08);
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .story-anchor-nav a:hover {
+    background: rgba(232,155,177,0.12);
+    color: var(--pink);
+    border-color: rgba(232,155,177,0.4);
+  }
+  @media (max-width: 700px) {
+    .story-anchor-inner { padding: 10px 22px; gap: 8px; }
+    .story-anchor-nav a { padding: 5px 12px; font-size: 11px; }
+    .story-anchor-label { font-size: 9px; }
+  }
 </style>
 </head>
 <body>
@@ -324,10 +365,20 @@
   <p class="lead">Aric hat REHAB FIVE aufgebaut. Eine moderne Physiotherapie-Praxis in Münster, in einer Branche, die nicht für moderne Marken bekannt ist. Dabei hat er etwas verstanden, das er für andere KMU jetzt sichtbar macht.</p>
 </section>
 
+<nav class="story-anchor-nav" aria-label="Kapitel-Navigation">
+  <div class="story-anchor-inner">
+    <span class="story-anchor-label">Kapitel:</span>
+    <a href="#akt-beobachtung">1 · Beobachtung</a>
+    <a href="#akt-entscheidung">2 · Entscheidung</a>
+    <a href="#akt-haltung">3 · Haltung</a>
+    <a href="#akt-werkstatt">4 · Werkstatt</a>
+  </div>
+</nav>
+
 <main class="story" id="main">
 
   <!-- AKT 1 -->
-  <div class="akt">
+  <div class="akt" id="akt-beobachtung">
     <div class="akt-label">Akt 1 · die Beobachtung</div>
     <h2>Praxen sehen aus wie <span class="italic">Praxen.</span></h2>
     <p>Aric arbeitet seit über zehn Jahren in der Physiotherapie. Er hat REHAB FIVE in Münster aufgebaut — als Inhaber, mit eigener Hand. Dabei hat er gemerkt, wie schwer es Inhabern im Mittelstand fällt, das, was sie wirklich leisten, auch sichtbar zu machen.</p>
@@ -337,7 +388,7 @@
   </div>
 
   <!-- AKT 2 -->
-  <div class="akt">
+  <div class="akt" id="akt-entscheidung">
     <div class="akt-label">Akt 2 · die Entscheidung</div>
     <h2>Wenn niemand es macht — <span class="italic">macht man es selbst.</span></h2>
     <p>2026 hat Aric entschieden, Quint zu gründen. Eine zweite Firma, parallel zu REHAB FIVE. Nicht als Marketing-Spielfeld, sondern als <strong>eigene Werkstatt</strong> für Marken-Arbeit, die er seinem 2018er-Selbst gewünscht hätte.</p>
@@ -347,7 +398,7 @@
   </div>
 
   <!-- AKT 3 -->
-  <div class="akt">
+  <div class="akt" id="akt-haltung">
     <div class="akt-label">Akt 3 · die Haltung</div>
     <h2>Klein bleiben. <span class="italic">Bewusst.</span></h2>
     <p>Quint ist klein. Stand heute vier Personen, ein Wappentier, eine Adresse in Münster. Dario Ronge, Werbefotograf aus Münster, ist seit Juni dabei und bringt die Bildwelten. Im August voraussichtlich zu fünft. Aber <strong>„kleines Team" bleibt das Prinzip</strong>, kein Übergangsstatus.</p>
@@ -357,7 +408,7 @@
   </div>
 
   <!-- AKT 4 -->
-  <div class="akt">
+  <div class="akt" id="akt-werkstatt">
     <div class="akt-label">Akt 4 · wofür Quint steht</div>
     <h2>Eine Werkstatt für <span class="italic">KMU,</span><br/>die nicht aussehen wollen wie alle anderen.</h2>
     <p>Wir bauen Marken für inhabergeführte Praxen, Vereine und Kanzleien im DACH-Raum. Wir machen Branding, wir machen Social Media. Wir machen sie zusammen oder einzeln. Wir machen sie nicht halb, nicht beiläufig, nicht aus dem Werkstatt-Archiv.</p>

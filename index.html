@@ -642,6 +642,8 @@
   }
   body.fab-visible .mobile-fab { transform: translateX(-50%) translateY(0); }
   body.menu-open .mobile-fab { transform: translateX(-50%) translateY(160%); }
+  /* FAB versteckt sich, wenn eine Section mit eigenem prominentem CTA im Viewport ist */
+  body.fab-suppress.fab-visible .mobile-fab { transform: translateX(-50%) translateY(160%); }
   @media (max-width: 800px) { .mobile-fab { display: inline-flex; align-items: center; gap: 6px; } }
   .mobile-fab:active { background: var(--pink-strong); }
 
@@ -952,10 +954,28 @@
     opacity: 0.05;
     pointer-events: none;
     z-index: 0;
-    transition: opacity 0.4s, transform 0.4s;
+    transform-origin: 30% 80%;
+    transition: opacity 0.4s, transform 0.4s cubic-bezier(.2,.8,.2,1);
   }
   .pillar-wappen img { width: 100%; height: auto; display: block; }
-  .pillar:hover .pillar-wappen { opacity: 0.12; transform: translate(-8px, -8px) scale(1.04); }
+  .pillar:hover .pillar-wappen {
+    opacity: 0.16;
+    animation: pillar-dackel-wag 1.4s cubic-bezier(.45,.05,.55,.95) infinite;
+  }
+  @keyframes pillar-dackel-wag {
+    0%   { transform: rotate(0deg)    translate(-6px, -6px) scale(1.04); }
+    25%  { transform: rotate(-4deg)   translate(-8px, -8px) scale(1.05); }
+    50%  { transform: rotate(0deg)    translate(-6px, -6px) scale(1.04); }
+    75%  { transform: rotate(4deg)    translate(-8px, -8px) scale(1.05); }
+    100% { transform: rotate(0deg)    translate(-6px, -6px) scale(1.04); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pillar:hover .pillar-wappen {
+      animation: none;
+      transform: translate(-8px, -8px) scale(1.04);
+      opacity: 0.12;
+    }
+  }
   .pillar > *:not(.pillar-wappen) { position: relative; z-index: 1; }
   .pillar-num {
     font-family: "Fraunces", serif;
@@ -1553,6 +1573,21 @@
     background: var(--pink);
     border-radius: 50%;
     opacity: 0.6;
+  }
+  /* Signature-Icon pro Team-Person — unauffaellig, aber charakteristisch */
+  .person-signature {
+    position: absolute;
+    top: 28px; right: 28px;
+    width: 42px; height: 42px;
+    color: var(--pink);
+    opacity: 0.5;
+    transition: opacity 0.3s, transform 0.3s cubic-bezier(.2,.8,.2,1);
+    pointer-events: none;
+  }
+  .person-signature svg { width: 100%; height: 100%; }
+  .person-link:hover .person-signature {
+    opacity: 0.9;
+    transform: rotate(-8deg) scale(1.08);
   }
 
   /* MANIFESTO */
@@ -2634,7 +2669,14 @@
     <!-- 4 Menschen als sauberes 4-Spalten-Grid -->
     <div class="team-people">
       <a href="team-aric.html" class="person reveal person-link" aria-label="Aric Brämswig — Profil öffnen">
-        <div class="person-decoration"></div>
+        <div class="person-signature" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <circle cx="42" cy="32" r="14" fill="currentColor"/>
+            <path d="M4 32 L26 32" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+            <path d="M10 24 L24 26" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.32"/>
+            <path d="M10 40 L24 38" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.32"/>
+          </svg>
+        </div>
         <div class="person-initials">AB</div>
         <div class="person-name">Aric Brämswig</div>
         <div class="person-role">Strategie & Markenführung</div>
@@ -2642,7 +2684,13 @@
         <span class="person-cta">Profil ansehen <span class="arrow">→</span></span>
       </a>
       <a href="team-rania.html" class="person reveal person-link" aria-label="Rania Landwehrmeyer — Profil öffnen">
-        <div class="person-decoration"></div>
+        <div class="person-signature" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <circle cx="22" cy="36" r="13" stroke="currentColor" stroke-width="2.5"/>
+            <circle cx="42" cy="36" r="13" stroke="currentColor" stroke-width="2.5"/>
+            <circle cx="32" cy="20" r="13" stroke="currentColor" stroke-width="2.5"/>
+          </svg>
+        </div>
         <div class="person-initials">RL</div>
         <div class="person-name">Rania Landwehrmeyer</div>
         <div class="person-role">Lead Design · Kundenkommunikation · DackelChefin</div>
@@ -2650,7 +2698,13 @@
         <span class="person-cta">Profil ansehen <span class="arrow">→</span></span>
       </a>
       <a href="team-bjoern.html" class="person reveal person-link" aria-label="Bjoern von Schulz — Profil öffnen">
-        <div class="person-decoration"></div>
+        <div class="person-signature" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path d="M6 44 Q14 18 34 24 Q46 28 56 20" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="56" cy="20" r="3.5" fill="currentColor"/>
+            <circle cx="7" cy="45" r="2.5" fill="currentColor" opacity="0.5"/>
+          </svg>
+        </div>
         <div class="person-initials">BvS</div>
         <div class="person-name">Bjoern von Schulz</div>
         <div class="person-role">Logodesign · Illustration · Painting</div>
@@ -2658,7 +2712,15 @@
         <span class="person-cta">Profil ansehen <span class="arrow">→</span></span>
       </a>
       <a href="team-dario.html" class="person reveal person-link" aria-label="Dario Ronge — Profil öffnen">
-        <div class="person-decoration"></div>
+        <div class="person-signature" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M32 12 L44 22 L32 32 Z" fill="currentColor" opacity="0.75"/>
+            <path d="M52 32 L42 44 L32 32 Z" fill="currentColor" opacity="0.55"/>
+            <path d="M32 52 L20 42 L32 32 Z" fill="currentColor" opacity="0.75"/>
+            <path d="M12 32 L22 20 L32 32 Z" fill="currentColor" opacity="0.55"/>
+          </svg>
+        </div>
         <div class="person-initials">DR</div>
         <div class="person-name">Dario Ronge</div>
         <div class="person-role">Fotografie · Bewegtbild</div>
@@ -3009,6 +3071,21 @@
       if (!ticking) { requestAnimationFrame(update); ticking = true; }
     }, { passive: true });
     update();
+
+    // FAB-Suppress: wenn eine Section mit eigenem prominentem CTA sichtbar ist,
+    // slidet der FAB weg (verhindert Doppel-CTA + Content-Overlaps).
+    const suppressTargets = document.querySelectorAll('.cta-block, #kontakt');
+    if (suppressTargets.length && 'IntersectionObserver' in window) {
+      let intersectingCount = 0;
+      const suppressIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) intersectingCount++;
+          else intersectingCount = Math.max(0, intersectingCount - 1);
+        });
+        document.body.classList.toggle('fab-suppress', intersectingCount > 0);
+      }, { threshold: 0.15 });
+      suppressTargets.forEach(el => suppressIO.observe(el));
+    }
   })();
 </script>
 

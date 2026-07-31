@@ -816,6 +816,81 @@
     .sub-icp-nav a { padding: 4px 10px; font-size: 12px; }
     .sub-icp-label { font-size: 10px; }
   }
+
+  /* Case-Ankermenue — sticky Chapter-Nav unter dem Brand-Stage */
+  .case-anchor-nav {
+    position: sticky; top: 0; z-index: 45;
+    background: rgba(13,39,71,0.92);
+    backdrop-filter: saturate(150%) blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .case-anchor-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 12px 32px;
+    display: flex; align-items: center; gap: 10px;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .case-anchor-inner::-webkit-scrollbar { display: none; }
+  .case-anchor-label {
+    font-size: 10px; letter-spacing: 0.24em;
+    text-transform: uppercase; font-weight: 700;
+    color: var(--pink); margin-right: 6px;
+    white-space: nowrap;
+  }
+  .case-anchor-nav a {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px; font-weight: 600;
+    color: rgba(244,239,231,0.72);
+    border: 1px solid rgba(255,255,255,0.08);
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .case-anchor-nav a:hover {
+    background: rgba(232,155,177,0.12);
+    color: var(--pink);
+    border-color: rgba(232,155,177,0.4);
+  }
+  @media (max-width: 700px) {
+    .case-anchor-inner { padding: 10px 22px; gap: 8px; }
+    .case-anchor-nav a { padding: 5px 12px; font-size: 11px; }
+    .case-anchor-label { font-size: 9px; }
+  }
+
+  /* Mid-Page CTA im Case-Stream */
+  .case-mid-cta {
+    max-width: 780px; margin: 0 auto;
+    padding: 24px 28px;
+    border-radius: 999px;
+    background: rgba(232,155,177,0.08);
+    border: 1px solid rgba(232,155,177,0.25);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .case-mid-cta-text {
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic; color: var(--cream);
+    font-size: 17px; line-height: 1.4;
+  }
+  .case-mid-cta a {
+    display: inline-block;
+    background: var(--pink); color: var(--navy);
+    padding: 12px 22px; border-radius: 999px;
+    font-family: "Familjen Grotesk", sans-serif; font-style: normal;
+    font-weight: 700; font-size: 14px; letter-spacing: 0.02em;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .case-mid-cta a:hover { background: var(--pink-strong); transform: translateY(-1px); }
+  @media (max-width: 640px) {
+    .case-mid-cta { border-radius: 20px; flex-direction: column; text-align: center; }
+    .case-mid-cta a { width: 100%; text-align: center; }
+  }
+  .case-mid-cta-wrap {
+    padding: 60px 32px;
+    background: var(--navy);
+  }
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -949,6 +1024,22 @@
     </div>
   </div>
 </section>
+
+<!-- CASE-ANKER-MENÜ: Sticky-Chapter-Nav zum schnellen Springen -->
+<nav class="case-anchor-nav" aria-label="Kapitel-Navigation">
+  <div class="case-anchor-inner">
+    <span class="case-anchor-label">Kapitel:</span>
+    <a href="#ausgangslage">Ausgangslage</a>
+    <a href="#prozess">Prozess</a>
+    <a href="#saeulen">5 Säulen</a>
+    <a href="#farbe">Farbwelt</a>
+    <a href="#bildwelt">Bildwelt</a>
+    <a href="#alltag">Alltag</a>
+    <a href="#outcomes">Wirkung</a>
+    <a href="#learnings">Learnings</a>
+    <a href="#uebertragung">Übertragung</a>
+  </div>
+</nav>
 
 <!-- AUSGANGSLAGE -->
 <section class="section" id="ausgangslage">
@@ -1141,6 +1232,14 @@
   </div>
 </section>
 
+<!-- MID-CTA nach Farbwelt — nach dem Marken-Höhepunkt -->
+<div class="case-mid-cta-wrap">
+  <div class="case-mid-cta">
+    <div class="case-mid-cta-text">Erkennst du hier eure Herausforderung? 45 Min. mit Aric — direkt.</div>
+    <a href="mailto:hallo@quint-marketing.de?subject=Erstgespr%C3%A4ch%20nach%20REHAB-FIVE-Case">Erstgespräch anfragen →</a>
+  </div>
+</div>
+
 <!-- ILLUSTRATIONS-GALERIE -->
 <section class="section" id="bildwelt">
   <div class="wrap">
@@ -1206,6 +1305,14 @@
     <p class="illu-meta" style="margin-top: 24px; text-align: center;">Weitere Outcome-Zahlen <em style="color: var(--pink);">(Wachstum, Bewerber:innen, Patient:innen-Reviews)</em> folgen — Aric ergänzt sie nach Sichtung.</p>
   </div>
 </section>
+
+<!-- MID-CTA #2 nach Outcomes — bevor die Lessons kommen -->
+<div class="case-mid-cta-wrap">
+  <div class="case-mid-cta">
+    <div class="case-mid-cta-text">Willst du wissen, wie wir das für eure Marke aufsetzen würden?</div>
+    <a href="mailto:hallo@quint-marketing.de?subject=Marken-Sparring%20nach%20REHAB-FIVE-Case">Sparring anfragen →</a>
+  </div>
+</div>
 
 <!-- LEARNINGS -->
 <section class="section" id="learnings">
