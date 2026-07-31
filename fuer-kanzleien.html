@@ -114,6 +114,33 @@
   .faq details[open] summary::after { content: "–"; }
   .faq .faq-answer { font-size: 16.5px; line-height: 1.65; color: rgba(244,239,231,0.85); padding: 12px 0 6px; max-width: 700px; }
 
+  /* Mid-Page Sekundär-CTA */
+  .cta-inline {
+    margin: 48px 0 8px; padding: 22px 28px;
+    border-radius: 999px;
+    background: rgba(232,155,177,0.08);
+    border: 1px solid rgba(232,155,177,0.25);
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    flex-wrap: wrap;
+  }
+  .cta-inline .cta-inline-text {
+    font-family: "Fraunces", Georgia, serif; font-style: italic;
+    color: var(--cream); font-size: 17px; line-height: 1.4;
+  }
+  .cta-inline a {
+    display: inline-block; background: var(--pink); color: var(--navy);
+    padding: 12px 22px; border-radius: 999px;
+    font-family: "Familjen Grotesk", sans-serif; font-style: normal;
+    font-weight: 700; font-size: 14px; letter-spacing: 0.02em;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .cta-inline a:hover { background: var(--pink-strong); transform: translateY(-1px); }
+  @media (max-width: 640px) {
+    .cta-inline { border-radius: 20px; flex-direction: column; text-align: center; }
+    .cta-inline a { width: 100%; text-align: center; }
+  }
+
   .cta-block { background: linear-gradient(135deg, var(--pink-strong), var(--pink)); border-radius: 28px; padding: 48px 40px; margin-top: 60px; color: var(--navy); text-align: center; }
   .cta-block h2 { color: var(--navy); font-size: clamp(28px, 4vw, 44px); margin-bottom: 14px; letter-spacing: -0.02em; }
   .cta-block h2 .italic { color: var(--navy-deep); }
@@ -247,6 +274,11 @@
         <h3>Werkstatt statt <span class="italic">Kanzlei-Fabrik.</span></h3>
         <p>Wir machen wenige Projekte im Quartal — nicht 40. Deine Kanzlei bekommt eine Marke, die zu deinem konkreten Team und deiner Fach-Positionierung passt. Nicht Template 34 aus dem Kanzlei-Baukasten.</p>
       </div>
+    </div>
+
+    <div class="cta-inline">
+      <div class="cta-inline-text">Klingt nach eurer Kanzlei? 45 Min. mit Aric, direkt.</div>
+      <a href="mailto:hallo@quint-marketing.de?subject=Erstgespr%C3%A4ch%20f%C3%BCr%20unsere%20Kanzlei">Erstgespräch anfragen →</a>
     </div>
   </section>
 

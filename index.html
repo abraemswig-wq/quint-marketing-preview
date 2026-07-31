@@ -36,7 +36,8 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": ["ProfessionalService", "LocalBusiness"],
+  "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/#organization",
   "name": "Quint Marketing",
   "alternateName": "Quint",
   "url": "https://abraemswig-wq.github.io/quint-marketing-preview/",
@@ -44,6 +45,14 @@
   "image": "https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png",
   "description": "Branding, Social Media und Print für KMU im DACH-Raum. Wir bauen Marken, die nicht aussehen wie alle anderen — vom Fundament bis zur Geschenkbox.",
   "slogan": "Wir jagen den Ball. Andere reden über die Wiese.",
+  "priceRange": "€€€",
+  "foundingDate": "2026",
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  }],
   "founder": {
     "@type": "Person",
     "name": "Aric Brämswig",
@@ -87,6 +96,10 @@
   },
   "vatID": "DE308560771",
   "email": "hallo@quint-marketing.de",
+  "sameAs": [
+    "https://www.instagram.com/quint.marketing/",
+    "https://www.linkedin.com/company/quint-marketing/"
+  ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Quint Leistungen",
@@ -1199,6 +1212,78 @@
   }
   .case-small p { color: rgba(255,255,255,0.7); margin-bottom: 32px; font-size: 15px; line-height: 1.55; }
   .case-small .case-tag { background: rgba(232,155,177,0.15); color: var(--pink); }
+
+  /* ============================================================
+     TRUST-BASIS: Buehnen, auf denen Aric bereits gearbeitet hat
+     ============================================================ */
+  .trust-block {
+    padding: 120px 0;
+    background: var(--navy-deep);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .trust-head {
+    max-width: 780px; margin: 0 auto 60px; text-align: center;
+  }
+  .trust-head .trust-eyebrow {
+    color: var(--pink);
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 20px;
+  }
+  .trust-head h2 {
+    font-size: clamp(30px, 4vw, 52px);
+    line-height: 1.05; font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 20px; color: var(--cream);
+  }
+  .trust-head h2 .italic { color: var(--pink); font-weight: 400; }
+  .trust-head p {
+    color: rgba(244,239,231,0.72); font-size: 17px; line-height: 1.6;
+    max-width: 620px; margin: 0 auto;
+  }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 1080px; margin: 0 auto;
+  }
+  @media (max-width: 900px) { .trust-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .trust-grid { grid-template-columns: 1fr; } }
+  .trust-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 32px 24px 28px;
+    text-align: center;
+    transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  }
+  .trust-card:hover {
+    border-color: rgba(232,155,177,0.35);
+    background: rgba(232,155,177,0.05);
+    transform: translateY(-3px);
+  }
+  .trust-card .trust-badge {
+    font-family: "Fraunces", serif;
+    font-style: italic; font-weight: 400;
+    font-size: 40px; color: var(--pink);
+    line-height: 1; margin-bottom: 18px;
+  }
+  .trust-card .trust-name {
+    font-size: 18px; font-weight: 700;
+    color: var(--cream); margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .trust-card .trust-context {
+    font-size: 13px; color: rgba(244,239,231,0.6);
+    line-height: 1.5;
+  }
+  .trust-disclaimer {
+    max-width: 720px; margin: 40px auto 0;
+    text-align: center;
+    font-size: 13px; color: rgba(244,239,231,0.5);
+    font-style: italic; line-height: 1.55;
+    font-family: "Fraunces", Georgia, serif;
+  }
+  .trust-disclaimer strong { color: rgba(244,239,231,0.75); font-weight: 400; }
 
   /* Foto-Overlay in der REHAB-FIVE-Karte — rechte Haelfte, weich ins Pink gefadet */
   .case-big-photo {
@@ -2608,6 +2693,44 @@
         <a class="btn-primary" style="align-self: flex-start;" href="#kontakt">Erstgespräch <span class="arrow">→</span></a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- TRUST-BASIS: ehrlich attribuierte Bühnen — kein geliehener Track-Record -->
+<section class="trust-block" id="vertrauen" aria-labelledby="trust-h">
+  <div class="wrap">
+    <div class="trust-head reveal">
+      <div class="trust-eyebrow">Frisches Studio, erfahrene Hand</div>
+      <h2 id="trust-h">Quint ist neu. Die Menschen dahinter <span class="italic">nicht.</span></h2>
+      <p>Bühnen, auf denen Aric bereits als Person oder über REHAB FIVE gearbeitet hat — bevor Quint entstand. Wir verkaufen davon nichts als Quint-Case. Aber die Erfahrung, die daraus wächst, arbeitet in jedem Quint-Projekt mit.</p>
+    </div>
+
+    <div class="trust-grid reveal">
+      <div class="trust-card">
+        <div class="trust-badge">R5</div>
+        <div class="trust-name">REHAB FIVE</div>
+        <div class="trust-context">Arics Praxis, 2 Standorte, Münster — 6 Jahre Multi-Brand-Aufbau</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-badge">USC</div>
+        <div class="trust-name">USC Münster</div>
+        <div class="trust-context">Marken-Partner REHAB FIVE — Basketball-Erstliga</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-badge">UBC</div>
+        <div class="trust-name">UBC Münster</div>
+        <div class="trust-context">Marken-Partner REHAB FIVE — Basketball-Erstliga</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-badge">DRV</div>
+        <div class="trust-name">Deutscher Ruderverband</div>
+        <div class="trust-context">Kooperation über REHAB FIVE — Bundesverband Sport</div>
+      </div>
+    </div>
+
+    <p class="trust-disclaimer">
+      <strong>Ehrlich:</strong> Alle Referenzen oben sind Aric persönlich oder REHAB FIVE — nicht Quint. Quint-eigene Kunden-Cases folgen ab 2026. Wenn dein Projekt dazugehören will: <a href="#kontakt" style="color: var(--pink);">45 Min. Erstgespräch</a>.
+    </p>
   </div>
 </section>
 

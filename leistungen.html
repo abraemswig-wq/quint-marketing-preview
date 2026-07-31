@@ -29,19 +29,128 @@
   "mainEntity": [
     {
       "@type": "Service",
+      "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/leistungen.html#branding",
       "name": "Branding für inhabergeführte KMU",
-      "description": "Markenfundament, visuelle Identität, Anwendung und Übergabe — als Projekt mit klaren Etappen.",
-      "provider": { "@type": "Organization", "name": "Quint Marketing" },
+      "description": "Markenfundament, visuelle Identität, Anwendung und Übergabe — als Projekt mit klaren Etappen über 6 bis 10 Wochen.",
+      "provider": { "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/#organization" },
       "serviceType": "Brand Identity Development",
-      "audience": { "@type": "BusinessAudience", "audienceType": "Inhabergeführte KMU im DACH-Raum" }
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "audience": { "@type": "BusinessAudience", "audienceType": "Inhabergeführte KMU im DACH-Raum" },
+      "termsOfService": "Projektarbeit mit fester Etappenstruktur, Festpreis nach Scoping."
     },
     {
       "@type": "Service",
+      "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/leistungen.html#social",
       "name": "Social Media & Paid Ads für inhabergeführte KMU",
       "description": "Content-Strategie, monatlicher Plan, Produktion, Paid Ads (Meta/Google), optionales Community-Management — laufende Betreuung mit Monats-Reporting.",
-      "provider": { "@type": "Organization", "name": "Quint Marketing" },
+      "provider": { "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/#organization" },
       "serviceType": "Social Media Marketing",
-      "audience": { "@type": "BusinessAudience", "audienceType": "Inhabergeführte KMU im DACH-Raum" }
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "audience": { "@type": "BusinessAudience", "audienceType": "Inhabergeführte KMU im DACH-Raum" },
+      "offers": {
+        "@type": "Offer",
+        "price": "500",
+        "priceCurrency": "EUR",
+        "unitText": "MON",
+        "eligibleDuration": { "@type": "QuantitativeValue", "value": "3", "unitCode": "MON" }
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/leistungen.html#print",
+      "name": "Print, Objekt & Workwear für inhabergeführte KMU",
+      "description": "Visitenkarten, Broschüren, Verpackungen, Geschenkboxen und Workwear (Polos, Kasacks, Hoodies, Caps) für dein Team — inkl. Reinzeichnung und Druck-/Textil-Partner-Koordination.",
+      "provider": { "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/#organization" },
+      "serviceType": "Print Design & Corporate Workwear",
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "audience": { "@type": "BusinessAudience", "audienceType": "Inhabergeführte KMU im DACH-Raum" },
+      "offers": {
+        "@type": "Offer",
+        "price": "2500",
+        "priceCurrency": "EUR",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "2500",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        }
+      }
+    }
+  ]
+}
+</script>
+
+<!-- FAQ zu Leistungen — direkt zitierbar durch LLMs -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Was kostet ein Branding-Projekt bei Quint?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ein vollständiges Branding-Projekt bei Quint (Markenfundament, visuelle Identität, Anwendung, Übergabe) liegt typischerweise im mittleren fünfstelligen Bereich. Der genaue Preis wird nach einem kostenfreien Erstgespräch und dem Scoping als Festpreis vereinbart. Wer einen reinen Logo-Refresh für 2.000 € sucht, ist bei Quint nicht richtig.",
+        "author": { "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/#organization" }
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie lange dauert ein Branding-Projekt bei Quint?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ein Branding-Projekt bei Quint dauert 6 bis 10 Wochen, je nach Marken-Tiefe und Anwendungs-Breite. Kürzer geht immer — aber dann auf Kosten der Substanz. Die Etappen sind Fundament, Identität, Anwendung und Übergabe.",
+        "author": { "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/#organization" }
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was kostet Social-Media-Betreuung bei Quint pro Monat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die Monatspauschale startet ab 500 € netto für einen klar definierten Einstiegs-Scope (typisch ein Kanal mit Strategie, Plan und Produktion). Vollservice mit mehreren Kanälen, Paid Ads (Meta & Google), Community-Management oder Reels-Produktion bewegt sich entsprechend höher. Mindestlaufzeit sind drei Monate.",
+        "author": { "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/#organization" }
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Macht Quint auch Paid Ads oder nur organisches Social Media?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quint bietet Paid Ads (Meta und Google) als Teil des Social-Pakets an — Setup, Kampagnen-Aufbau und laufende Optimierung. Wir arbeiten nicht mit sechsstelligen Monats-Media-Budgets; dafür braucht es einen spezialisierten Performance-Partner. Für KMU-typische Budgets im drei- bis unteren fünfstelligen Bereich sind wir die richtige Adresse.",
+        "author": { "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/#organization" }
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was kostet Print & Workwear bei Quint?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ein Print-Basispaket startet bei 2.500 € netto (Visitenkarten und Briefpapier im bestehenden Marken-System). Größere Sets mit Broschüre, Verpackung oder Workwear-Serien liegen typischerweise zwischen 4.500 und 9.500 € netto. Druck- und Textilkosten werden separat und transparent abgerechnet — Quint arbeitet ohne Marge auf Druck oder Textilien.",
+        "author": { "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/#organization" }
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich einzelne Pakete buchen oder nur alles zusammen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Alle drei Pakete (Branding, Social, Print) sind einzeln oder in Kombination buchbar. Wer nach dem Branding auch Print oder Social bei Quint macht, bekommt 20 % Add-on-Rabatt auf das Zweitpaket, weil das Marken-System dann bereits steht.",
+        "author": { "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/#organization" }
+      }
     }
   ]
 }
