@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Branding-Werkschau — Quint</title>
+<meta name="description" content="Werkschau Branding: Marken-Systeme, Signets, Bildwelten. Ehrlich attribuierte Arbeiten aus Arics Vorher-Leben und ersten Quint-Projekten." />
+<meta name="theme-color" content="#143C6B" />
+<link rel="canonical" href="https://abraemswig-wq.github.io/quint-marketing-preview/portfolio-branding.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Branding-Werkschau — Quint" />
+<meta property="og:description" content="Marken-Systeme, Signets, Bildwelten aus Arics Vorher-Leben und den ersten Quint-Projekten." />
+<meta property="og:image" content="https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/portfolio-branding.html#page",
+  "name": "Branding-Werkschau",
+  "description": "Marken-Systeme, Signets und Bildwelten aus Quints Werkstatt — mit klarer Herkunfts-Attribution pro Arbeit.",
+  "url": "https://abraemswig-wq.github.io/quint-marketing-preview/portfolio-branding.html",
+  "inLanguage": "de-DE",
+  "isPartOf": {
+    "@id": "https://abraemswig-wq.github.io/quint-marketing-preview/#organization"
+  }
+}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Quint","item":"https://abraemswig-wq.github.io/quint-marketing-preview/"},
+{"@type":"ListItem","position":2,"name":"Leistungen","item":"https://abraemswig-wq.github.io/quint-marketing-preview/leistungen.html"},
+{"@type":"ListItem","position":3,"name":"Branding-Werkschau","item":"https://abraemswig-wq.github.io/quint-marketing-preview/portfolio-branding.html"}
+]}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,400;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #143C6B; --navy-deep: #0D2747;
+    --pink: #E89BB1; --pink-strong: #D87A95; --pink-soft: #F3C7D4;
+    --cream: #F4EFE7; --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--navy); color: var(--white); line-height: 1.5;
+    overflow-x: hidden; -webkit-font-smoothing: antialiased;
+  }
+  body.locked { overflow: hidden; height: 100vh; }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+  /* LOADER (identisch zu team-*, leistungen) */
+  .loader { position: fixed; inset: 0; background: #0D2747; z-index: 9999; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .loader-content { text-align: center; position: relative; }
+  .loader-quint { position: relative; display: inline-block; opacity: 0; animation: loaderFadeIn 0.8s cubic-bezier(.2,.8,.2,1) 0.1s forwards; }
+  .loader-quint img.loader-logo { width: clamp(260px, 42vw, 620px); height: auto; display: block; }
+  .loader-dot { position: absolute; left: 20.96%; top: 86.71%; width: 4.79%; aspect-ratio: 1/1; background: #E89BB1; border-radius: 50%; transform: translate(-50%, -50%) scale(0); animation: loaderDotPop 0.6s cubic-bezier(.34,1.56,.64,1) 0.9s forwards, loaderDotExpand 1s cubic-bezier(.6,0,.7,1) 2.1s forwards; }
+  @keyframes loaderFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes loaderDotPop { from { transform: translate(-50%, -50%) scale(0); } to { transform: translate(-50%, -50%) scale(1); } }
+  @keyframes loaderDotExpand { 0% { transform: translate(-50%, -50%) scale(1); } 100% { transform: translate(-50%, -50%) scale(200); } }
+  .loader-progress { position: absolute; bottom: -80px; left: 50%; transform: translateX(-50%); width: 200px; height: 2px; background: rgba(255,255,255,0.1); overflow: hidden; }
+  .loader-progress::after { content: ""; position: absolute; left: 0; top: 0; width: 0; height: 100%; background: #E89BB1; animation: loaderProgress 2s cubic-bezier(.2,.8,.2,1) forwards; }
+  @keyframes loaderProgress { from { width: 0; } to { width: 100%; } }
+  .loader.done { pointer-events: none; animation: loaderHide 0.8s cubic-bezier(.6,0,.7,1) 0.2s forwards; }
+  @keyframes loaderHide { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+  @media (prefers-reduced-motion: reduce) { .loader { display: none; } }
+
+  /* NAV */
+  nav.nav-bar {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(20,60,107,0.85);
+    backdrop-filter: saturate(150%) blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; max-width: 1320px; margin: 0 auto; }
+  .nav-logo { display: inline-flex; align-items: center; }
+  .nav-logo img { height: 28px; width: auto; display: block; }
+  .nav-back {
+    font-size: 13px; color: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 8px 16px; border-radius: 999px;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .nav-back:hover { background: var(--pink); color: var(--navy); border-color: var(--pink); }
+
+  /* HERO */
+  .hero { padding: 80px 0 40px; }
+  .breadcrumb {
+    font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); margin-bottom: 32px;
+  }
+  .breadcrumb a:hover { color: var(--pink); }
+  .breadcrumb-sep { margin: 0 10px; opacity: 0.4; }
+
+  .hero-eyebrow {
+    font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase;
+    font-weight: 700; color: var(--pink); margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(38px, 5vw, 68px);
+    line-height: 1.03; font-weight: 700; letter-spacing: -0.03em;
+    max-width: 900px;
+  }
+  .hero h1 .italic { color: var(--pink); font-weight: 400; }
+  .hero .lead {
+    margin-top: 24px; max-width: 640px;
+    color: rgba(244,239,231,0.78);
+    font-size: clamp(17px, 1.4vw, 20px); line-height: 1.55;
+  }
+
+  /* Werkschau-Framing — ehrliche Attribution */
+  .werkschau-note {
+    max-width: 720px; margin: 40px 0 0;
+    padding: 20px 24px;
+    border-left: 3px solid var(--pink);
+    background: rgba(232,155,177,0.06);
+    border-radius: 0 12px 12px 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic; font-size: 15px;
+    color: rgba(244,239,231,0.82); line-height: 1.55;
+  }
+  .werkschau-note strong {
+    display: block; font-family: "Familjen Grotesk", sans-serif;
+    font-style: normal; font-weight: 700;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--pink); margin-bottom: 6px;
+  }
+
+  /* PORTFOLIO-GRID */
+  .portfolio { padding: 80px 0 100px; }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 900px) { .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; } }
+  @media (max-width: 560px) { .portfolio-grid { grid-template-columns: 1fr; gap: 16px; } }
+
+  .work-card {
+    position: relative;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(.2,.8,.2,1), border-color 0.3s;
+  }
+  .work-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(232,155,177,0.4);
+  }
+  .work-card > img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
+  }
+  .work-card:hover > img { transform: scale(1.03); }
+
+  .work-card .work-meta {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 60px 20px 20px;
+    background: linear-gradient(to top, rgba(13,39,71,0.95) 0%, rgba(13,39,71,0.7) 60%, transparent 100%);
+    color: var(--cream);
+  }
+  .work-card .work-title {
+    font-size: 17px; font-weight: 700;
+    letter-spacing: -0.01em; margin-bottom: 6px;
+  }
+  .work-card .work-attribution {
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-size: 12px; color: rgba(244,239,231,0.7);
+    line-height: 1.4;
+  }
+
+  /* EMPTY-STATE CARD — für Slots ohne Bild */
+  .work-card.is-empty {
+    background: rgba(255,255,255,0.02);
+    border: 1px dashed rgba(232,155,177,0.25);
+    display: flex; align-items: center; justify-content: center;
+    padding: 32px 24px; text-align: center;
+    cursor: default;
+  }
+  .work-card.is-empty:hover { transform: none; border-color: rgba(232,155,177,0.4); }
+  .work-card.is-empty .empty-mark {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: 48px; color: rgba(232,155,177,0.5);
+    margin-bottom: 16px; line-height: 1;
+  }
+  .work-card.is-empty .empty-text {
+    font-size: 13px; color: rgba(244,239,231,0.55);
+    font-family: "Fraunces", Georgia, serif; font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 9998;
+    background: rgba(13,39,71,0.96);
+    display: none; align-items: center; justify-content: center;
+    padding: 40px 24px;
+    backdrop-filter: blur(8px);
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-content {
+    max-width: 1100px; max-height: 90vh;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 20px;
+  }
+  .lightbox img {
+    max-width: 100%; max-height: 78vh;
+    object-fit: contain; border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+  }
+  .lightbox-caption {
+    text-align: center; color: var(--cream);
+    max-width: 640px;
+  }
+  .lightbox-caption .lb-title {
+    font-size: 18px; font-weight: 700; margin-bottom: 6px;
+  }
+  .lightbox-caption .lb-attribution {
+    font-family: "Fraunces", Georgia, serif; font-style: italic;
+    font-size: 14px; color: rgba(244,239,231,0.7);
+  }
+  .lightbox-close {
+    position: absolute; top: 24px; right: 24px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--cream);
+    width: 44px; height: 44px; border-radius: 50%;
+    font-size: 22px; line-height: 1;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .lightbox-close:hover { background: var(--pink); color: var(--navy); }
+
+  /* CTA */
+  .portfolio-cta {
+    padding: 100px 0;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(232,155,177,0.07) 0%, transparent 60%),
+      var(--navy-deep);
+    border-top: 1px solid rgba(232,155,177,0.15);
+  }
+  .portfolio-cta h2 {
+    font-size: clamp(32px, 4.5vw, 56px);
+    margin-bottom: 20px; font-weight: 700;
+    letter-spacing: -0.02em; line-height: 1.05;
+  }
+  .portfolio-cta h2 .italic { color: var(--pink); }
+  .portfolio-cta p {
+    color: rgba(255,255,255,0.7);
+    margin: 0 auto 32px; max-width: 540px; font-size: 16px;
+  }
+  .portfolio-cta .email-pill {
+    display: inline-block;
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: clamp(20px, 2vw, 28px);
+    color: var(--pink);
+    padding: 14px 28px;
+    border: 2px solid var(--pink); border-radius: 999px;
+    transition: background 0.3s, color 0.3s;
+  }
+  .portfolio-cta .email-pill:hover { background: var(--pink); color: var(--navy); }
+
+  /* FOOTER */
+  footer {
+    padding: 32px;
+    background: var(--navy-deep);
+    color: rgba(244,239,231,0.4);
+    text-align: center;
+    font-size: 12px; letter-spacing: 0.1em;
+  }
+  footer a:hover { color: var(--pink); }
+
+  /* SUB-NAV: ICP */
+  .sub-icp-nav {
+    background: rgba(0,0,0,0.15);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .sub-icp-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 10px 32px;
+    display: flex; align-items: center; gap: 14px;
+    font-size: 13px; flex-wrap: wrap;
+  }
+  .sub-icp-label {
+    letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 600; color: rgba(244,239,231,0.6); font-size: 11px;
+  }
+  .sub-icp-nav a {
+    color: rgba(244,239,231,0.82);
+    padding: 5px 12px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .sub-icp-nav a:hover {
+    background: rgba(232,155,177,0.12);
+    color: var(--pink);
+    border-color: rgba(232,155,177,0.5);
+  }
+  @media (max-width: 700px) {
+    .sub-icp-inner { padding: 10px 22px; gap: 8px; }
+    .sub-icp-nav a { padding: 4px 10px; font-size: 12px; }
+    .sub-icp-label { font-size: 10px; }
+  }
+
+  /* Focus */
+  *:focus { outline: none; }
+  *:focus-visible {
+    outline: 2px solid var(--pink);
+    outline-offset: 3px; border-radius: 4px;
+  }
+  .work-card:focus-visible { outline-offset: 5px; }
+
+  /* Skip-Link */
+  .skip-link {
+    position: absolute; left: -9999px; top: 0; z-index: 10000;
+    padding: 12px 18px; background: var(--pink); color: var(--navy);
+    font-weight: 700; border-radius: 0 0 12px 0; font-size: 14px;
+  }
+  .skip-link:focus, .skip-link:focus-visible { left: 0; }
+</style>
+</head>
+<body class="locked">
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="loader" id="loader">
+  <div class="loader-content">
+    <div class="loader-quint"><img class="loader-logo" src="assets/quint-logo-claim-white.png" alt="Quint" fetchpriority="high" decoding="async" /><span class="loader-dot"></span></div>
+    <div class="loader-progress"></div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Quint — Startseite"><img src="assets/quint-logo-white.svg" alt="Quint" decoding="async" /></a>
+    <a href="leistungen.html#branding" class="nav-back">← Leistungen</a>
+  </div>
+</nav>
+
+<nav class="sub-icp-nav" aria-label="Zielgruppen-Navigation">
+  <div class="sub-icp-inner">
+    <span class="sub-icp-label">Für:</span>
+    <a href="fuer-praxen.html">Praxen</a>
+    <a href="fuer-vereine.html">Vereine</a>
+    <a href="fuer-kanzleien.html">Kanzleien</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Quint</a><span class="breadcrumb-sep">/</span>
+      <a href="leistungen.html">Leistungen</a><span class="breadcrumb-sep">/</span>
+      Branding-Werkschau
+    </nav>
+    <div class="hero-eyebrow">Werkschau — Paket 01 · Branding</div>
+    <h1>Marken-Systeme,<br/>die <span class="italic">stehen bleiben.</span></h1>
+    <p class="lead">Signets, Bildwelten, Farb-Anwendungen. Was hier zu sehen ist, kommt aus Arics Vorher-Leben und den ersten Quint-Werkstatt-Arbeiten — jede Arbeit ehrlich mit Herkunft attribuiert. Keine Kundenlogos, sondern Handwerk.</p>
+
+    <div class="werkschau-note">
+      <strong>Warum Werkschau, nicht Referenzen</strong>
+      Quint ist frisch. Statt fremde Kunden-Logos als Track-Record zu framen, zeigen wir hier echte Arbeit — mit klarer Herkunft. So siehst du, wie wir bauen. Nicht, für wen.
+    </div>
+  </div>
+</header>
+
+<section class="portfolio" id="main">
+  <div class="wrap">
+    <div class="portfolio-grid">
+      <!-- HINWEIS: Slots werden befuellt sobald Assets in ~/Downloads sortiert sind.
+           Struktur einer echten Arbeit:
+           <button class="work-card" data-src="assets/portfolio/xxx-hires.jpg" data-title="..." data-attribution="...">
+             <img src="assets/portfolio/xxx-thumb.jpg" alt="..." loading="lazy" />
+             <div class="work-meta">
+               <div class="work-title">...</div>
+               <div class="work-attribution">...</div>
+             </div>
+           </button>
+      -->
+
+      <div class="work-card is-empty" aria-hidden="true">
+        <div>
+          <div class="empty-mark">01</div>
+          <div class="empty-text">Erste Werkschau-Arbeiten<br/>kommen zum offiziellen Launch.</div>
+        </div>
+      </div>
+      <div class="work-card is-empty" aria-hidden="true">
+        <div>
+          <div class="empty-mark">02</div>
+          <div class="empty-text">REHAB FIVE Signet<br/>& Marken-System</div>
+        </div>
+      </div>
+      <div class="work-card is-empty" aria-hidden="true">
+        <div>
+          <div class="empty-mark">03</div>
+          <div class="empty-text">OBEE Extracts<br/>Marken-Aufbau</div>
+        </div>
+      </div>
+      <div class="work-card is-empty" aria-hidden="true">
+        <div>
+          <div class="empty-mark">04</div>
+          <div class="empty-text">HEALTH CLUB<br/>Selbstzahler-Ableger</div>
+        </div>
+      </div>
+      <div class="work-card is-empty" aria-hidden="true">
+        <div>
+          <div class="empty-mark">05</div>
+          <div class="empty-text">Weitere Werkstatt-Arbeiten<br/>folgen</div>
+        </div>
+      </div>
+      <div class="work-card is-empty" aria-hidden="true">
+        <div>
+          <div class="empty-mark">06</div>
+          <div class="empty-text">Deine Marke<br/>könnte hier stehen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-cta">
+  <div class="wrap">
+    <h2>Deine Marke als <span class="italic">nächste Arbeit?</span></h2>
+    <p>45 Minuten, kostenlos, direkt mit Aric. Wenn die Haltung passt, reden wir weiter.</p>
+    <a class="email-pill" href="mailto:hallo@quint-marketing.de?subject=Branding-Anfrage">Erstgespräch anfragen →</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 QUINT · <a href="index.html">Hauptseite</a> · <a href="leistungen.html">Leistungen</a> · <a href="portfolio-social.html">Social-Werkschau</a> · <a href="portfolio-print.html">Print-Werkschau</a>
+</footer>
+
+<!-- LIGHTBOX-OVERLAY (versteckt bis ein work-card geklickt wird) -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Bildansicht">
+  <button class="lightbox-close" id="lb-close" aria-label="Schließen">×</button>
+  <div class="lightbox-content">
+    <img id="lb-image" src="" alt="" />
+    <div class="lightbox-caption">
+      <div class="lb-title" id="lb-title"></div>
+      <div class="lb-attribution" id="lb-attribution"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Loader
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    if (!loader) return;
+    const params = new URLSearchParams(window.location.search);
+    const skip = params.get('skip-loader') === '1';
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const delay = (skip || reduceMotion) ? 0 : 2800;
+    setTimeout(() => {
+      loader.classList.add('done');
+      document.body.classList.remove('locked');
+    }, delay);
+  });
+
+  // Lightbox — greift nur auf work-card ohne .is-empty
+  (function() {
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-image');
+    const lbTitle = document.getElementById('lb-title');
+    const lbAttr = document.getElementById('lb-attribution');
+    const lbClose = document.getElementById('lb-close');
+
+    function open(card) {
+      const src = card.dataset.src;
+      const alt = card.dataset.alt || '';
+      const title = card.dataset.title || '';
+      const attr = card.dataset.attribution || '';
+      if (!src) return;
+      lbImg.src = src; lbImg.alt = alt;
+      lbTitle.textContent = title;
+      lbAttr.textContent = attr;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+    document.querySelectorAll('.work-card:not(.is-empty)').forEach(card => {
+      card.addEventListener('click', () => open(card));
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(card); } });
+    });
+    lbClose.addEventListener('click', close);
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  })();
+</script>
+
+</body>
+</html>

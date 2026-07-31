@@ -393,6 +393,34 @@
     align-items: center;
   }
   @media (max-width: 700px) { .range { grid-template-columns: 1fr; gap: 12px; } }
+
+  /* Werkschau-Button unter jedem Paket — fuehrt zur Portfolio-Seite */
+  .paket-portfolio-btn {
+    margin-top: 20px; text-align: center;
+  }
+  .paket-portfolio-btn a {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    background: transparent;
+    border: 1.5px solid var(--pink);
+    color: var(--pink);
+    font-family: "Familjen Grotesk", sans-serif;
+    font-weight: 700; font-size: 14px;
+    letter-spacing: 0.02em;
+    transition: background 0.25s, color 0.25s, transform 0.25s;
+  }
+  .paket-portfolio-btn a:hover {
+    background: var(--pink); color: var(--navy);
+    transform: translateY(-2px);
+  }
+  .paket-portfolio-btn a::after {
+    content: "→"; font-family: "Fraunces", serif; font-style: italic;
+    font-size: 18px; line-height: 1;
+    transition: transform 0.25s;
+  }
+  .paket-portfolio-btn a:hover::after { transform: translateX(4px); }
+
   .range-label {
     font-size: 11px; letter-spacing: 0.22em;
     text-transform: uppercase; color: var(--pink);
@@ -718,6 +746,10 @@
       <div class="range-label">Realistische Dauer</div>
       <div class="range-value"><strong>6 bis 10 Wochen</strong>, je nach Brand-Tiefe und Anwendungs-Breite. <em>Schneller geht immer — aber dann auf Kosten der Substanz, und das machen wir nicht.</em></div>
     </div>
+
+    <div class="paket-portfolio-btn">
+      <a href="portfolio-branding.html">Branding-Beispiele ansehen</a>
+    </div>
   </section>
 
   <!-- SOCIAL -->
@@ -788,6 +820,10 @@
       <div class="range-label">Einstieg ab</div>
       <div class="range-value"><strong>500 € netto pro Monat</strong> für einen klar definierten Einstiegs-Scope (typisch 1 Kanal mit Strategie, Plan und Produktion). Vollservice mit mehreren Kanälen, Paid Ads, Community-Management oder Reels-Produktion entsprechend höher. <em>Mindestlaufzeit 3 Monate</em>, danach monatlich kündbar — alles drunter ist verbranntes Geld, weil Social- und Ads-Arbeit erst dann messbar wird.</div>
     </div>
+
+    <div class="paket-portfolio-btn">
+      <a href="portfolio-social.html">Social- & Paid-Ads-Beispiele ansehen</a>
+    </div>
   </section>
 
   <!-- PAKET 3 — PRINT & OBJEKT -->
@@ -856,6 +892,10 @@
     <div class="range">
       <div class="range-label">Range</div>
       <div class="range-value"><strong>Ab 2.500 € netto</strong> für ein Print-Basispaket (Visitenkarten + Briefpapier im bestehenden Marken-System). Größere Sets mit Broschüre, Verpackung oder Workwear-Serie typisch <strong>4.500–9.500 €</strong>. Reine Druck- und Textil-Kosten separat und transparent — wir arbeiten <em>ohne Marge auf Druck oder Textilien</em>. Als Add-on zum Branding-Paket <em>–20 %</em>, weil Marken-System schon steht.</div>
+    </div>
+
+    <div class="paket-portfolio-btn">
+      <a href="portfolio-print.html">Print- & Workwear-Beispiele ansehen</a>
     </div>
   </section>
 
