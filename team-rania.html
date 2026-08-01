@@ -398,6 +398,40 @@
     .sub-icp-nav a { padding: 4px 10px; font-size: 12px; }
     .sub-icp-label { font-size: 10px; }
   }
+
+  /* WERKSCHAU-Section (Team-Sub-Page-Muster) */
+  .werk-section { padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+  .werk-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 30px; }
+  .werk-head h2 { font-size: clamp(28px, 3.4vw, 42px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
+  .werk-head h2 .italic { color: var(--pink); font-weight: 400; }
+  .werk-head .werk-eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pink); font-weight: 700; margin-bottom: 10px; }
+  .werk-external-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 999px; background: transparent; border: 1.5px solid var(--pink); color: var(--pink); font-weight: 700; font-size: 13px; letter-spacing: 0.02em; transition: background 0.25s, color 0.25s, transform 0.25s; text-decoration: none; }
+  .werk-external-btn:hover { background: var(--pink); color: var(--navy); transform: translateY(-2px); }
+  .werk-external-btn.is-placeholder { border-style: dashed; color: rgba(244,239,231,0.5); cursor: default; pointer-events: none; }
+  .werk-strip-wrap { position: relative; margin: 0 -32px; padding: 0 32px; }
+  .werk-strip { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 32px; padding: 12px 32px 12px 0; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .werk-strip::-webkit-scrollbar { display: none; }
+  .werk-card { flex: 0 0 clamp(220px, 28vw, 320px); scroll-snap-align: start; position: relative; aspect-ratio: 4 / 5; border-radius: 18px; overflow: hidden; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); cursor: pointer; transition: transform 0.3s cubic-bezier(.2,.8,.2,1), border-color 0.3s; }
+  .werk-card:hover { transform: translateY(-4px); border-color: rgba(232,155,177,0.4); }
+  .werk-card > img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s cubic-bezier(.2,.8,.2,1); }
+  .werk-card:hover > img { transform: scale(1.03); }
+  .werk-card .werk-meta { position: absolute; left: 0; right: 0; bottom: 0; padding: 44px 16px 14px; background: linear-gradient(to top, rgba(13,39,71,0.94) 0%, rgba(13,39,71,0.6) 55%, transparent 100%); color: var(--cream); }
+  .werk-card .werk-title { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 4px; }
+  .werk-card .werk-attribution { font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 11px; color: rgba(244,239,231,0.72); line-height: 1.4; }
+  .werk-card.is-empty { background: rgba(255,255,255,0.02); border: 1px dashed rgba(232,155,177,0.25); display: flex; align-items: center; justify-content: center; padding: 20px 16px; text-align: center; cursor: default; }
+  .werk-card.is-empty:hover { transform: none; border-color: rgba(232,155,177,0.4); }
+  .werk-card.is-empty .empty-mark { font-family: "Fraunces", serif; font-style: italic; font-size: 36px; color: rgba(232,155,177,0.5); line-height: 1; margin-bottom: 10px; }
+  .werk-card.is-empty .empty-text { font-size: 12px; color: rgba(244,239,231,0.55); font-family: "Fraunces", Georgia, serif; font-style: italic; line-height: 1.45; }
+  .werk-hint { margin-top: 14px; font-size: 12px; color: rgba(244,239,231,0.45); font-style: italic; font-family: "Fraunces", Georgia, serif; text-align: center; }
+  .werk-lightbox { position: fixed; inset: 0; z-index: 9998; background: rgba(13,39,71,0.96); display: none; align-items: center; justify-content: center; padding: 40px 24px; backdrop-filter: blur(8px); }
+  .werk-lightbox.open { display: flex; }
+  .werk-lightbox-content { max-width: 1100px; max-height: 90vh; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .werk-lightbox img { max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: 16px; box-shadow: 0 30px 80px rgba(0,0,0,0.55); }
+  .werk-lightbox-caption { text-align: center; color: var(--cream); max-width: 640px; }
+  .werk-lightbox-caption .lb-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .werk-lightbox-caption .lb-attribution { font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 14px; color: rgba(244,239,231,0.7); }
+  .werk-lightbox-close { position: absolute; top: 24px; right: 24px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: var(--cream); width: 44px; height: 44px; border-radius: 50%; font-size: 22px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+  .werk-lightbox-close:hover { background: var(--pink); color: var(--navy); }
 </style>
 
 <!-- Twitter Card -->
@@ -481,6 +515,63 @@
   </div>
 </section>
 
+<!-- WERKSCHAU RANIA — Design-Anwendungen aus dem Quint-Kontext + REHAB-FIVE-Beitrag -->
+<section class="werk-section" aria-labelledby="rania-werk-h">
+  <div class="wrap">
+    <div class="werk-head">
+      <div>
+        <div class="werk-eyebrow">Werkschau — Rania</div>
+        <h2 id="rania-werk-h">Was durch ihre <span class="italic">Hand geht.</span></h2>
+      </div>
+      <a class="werk-external-btn is-placeholder" aria-disabled="true" title="Portfolio-Slot bleibt frei — kein externes Portfolio">
+        Portfolio in Aufbau <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <div class="werk-strip-wrap">
+      <div class="werk-strip" role="list">
+        <div class="werk-card is-empty" role="listitem" aria-hidden="true">
+          <div>
+            <div class="empty-mark">01</div>
+            <div class="empty-text">Quint<br/>Design-System</div>
+          </div>
+        </div>
+        <div class="werk-card is-empty" role="listitem" aria-hidden="true">
+          <div>
+            <div class="empty-mark">02</div>
+            <div class="empty-text">Quint<br/>Social-Templates</div>
+          </div>
+        </div>
+        <div class="werk-card is-empty" role="listitem" aria-hidden="true">
+          <div>
+            <div class="empty-mark">03</div>
+            <div class="empty-text">Quint<br/>Merch-Konzepte</div>
+          </div>
+        </div>
+        <div class="werk-card is-empty" role="listitem" aria-hidden="true">
+          <div>
+            <div class="empty-mark">04</div>
+            <div class="empty-text">REHAB-FIVE-<br/>Design-Anwendung</div>
+          </div>
+        </div>
+        <div class="werk-card is-empty" role="listitem" aria-hidden="true">
+          <div>
+            <div class="empty-mark">05</div>
+            <div class="empty-text">Print-Anwendung<br/>Weiteres Projekt</div>
+          </div>
+        </div>
+        <div class="werk-card is-empty" role="listitem" aria-hidden="true">
+          <div>
+            <div class="empty-mark">06</div>
+            <div class="empty-text">Studio-Arbeit<br/>freie Wahl</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="werk-hint">Zum offiziellen Launch — mit echten Arbeiten und klarer Attribution. Rania führt kein externes Portfolio; ihre Handschrift lebt hier.</p>
+  </div>
+</section>
+
 <section class="profile-cta">
   <div class="wrap">
     <h2>Erst Quint <span class="italic">kennenlernen?</span></h2>
@@ -492,6 +583,44 @@
 <footer>
   © 2026 QUINT · <a href="index.html">Hauptseite</a> · <a href="team-aric.html">Aric</a> · <a href="team-bjoern.html">Bjoern</a> · <a href="team-dario.html">Dario</a>
 </footer>
+
+<!-- Lightbox-Overlay -->
+<div class="werk-lightbox" id="werkLightbox" role="dialog" aria-modal="true" aria-label="Werkansicht">
+  <button class="werk-lightbox-close" id="werkLbClose" aria-label="Schließen">×</button>
+  <div class="werk-lightbox-content">
+    <img id="werkLbImage" src="" alt="" />
+    <div class="werk-lightbox-caption">
+      <div class="lb-title" id="werkLbTitle"></div>
+      <div class="lb-attribution" id="werkLbAttribution"></div>
+    </div>
+  </div>
+</div>
+<script>
+  (function() {
+    const lb = document.getElementById('werkLightbox');
+    if (!lb) return;
+    const lbImg = document.getElementById('werkLbImage');
+    const lbTitle = document.getElementById('werkLbTitle');
+    const lbAttr = document.getElementById('werkLbAttribution');
+    const lbClose = document.getElementById('werkLbClose');
+    function open(card) {
+      const src = card.dataset.src; if (!src) return;
+      lbImg.src = src; lbImg.alt = card.dataset.alt || '';
+      lbTitle.textContent = card.dataset.title || '';
+      lbAttr.textContent = card.dataset.attribution || '';
+      lb.classList.add('open'); document.body.style.overflow = 'hidden';
+    }
+    function close() { lb.classList.remove('open'); document.body.style.overflow = ''; lbImg.src = ''; }
+    document.querySelectorAll('.werk-card:not(.is-empty)').forEach(card => {
+      card.addEventListener('click', () => open(card));
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(card); } });
+    });
+    lbClose.addEventListener('click', close);
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  })();
+</script>
 
 <script>
   window.addEventListener('load', () => {
