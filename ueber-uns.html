@@ -355,12 +355,18 @@
 
   /* Manifest-Ankermenue — dezent, unter dem Hero */
   .story-anchor-nav {
-    position: sticky; top: 0; z-index: 45;
+    position: sticky; top: 74px; z-index: 45;
     background: rgba(13,39,71,0.92);
     backdrop-filter: saturate(150%) blur(16px);
     border-bottom: 1px solid rgba(255,255,255,0.06);
     border-top: 1px solid rgba(255,255,255,0.06);
   }
+  @media (max-width: 700px) {
+    .story-anchor-nav { top: 65px; }
+  }
+  /* Anchor-Scroll: Akt-Container respektieren Nav + Anchor-Nav-Höhe */
+  .akt[id] { scroll-margin-top: 140px; }
+  @media (max-width: 700px) { .akt[id] { scroll-margin-top: 130px; } }
   .story-anchor-inner {
     max-width: 1200px; margin: 0 auto;
     padding: 12px 32px;
