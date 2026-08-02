@@ -2111,6 +2111,33 @@
     background: var(--pink); color: var(--navy);
     box-shadow: 0 10px 32px rgba(232,155,177,0.32);
   }
+
+  /* Booking-Bereich: 2-Wege-Auswahl (Cal.com primär + Mail Alternative) */
+  .cta-booking-row {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 16px; margin-bottom: 28px;
+  }
+  .cta-book-primary {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--pink); color: var(--navy);
+    font-family: "Familjen Grotesk", sans-serif;
+    font-weight: 700; font-size: clamp(17px, 2vw, 22px);
+    letter-spacing: 0.01em;
+    padding: 20px 40px; border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 12px 32px rgba(232,155,177,0.25);
+    transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+  }
+  .cta-book-primary:hover {
+    background: var(--pink-strong);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(232,155,177,0.4);
+  }
+  .cta-book-primary .book-icon { font-size: 20px; }
+  .cta-book-or {
+    font-family: "Fraunces", serif; font-style: italic;
+    color: rgba(244,239,231,0.55); font-size: 14px;
+  }
   /* Männchen-Dackel im CTA — aufrechte Pose, „bereit zu apportieren" */
   .cta-wappen {
     width: clamp(120px, 14vw, 200px);
@@ -2906,7 +2933,17 @@
     <div class="eyebrow" style="margin-bottom: 28px; color: var(--pink);">Bereit?</div>
     <h2>Auf zum<br/><span class="italic">Spielfeld.</span></h2>
     <p>45 Minuten. Kostenlos. Ohne Bullshit. Wir hören zu, du hörst zu. Danach wissen wir beide, ob wir zusammenpassen.</p>
-    <a class="cta-email" href="mailto:hallo@quint-marketing.de" data-magnet data-spring>hallo@quint-marketing.de →</a>
+
+    <!-- Booking: 2 Wege — Cal.com primär (URL vor Go-Live einsetzen), Mail als Alternative
+         PLATZHALTER: 'PLACEHOLDER-CAL-URL' muss beim Go-Live durch echte Cal.com-URL ersetzt werden -->
+    <div class="cta-booking-row">
+      <a class="cta-book-primary" href="https://cal.com/PLACEHOLDER-CAL-URL/quint-erstgespraech" target="_blank" rel="noopener" data-spring>
+        <span class="book-icon" aria-hidden="true">📅</span>
+        45-Min-Termin buchen
+      </a>
+      <span class="cta-book-or">— oder direkt per Mail —</span>
+      <a class="cta-email" href="mailto:hallo@quint-marketing.de" data-magnet data-spring>hallo@quint-marketing.de →</a>
+    </div>
     <ul class="cta-reassurance" aria-label="Was beim Erstgespräch passiert">
       <li><span class="cta-check">✓</span> Keine Verkaufs-Präsentation, kein PowerPoint-Theater</li>
       <li><span class="cta-check">✓</span> Wenn wir nicht passen, sagen wir es im selben Gespräch</li>

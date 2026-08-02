@@ -572,6 +572,122 @@
     .cta-section { padding: 40px 22px 60px; }
   }
 
+  /* ============================================================
+     „So läuft's ab" — Erwartungs-Management
+     ============================================================ */
+  .prozess-section {
+    padding: 100px 32px;
+    background: var(--navy-deep);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .prozess-inner { max-width: 1080px; margin: 0 auto; }
+  .prozess-head { max-width: 720px; margin: 0 auto 56px; text-align: center; }
+  .prozess-head .eyebrow {
+    color: var(--pink); font-size: 11px; letter-spacing: 0.24em;
+    text-transform: uppercase; font-weight: 700; margin-bottom: 18px;
+  }
+  .prozess-head h2 {
+    font-size: clamp(32px, 4.5vw, 52px); font-weight: 700;
+    letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 18px;
+    color: var(--cream);
+  }
+  .prozess-head h2 .italic { color: var(--pink); font-weight: 400; }
+  .prozess-head p {
+    font-size: 17px; color: rgba(244,239,231,0.72); line-height: 1.6;
+    max-width: 580px; margin: 0 auto;
+  }
+  .prozess-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    counter-reset: step;
+  }
+  @media (max-width: 900px) { .prozess-steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .prozess-steps { grid-template-columns: 1fr; } }
+  .prozess-step {
+    position: relative;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 32px 24px 28px;
+    transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  }
+  .prozess-step:hover {
+    border-color: rgba(232,155,177,0.35);
+    background: rgba(232,155,177,0.04);
+    transform: translateY(-3px);
+  }
+  .prozess-step .step-num {
+    font-family: "Fraunces", serif; font-style: italic; font-weight: 400;
+    font-size: 42px; color: var(--pink);
+    line-height: 1; margin-bottom: 14px;
+  }
+  .prozess-step .step-name {
+    font-size: 17px; font-weight: 700; color: var(--cream);
+    margin-bottom: 8px; letter-spacing: -0.01em;
+  }
+  .prozess-step .step-detail {
+    font-size: 14px; color: rgba(244,239,231,0.72); line-height: 1.55;
+  }
+  .prozess-step .step-timing {
+    display: inline-block; margin-top: 14px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--pink); font-weight: 700;
+  }
+
+  /* ============================================================
+     Sichtbare FAQ (Rich-Snippet-Trigger)
+     ============================================================ */
+  .faq-section { padding: 100px 32px; }
+  .faq-inner { max-width: 780px; margin: 0 auto; }
+  .faq-head { text-align: center; margin-bottom: 48px; }
+  .faq-head .eyebrow {
+    color: var(--pink); font-size: 11px; letter-spacing: 0.24em;
+    text-transform: uppercase; font-weight: 700; margin-bottom: 18px;
+  }
+  .faq-head h2 {
+    font-size: clamp(30px, 4vw, 48px); font-weight: 700;
+    letter-spacing: -0.02em; line-height: 1.05;
+    color: var(--cream);
+  }
+  .faq-head h2 .italic { color: var(--pink); font-weight: 400; }
+  .faq-list details {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 4px 0;
+  }
+  .faq-list details:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+  .faq-list summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 22px 0;
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 20px;
+    transition: color 0.2s;
+  }
+  .faq-list summary::-webkit-details-marker { display: none; }
+  .faq-list summary .faq-q {
+    font-size: 17px; font-weight: 600; color: var(--cream);
+    letter-spacing: -0.01em; line-height: 1.4;
+    flex: 1;
+  }
+  .faq-list summary::after {
+    content: "+"; color: var(--pink);
+    font-family: "Fraunces", serif; font-weight: 300;
+    font-size: 26px; line-height: 1;
+    transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
+    flex-shrink: 0;
+  }
+  .faq-list details[open] > summary::after { transform: rotate(45deg); }
+  .faq-list details[open] > summary .faq-q { color: var(--pink); }
+  .faq-list .faq-a {
+    padding: 4px 0 22px;
+    font-size: 15px; color: rgba(244,239,231,0.75); line-height: 1.65;
+    animation: faqReveal 0.35s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes faqReveal {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   /* === FOCUS-STATES für Tastatur-Navigation ===
      :focus-visible erscheint nur bei Tab/Pfeil-Navigation, nicht bei Mausklick */
   *:focus { outline: none; }
@@ -939,6 +1055,79 @@
       <div><strong>Ehrliche Statusmeldungen</strong>Du weißt jederzeit, wo wir stehen — auch wenn es nicht das ist, was du hören willst.</div>
       <div><strong>Klare Etappen, keine Sackgassen</strong>Du siehst alle 1–2 Wochen ein Zwischenergebnis. Nicht 6 Wochen später eine Bombe.</div>
       <div><strong>Inhaber bleibt Inhaber</strong>Wir sind dein Sparringspartner. Die finale Marken-Entscheidung trifft niemals jemand außer dir.</div>
+    </div>
+  </div>
+</section>
+
+<!-- „So läuft's ab" — Erwartungs-Management -->
+<section class="prozess-section" id="prozess">
+  <div class="prozess-inner">
+    <div class="prozess-head">
+      <div class="eyebrow">Vom ersten Klick bis zum Vertrag</div>
+      <h2>So läuft ein Erstgespräch <span class="italic">tatsächlich ab.</span></h2>
+      <p>Kein Sales-Funnel, kein CRM-Kaskaden-Trichter. Vier Schritte, transparent, mit ehrlichen Zeit-Angaben.</p>
+    </div>
+    <div class="prozess-steps">
+      <div class="prozess-step">
+        <div class="step-num">1</div>
+        <div class="step-name">Du schickst uns eine Mail</div>
+        <div class="step-detail">Direkt an Aric — mit ein paar Sätzen zu eurem Projekt. Keine Formular-Pflicht, kein Fragebogen. Wenn du magst, hängst du Website-Links oder Vorlagen an.</div>
+        <div class="step-timing">5 Min für dich</div>
+      </div>
+      <div class="prozess-step">
+        <div class="step-num">2</div>
+        <div class="step-name">Rückmeldung innerhalb 24h</div>
+        <div class="step-detail">Aric antwortet persönlich — meist am selben oder nächsten Werktag. Entweder mit einem Termin-Vorschlag oder mit einer ehrlichen Absage, falls wir nicht passen.</div>
+        <div class="step-timing">unter 24h</div>
+      </div>
+      <div class="prozess-step">
+        <div class="step-num">3</div>
+        <div class="step-name">45 Min. Video-Call</div>
+        <div class="step-detail">Kostenfrei, unverbindlich. Wir schauen uns euer Projekt an, klären eure drei wichtigsten Fragen, sagen ehrlich, ob wir helfen können und wie das aussehen würde.</div>
+        <div class="step-timing">45 Minuten</div>
+      </div>
+      <div class="prozess-step">
+        <div class="step-num">4</div>
+        <div class="step-name">Angebot &amp; Entscheidung</div>
+        <div class="step-detail">Wenn's passt, bekommst du innerhalb einer Woche ein Festpreis-Angebot mit klarem Scope. Wenn nicht, sagen wir's direkt im Call — ohne Nachhake-Sequenz.</div>
+        <div class="step-timing">3–5 Werktage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ — sichtbar (spiegelt JSON-LD-FAQ) -->
+<section class="faq-section" id="faq">
+  <div class="faq-inner">
+    <div class="faq-head">
+      <div class="eyebrow">Häufige Fragen</div>
+      <h2>Was Interessent:innen <span class="italic">wirklich fragen.</span></h2>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary><span class="faq-q">Was kostet ein Branding-Projekt bei Quint?</span></summary>
+        <div class="faq-a">Ein vollständiges Branding-Projekt (Markenfundament, visuelle Identität, Anwendung, Übergabe) liegt typischerweise im mittleren fünfstelligen Bereich. Der genaue Preis wird nach einem kostenfreien Erstgespräch und dem Scoping als Festpreis vereinbart. Wer einen reinen Logo-Refresh für 2.000 € sucht, ist bei Quint nicht richtig.</div>
+      </details>
+      <details>
+        <summary><span class="faq-q">Wie lange dauert ein Branding-Projekt bei Quint?</span></summary>
+        <div class="faq-a">Ein Branding-Projekt bei Quint dauert 6 bis 10 Wochen, je nach Marken-Tiefe und Anwendungs-Breite. Kürzer geht immer — aber dann auf Kosten der Substanz. Die Etappen sind Fundament, Identität, Anwendung und Übergabe.</div>
+      </details>
+      <details>
+        <summary><span class="faq-q">Was kostet Social-Media-Betreuung bei Quint pro Monat?</span></summary>
+        <div class="faq-a">Die Monatspauschale startet ab 500 € netto für einen klar definierten Einstiegs-Scope (typisch ein Kanal mit Strategie, Plan und Produktion). Vollservice mit mehreren Kanälen, Paid Ads (Meta &amp; Google), Community-Management oder Reels-Produktion bewegt sich entsprechend höher. Mindestlaufzeit sind drei Monate.</div>
+      </details>
+      <details>
+        <summary><span class="faq-q">Macht Quint auch Paid Ads oder nur organisches Social Media?</span></summary>
+        <div class="faq-a">Quint bietet Paid Ads (Meta und Google) als Teil des Social-Pakets an — Setup, Kampagnen-Aufbau und laufende Optimierung. Wir arbeiten nicht mit sechsstelligen Monats-Media-Budgets; dafür braucht es einen spezialisierten Performance-Partner. Für KMU-typische Budgets im drei- bis unteren fünfstelligen Bereich sind wir die richtige Adresse.</div>
+      </details>
+      <details>
+        <summary><span class="faq-q">Was kostet Print &amp; Workwear bei Quint?</span></summary>
+        <div class="faq-a">Ein Print-Basispaket startet bei 2.500 € netto (Visitenkarten und Briefpapier im bestehenden Marken-System). Größere Sets mit Broschüre, Verpackung oder Workwear-Serien liegen typischerweise zwischen 4.500 und 9.500 € netto. Druck- und Textilkosten werden separat und transparent abgerechnet — Quint arbeitet ohne Marge auf Druck oder Textilien.</div>
+      </details>
+      <details>
+        <summary><span class="faq-q">Kann ich einzelne Pakete buchen oder nur alles zusammen?</span></summary>
+        <div class="faq-a">Alle drei Pakete (Branding, Social, Print) sind einzeln oder in Kombination buchbar. Wer nach dem Branding auch Print oder Social bei Quint macht, bekommt 20 % Add-on-Rabatt auf das Zweitpaket, weil das Marken-System dann bereits steht.</div>
+      </details>
     </div>
   </div>
 </section>

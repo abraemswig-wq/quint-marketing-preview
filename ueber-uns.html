@@ -215,6 +215,67 @@
   }
   .fakten dd { color: var(--cream); }
   .fakten dd a { color: var(--pink); }
+
+  /* Team-Statements — Zitate der 4 Menschen */
+  .team-statements {
+    margin: 60px 0 40px;
+  }
+  .team-statements-eyebrow {
+    text-align: center;
+    color: var(--pink); font-size: 11px; letter-spacing: 0.24em;
+    text-transform: uppercase; font-weight: 700; margin-bottom: 12px;
+  }
+  .team-statements-title {
+    text-align: center;
+    font-size: clamp(24px, 3vw, 36px); font-weight: 700;
+    letter-spacing: -0.02em; line-height: 1.1;
+    color: var(--cream); margin-bottom: 40px;
+  }
+  .team-statements-title .italic { color: var(--pink); font-weight: 400; }
+  .team-statements-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  }
+  @media (max-width: 700px) { .team-statements-grid { grid-template-columns: 1fr; } }
+  .statement-card {
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid var(--pink);
+    border-radius: 0 16px 16px 0;
+    padding: 28px 30px;
+    position: relative;
+  }
+  .statement-card::before {
+    content: "„";
+    position: absolute;
+    top: -12px; left: 20px;
+    font-family: "Fraunces", serif;
+    font-size: 68px; line-height: 1;
+    color: rgba(232,155,177,0.35);
+  }
+  .statement-quote {
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic; font-weight: 400;
+    font-size: 17px; line-height: 1.5;
+    color: rgba(244,239,231,0.9);
+    margin: 8px 0 20px;
+  }
+  .statement-attribution {
+    display: flex; align-items: baseline; gap: 12px;
+    font-size: 13px;
+  }
+  .statement-attribution .name {
+    color: var(--cream); font-weight: 700; letter-spacing: -0.01em;
+  }
+  .statement-attribution .role {
+    color: rgba(244,239,231,0.55);
+    font-size: 12px;
+  }
+  .statements-note {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 12px; color: rgba(244,239,231,0.45);
+    font-style: italic; font-family: "Fraunces", serif;
+  }
+
   @media (max-width: 600px) {
     .fakten dl { grid-template-columns: 1fr; gap: 4px 0; }
     .fakten dt { margin-top: 12px; }
@@ -414,6 +475,43 @@
     <p>Wir bauen Marken für inhabergeführte Praxen, Vereine und Kanzleien im DACH-Raum. Wir machen Branding, wir machen Social Media. Wir machen sie zusammen oder einzeln. Wir machen sie nicht halb, nicht beiläufig, nicht aus dem Werkstatt-Archiv.</p>
     <p>Wir versprechen wenig und meinen es ernst. Wir liefern in 6–10 Wochen, wir filtern Kunden mit ehrlichen Sätzen, wir lehnen Aufträge ab, wenn die Haltung nicht passt. Wir sind direkt, ehrlich, mutig, nah und in Münster zuhause.</p>
     <em class="pull">„Wir jagen den Ball. Andere reden über die Wiese."</em>
+  </div>
+
+  <!-- TEAM-STATEMENTS: die vier Menschen sagen selbst, warum sie da sind -->
+  <div class="team-statements">
+    <div class="team-statements-eyebrow">Warum wir da sind</div>
+    <h2 class="team-statements-title">Vier Menschen, <span class="italic">vier Gründe.</span></h2>
+    <div class="team-statements-grid">
+      <div class="statement-card">
+        <p class="statement-quote">Quint ist die Werkstatt, die ich mir 2018 selbst gewünscht hätte, als ich REHAB FIVE aufgebaut habe. Wir bauen sie jetzt — für die anderen Inhaber:innen, die dieselbe Lücke sehen.</p>
+        <div class="statement-attribution">
+          <span class="name">Aric Brämswig</span>
+          <span class="role">Gründer &amp; Strategie</span>
+        </div>
+      </div>
+      <div class="statement-card">
+        <p class="statement-quote">Ich mag Marken, die man wiedererkennt, bevor man sie liest. Das ist mein Handwerk hier — jede Linie, jeder Ton, jede Geste durch meine Hand, bevor sie das Studio verlässt.</p>
+        <div class="statement-attribution">
+          <span class="name">Rania Landwehrmeyer</span>
+          <span class="role">Lead Design &amp; Kommunikation</span>
+        </div>
+      </div>
+      <div class="statement-card">
+        <p class="statement-quote">Ein gutes Logo baut man nicht in drei Tagen. Ich mag, dass Quint das auch nicht verspricht. Hier darf ich so tief gehen, wie ein Zeichen es verdient.</p>
+        <div class="statement-attribution">
+          <span class="name">Bjoern von Schulz</span>
+          <span class="role">Logo · Illustration · Painting</span>
+        </div>
+      </div>
+      <div class="statement-card">
+        <p class="statement-quote">Ich lese Marken durch die Kamera, nicht durch Brand-Decks. Bei Quint komme ich früh dazu — nicht erst zum Shooting. Das macht den Unterschied im Bild.</p>
+        <div class="statement-attribution">
+          <span class="name">Dario Ronge</span>
+          <span class="role">Fotografie &amp; Bewegtbild</span>
+        </div>
+      </div>
+    </div>
+    <p class="statements-note">Draft-Zitate — von den vier persönlich freizugeben oder umzuschreiben.</p>
   </div>
 
   <!-- FAKTEN-BOX -->
