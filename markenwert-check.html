@@ -449,7 +449,7 @@
       <div class="text" id="resultRecommendation"></div>
     </div>
     <div class="result-cta-row">
-      <a class="cta" href="mailto:hallo@quint-marketing.de?subject=Markenwert-Check%20Ergebnis&body=Hallo%20Aric%2C%0A%0Aich%20habe%20gerade%20den%20Markenwert-Check%20gemacht%20und%20w%C3%BCrde%20gerne%20kurz%20sprechen.%0A%0AMein%20Score%3A%20" id="ctaMail">Erstgespräch buchen →</a>
+      <a class="cta" href="mailto:hallo@quint-marketing.com?subject=Markenwert-Check%20Ergebnis&body=Hallo%20Aric%2C%0A%0Aich%20habe%20gerade%20den%20Markenwert-Check%20gemacht%20und%20w%C3%BCrde%20gerne%20kurz%20sprechen.%0A%0AMein%20Score%3A%20" id="ctaMail">Erstgespräch buchen →</a>
       <a class="cta cta-ghost" href="index.html">Zurück zur Hauptseite</a>
     </div>
     <div class="restart">
@@ -650,7 +650,7 @@ function showResult() {
   document.getElementById('resultTitle').innerHTML = verdict.title;
   document.getElementById('resultVerdict').textContent = verdict.verdict;
   document.getElementById('resultRecommendation').innerHTML = verdict.rec;
-  document.getElementById('ctaMail').href = `mailto:hallo@quint-marketing.de?subject=${encodeURIComponent('Markenwert-Check Ergebnis: ' + score + '/40')}&body=${encodeURIComponent(`Hallo Aric,\n\nich habe den Markenwert-Check gemacht und ${score} von 40 Punkten erreicht.\n\nIch würde gerne kurz sprechen.\n\nViele Grüße`)}`;
+  document.getElementById('ctaMail').href = `mailto:hallo@quint-marketing.com?subject=${encodeURIComponent('Markenwert-Check Ergebnis: ' + score + '/40')}&body=${encodeURIComponent(`Hallo Aric,\n\nich habe den Markenwert-Check gemacht und ${score} von 40 Punkten erreicht.\n\nIch würde gerne kurz sprechen.\n\nViele Grüße`)}`;
 
   result.classList.add('active');
   // Scroll to top of result
