@@ -9,10 +9,7 @@
 <meta name="robots" content="noindex, follow" />
 <link rel="canonical" href="https://abraemswig-wq.github.io/quint-marketing-preview/datenschutz.html" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,400;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
+<link href="assets/fonts.css" rel="stylesheet">
 
 <style>
   :root {
@@ -118,6 +115,17 @@
   .legal ul { margin: 0 0 14px 22px; }
   .legal ul li { margin-bottom: 6px; font-size: 16px; }
   .legal .meta { color: rgba(244,239,231,0.55); font-size: 14px; }
+  .legal code { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); padding: 1px 6px; border-radius: 4px; font-family: ui-monospace, Menlo, monospace; font-size: 0.88em; color: rgba(244,239,231,0.95); }
+
+  /* Cookie-Tabelle */
+  .cookie-table-wrap { overflow-x: auto; margin: 18px 0 24px; -webkit-overflow-scrolling: touch; }
+  .cookie-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 640px; }
+  .cookie-table thead { background: rgba(232,155,177,0.08); }
+  .cookie-table th { text-align: left; padding: 14px 16px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink); font-weight: 700; border-bottom: 1px solid rgba(232,155,177,0.25); }
+  .cookie-table td { padding: 16px; vertical-align: top; border-bottom: 1px solid rgba(255,255,255,0.06); line-height: 1.55; color: rgba(244,239,231,0.85); }
+  .cookie-table td strong { color: var(--white); }
+  .cookie-table td a { color: var(--pink); text-decoration: underline; text-underline-offset: 2px; }
+  .cookie-table tbody tr:last-child td { border-bottom: none; }
   .legal address {
     font-style: normal;
     background: rgba(255,255,255,0.04);
@@ -268,6 +276,7 @@
 {"@type":"ListItem","position":2,"name":"Datenschutz","item":"https://abraemswig-wq.github.io/quint-marketing-preview/datenschutz.html"}
 ]}
 </script>
+  <link rel="stylesheet" href="assets/cookie-consent.css">
 </head>
 <body>
 
@@ -388,9 +397,70 @@
   <p>Wir setzen Cookies ein, um unsere Website nutzerfreundlicher zu gestalten. Einige Funktionen und Elemente unserer Website erfordern es, dass der aufrufende Browser auch nach einem Seitenwechsel identifiziert werden kann. Der Zweck der Verwendung technisch notwendiger Cookies ist, die Nutzung von Websites für die Nutzer zu vereinfachen. Einige Funktionen unserer Website können ohne den Einsatz von Cookies nicht angeboten werden.</p>
   <p>Sie haben die Möglichkeit, die Installation von Cookies durch Änderung der Einstellung Ihrer Browser-Software zu verhindern. Wir weisen Sie darauf hin, dass bei entsprechender Einstellung eventuell nicht mehr alle Funktionen dieser Website zur Verfügung stehen oder mit Einschränkungen des Nutzungserlebnisses zu rechnen ist.</p>
 
-  <h3>8.2 Technisch nicht notwendige Cookies</h3>
-  <p>Aktuell werden auf dieser Website keine technisch nicht notwendigen Cookies eingesetzt. Sollte sich daran etwas ändern (z. B. durch Einsatz eines Analyse-Tools wie Plausible), aktualisieren wir diese Erklärung und holen — wo erforderlich — Ihre Einwilligung per Cookie-Banner ein.</p>
-  <!-- TODO Aric: Vor Go-Live entscheiden ob Plausible / Matomo eingesetzt wird. Wenn ja, dieser Abschnitt erweitern + Cookie-Banner einbauen. -->
+  <h3>8.2 Einwilligungspflichtige Cookies &amp; Dienste (Cookie-Banner)</h3>
+  <p>Vor dem erstmaligen Setzen einwilligungspflichtiger Cookies oder dem Aufruf externer Dienste holen wir Ihre Einwilligung über unseren Cookie-Consent-Banner ein. Standardmäßig sind alle einwilligungspflichtigen Kategorien deaktiviert (Opt-In nach § 25 Abs. 1 TDDDG). Sie können Ihre Auswahl jederzeit über den Link „Cookie-Einstellungen" im Footer widerrufen oder anpassen. Die Speicherung Ihrer Auswahl erfolgt lokal im Browser (localStorage-Eintrag <code>quint-consent</code>).</p>
+
+  <h3>8.3 Übersicht der eingesetzten Dienste</h3>
+  <div class="cookie-table-wrap">
+  <table class="cookie-table">
+    <thead>
+      <tr>
+        <th>Dienst / Zweck</th>
+        <th>Kategorie</th>
+        <th>Rechtsgrundlage</th>
+        <th>Speicherdauer / Ort</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Cookie-Consent</strong><br/>Speichert Ihre Cookie-Auswahl</td>
+        <td>Technisch notwendig</td>
+        <td>Art. 6 Abs. 1 lit. f DSGVO + § 25 Abs. 2 TDDDG</td>
+        <td>localStorage · lokal im Browser · bis zur Löschung durch Sie</td>
+      </tr>
+      <tr>
+        <td><strong>Google Fonts (self-hosted)</strong><br/>Schriften „Familjen Grotesk" &amp; „Fraunces"</td>
+        <td>Technisch notwendig</td>
+        <td>Art. 6 Abs. 1 lit. f DSGVO<br/>(berechtigtes Interesse)</td>
+        <td>Font-Dateien werden von unserem Server ausgeliefert. <strong>Keine Anfrage an Google-Server.</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Google Analytics 4</strong><br/>Anbieter: Google Ireland Ltd., Gordon House, Barrow Street, Dublin 4, Irland<br/>Anonymisierte Reichweiten-Messung</td>
+        <td>Statistik (opt-in)</td>
+        <td>Art. 6 Abs. 1 lit. a DSGVO + § 25 Abs. 1 TDDDG (Einwilligung)</td>
+        <td>Cookies <code>_ga</code>, <code>_ga_*</code> · Dauer bis 24 Monate · Server EU/USA<br/>Datentransfer USA: Angemessenheitsbeschluss EU-USA Data Privacy Framework (Google LLC ist zertifiziert)</td>
+      </tr>
+      <tr>
+        <td><strong>Cal.com (externer Link)</strong><br/>Terminbuchung Erstgespräch</td>
+        <td>Externer Klick-Ziel</td>
+        <td>Nicht anwendbar auf dieser Seite</td>
+        <td>Kein Cookie auf quint-marketing.de. Beim Klick verlassen Sie unsere Seite. Es gilt die <a href="https://cal.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Cal.com</a>.</td>
+      </tr>
+      <tr>
+        <td><strong>GitHub Pages (Hosting)</strong><br/>Anbieter: GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA</td>
+        <td>Technisch notwendig</td>
+        <td>Art. 6 Abs. 1 lit. f DSGVO</td>
+        <td>Server-Logs (IP, Zeitstempel, User-Agent) für Sicherheit &amp; Betrieb. Speicherung durch GitHub gem. deren <a href="https://docs.github.com/de/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung</a>.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>8.4 Google Analytics 4 im Detail</h3>
+  <p>Wenn Sie im Cookie-Banner der Kategorie „Statistik" zustimmen, setzen wir Google Analytics 4 (GA4) ein — einen Dienst der Google Ireland Ltd. („Google"). GA4 hilft uns zu verstehen, welche Inhalte gelesen werden und über welche Kanäle Besucher:innen zu uns kommen.</p>
+  <p><strong>Datenschutz-Maßnahmen:</strong></p>
+  <ul>
+    <li><strong>IP-Anonymisierung:</strong> Ihre IP-Adresse wird gekürzt, bevor sie an Google-Server übertragen wird.</li>
+    <li><strong>Kein Cross-Device-Tracking</strong> (<code>allow_google_signals: false</code>).</li>
+    <li><strong>Keine personalisierte Werbung</strong> (<code>allow_ad_personalization_signals: false</code>).</li>
+    <li><strong>Consent-Mode v2:</strong> Vor Ihrer Einwilligung werden keinerlei Analytics-Cookies gesetzt oder Daten übertragen.</li>
+    <li><strong>USA-Datentransfer:</strong> Google LLC ist unter dem EU-USA Data Privacy Framework zertifiziert. Rechtsgrundlage für den Transfer ist der Angemessenheitsbeschluss der EU-Kommission (Beschluss (EU) 2023/1795).</li>
+  </ul>
+  <p><strong>Widerruf:</strong> Sie können Ihre Einwilligung jederzeit über den Link „<a href="#" data-cookie-settings>Cookie-Einstellungen</a>" im Footer widerrufen. Ergänzend können Sie die Erfassung durch das <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google-Analytics-Opt-Out-Browser-Add-on</a> unterbinden.</p>
+  <p>Weitere Informationen zum Datenschutz bei Google finden Sie in der <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google-Datenschutzerklärung</a> sowie in der <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Erklärung zu Google-Diensten auf Partner-Websites</a>.</p>
+
+  <h3>8.5 Cookie-Einstellungen ändern</h3>
+  <p>Sie können Ihre Cookie-Auswahl jederzeit anpassen — entweder über den Link „<a href="#" data-cookie-settings>Cookie-Einstellungen</a>" (öffnet den Einstellungs-Dialog) oder durch Löschen des Eintrags <code>quint-consent</code> in Ihrem Browser-localStorage. Nach dem Löschen erscheint der Consent-Banner beim nächsten Aufruf erneut.</p>
 
   <h2>9. Aktualisierung der Datenschutzbestimmungen</h2>
   <p>Wir behalten uns das Recht vor, die Datenschutzerklärung anzupassen, damit sie den aktuellen und neuesten rechtlichen Anforderungen entspricht oder zu ändern, wenn z. B. neue Services eingeführt werden.</p>
@@ -410,5 +480,7 @@
   </div>
 </footer>
 
+<script src="assets/cookie-consent.js" defer></script>
+<script src="assets/ga4-loader.js" defer></script>
 </body>
 </html>

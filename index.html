@@ -238,10 +238,7 @@
   ]
 }
 </script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,400;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
+<link href="assets/fonts.css" rel="stylesheet">
 
 <!-- Preload Above-the-Fold-Assets (Loader-Maennchen + Hero-Maennchen + Logo) -->
 <link rel="preload" as="image" href="assets/quint-chase-hero-navy-v4-poster.webp" fetchpriority="high">
@@ -2301,6 +2298,7 @@
   /* Skip-Link bleibt funktional */
 
 </style>
+  <link rel="stylesheet" href="assets/cookie-consent.css">
 </head>
 <body class="locked">
 
@@ -2975,6 +2973,7 @@
       <a href="ueber-uns.html">Über uns</a>
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
+      <a href="#" data-cookie-settings>Cookie-Einstellungen</a>
     </div>
     <div class="foot-social" aria-label="Quint auf Social Media">
       <a href="https://www.instagram.com/quint.marketing/" target="_blank" rel="noopener noreferrer" aria-label="Quint auf Instagram">
@@ -3166,5 +3165,7 @@
   })();
 </script>
 
+<script src="assets/cookie-consent.js" defer></script>
+<script src="assets/ga4-loader.js" defer></script>
 </body>
 </html>
