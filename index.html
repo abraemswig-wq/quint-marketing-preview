@@ -1014,7 +1014,17 @@
   }
 
   /* METHOD */
-  .method-block { padding: 140px 0; background: var(--navy-deep); position: relative; overflow: hidden; }
+  .method-block { padding: 96px 0 120px; background: var(--navy-deep); position: relative; overflow: hidden; }
+  /* Section-Divider oberhalb der Method-Section — bricht den leeren Übergang */
+  .method-block::before {
+    content: "";
+    position: absolute; top: 40px; left: 50%;
+    transform: translateX(-50%);
+    width: 48px; height: 2px;
+    background: var(--pink);
+    border-radius: 2px;
+    opacity: 0.6;
+  }
   .method-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1379,107 +1389,25 @@
   /* TEAM */
   .team-block { padding: 160px 0; background: var(--navy); }
 
-  /* 4+1-Layout: 4 Menschen im Grid, Dackel als eigenes breiteres Element drunter.
-     Loest die alte 5-Karten-Carousel-Loesung ab (die musste sein weil 5 nicht in 4-Spalten passt). */
+  /* Auto-fit-Layout: waechst mit dem Team. Menschen + Dackel als gleichwertige
+     Karten im gleichen Grid — so bleibt der Dackel Teil des Teams, ohne in eine
+     "zweite Reihe" verdraengt zu werden, wenn 5+ Mitarbeiter dazukommen. */
   .team-people {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 22px;
     margin-top: 64px;
   }
-  @media (max-width: 1100px) { .team-people { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
-  @media (max-width: 600px)  { .team-people { grid-template-columns: 1fr; gap: 16px; } }
+  @media (max-width: 600px) { .team-people { grid-template-columns: 1fr; gap: 16px; } }
 
-  /* Divider zwischen den 4 Menschen und dem Dackel-Element */
-  .team-divider {
-    margin: 48px 0 32px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-family: "Fraunces", Georgia, serif;
-    font-style: italic;
-    font-size: clamp(18px, 1.8vw, 24px);
-    color: var(--pink);
-    text-align: center;
-    justify-content: center;
+  /* Dackel-Karte: gleiche Groesse wie eine Menschen-Karte, aber Pink-Akzent statt Weiss */
+  .person--dackel {
+    background: linear-gradient(135deg, rgba(232,155,177,0.09), rgba(232,155,177,0.03));
+    border-color: rgba(232,155,177,0.28);
   }
-  .team-divider::before, .team-divider::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(232,155,177,0.4), transparent);
-    max-width: 200px;
-  }
-
-  /* Der Dackel bekommt einen anderen visuellen Rahmen — bewusst NICHT wie eine der
-     4 Menschen-Karten. Breiter, mit Portrait-Aspect, Cream-Akzent statt weisser Border. */
-  .team-dackel-card {
-    display: grid;
-    grid-template-columns: minmax(200px, 280px) 1fr;
-    gap: 40px;
-    align-items: center;
-    padding: 44px 48px;
-    background: linear-gradient(135deg, rgba(232,155,177,0.08), rgba(232,155,177,0.03));
-    border: 1px solid rgba(232,155,177,0.2);
-    border-radius: 28px;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.35s cubic-bezier(.2,.8,.2,1), border-color 0.3s, background 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-  .team-dackel-card:hover {
-    transform: translateY(-4px);
+  .person--dackel:hover {
     border-color: rgba(232,155,177,0.5);
-    background: linear-gradient(135deg, rgba(232,155,177,0.12), rgba(232,155,177,0.05));
-  }
-  @media (hover: none) { .team-dackel-card:hover { transform: none; } }
-  .team-dackel-visual {
-    position: relative;
-    aspect-ratio: 1 / 1;
-    background: rgba(255,255,255,0.05);
-    border-radius: 22px;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-  }
-  .team-dackel-visual img {
-    width: 78%; height: 78%; object-fit: contain;
-    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.25));
-  }
-  .team-dackel-content h3 {
-    font-size: clamp(28px, 3vw, 38px);
-    font-weight: 700; letter-spacing: -0.02em;
-    line-height: 1.05; margin-bottom: 12px;
-    color: var(--white);
-  }
-  .team-dackel-content h3 .italic { color: var(--pink); }
-  .team-dackel-role {
-    font-family: "Fraunces", serif; font-style: italic;
-    font-size: 16px; color: var(--pink);
-    margin-bottom: 18px;
-    letter-spacing: -0.005em;
-  }
-  .team-dackel-bio {
-    font-size: 16px; line-height: 1.55;
-    color: rgba(244,239,231,0.82);
-    margin-bottom: 22px;
-    max-width: 560px;
-  }
-  .team-dackel-cta {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 14px; font-weight: 600;
-    color: var(--pink); letter-spacing: 0.02em;
-    transition: gap 0.25s;
-  }
-  .team-dackel-card:hover .team-dackel-cta { gap: 14px; }
-  @media (max-width: 800px) {
-    .team-dackel-card {
-      grid-template-columns: 1fr;
-      gap: 28px; padding: 36px 28px;
-    }
-    .team-dackel-visual { max-width: 200px; margin: 0 auto; }
-    .team-dackel-content { text-align: center; }
-    .team-dackel-bio { margin-left: auto; margin-right: auto; }
+    background: linear-gradient(135deg, rgba(232,155,177,0.14), rgba(232,155,177,0.05));
   }
 
   /* Pink-Dot am Dackel-Initial — Echo zum Quint-Logo-Ball */
@@ -2754,23 +2682,21 @@
         <p class="person-bio">Werbe- und Businessfotograf aus Münster. Hat Marken wie Flaschenpost, COMPO, BASF und Nike vor der Linse gehabt. Bei Quint sorgt er dafür, dass Marken nicht nur klingen wie sie selbst, sondern auch so aussehen.</p>
         <span class="person-cta">Profil ansehen <span class="arrow">→</span></span>
       </a>
+      <!-- Dackel als 5. Karte im gleichen Grid — waechst mit dem Team mit, statt in eine 2. Reihe verdraengt zu werden. -->
+      <a href="team-dackel.html" class="person person--dackel reveal person-link" aria-label="Der Dackel — Wappentier · Geschichte öffnen">
+        <div class="person-signature" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path d="M12 40 Q12 26 26 26 L44 26 Q56 26 56 36 L56 44 L48 44 L44 40 L26 40 L22 44 L14 44 Z" fill="currentColor"/>
+            <circle cx="50" cy="30" r="2" fill="currentColor" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="person-initials">D<span class="initial-dot">.</span></div>
+        <div class="person-name">Der Dackel</div>
+        <div class="person-role">Wappentier · Chief Spielfreude</div>
+        <p class="person-bio">Kam nicht aus einem Marken-Workshop. Kam, weil Rania und Bjoern Dackel mögen und Aric das zugelassen hat. Geblieben, weil Marken so beginnen sollten: aus echtem Stoff, nicht aus Workshop-Folien.</p>
+        <span class="person-cta">Ganze Geschichte <span class="arrow">→</span></span>
+      </a>
     </div>
-
-    <!-- Divider zwischen Menschen und Wappentier -->
-    <div class="team-divider reveal" aria-hidden="true">+ ein Wappentier</div>
-
-    <!-- Dackel bewusst als eigenes, visuell anderes Element -->
-    <a href="team-dackel.html" class="team-dackel-card reveal" aria-label="Der Dackel — Wappentier · Geschichte öffnen">
-      <div class="team-dackel-visual">
-        <img src="assets/Dackel-Po.svg" alt="Quint-Wappen: Dackel von hinten mit X-Markierung" loading="lazy" decoding="async" />
-      </div>
-      <div class="team-dackel-content">
-        <h3>Der <span class="italic">Dackel.</span></h3>
-        <div class="team-dackel-role">Wappentier · Chief Spielfreude</div>
-        <p class="team-dackel-bio">Kam nicht aus einem Marken-Workshop. Kam, weil Rania und Bjoern Dackel mögen und Aric das zugelassen hat. Geblieben, weil Marken so beginnen sollten: aus echtem Stoff, nicht aus Workshop-Folien.</p>
-        <span class="team-dackel-cta">Ganze Geschichte lesen <span aria-hidden="true">→</span></span>
-      </div>
-    </a>
   </div>
 </section>
 
