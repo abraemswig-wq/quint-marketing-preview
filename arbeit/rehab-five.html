@@ -814,8 +814,9 @@
     .sub-icp-label { font-size: 10px; }
   }
 
-  /* Case-Ankermenue — sticky Chapter-Nav UNTER der Haupt-Nav-Bar (die ist 74px hoch)
-     Weichere Abtrennung: kein harter Doppel-Border, stattdessen dezenter Schatten unten. */
+  /* Case-Ankermenue — sticky Progress-Rail A2 (Nummeriert, editorial)
+     Fraunces-Ziffern in 30px-Kreisen auf 2px-Bar, Labels unter jedem Punkt.
+     Fill-Bar & aktiver Tick werden per JS aus Scroll-Position gesetzt. */
   .case-anchor-nav {
     position: sticky; top: 74px; z-index: 45;
     background: rgba(13,39,71,0.88);
@@ -825,40 +826,88 @@
   @media (max-width: 700px) {
     .case-anchor-nav { top: 65px; }
   }
-  /* Anchor-Scroll respektiert Nav-Bar (74px) + Anchor-Nav (~50-65px) */
-  .section[id], section[id] { scroll-margin-top: 140px; }
-  @media (max-width: 700px) { .section[id], section[id] { scroll-margin-top: 130px; } }
-  .case-anchor-inner {
-    max-width: 1200px; margin: 0 auto;
-    padding: 12px 32px;
-    display: flex; align-items: center; gap: 10px;
-    overflow-x: auto; scrollbar-width: none;
+  /* Anchor-Scroll respektiert Nav-Bar + Rail-Hoehe (~90px) */
+  .section[id], section[id] { scroll-margin-top: 170px; }
+  @media (max-width: 700px) { .section[id], section[id] { scroll-margin-top: 150px; } }
+  .case-rail {
+    max-width: 780px; margin: 0 auto;
+    padding: 18px 32px 16px;
+    position: relative;
   }
-  .case-anchor-inner::-webkit-scrollbar { display: none; }
-  .case-anchor-label {
-    font-size: 10px; letter-spacing: 0.24em;
-    text-transform: uppercase; font-weight: 700;
-    color: var(--pink); margin-right: 6px;
-    white-space: nowrap;
+  .case-rail-bar {
+    position: relative;
+    height: 2px;
+    background: rgba(255,255,255,0.10);
+    margin: 0 15px; /* 30px Tick-Kreise ragen an Enden hinaus — Kompensation */
   }
-  .case-anchor-nav a {
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 12px; font-weight: 600;
-    color: rgba(244,239,231,0.72);
-    border: 1px solid rgba(255,255,255,0.08);
-    white-space: nowrap;
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  .case-rail-fill {
+    position: absolute; left: 0; top: 0; height: 100%;
+    background: linear-gradient(90deg, var(--pink), var(--pink-strong));
+    width: 0%;
+    transition: width 0.35s cubic-bezier(.4,0,.3,1);
   }
-  .case-anchor-nav a:hover {
-    background: rgba(232,155,177,0.12);
-    color: var(--pink);
-    border-color: rgba(232,155,177,0.4);
+  .case-rail-ticks {
+    position: absolute; inset: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
   }
+  .case-rail-tick {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  /* Tick-Kreis positioniert am ANFANG der Spalte (also 1, 33%, 66%, 100%) */
+  .case-rail-tick:nth-child(1) { justify-content: flex-start; }
+  .case-rail-tick:nth-child(2), .case-rail-tick:nth-child(3) { justify-content: center; }
+  .case-rail-tick:nth-child(4) { justify-content: flex-end; }
+  .case-rail-dot {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--navy-deep);
+    border: 1.5px solid rgba(255,255,255,0.24);
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Fraunces", Georgia, serif; font-style: italic;
+    font-size: 13px; font-weight: 500;
+    color: rgba(244,239,231,0.55);
+    transition: all 0.25s;
+  }
+  .case-rail-tick:nth-child(1) .case-rail-dot { left: 0; transform: translate(-50%, -50%); left: 15px; }
+  .case-rail-tick:nth-child(4) .case-rail-dot { right: 0; transform: translate(50%, -50%); right: 15px; }
+  .case-rail-tick.done .case-rail-dot { background: var(--pink); border-color: var(--pink); color: var(--navy-deep); }
+  .case-rail-tick.active .case-rail-dot { border-color: var(--pink); color: var(--pink); box-shadow: 0 0 0 5px rgba(232,155,177,0.18); }
+  .case-rail-tick:hover .case-rail-dot { border-color: var(--pink); }
+
+  /* Labels unter jedem Punkt (eigene Grid-Reihe unter der Bar) */
+  .case-rail-labels {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 24px 0 0;
+    padding: 0 15px;
+  }
+  .case-rail-labels a {
+    display: block;
+    font-size: 12px; letter-spacing: 0.02em;
+    font-weight: 600;
+    color: rgba(244,239,231,0.6);
+    text-align: center;
+    text-decoration: none;
+    padding: 0 4px;
+    transition: color 0.2s;
+  }
+  .case-rail-labels a:first-child { text-align: left; }
+  .case-rail-labels a:last-child { text-align: right; }
+  .case-rail-labels a.done { color: rgba(244,239,231,0.9); }
+  .case-rail-labels a.active { color: var(--pink); }
+  .case-rail-labels a:hover { color: var(--cream); }
+
   @media (max-width: 700px) {
-    .case-anchor-inner { padding: 10px 22px; gap: 8px; }
-    .case-anchor-nav a { padding: 5px 12px; font-size: 11px; }
-    .case-anchor-label { font-size: 9px; }
+    .case-rail { padding: 14px 20px 12px; }
+    .case-rail-dot { width: 26px; height: 26px; font-size: 12px; }
+    .case-rail-tick:nth-child(1) .case-rail-dot { left: 13px; }
+    .case-rail-tick:nth-child(4) .case-rail-dot { right: 13px; }
+    .case-rail-labels { margin-top: 18px; padding: 0 13px; }
+    .case-rail-labels a { font-size: 10px; letter-spacing: 0.06em; }
   }
 
   /* Mid-Page CTA im Case-Stream */
@@ -1258,14 +1307,24 @@
   </div>
 </section>
 
-<!-- CASE-ANKER-MENÜ: kompakte Kapitel-Nav (Konzept A) -->
-<nav class="case-anchor-nav" aria-label="Kapitel-Navigation">
-  <div class="case-anchor-inner">
-    <span class="case-anchor-label">Kapitel:</span>
-    <a href="#kontext">Kontext</a>
-    <a href="#werke">Team-Werke</a>
-    <a href="#learnings">Learnings</a>
-    <a href="#uebertragung">Übertragung</a>
+<!-- CASE-ANKER-MENÜ: Progress-Rail A2 (nummeriert, editorial). Labels unter den Punkten. -->
+<nav class="case-anchor-nav" aria-label="Kapitel-Navigation" data-case-rail>
+  <div class="case-rail">
+    <div class="case-rail-bar">
+      <div class="case-rail-fill" data-rail-fill></div>
+      <div class="case-rail-ticks">
+        <a class="case-rail-tick" href="#kontext"     data-rail-target="kontext"><span class="case-rail-dot">1</span></a>
+        <a class="case-rail-tick" href="#werke"       data-rail-target="werke"><span class="case-rail-dot">2</span></a>
+        <a class="case-rail-tick" href="#learnings"   data-rail-target="learnings"><span class="case-rail-dot">3</span></a>
+        <a class="case-rail-tick" href="#uebertragung" data-rail-target="uebertragung"><span class="case-rail-dot">4</span></a>
+      </div>
+    </div>
+    <div class="case-rail-labels">
+      <a href="#kontext"      data-rail-lbl="kontext">Kontext</a>
+      <a href="#werke"        data-rail-lbl="werke">Team-Werke</a>
+      <a href="#learnings"    data-rail-lbl="learnings">Learnings</a>
+      <a href="#uebertragung" data-rail-lbl="uebertragung">Übertragung</a>
+    </div>
   </div>
 </nav>
 
@@ -1549,6 +1608,56 @@
 
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
+    update();
+  })();
+</script>
+
+<!-- CASE-RAIL: Sync von Fill-Bar + Active-Tick mit Scroll-Position -->
+<script>
+  (function() {
+    const rail = document.querySelector('[data-case-rail]');
+    if (!rail) return;
+    const fill    = rail.querySelector('[data-rail-fill]');
+    const ticks   = rail.querySelectorAll('.case-rail-tick');
+    const labels  = rail.querySelectorAll('[data-rail-lbl]');
+    const targets = [...ticks].map(t => document.getElementById(t.dataset.railTarget)).filter(Boolean);
+    if (targets.length === 0) return;
+
+    const OFFSET = 200; // Nav + Rail + kleiner Puffer
+
+    function update() {
+      let activeIdx = 0;
+      // Aktiv = letzte Section deren top oberhalb OFFSET liegt
+      targets.forEach((sec, i) => {
+        if (sec.getBoundingClientRect().top - OFFSET < 0) activeIdx = i;
+      });
+
+      // Fill-Prozent: linear zwischen Anker (activeIdx) und naechstem Anker
+      const currentSec = targets[activeIdx];
+      const nextSec    = targets[activeIdx + 1];
+      const currentTop = currentSec.getBoundingClientRect().top - OFFSET;
+      let progressWithinSection = 0;
+      if (nextSec) {
+        const nextTop = nextSec.getBoundingClientRect().top - OFFSET;
+        const range = nextTop - currentTop;
+        if (range > 0) progressWithinSection = Math.min(1, Math.max(0, -currentTop / range));
+      }
+      const segments = targets.length - 1;
+      const percent = ((activeIdx + progressWithinSection) / segments) * 100;
+      fill.style.width = Math.min(100, Math.max(0, percent)) + '%';
+
+      ticks.forEach((t, i) => {
+        t.classList.toggle('done', i < activeIdx);
+        t.classList.toggle('active', i === activeIdx);
+      });
+      labels.forEach((l, i) => {
+        l.classList.toggle('done', i < activeIdx);
+        l.classList.toggle('active', i === activeIdx);
+      });
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
     update();
   })();
 </script>
