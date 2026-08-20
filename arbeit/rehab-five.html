@@ -1086,10 +1086,12 @@
   .werk-slider-track::-webkit-scrollbar { display: none; }
   .werk-slider-slide {
     min-width: 100%;
+    max-width: 100%;
     height: 100%;
     scroll-snap-align: center;
     flex-shrink: 0;
     position: relative;
+    overflow: hidden;
   }
   .werk-slider-slide img {
     width: 100%; height: 100%;
@@ -1174,9 +1176,11 @@
     gap: 10px;
     width: 100%;
     height: 100%;
+    min-width: 0; min-height: 0; /* verhindert dass Bilder-Naturalsize den Grid aufblaeht */
   }
   .werk-illus-4 > img {
     width: 100%; height: 100%;
+    min-width: 0; min-height: 0;
     object-fit: contain;
     padding: 6px;
   }
