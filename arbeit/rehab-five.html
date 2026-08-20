@@ -836,16 +836,10 @@
   }
   .case-rail-bar {
     position: relative;
-    height: 2px;
-    background: rgba(255,255,255,0.10);
-    margin: 0 15px; /* 30px Tick-Kreise ragen an Enden hinaus — Kompensation */
+    height: 32px; /* Nur noch als Layout-Zone fuer die Ticks — keine sichtbare Linie */
+    margin: 0 15px;
   }
-  .case-rail-fill {
-    position: absolute; left: 0; top: 0; height: 100%;
-    background: linear-gradient(90deg, var(--pink), var(--pink-strong));
-    width: 0%;
-    transition: width 0.35s cubic-bezier(.4,0,.3,1);
-  }
+  .case-rail-fill { display: none; }
   .case-rail-ticks {
     position: absolute; inset: 0;
     display: grid;
@@ -863,13 +857,13 @@
   .case-rail-tick:nth-child(4) { justify-content: flex-end; }
   .case-rail-dot {
     position: absolute; top: 50%; transform: translateY(-50%);
-    width: 30px; height: 30px; border-radius: 50%;
+    width: 32px; height: 32px; border-radius: 50%;
     background: var(--navy-deep);
-    border: 1.5px solid rgba(255,255,255,0.24);
+    border: 1.5px solid rgba(255,255,255,0.32);
     display: flex; align-items: center; justify-content: center;
     font-family: "Fraunces", Georgia, serif; font-style: italic;
-    font-size: 13px; font-weight: 500;
-    color: rgba(244,239,231,0.55);
+    font-size: 15px; font-weight: 700;
+    color: rgba(244,239,231,0.9);
     transition: all 0.25s;
   }
   .case-rail-tick:nth-child(1) .case-rail-dot { left: 0; transform: translate(-50%, -50%); left: 15px; }

@@ -1400,16 +1400,29 @@
   /* TEAM */
   .team-block { padding: 160px 0; background: var(--navy); }
 
-  /* Auto-fit-Layout: waechst mit dem Team. Menschen + Dackel als gleichwertige
-     Karten im gleichen Grid — so bleibt der Dackel Teil des Teams, ohne in eine
-     "zweite Reihe" verdraengt zu werden, wenn 5+ Mitarbeiter dazukommen. */
+  /* Horizontaler Wisch-Slider: breite Karten (statt vieler schmaler nebeneinander),
+     touch-swipe und scroll-snap. Der User zieht die Team-Karten quer. */
   .team-people {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    display: flex;
     gap: 22px;
-    margin-top: 64px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 64px calc(50% - 50vw) 0;
+    padding: 8px calc(50vw - 50%) 24px;
+    scroll-padding: 8px calc(50vw - 50%);
   }
-  @media (max-width: 600px) { .team-people { grid-template-columns: 1fr; gap: 16px; } }
+  .team-people::-webkit-scrollbar { display: none; }
+  .team-people > .person {
+    flex: 0 0 auto;
+    width: clamp(280px, 32vw, 380px);
+    scroll-snap-align: start;
+  }
+  @media (max-width: 700px) {
+    .team-people { gap: 16px; }
+    .team-people > .person { width: clamp(260px, 78vw, 320px); }
+  }
 
   /* Dackel-Karte: gleiche Groesse wie eine Menschen-Karte, aber Pink-Akzent statt Weiss */
   .person--dackel {
