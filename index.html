@@ -1400,8 +1400,9 @@
   /* TEAM */
   .team-block { padding: 160px 0; background: var(--navy); }
 
-  /* Horizontaler Wisch-Slider: breite Karten (statt vieler schmaler nebeneinander),
-     touch-swipe und scroll-snap. Der User zieht die Team-Karten quer. */
+  /* Horizontaler Wisch-Slider: breite Karten, scroll-snap.
+     Passt sich der wrap-Breite an (kein full-viewport, sondern gleiche Breite
+     wie die anderen Inhalte oben/unten). */
   .team-people {
     display: flex;
     gap: 22px;
@@ -1409,9 +1410,8 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    margin: 64px calc(50% - 50vw) 0;
-    padding: 8px calc(50vw - 50%) 24px;
-    scroll-padding: 8px calc(50vw - 50%);
+    margin: 64px 0 0;
+    padding: 8px 0 24px;
   }
   .team-people::-webkit-scrollbar { display: none; }
   .team-people > .person {
@@ -2102,11 +2102,11 @@
   .cta-wappen::before {
     content: "";
     position: absolute;
-    width: 22%; aspect-ratio: 1 / 1;
+    width: 14%; aspect-ratio: 1 / 1;
     border-radius: 50%;
     background: radial-gradient(circle at 35% 30%, #f4b8c8 0%, var(--pink) 45%, var(--pink-strong) 100%);
-    box-shadow: 0 8px 18px rgba(217,123,150,0.45), inset -2px -3px 6px rgba(0,0,0,0.12);
-    top: 8px; left: 22%;
+    box-shadow: 0 6px 14px rgba(217,123,150,0.4), inset -2px -2px 4px rgba(0,0,0,0.12);
+    top: 24px; left: 28%;
     animation: ctaWappenBallFloat 2.6s cubic-bezier(.45,0,.55,1) infinite;
     z-index: 3;
   }
