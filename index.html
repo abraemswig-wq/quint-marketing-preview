@@ -2077,13 +2077,33 @@
   }
   /* Männchen-Dackel im CTA — aufrechte Pose, „bereit zu apportieren" */
   .cta-wappen {
-    width: clamp(120px, 14vw, 200px);
+    width: clamp(140px, 16vw, 220px);
     margin: 0 auto 32px;
-    opacity: 0.85;
+    opacity: 0.95;
     position: relative;
     z-index: 2;
+    padding-top: 60px; /* Raum fuer den Ball oberhalb */
   }
   .cta-wappen img { width: 100%; height: auto; display: block; }
+  /* Pinker Ball deutlich ueber dem Dackel-Kopf — er springt ihn hoch */
+  .cta-wappen::before {
+    content: "";
+    position: absolute;
+    width: 32%; aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #f4b8c8 0%, var(--pink) 45%, var(--pink-strong) 100%);
+    box-shadow: 0 10px 22px rgba(217,123,150,0.5), inset -3px -4px 8px rgba(0,0,0,0.12);
+    top: 0; left: 40%;
+    animation: ctaWappenBallFloat 2.6s cubic-bezier(.45,0,.55,1) infinite;
+    z-index: 3;
+  }
+  @keyframes ctaWappenBallFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-14px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cta-wappen::before { animation: none; }
+  }
   .cta-reassurance {
     list-style: none;
     margin: 48px auto 0;
@@ -2874,7 +2894,6 @@
          PLATZHALTER: 'PLACEHOLDER-CAL-URL' muss beim Go-Live durch echte Cal.com-URL ersetzt werden -->
     <div class="cta-booking-row">
       <a class="cta-book-primary" href="https://cal.com/PLACEHOLDER-CAL-URL/quint-erstgespraech" target="_blank" rel="noopener" data-spring>
-        <span class="book-icon" aria-hidden="true">📅</span>
         45-Min-Termin buchen
       </a>
       <span class="cta-book-or">— oder direkt per Mail —</span>
