@@ -1017,6 +1017,117 @@
     text-decoration: underline;
     text-underline-offset: 3px;
   }
+
+  /* WERK-SLIDER — horizontales Scroll-Snap-Karussell mit Prev/Next + Dots */
+  .werk-slider {
+    position: relative;
+    overflow: hidden;
+    background: var(--navy-deep);
+  }
+  .werk-slider-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .werk-slider-track::-webkit-scrollbar { display: none; }
+  .werk-slider-slide {
+    min-width: 100%;
+    height: 100%;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .werk-slider-slide img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* Prev/Next-Buttons */
+  .werk-slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px; height: 44px;
+    border-radius: 999px;
+    background: rgba(13, 39, 71, 0.72);
+    color: var(--cream);
+    border: 1px solid rgba(255,255,255,0.16);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, transform 0.2s, opacity 0.2s;
+    z-index: 3;
+    backdrop-filter: blur(6px);
+  }
+  .werk-slider-nav:hover { background: var(--pink); color: var(--navy-deep); border-color: var(--pink); }
+  .werk-slider-nav.prev { left: 14px; }
+  .werk-slider-nav.next { right: 14px; }
+  .werk-slider-nav[disabled] { opacity: 0.32; cursor: default; }
+  .werk-slider-nav[disabled]:hover { background: rgba(13,39,71,0.72); color: var(--cream); border-color: rgba(255,255,255,0.16); }
+  @media (max-width: 700px) {
+    .werk-slider-nav { width: 38px; height: 38px; font-size: 20px; }
+  }
+  /* Dots */
+  .werk-slider-dots {
+    position: absolute;
+    bottom: 14px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; gap: 8px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(13, 39, 71, 0.6);
+    backdrop-filter: blur(6px);
+    z-index: 2;
+  }
+  .werk-slider-dots .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.32);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .werk-slider-dots .dot.active {
+    background: var(--pink);
+    transform: scale(1.25);
+  }
+  /* Slide-Index / Caption */
+  .werk-slider-index {
+    position: absolute;
+    top: 14px; right: 14px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(13, 39, 71, 0.72);
+    backdrop-filter: blur(6px);
+    color: rgba(244,239,231,0.9);
+    font-size: 11px; letter-spacing: 0.12em;
+    font-weight: 700;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  /* Spezial-Slide: 4 Illus-Icons als Grid (statt einzelnes cover-Bild) */
+  .werk-slider-slide--illus {
+    background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .werk-illus-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+  }
+  .werk-illus-4 > img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    padding: 6px;
+  }
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -1232,10 +1343,30 @@
         </div>
       </div>
 
-      <!-- WERK 2: Foto-Kampagne (Dario) -->
+      <!-- WERK 2: Foto-Kampagne (Dario) — Slider durch 5 Reportage-Motive -->
       <div class="werk-block werk-block-swap">
-        <div class="werk-visual">
-          <img src="../assets/werkschau/dario/04-portrait-couch.avif" alt="REHAB FIVE Portrait vor Marken-Wandmalerei — Dario Ronge Kampagne 2025" loading="lazy" />
+        <div class="werk-visual werk-slider" data-slider aria-label="Foto-Kampagne REHAB FIVE — Bildergalerie">
+          <div class="werk-slider-track">
+            <div class="werk-slider-slide">
+              <img src="../assets/werkschau/dario/04-portrait-couch.avif" alt="REHAB FIVE Portrait vor Marken-Wandmalerei — Dario Ronge 2025" loading="lazy" />
+            </div>
+            <div class="werk-slider-slide">
+              <img src="../assets/werkschau/dario/reportage-01-rania.avif" alt="Athletik-Training mit Kurzhanteln im REHAB FIVE Studio" loading="lazy" />
+            </div>
+            <div class="werk-slider-slide">
+              <img src="../assets/werkschau/dario/reportage-02-rania.avif" alt="Coaching-Situation in Beweglichkeitstraining vor Signet-Wandmalerei" loading="lazy" />
+            </div>
+            <div class="werk-slider-slide">
+              <img src="../assets/werkschau/dario/reportage-03-rania.avif" alt="REHAB FIVE Behandlungssituation — Reportage" loading="lazy" />
+            </div>
+            <div class="werk-slider-slide">
+              <img src="../assets/werkschau/dario/reportage-04-rania.avif" alt="REHAB FIVE Alltag — Reportage" loading="lazy" />
+            </div>
+          </div>
+          <button class="werk-slider-nav prev" aria-label="Vorheriges Bild">‹</button>
+          <button class="werk-slider-nav next" aria-label="Nächstes Bild">›</button>
+          <div class="werk-slider-index" aria-hidden="true"><span class="idx-current">1</span> / <span class="idx-total">5</span></div>
+          <div class="werk-slider-dots" aria-hidden="true"></div>
         </div>
         <div class="werk-content">
           <div class="werk-eyebrow">02 · Foto-Kampagne 2025</div>
@@ -1245,25 +1376,36 @@
         </div>
       </div>
 
-      <!-- WERK 3: Anwendung im Alltag — Print, Merch, Illus-System als reale Objekte -->
+      <!-- WERK 3: Anwendung im Alltag — Slider durch Wandmalerei, Merch, Illus-System -->
       <div class="werk-block">
-        <div class="werk-visual werk-visual-mix">
-          <div class="werk-visual-hero">
-            <img src="../assets/werkschau/rania/rehab-tshirt-trex-2016.jpg" alt="REHAB FIVE Print-Motiv: T-Rex-Astronaut ‚Stronger Together‘ — Merch-Design" loading="lazy" />
+        <div class="werk-visual werk-slider werk-slider--light" data-slider aria-label="REHAB FIVE — Anwendungen im Alltag">
+          <div class="werk-slider-track">
+            <div class="werk-slider-slide">
+              <img src="../assets/werkschau/rania/wandmalerei-01.avif" alt="Wandmalerei im REHAB FIVE Studio — Korridor mit Bjoerns Bildwelt" loading="lazy" />
+            </div>
+            <div class="werk-slider-slide">
+              <img src="../assets/werkschau/rania/rehab-tshirt-trex-2016.jpg" alt="REHAB FIVE Print-Motiv „Stronger Together" — Team-Merch" loading="lazy" />
+            </div>
+            <div class="werk-slider-slide werk-slider-slide--illus">
+              <div class="werk-illus-4">
+                <img src="../assets/rehab-physio.avif" alt="Illustration Physiotherapie" loading="lazy" />
+                <img src="../assets/rehab-personal.avif" alt="Illustration Personal Training" loading="lazy" />
+                <img src="../assets/rehab-diagnostik.avif" alt="Illustration Diagnostik" loading="lazy" />
+                <img src="../assets/rehab-athletik.avif" alt="Illustration Athletik" loading="lazy" />
+              </div>
+            </div>
           </div>
-          <div class="werk-visual-strip">
-            <img src="../assets/rehab-physio.avif" alt="Illustration Physiotherapie" loading="lazy" />
-            <img src="../assets/rehab-personal.avif" alt="Illustration Personal Training" loading="lazy" />
-            <img src="../assets/rehab-diagnostik.avif" alt="Illustration Diagnostik" loading="lazy" />
-            <img src="../assets/rehab-athletik.avif" alt="Illustration Athletik" loading="lazy" />
-          </div>
+          <button class="werk-slider-nav prev" aria-label="Vorheriges Bild">‹</button>
+          <button class="werk-slider-nav next" aria-label="Nächstes Bild">›</button>
+          <div class="werk-slider-index" aria-hidden="true"><span class="idx-current">1</span> / <span class="idx-total">3</span></div>
+          <div class="werk-slider-dots" aria-hidden="true"></div>
         </div>
         <div class="werk-content">
           <div class="werk-eyebrow">03 · Anwendung im Alltag</div>
           <h3>Von der Datei <span class="italic">auf die Wand.</span></h3>
           <p>Illustrations-System und Signet enden nicht im Style-Guide. Sie liegen auf Kitteln, an Wänden, in Social-Posts, auf Recruiting-Flyern. Konsistent, weil das Marken-System stabil steht.</p>
-          <p>Ein konkretes Beispiel: das <strong>„Stronger Together"-Print-Motiv</strong>, gezeichnet für Team-Merch und Standort-Poster. Kein Stockmotiv, kein Template — eine eigene Marken-Erzählung, die zum Illustrations-System der Praxis passt.</p>
-          <p class="werk-attribution">Rania Landwehrmeyer · laufende Design-Anwendungen · Bjoerns Wandmalerei am Standort</p>
+          <p>Zwei konkrete Anwendungen: Bjoerns <strong>Wandmalerei</strong> am Standort, die die Marke direkt in den Raum trägt — und das <strong>„Stronger Together"-Print-Motiv</strong>, gezeichnet für Team-Merch und Standort-Poster.</p>
+          <p class="werk-attribution">Rania Landwehrmeyer · laufende Design-Anwendungen · Bjoern von Schulz · Wandmalerei am Standort</p>
         </div>
       </div>
 
@@ -1408,6 +1550,64 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
     update();
+  })();
+</script>
+
+<!-- WERK-SLIDER: Prev/Next-Buttons, Dots + Index sync auf Scroll-Position -->
+<script>
+  (function() {
+    document.querySelectorAll('[data-slider]').forEach(slider => {
+      const track   = slider.querySelector('.werk-slider-track');
+      const slides  = slider.querySelectorAll('.werk-slider-slide');
+      const prevBtn = slider.querySelector('.werk-slider-nav.prev');
+      const nextBtn = slider.querySelector('.werk-slider-nav.next');
+      const dotsBox = slider.querySelector('.werk-slider-dots');
+      const idxCur  = slider.querySelector('.idx-current');
+      const total   = slides.length;
+
+      // Dots erzeugen
+      if (dotsBox) {
+        dotsBox.innerHTML = '';
+        slides.forEach((_, i) => {
+          const d = document.createElement('span');
+          d.className = 'dot' + (i === 0 ? ' active' : '');
+          d.addEventListener('click', () => goTo(i));
+          dotsBox.appendChild(d);
+        });
+      }
+
+      const currentIndex = () => Math.round(track.scrollLeft / track.clientWidth);
+      const goTo = (i) => {
+        i = Math.max(0, Math.min(total - 1, i));
+        track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' });
+      };
+      const sync = () => {
+        const i = currentIndex();
+        if (idxCur) idxCur.textContent = String(i + 1);
+        if (dotsBox) [...dotsBox.children].forEach((d, k) => d.classList.toggle('active', k === i));
+        if (prevBtn) prevBtn.toggleAttribute('disabled', i === 0);
+        if (nextBtn) nextBtn.toggleAttribute('disabled', i === total - 1);
+      };
+
+      prevBtn?.addEventListener('click', () => goTo(currentIndex() - 1));
+      nextBtn?.addEventListener('click', () => goTo(currentIndex() + 1));
+
+      let scrollTimer;
+      track.addEventListener('scroll', () => {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(sync, 60);
+      }, { passive: true });
+
+      // Tastatur: ← / →, wenn Slider im Viewport
+      slider.setAttribute('tabindex', '0');
+      slider.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(currentIndex() - 1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); goTo(currentIndex() + 1); }
+      });
+
+      window.addEventListener('resize', sync);
+      sync();
+    });
   })();
 </script>
 
