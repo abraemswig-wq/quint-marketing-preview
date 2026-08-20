@@ -1093,8 +1093,11 @@
   }
   .werk-slider-slide img {
     width: 100%; height: 100%;
-    object-fit: cover;
+    /* contain statt cover: JEDES Bild komplett sichtbar, egal ob Landscape oder Portrait.
+       Der dunkle Slider-Hintergrund wirkt als Letterbox/Pillarbox. */
+    object-fit: contain;
     display: block;
+    background: var(--navy-deep);
   }
   /* Prev/Next-Buttons */
   .werk-slider-nav {
