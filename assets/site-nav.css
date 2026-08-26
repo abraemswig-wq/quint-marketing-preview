@@ -1,0 +1,118 @@
+/* Site-Nav: einheitliche Haupt-Nav für alle Sub-Pages
+   (Team-Profile, Portfolio, Journal-Artikel etc.)
+   Style angelehnt an die Nav auf index.html.
+*/
+.site-nav {
+  position: sticky; top: 0; z-index: 90;
+  background: rgba(20, 60, 107, 0.92);
+  backdrop-filter: saturate(140%) blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.site-nav__inner {
+  max-width: 1320px; margin: 0 auto;
+  padding: 14px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px;
+}
+.site-nav__logo img { height: 28px; width: auto; display: block; }
+.site-nav__links {
+  display: flex; gap: 28px;
+  font-size: 14px; font-weight: 500;
+  align-items: center;
+}
+.site-nav__links a {
+  color: rgba(244, 239, 231, 0.72);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+.site-nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 100%; height: 1.5px;
+  background: var(--pink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s cubic-bezier(.2,.8,.2,1);
+}
+.site-nav__links a:hover { color: var(--cream); }
+.site-nav__links a:hover::after { transform: scaleX(1); }
+.site-nav__cta {
+  padding: 10px 20px;
+  background: var(--pink);
+  color: var(--navy);
+  border-radius: 999px;
+  font-size: 13px; font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.site-nav__cta:hover { background: var(--pink-strong); transform: translateY(-2px); }
+.site-nav__hamburger {
+  display: none;
+  width: 42px; height: 42px;
+  background: none; border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  color: var(--cream);
+  cursor: pointer;
+  align-items: center; justify-content: center;
+}
+.site-nav__hamburger svg { width: 22px; height: 22px; }
+
+/* Mobile: Links werden zu Overlay-Menü */
+@media (max-width: 900px) {
+  .site-nav__links { display: none; }
+  .site-nav__cta { display: none; }
+  .site-nav__hamburger { display: inline-flex; }
+  .site-nav__inner { padding: 10px 20px; }
+}
+
+/* Mobile-Overlay wenn geöffnet */
+.site-nav-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 39, 71, 0.98);
+  z-index: 100;
+  display: none;
+  flex-direction: column;
+  padding: 80px 32px 40px;
+  overflow-y: auto;
+}
+.site-nav-menu.is-open { display: flex; }
+.site-nav-menu__close {
+  position: absolute; top: 20px; right: 20px;
+  width: 42px; height: 42px;
+  background: none; border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  color: var(--cream);
+  font-size: 26px; line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-nav-menu__links {
+  display: flex; flex-direction: column;
+  gap: 20px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+}
+.site-nav-menu__links a {
+  color: var(--cream);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 12px 0;
+}
+.site-nav-menu__links a:hover { color: var(--pink); }
+.site-nav-menu__cta {
+  margin-top: 40px;
+  padding: 16px 28px;
+  background: var(--pink);
+  color: var(--navy);
+  border-radius: 999px;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-size: 16px; font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  align-self: flex-start;
+}
