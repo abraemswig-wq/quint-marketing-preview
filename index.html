@@ -1431,9 +1431,26 @@
   /* TEAM */
   .team-block { padding: 160px 0; background: var(--navy); }
 
-  /* Horizontaler Wisch-Slider: breite Karten, scroll-snap.
-     Passt sich der wrap-Breite an (kein full-viewport, sondern gleiche Breite
-     wie die anderen Inhalte oben/unten). */
+  /* Team-Slider: Wrapper haelt Prev/Next-Pfeile + Fade-Kante rechts */
+  .team-slider-wrap {
+    position: relative;
+    margin-top: 64px;
+  }
+  /* Fade rechts: signalisiert "hier geht mehr". Auf mobile ausgeblendet. */
+  .team-slider-wrap::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; right: 0;
+    width: 90px;
+    background: linear-gradient(90deg, transparent, var(--navy));
+    pointer-events: none;
+    z-index: 3;
+    transition: opacity 0.3s;
+  }
+  .team-slider-wrap.at-end::after { opacity: 0; }
+  @media (max-width: 700px) { .team-slider-wrap::after { width: 40px; } }
+
+  /* Horizontaler Wisch-Slider: breite Karten, scroll-snap. */
   .team-people {
     display: flex;
     gap: 22px;
@@ -1441,7 +1458,6 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    margin: 64px 0 0;
     padding: 8px 0 24px;
   }
   .team-people::-webkit-scrollbar { display: none; }
@@ -1453,6 +1469,39 @@
   @media (max-width: 700px) {
     .team-people { gap: 16px; }
     .team-people > .person { width: clamp(260px, 78vw, 320px); }
+  }
+
+  /* Prev/Next-Pfeile — Pink-Chips ausserhalb der Cards, sichtbar auf Desktop */
+  .team-slider-nav {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--pink);
+    color: var(--navy);
+    border: none;
+    cursor: pointer;
+    font-size: 22px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 4;
+    box-shadow: 0 8px 20px rgba(232,155,177,0.35);
+    transition: transform 0.25s cubic-bezier(.2,.8,.2,1), background 0.25s, opacity 0.25s;
+  }
+  .team-slider-nav:hover { background: var(--pink-strong); transform: translateY(-50%) scale(1.1); }
+  .team-slider-nav.prev { left: -24px; }
+  .team-slider-nav.next { right: -24px; }
+  .team-slider-nav[disabled] {
+    opacity: 0;
+    pointer-events: none;
+  }
+  @media (max-width: 900px) {
+    .team-slider-nav { width: 40px; height: 40px; font-size: 18px; }
+    .team-slider-nav.prev { left: -8px; }
+    .team-slider-nav.next { right: -8px; }
+  }
+  @media (max-width: 500px) {
+    /* Auf sehr kleinen Screens Pfeile weg — Touch reicht */
+    .team-slider-nav { display: none; }
   }
 
   /* Dackel-Karte: gleiche Groesse wie eine Menschen-Karte, aber Pink-Akzent statt Weiss */
@@ -1518,8 +1567,10 @@
     color: var(--pink-soft);
     margin-bottom: 24px;
     line-height: 1.35;
-    /* Role-Zeile immer Platz fuer 2 Zeilen (wegen Rania's langer Rolle) */
-    min-height: calc(2 * 1.35em);
+    /* Role-Zeile Platz fuer 4 Zeilen — Bjoerns Rolle ist die laengste
+       ("Head of Special Operations · Logodesign · Illustration · Painting")
+       Damit alle Karten Name/Rolle/Bio auf gleicher Hoehe fluchten. */
+    min-height: calc(4 * 1.35em);
   }
   .person-bio {
     font-size: 16px;
@@ -2716,7 +2767,10 @@
       <h2>Vier Menschen. Ein <span class="italic">Wappentier.</span><br/>Eine Handschrift.</h2>
       <p class="lead">Quint ist kein Kollektiv und keine Agentur-Maschine. Stand heute sind wir vier: Strategie, Design, Logo-Handwerk, Fotografie. Plus ein Dackel, der einfach dazugehört. Wir wachsen kontrolliert weiter, „kleines Team" bleibt aber unser Prinzip. Wer mit uns arbeitet, arbeitet mit uns. Nicht mit einem Account Manager.</p>
     </div>
-    <!-- 4 Menschen als sauberes 4-Spalten-Grid -->
+    <!-- Team-Slider mit Prev/Next-Pfeilen und Fade-Kante -->
+    <div class="team-slider-wrap" data-team-slider>
+      <button class="team-slider-nav prev" data-team-prev aria-label="Vorheriges Team-Mitglied" disabled>‹</button>
+      <button class="team-slider-nav next" data-team-next aria-label="Nächstes Team-Mitglied">›</button>
     <div class="team-people">
       <a href="team-aric.html" class="person reveal person-link" aria-label="Aric Brämswig — Profil öffnen">
         <div class="person-signature" aria-hidden="true">
@@ -2808,6 +2862,7 @@
         <span class="person-cta">Ganze Geschichte <span class="arrow">→</span></span>
       </a>
     </div>
+    </div><!-- /.team-slider-wrap -->
   </div>
 </section>
 
@@ -3199,6 +3254,41 @@
     window.addEventListener('resize', () => {
       if (window.innerWidth > 800 && document.body.classList.contains('menu-open')) setOpen(false);
     });
+  })();
+</script>
+
+<!-- TEAM-SLIDER: Prev/Next-Scrollen, Fade-Kante sync, disabled-States -->
+<script>
+  (function() {
+    const wrap = document.querySelector('[data-team-slider]');
+    if (!wrap) return;
+    const track = wrap.querySelector('.team-people');
+    const prev  = wrap.querySelector('[data-team-prev]');
+    const next  = wrap.querySelector('[data-team-next]');
+    if (!track || !prev || !next) return;
+
+    const cardWidth = () => {
+      const c = track.querySelector('.person');
+      if (!c) return 300;
+      const gap = parseInt(getComputedStyle(track).gap) || 22;
+      return c.getBoundingClientRect().width + gap;
+    };
+
+    const sync = () => {
+      const atStart = track.scrollLeft <= 4;
+      const atEnd   = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      prev.toggleAttribute('disabled', atStart);
+      next.toggleAttribute('disabled', atEnd);
+      wrap.classList.toggle('at-end', atEnd);
+    };
+
+    prev.addEventListener('click', () => track.scrollBy({ left: -cardWidth(), behavior: 'smooth' }));
+    next.addEventListener('click', () => track.scrollBy({ left:  cardWidth(), behavior: 'smooth' }));
+
+    let t;
+    track.addEventListener('scroll', () => { clearTimeout(t); t = setTimeout(sync, 80); }, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
   })();
 </script>
 
