@@ -1302,6 +1302,37 @@
     transition: transform 0.4s cubic-bezier(.2,.8,.2,1), border-color 0.3s, background 0.3s;
     position: relative;
     overflow: hidden;
+    /* Card ist ein <a>: gesamte Flaeche klickbar, Farben unveraendert */
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  /* Kleiner pinker Klick-Chip oben rechts — signalisiert Klickbarkeit auf einen Blick */
+  .audience-chip {
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--pink);
+    color: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700;
+    z-index: 2;
+    box-shadow: 0 6px 14px rgba(232,155,177,0.35);
+    transition: transform 0.3s cubic-bezier(.2,.8,.2,1), background 0.25s;
+  }
+  .audience-chip::after {
+    content: "→";
+    line-height: 1;
+    transition: transform 0.25s;
+  }
+  .audience-card:hover .audience-chip {
+    transform: scale(1.12) rotate(-8deg);
+    background: var(--pink-strong);
+  }
+  .audience-card:hover .audience-chip::after {
+    transform: translateX(2px);
   }
   /* Wappen-Dackel als Watermark unten rechts in jeder Card —
      sichtbar genug zum Erkennen, sitzt fest in der Ecke, kein Hover-Wandern in Richtung Text.
@@ -1324,7 +1355,7 @@
   }
   /* p hält rechts einen 70px-Korridor für den Dackel frei — verhindert Textüberlappung */
   .audience-card p { padding-right: 70px; }
-  .audience-card > *:not(.audience-wappen) { position: relative; z-index: 1; }
+  .audience-card > *:not(.audience-wappen):not(.audience-chip) { position: relative; z-index: 1; }
   .audience-card:hover {
     transform: translateY(-8px);
     border-color: var(--pink);
@@ -2378,7 +2409,8 @@
       <p class="lead">Wir bauen keine Marken für alle. Wir bauen Marken für Inhaberinnen und Inhaber, die ihren Beruf ernst meinen — in drei Welten, in denen wir zuhause sind.</p>
     </div>
     <div class="audience-grid">
-      <div class="audience-card reveal" data-scroll-reveal data-tilt style="--stagger: 0">
+      <a class="audience-card reveal" data-scroll-reveal data-tilt style="--stagger: 0" href="fuer-praxen.html" aria-label="Health & Beauty — Mehr für Praxen">
+        <span class="audience-chip" aria-hidden="true"></span>
         <div class="audience-wappen" aria-hidden="true"><img src="assets/Dackel-1.svg" alt="" loading="lazy" decoding="async" /></div>
         <div class="audience-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2389,10 +2421,11 @@
         <h3>Health & Beauty</h3>
         <div class="audience-sub">Praxen, Studios, Optiker.</div>
         <p>Inhabergeführte Praxen und Studios, die Premium-Qualität liefern die endlich auch so aussehen wollen. Wir kennen die Branche und ihre Konventionen und wissen, wo sich Mut wirklich auszahlt.</p>
-        <a class="audience-more" href="fuer-praxen.html">Mehr für Praxen <span aria-hidden="true">→</span></a>
-      </div>
+        <span class="audience-more">Mehr für Praxen <span aria-hidden="true">→</span></span>
+      </a>
 
-      <div class="audience-card reveal" data-scroll-reveal data-tilt style="--stagger: 1">
+      <a class="audience-card reveal" data-scroll-reveal data-tilt style="--stagger: 1" href="fuer-vereine.html" aria-label="Sport & Vereine — Mehr für Vereine">
+        <span class="audience-chip" aria-hidden="true"></span>
         <div class="audience-wappen" aria-hidden="true"><img src="assets/Dackel-2.svg" alt="" loading="lazy" decoding="async" /></div>
         <div class="audience-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2405,10 +2438,11 @@
         <h3>Sport & Vereine</h3>
         <div class="audience-sub">Clubs, Verbände, Sportstätten.</div>
         <p>Vereine und Sportmarken, die mehr sind als ihr Logo auf dem Trikot. Wir kennen die Welt aus erster Hand und wissen, was bei Vereinen funktioniert und was nicht.</p>
-        <a class="audience-more" href="fuer-vereine.html">Mehr für Vereine <span aria-hidden="true">→</span></a>
-      </div>
+        <span class="audience-more">Mehr für Vereine <span aria-hidden="true">→</span></span>
+      </a>
 
-      <div class="audience-card reveal" data-scroll-reveal data-tilt style="--stagger: 2">
+      <a class="audience-card reveal" data-scroll-reveal data-tilt style="--stagger: 2" href="fuer-kanzleien.html" aria-label="Inhabergeführte Dienstleister — Mehr für Kanzleien">
+        <span class="audience-chip" aria-hidden="true"></span>
         <div class="audience-wappen" aria-hidden="true"><img src="assets/Dackel-5.svg" alt="" loading="lazy" decoding="async" /></div>
         <div class="audience-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2421,8 +2455,8 @@
         <h3>Inhabergeführte Dienstleister</h3>
         <div class="audience-sub">Kanzleien, Beratungen, Steuerbüros.</div>
         <p>Anwaltskanzleien, Steuerbüros, Beratungen, die merken: Mandanten googeln vor dem ersten Anruf. Wir machen aus Expertise eine Marke, die das auch ausstrahlt.</p>
-        <a class="audience-more" href="fuer-kanzleien.html">Mehr für Kanzleien <span aria-hidden="true">→</span></a>
-      </div>
+        <span class="audience-more">Mehr für Kanzleien <span aria-hidden="true">→</span></span>
+      </a>
     </div>
     <p class="audience-foot reveal" data-scroll-reveal>Du siehst deine Welt nicht? Schreib uns trotzdem. Wenn die Haltung passt, passt der Rest.</p>
   </div>
