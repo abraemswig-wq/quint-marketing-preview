@@ -1557,8 +1557,11 @@
     font-weight: 700;
     margin-bottom: 8px;
     letter-spacing: -0.02em;
-    /* Name-Zeile immer auf gleicher Hoehe — falls einer mal umbrechen wuerde */
-    min-height: 2.4rem;
+    line-height: 1.1;
+    /* Name-Zeile Platz fuer 2 Zeilen — 'Rania Landwehrmeyer' bricht sonst um
+       und verschiebt die Rolle nach unten. em statt rem, damit es mit der
+       font-size skaliert. */
+    min-height: calc(2 * 1.1em);
   }
   .person-role {
     font-family: "Fraunces", serif;
