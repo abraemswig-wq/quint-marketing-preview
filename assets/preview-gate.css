@@ -1,0 +1,68 @@
+/* Preview-Gate: Passwort-Overlay vor jeder Seite.
+   Fullscreen navy-Backdrop, zentraler Input, minimal Chrome. */
+.pgate {
+  position: fixed; inset: 0;
+  background: #143C6B;
+  z-index: 999999;
+  display: flex; align-items: center; justify-content: center;
+  padding: 32px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #F4EFE7;
+}
+.pgate.pgate--hidden { display: none; }
+.pgate__box { max-width: 400px; width: 100%; text-align: center; }
+.pgate__logo {
+  font-size: 42px; font-weight: 700; letter-spacing: -0.04em;
+  margin-bottom: 36px;
+  display: inline-flex; align-items: baseline;
+}
+.pgate__logo .dot {
+  color: #E89BB1; margin-left: 2px;
+  font-size: 42px; line-height: 1;
+}
+.pgate__title {
+  font-size: 20px; font-weight: 600;
+  margin-bottom: 10px;
+}
+.pgate__hint {
+  font-size: 14px;
+  color: rgba(244,239,231,0.55);
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+.pgate__form { display: flex; gap: 8px; }
+.pgate__input {
+  flex: 1;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #F4EFE7;
+  border-radius: 999px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color .2s;
+  font-family: inherit;
+}
+.pgate__input:focus { border-color: #E89BB1; }
+.pgate__input::placeholder { color: rgba(244,239,231,0.35); }
+.pgate__btn {
+  padding: 14px 24px;
+  background: #E89BB1;
+  color: #143C6B;
+  border: none;
+  border-radius: 999px;
+  font-size: 15px; font-weight: 700;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+  font-family: inherit;
+}
+.pgate__btn:hover { background: #D87A95; transform: translateY(-1px); }
+.pgate__error {
+  color: #E89BB1;
+  font-size: 13px;
+  margin-top: 18px;
+  min-height: 20px;
+  opacity: 0;
+  transition: opacity .2s;
+}
+.pgate.pgate--err .pgate__error { opacity: 1; }
