@@ -1046,18 +1046,9 @@
   /* Method-Section sitzt eng an der Statement-Section davor — beide auf navy-deep.
      Trennung passiert typografisch ueber den Eyebrow mit Trennstrichen. */
   .method-block { padding: 40px 0 120px; background: var(--navy-deep); position: relative; overflow: hidden; }
-  /* Eyebrow der Method-Section mit dezenten Fraunces-Trennstrichen links/rechts */
-  .method-block .section-head .eyebrow {
-    display: inline-flex; align-items: center; gap: 18px;
-    padding: 0;
-  }
-  .method-block .section-head .eyebrow::before,
-  .method-block .section-head .eyebrow::after {
-    content: "";
-    display: inline-block;
-    width: 36px; height: 1px;
-    background: rgba(232,155,177,0.4);
-  }
+  /* Method-Eyebrow nutzt jetzt das Standard-Zweistufen-Muster wie alle
+     anderen Sections (Nav-Label | Sub in Fraunces-Italic).
+     Trennstriche-Ueberschreibung von frueher entfernt. */
   .method-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
