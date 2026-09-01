@@ -16,7 +16,7 @@
 }
 .site-nav__logo img { height: 28px; width: auto; display: block; }
 .site-nav__links {
-  display: flex; gap: 28px;
+  display: flex; gap: 26px;
   font-size: 14px; font-weight: 500;
   align-items: center;
 }
@@ -25,7 +25,17 @@
   text-decoration: none;
   transition: color 0.2s;
   position: relative;
+  display: inline-flex; flex-direction: column;
+  line-height: 1.15; gap: 2px;
 }
+.site-nav__sub {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic; font-weight: 400;
+  font-size: 10.5px;
+  color: rgba(232, 155, 177, 0.65);
+  transition: color 0.2s;
+}
+.site-nav__links a:hover .site-nav__sub { color: var(--pink, #E89BB1); }
 .site-nav__links a::after {
   content: "";
   position: absolute;
@@ -102,8 +112,16 @@
   text-decoration: none;
   border-bottom: 1px solid rgba(255,255,255,0.08);
   padding: 12px 0;
+  display: flex; flex-direction: column; gap: 4px;
 }
 .site-nav-menu__links a:hover { color: var(--pink); }
+.site-nav-menu__sub {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic; font-weight: 400;
+  font-size: 15px; letter-spacing: 0;
+  color: var(--pink, #E89BB1);
+  opacity: 0.72;
+}
 .site-nav-menu__cta {
   margin-top: 40px;
   padding: 16px 28px;
