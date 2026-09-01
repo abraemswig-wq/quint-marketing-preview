@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hagen Heidinger — Verwaltung · Quint</title>
+<meta name="description" content="Hagen Heidinger — Verwaltung bei Quint. Angebote, Rechnungen, Organisation. Damit sich das Team auf Marken konzentrieren kann." />
+<meta name="theme-color" content="#143C6B" />
+<link rel="canonical" href="https://abraemswig-wq.github.io/quint-marketing-preview/team-hagen.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile" />
+<meta property="og:title" content="Hagen Heidinger — Quint" />
+<meta property="og:description" content="Verwaltung bei Quint · Angebote, Rechnungen, Organisation" />
+<meta property="og:image" content="https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png" />
+<meta property="og:locale" content="de_DE" />
+
+<!-- Schema.org Person -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Hagen Heidinger",
+  "givenName": "Hagen",
+  "familyName": "Heidinger",
+  "jobTitle": "Verwaltung bei Quint",
+  "worksFor": [
+    { "@type": "Organization", "name": "Quint Marketing", "legalName": "Quint Marketing GmbH", "url": "https://abraemswig-wq.github.io/quint-marketing-preview/" },
+    { "@type": "ProfessionalService", "name": "REHAB FIVE", "url": "https://rehab-five.com" }
+  ],
+  "address": { "@type": "PostalAddress", "addressLocality": "Münster", "addressCountry": "DE" }
+}
+</script>
+<link href="assets/fonts.css" rel="stylesheet">
+<style>
+  :root {
+    --navy: #143C6B;
+    --navy-deep: #0D2747;
+    --pink: #E89BB1;
+    --pink-soft: #F3C7D4;
+    --pink-strong: #D87A95;
+    --cream: #F4EFE7;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Familjen Grotesk", system-ui, sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body.locked { overflow: hidden; height: 100vh; }
+  .italic { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+  /* CINEMATIC LOADER */
+  .loader { position: fixed; inset: 0; background: #0D2747; z-index: 9999; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .loader-content { text-align: center; position: relative; }
+  .loader-quint { position: relative; display: inline-block; opacity: 0; animation: loaderFadeIn 0.8s cubic-bezier(.2,.8,.2,1) 0.1s forwards; } .loader-quint img.loader-logo { width: clamp(260px, 42vw, 620px); height: auto; display: block; }
+  .loader-dot { position: absolute; left: 20.96%; top: 86.71%; width: 4.79%; aspect-ratio: 1 / 1; background: #E89BB1; border-radius: 50%; transform: translate(-50%, -50%) scale(0); animation: loaderDotPop 0.6s cubic-bezier(.34,1.56,.64,1) 0.9s forwards, loaderDotExpand 1s cubic-bezier(.6,0,.7,1) 2.1s forwards; }
+  @keyframes loaderFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes loaderDotPop { from { transform: translate(-50%, -50%) scale(0); } to { transform: translate(-50%, -50%) scale(1); } }
+  @keyframes loaderDotExpand { 0% { transform: translate(-50%, -50%) scale(1); } 100% { transform: translate(-50%, -50%) scale(200); } }
+  .loader-progress { position: absolute; bottom: -80px; left: 50%; transform: translateX(-50%); width: 200px; height: 2px; background: rgba(255,255,255,0.1); overflow: hidden; }
+  .loader-progress::after { content: ""; position: absolute; left: 0; top: 0; width: 0; height: 100%; background: #E89BB1; animation: loaderProgress 2s cubic-bezier(.2,.8,.2,1) forwards; }
+  @keyframes loaderProgress { from { width: 0; } to { width: 100%; } }
+  .loader.done { pointer-events: none; animation: loaderHide 0.8s cubic-bezier(.6,0,.7,1) 0.2s forwards; }
+  @keyframes loaderHide { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+  @media (prefers-reduced-motion: reduce) { .loader { display: none; } }
+
+  /* HERO */
+  .hero { padding: 100px 0 80px; position: relative; }
+  .breadcrumb { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 40px; }
+  .breadcrumb a:hover { color: var(--pink); }
+  .breadcrumb-sep { margin: 0 10px; opacity: 0.4; }
+
+  .profile-hero { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: center; }
+  @media (max-width: 800px) { .profile-hero { grid-template-columns: 1fr; gap: 32px; } }
+
+  .profile-initials-block {
+    position: relative;
+    background: linear-gradient(135deg, var(--pink-strong) 0%, var(--pink) 100%);
+    border-radius: 28px;
+    padding: 64px 32px;
+    aspect-ratio: 1 / 1.1;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .profile-initials-block::before {
+    content: "";
+    position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 50%;
+  }
+  .profile-initials {
+    font-family: "Fraunces", serif; font-style: italic; font-weight: 400;
+    font-size: clamp(120px, 18vw, 220px);
+    color: var(--navy);
+    line-height: 0.9; letter-spacing: -0.05em;
+    position: relative; z-index: 2;
+  }
+  .profile-photo-stamp {
+    position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: var(--navy); color: var(--cream);
+    padding: 8px 14px; border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;
+    z-index: 3;
+  }
+  .profile-signature-mark {
+    position: absolute; top: 24px; right: 24px;
+    width: clamp(56px, 8vw, 84px); height: clamp(56px, 8vw, 84px);
+    color: var(--navy); opacity: 0.32; z-index: 2; pointer-events: none;
+  }
+  .profile-signature-mark svg { width: 100%; height: 100%; }
+  .profile-meta-eyebrow { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--pink); margin-bottom: 20px; }
+  .profile-name { font-size: clamp(40px, 5.5vw, 72px); line-height: 0.96; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 20px; }
+  .profile-role {
+    font-family: "Fraunces", serif; font-style: italic; font-weight: 400;
+    font-size: clamp(22px, 2.2vw, 30px); color: var(--pink);
+    margin-bottom: 28px; line-height: 1.25;
+  }
+  .profile-lead { font-size: clamp(17px, 1.4vw, 20px); color: rgba(255,255,255,0.78); line-height: 1.55; max-width: 520px; }
+
+  /* SECTIONS */
+  .section { padding: 100px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+  .section h2 { font-size: clamp(28px, 3.5vw, 48px); line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 36px; }
+  .section h2 .italic { color: var(--pink); }
+  .section p { font-size: 17px; color: rgba(255,255,255,0.78); line-height: 1.6; max-width: 680px; margin-bottom: 18px; }
+  .section p strong { color: var(--white); font-weight: 500; }
+  .bullet-list { list-style: none; padding: 0; margin: 24px 0 40px; max-width: 720px; }
+  .bullet-list li { padding: 16px 0 16px 28px; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 17px; line-height: 1.6; color: rgba(244,239,231,0.85); position: relative; }
+  .bullet-list li:last-child { border-bottom: none; }
+  .bullet-list li::before { content: "✦"; position: absolute; left: 0; color: var(--pink); font-size: 14px; top: 18px; }
+  .bullet-list li strong { color: var(--white); font-weight: 600; }
+  .section h2 + p { font-size: 18px; line-height: 1.6; color: rgba(244,239,231,0.85); margin-bottom: 16px; }
+  .section h2:not(:first-of-type) { margin-top: 56px; }
+
+  /* CTA */
+  .profile-cta {
+    padding: 120px 0; text-align: center;
+    background: radial-gradient(ellipse at 50% 0%, rgba(232,155,177,0.07) 0%, transparent 60%), var(--navy-deep);
+    border-top: 1px solid rgba(232,155,177,0.15);
+  }
+  .profile-cta h2 { font-size: clamp(36px, 5vw, 64px); margin-bottom: 28px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; }
+  .profile-cta h2 .italic { color: var(--pink); }
+  .profile-cta p { color: rgba(255,255,255,0.7); margin: 0 auto 36px; max-width: 540px; font-size: 16px; }
+  .profile-cta .email-pill {
+    display: inline-block; font-family: "Fraunces", serif; font-style: italic;
+    font-size: clamp(20px, 2vw, 28px);
+    color: var(--pink); padding: 14px 28px;
+    border: 2px solid var(--pink); border-radius: 999px;
+    transition: background 0.3s, color 0.3s;
+  }
+  .profile-cta .email-pill:hover { background: var(--pink); color: var(--navy); }
+
+  /* FOOTER */
+  footer { padding: 32px; background: var(--navy-deep); color: rgba(244,239,231,0.4); text-align: center; font-size: 12px; letter-spacing: 0.1em; }
+  footer a:hover { color: var(--pink); }
+
+  /* FOCUS */
+  *:focus { outline: none; }
+  *:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; border-radius: 4px; transition: outline-offset 0.15s; }
+
+  .skip-link { position: absolute; left: -9999px; top: 0; z-index: 10000; padding: 12px 18px; background: var(--pink); color: var(--navy); font-weight: 700; border-radius: 0 0 12px 0; font-size: 14px; }
+  .skip-link:focus, .skip-link:focus-visible { left: 0; }
+
+  /* SUB-NAV */
+  .sub-icp-nav { background: rgba(0,0,0,0.15); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .sub-icp-inner { max-width: 1200px; margin: 0 auto; padding: 10px 32px; display: flex; align-items: center; gap: 14px; font-size: 13px; flex-wrap: wrap; }
+  .sub-icp-label { letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; color: rgba(244,239,231,0.6); font-size: 11px; }
+  .sub-icp-nav a { color: rgba(244,239,231,0.82); padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); transition: background 0.2s, color 0.2s, border-color 0.2s; text-decoration: none; }
+  .sub-icp-nav a:hover { background: rgba(232,155,177,0.12); color: #E89BB1; border-color: rgba(232,155,177,0.5); }
+  @media (max-width: 700px) { .sub-icp-inner { padding: 10px 22px; gap: 8px; } .sub-icp-nav a { padding: 4px 10px; font-size: 12px; } .sub-icp-label { font-size: 10px; } }
+</style>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Hagen Heidinger — Quint" />
+<meta name="twitter:description" content="Verwaltung bei Quint · Angebote, Rechnungen, Organisation" />
+<meta name="twitter:image" content="https://abraemswig-wq.github.io/quint-marketing-preview/og-image.png" />
+<link rel="stylesheet" href="assets/cookie-consent.css">
+</head>
+<body class="locked">
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="loader" id="loader">
+  <div class="loader-content">
+    <div class="loader-quint"><img class="loader-logo" src="assets/quint-logo-claim-white.png" alt="Quint" fetchpriority="high" decoding="async" /><span class="loader-dot"></span></div>
+    <div class="loader-progress"></div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="assets/site-nav.css" />
+<div data-site-nav></div>
+<script src="assets/site-nav.js" defer></script>
+<nav class="sub-icp-nav" aria-label="Zielgruppen-Navigation">
+  <div class="sub-icp-inner">
+    <span class="sub-icp-label">Für:</span>
+    <a href="fuer-praxen.html">Praxen</a>
+    <a href="fuer-vereine.html">Vereine</a>
+    <a href="fuer-kanzleien.html">Kanzleien</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Quint</a><span class="breadcrumb-sep">/</span>
+      <a href="index.html#team">Team</a><span class="breadcrumb-sep">/</span>
+      Hagen Heidinger
+    </nav>
+
+    <div class="profile-hero">
+      <div class="profile-initials-block">
+        <div class="profile-signature-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <rect x="10" y="18" width="44" height="32" rx="3" stroke="currentColor" stroke-width="3" fill="none"/>
+            <line x1="10" y1="28" x2="54" y2="28" stroke="currentColor" stroke-width="2.5"/>
+            <line x1="18" y1="38" x2="34" y2="38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="18" y1="44" x2="28" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="profile-initials">HH</div>
+        <span class="profile-photo-stamp">Foto folgt</span>
+      </div>
+
+      <div>
+        <div class="profile-meta-eyebrow">Verwaltung · Quint</div>
+        <h1 class="profile-name">Hagen Heidinger</h1>
+        <p class="profile-role">Verwaltung — <span class="italic">der Laden hält, damit die Marken wachsen.</span></p>
+        <p class="profile-lead">Verantwortet Verwaltung, Angebote, Rechnungen und Organisation bei Quint. Sein Bereich ist die Voraussetzung dafür, dass sich der Rest des Teams auf Marken konzentrieren kann — nicht auf Papierkram.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="main">
+  <div class="wrap">
+    <h2>Was Hagen bei Quint <span class="italic">übernimmt.</span></h2>
+    <p>Drei Bereiche, in denen er den Laden zusammenhält:</p>
+
+    <ul class="bullet-list">
+      <li><strong>Angebote &amp; Rechnungen.</strong> Vom ersten Scope bis zum letzten Zahlungseingang. Sauber dokumentiert, pünktlich versendet, nachvollziehbar für alle Beteiligten.</li>
+      <li><strong>Organisation &amp; Prozesse.</strong> Tools, Termine, interne Abläufe. Damit das Team schnell entscheiden und arbeiten kann, ohne sich mit Koordinations-Overhead aufzureiben.</li>
+      <li><strong>Verwaltung im Alltag.</strong> Verträge, Buchhaltung im Zusammenspiel mit dem Steuerbüro, Behördenkram. Alles, was nach hinten laufen muss, damit vorne Marken entstehen können.</li>
+    </ul>
+
+    <h2>Was er <span class="italic">mitbringt.</span></h2>
+    <p>Hagen ist COO bei REHAB FIVE — Arics Physiotherapie-Praxis mit zwei Standorten in Münster. Er hat den operativen Aufbau eines wachsenden Gesundheitsunternehmens seit Jahren mitverantwortet: Strukturen für ein Team, das größer wird, ohne dass die Qualität leidet. Diese Erfahrung fließt direkt in die Verwaltungsarbeit bei Quint ein.</p>
+    <p>Sein Modus: strukturiert, verlässlich, unaufgeregt. Verwaltung ist bei ihm kein Selbstzweck, sondern der Unterbau, damit vorne Handwerk stattfinden kann. Wenn er seinen Job gut macht, merkt niemand, dass es ihn gibt — bis etwas fehlt.</p>
+  </div>
+</section>
+
+<section class="profile-cta">
+  <div class="wrap">
+    <h2>Erst Quint <span class="italic">kennenlernen?</span></h2>
+    <p>45 Minuten, kostenlos. Mit Aric, Rania, Bjoern oder Dario, je nachdem, was zu eurem Projekt passt.</p>
+    <a class="email-pill" href="mailto:hallo@quint-marketing.com">Erstgespräch anfragen →</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 QUINT · <a href="index.html">Hauptseite</a> · <a href="team-aric.html">Aric</a> · <a href="team-rania.html">Rania</a> · <a href="team-bjoern.html">Bjoern</a> · <a href="team-dario.html">Dario</a> · <a href="team-christian.html">Christian</a>
+</footer>
+
+<script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    if (!loader) return;
+    const params = new URLSearchParams(window.location.search);
+    const skip = params.get('skip-loader') === '1';
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const delay = (skip || reduceMotion) ? 0 : 2800;
+    setTimeout(() => {
+      loader.classList.add('done');
+      document.body.classList.remove('locked');
+    }, delay);
+  });
+</script>
+
+<script src="assets/cookie-consent.js" defer></script>
+<script src="assets/ga4-loader.js" defer></script>
+</body>
+</html>
