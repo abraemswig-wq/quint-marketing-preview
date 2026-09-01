@@ -21,14 +21,14 @@
       <img src="${base}assets/quint-logo-white.svg" alt="Quint" decoding="async" />
     </a>
     <div class="site-nav__links">
-      <a href="${base}index.html#leistungen"><span>Leistungen</span><span class="site-nav__sub">Was wir machen</span></a>
-      <a href="${base}index.html#fuer-wen"><span>Für wen</span><span class="site-nav__sub">Drei Welten</span></a>
-      <a href="${base}index.html#methode"><span>Methode</span><span class="site-nav__sub">Wie wir denken</span></a>
-      <a href="${base}arbeit/"><span>Arbeit</span><span class="site-nav__sub">Case-Studies</span></a>
-      <a href="${base}index.html#team"><span>Team</span><span class="site-nav__sub">Wer wir sind</span></a>
-      <a href="${base}ueber-uns.html"><span>Über uns</span><span class="site-nav__sub">Wie es begann</span></a>
-      <a href="${base}journal/"><span>Journal</span><span class="site-nav__sub">Gedanken zur Marke</span></a>
-      <a href="${base}index.html#faq"><span>FAQ</span><span class="site-nav__sub">Häufige Fragen</span></a>
+      <a href="${base}index.html#leistungen">Leistungen</a>
+      <a href="${base}index.html#fuer-wen">Für wen</a>
+      <a href="${base}index.html#methode">Methode</a>
+      <a href="${base}arbeit/">Arbeit</a>
+      <a href="${base}index.html#team">Team</a>
+      <a href="${base}ueber-uns.html">Über uns</a>
+      <a href="${base}journal/">Journal</a>
+      <a href="${base}index.html#faq">FAQ</a>
     </div>
     <a class="site-nav__cta" href="${base}index.html#kontakt">Erstgespräch →</a>
     <button class="site-nav__hamburger" aria-label="Menü öffnen" aria-expanded="false" data-menu-open>
@@ -43,14 +43,14 @@
 <div class="site-nav-menu" data-menu>
   <button class="site-nav-menu__close" aria-label="Menü schließen" data-menu-close>×</button>
   <div class="site-nav-menu__links">
-    <a href="${base}index.html#leistungen" data-menu-close><span>Leistungen</span><span class="site-nav-menu__sub">Was wir machen</span></a>
-    <a href="${base}index.html#fuer-wen"   data-menu-close><span>Für wen</span><span class="site-nav-menu__sub">Drei Welten</span></a>
-    <a href="${base}index.html#methode"    data-menu-close><span>Methode</span><span class="site-nav-menu__sub">Wie wir denken</span></a>
-    <a href="${base}arbeit/"               data-menu-close><span>Arbeit</span><span class="site-nav-menu__sub">Case-Studies</span></a>
-    <a href="${base}index.html#team"       data-menu-close><span>Team</span><span class="site-nav-menu__sub">Wer wir sind</span></a>
-    <a href="${base}ueber-uns.html"        data-menu-close><span>Über uns</span><span class="site-nav-menu__sub">Wie es begann</span></a>
-    <a href="${base}journal/"              data-menu-close><span>Journal</span><span class="site-nav-menu__sub">Gedanken zur Marke</span></a>
-    <a href="${base}index.html#faq"        data-menu-close><span>FAQ</span><span class="site-nav-menu__sub">Häufige Fragen</span></a>
+    <a href="${base}index.html#leistungen" data-menu-close>Leistungen</a>
+    <a href="${base}index.html#fuer-wen"   data-menu-close>Für wen</a>
+    <a href="${base}index.html#methode"    data-menu-close>Methode</a>
+    <a href="${base}arbeit/"               data-menu-close>Arbeit</a>
+    <a href="${base}index.html#team"       data-menu-close>Team</a>
+    <a href="${base}ueber-uns.html"        data-menu-close>Über uns</a>
+    <a href="${base}journal/"              data-menu-close>Journal</a>
+    <a href="${base}index.html#faq"        data-menu-close>FAQ</a>
   </div>
   <a class="site-nav-menu__cta" href="${base}index.html#kontakt" data-menu-close>Erstgespräch →</a>
 </div>

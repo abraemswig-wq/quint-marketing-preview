@@ -404,6 +404,24 @@
     font-weight: 600;
     color: var(--pink);
   }
+  /* Zweistufige Eyebrow: Nav-Label | Sub-Label
+     Der zweite Teil sitzt daneben, Fraunces-italic, normal case */
+  .eyebrow-sep {
+    display: inline-block;
+    margin: 0 10px;
+    opacity: 0.4;
+    font-weight: 400;
+  }
+  .eyebrow-sub {
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    color: rgba(232,155,177,0.72);
+    font-size: 14px;
+    vertical-align: baseline;
+  }
   h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.025em; line-height: 1.02; }
   .italic {
     font-family: "Fraunces", Georgia, serif;
@@ -460,18 +478,7 @@
   }
   body.nav-shrunk .logo img { height: 18px; }
   @media (max-width: 800px) { .logo img { height: 26px; } }
-  .nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 500; align-items: center; }
-  /* Zweistufiges Nav-Item: Haupt-Label oben, kleiner Sub-Text darunter */
-  .nav-links a { display: inline-flex; flex-direction: column; line-height: 1.15; gap: 2px; }
-  .nav-links a .nav-sub {
-    font-family: "Fraunces", Georgia, serif;
-    font-style: italic; font-weight: 400;
-    font-size: 10.5px; letter-spacing: 0.01em;
-    color: rgba(232,155,177,0.65);
-    transition: color 0.2s;
-  }
-  .nav-links a:hover .nav-sub { color: var(--pink); }
-  body.nav-shrunk nav .nav-links a .nav-sub { display: none; }
+  .nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 500; }
   .nav-social {
     display: flex; gap: 10px; align-items: center;
     margin-right: 14px;
@@ -551,14 +558,6 @@
     opacity: 0;
     transform: translateX(20px);
     transition-delay: 0ms;
-    /* Zweistufig: Haupt + kleiner Sub */
-    display: flex; flex-direction: column; gap: 4px;
-  }
-  .mobile-menu a .mm-sub {
-    font-family: "Fraunces", Georgia, serif;
-    font-style: italic; font-weight: 400;
-    font-size: 15px; letter-spacing: 0;
-    color: var(--pink); opacity: 0.72;
   }
   body.menu-open .mobile-menu a {
     opacity: 1;
@@ -2422,14 +2421,14 @@
   <div class="wrap nav-inner">
     <a href="#top" class="logo" aria-label="Quint — Startseite"><img src="assets/quint-logo-white.svg" alt="Quint" fetchpriority="high" decoding="sync" /></a>
     <div class="nav-links">
-      <a href="#leistungen"><span>Leistungen</span><span class="nav-sub">Was wir machen</span></a>
-      <a href="#fuer-wen"><span>Für wen</span><span class="nav-sub">Drei Welten</span></a>
-      <a href="#methode"><span>Methode</span><span class="nav-sub">Wie wir denken</span></a>
-      <a href="arbeit/"><span>Arbeit</span><span class="nav-sub">Case-Studies</span></a>
-      <a href="#team"><span>Team</span><span class="nav-sub">Wer wir sind</span></a>
-      <a href="ueber-uns.html"><span>Über uns</span><span class="nav-sub">Wie es begann</span></a>
-      <a href="journal/"><span>Journal</span><span class="nav-sub">Gedanken zur Marke</span></a>
-      <a href="#faq"><span>FAQ</span><span class="nav-sub">Häufige Fragen</span></a>
+      <a href="#leistungen">Leistungen</a>
+      <a href="#fuer-wen">Für wen</a>
+      <a href="#methode">Methode</a>
+      <a href="arbeit/">Arbeit</a>
+      <a href="#team">Team</a>
+      <a href="ueber-uns.html">Über uns</a>
+      <a href="journal/">Journal</a>
+      <a href="#faq">FAQ</a>
     </div>
     <div class="nav-social" aria-label="Quint auf Social Media">
       <a href="https://www.instagram.com/quint.marketing/" target="_blank" rel="noopener noreferrer" aria-label="Quint auf Instagram">
@@ -2448,14 +2447,14 @@
 
 <div class="menu-backdrop" id="menuBackdrop" aria-hidden="true"></div>
 <aside class="mobile-menu" id="mobileMenu" aria-hidden="true" aria-label="Mobile Navigation">
-  <a href="#leistungen" data-mobile-link><span class="mm-main">Leistungen</span><span class="mm-sub">Was wir machen</span></a>
-  <a href="#fuer-wen" data-mobile-link><span class="mm-main">Für wen</span><span class="mm-sub">Drei Welten</span></a>
-  <a href="#methode" data-mobile-link><span class="mm-main">Methode</span><span class="mm-sub">Wie wir denken</span></a>
-  <a href="arbeit/" data-mobile-link><span class="mm-main">Arbeit</span><span class="mm-sub">Case-Studies</span></a>
-  <a href="#team" data-mobile-link><span class="mm-main">Team</span><span class="mm-sub">Wer wir sind</span></a>
-  <a href="ueber-uns.html" data-mobile-link><span class="mm-main">Über uns</span><span class="mm-sub">Wie es begann</span></a>
-  <a href="journal/" data-mobile-link><span class="mm-main">Journal</span><span class="mm-sub">Gedanken zur Marke</span></a>
-  <a href="#faq" data-mobile-link><span class="mm-main">FAQ</span><span class="mm-sub">Häufige Fragen</span></a>
+  <a href="#leistungen" data-mobile-link>Leistungen</a>
+  <a href="#fuer-wen" data-mobile-link>Für wen</a>
+  <a href="#methode" data-mobile-link>Methode</a>
+  <a href="arbeit/" data-mobile-link>Arbeit</a>
+  <a href="#team" data-mobile-link>Team</a>
+  <a href="ueber-uns.html" data-mobile-link>Über uns</a>
+  <a href="journal/" data-mobile-link>Journal</a>
+  <a href="#faq" data-mobile-link>FAQ</a>
   <a class="mobile-cta" href="#kontakt" data-mobile-link>Erstgespräch →</a>
   <div class="mobile-meta">Quint · Werkstatt für Marken · Münster</div>
 </aside>
@@ -2498,7 +2497,7 @@
 <section class="audience-block" id="fuer-wen" aria-labelledby="fuer-wen-heading">
   <div class="wrap">
     <div class="section-head reveal" data-scroll-reveal>
-      <div class="eyebrow">Für wen wir bauen</div>
+      <div class="eyebrow">Für wen<span class="eyebrow-sep">|</span><span class="eyebrow-sub">Drei Welten</span></div>
       <h2 id="fuer-wen-heading">Drei Welten.<br/><span class="italic">Eine Handschrift.</span></h2>
       <p class="lead">Wir bauen keine Marken für alle. Wir bauen Marken für Inhaberinnen und Inhaber, die ihren Beruf ernst meinen — in drei Welten, in denen wir zuhause sind.</p>
     </div>
@@ -2559,7 +2558,7 @@
 <section class="pillars-block" id="leistungen">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">Was wir machen</div>
+      <div class="eyebrow">Leistungen<span class="eyebrow-sep">|</span><span class="eyebrow-sub">Was wir machen</span></div>
       <h2>Drei Dinge.<br/><span class="italic">Alle richtig.</span></h2>
       <p class="lead">Wir sind keine Full-Service-Bude, die alles ein bisschen macht. Wir sind die drei Pfoten, die zählen, wenn ein Mittelständler endlich wie sich selbst aussehen will — vom Markenkern bis zum Karton, in dem er ankommt.</p>
     </div>
@@ -2671,7 +2670,7 @@
 <section class="method-block" id="methode">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">Wie wir denken</div>
+      <div class="eyebrow">Methode<span class="eyebrow-sep">|</span><span class="eyebrow-sub">Wie wir denken</span></div>
       <h2>Erst der Ball.<br/><span class="italic">Dann das Rennen.</span></h2>
       <p class="lead">Die meisten Agenturen liefern Output. Wir liefern Richtung. Bevor wir auch nur einen Beitrag gestalten, wissen wir warum.</p>
     </div>
@@ -2736,7 +2735,7 @@
 <section class="cases-block" id="arbeit">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">Was wir gebaut haben</div>
+      <div class="eyebrow">Arbeit<span class="eyebrow-sep">|</span><span class="eyebrow-sub">Was wir gebaut haben</span></div>
       <h2>Marken,<br/>die <span class="italic">stehen bleiben.</span></h2>
       <p class="lead">Wir reden gerne über das, was wir gemacht haben. Aber lieber über das, was es für unsere Kunden bewegt hat.</p>
     </div>
@@ -2789,7 +2788,7 @@
 <section class="team-block" id="team">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">Wer wir sind</div>
+      <div class="eyebrow">Team<span class="eyebrow-sep">|</span><span class="eyebrow-sub">Wer wir sind</span></div>
       <h2>Sechs Menschen. Ein <span class="italic">Wappentier.</span><br/>Eine Handschrift.</h2>
       <p class="lead">Quint ist kein Kollektiv und keine Agentur-Maschine. Stand heute sind wir sechs: Strategie, Design, Logo-Handwerk, Fotografie, HR und Verwaltung. Plus ein Dackel, der einfach dazugehört. Wir wachsen kontrolliert weiter, „kleines Team" bleibt aber unser Prinzip. Wer mit uns arbeitet, arbeitet mit uns. Nicht mit einem Account Manager.</p>
     </div>
@@ -2964,7 +2963,7 @@
 <section class="faq" id="faq" aria-labelledby="faq-heading">
   <div class="wrap">
     <div class="section-head reveal" data-scroll-reveal>
-      <div class="eyebrow">Häufige Fragen</div>
+      <div class="eyebrow">FAQ<span class="eyebrow-sep">|</span><span class="eyebrow-sub">Häufige Fragen</span></div>
       <h2 id="faq-heading">Was meistens als <span class="italic">Nächstes</span> kommt.</h2>
       <p class="lead">Neun Fragen, die wir in Erstgesprächen am häufigsten hören. Antworten direkt aus der Werkstatt.</p>
     </div>
