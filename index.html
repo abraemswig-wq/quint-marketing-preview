@@ -1457,13 +1457,15 @@
     width: 90px;
     background: linear-gradient(90deg, transparent, var(--navy));
     pointer-events: none;
-    z-index: 3;
+    z-index: 2;
     transition: opacity 0.3s;
   }
   .team-slider-wrap.at-end::after { opacity: 0; }
   @media (max-width: 700px) { .team-slider-wrap::after { width: 40px; } }
 
-  /* Horizontaler Wisch-Slider: breite Karten, scroll-snap. */
+  /* Horizontaler Wisch-Slider: breite Karten, scroll-snap.
+     Padding oben/unten grosszuegig, damit Hover-Lift (-8px) + Border nicht am
+     Container-Rand abgeschnitten werden (overflow-x:auto erzwingt overflow-y:auto). */
   .team-people {
     display: flex;
     gap: 22px;
@@ -1471,13 +1473,18 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 8px 0 24px;
+    padding: 32px 4px 32px;
   }
   .team-people::-webkit-scrollbar { display: none; }
   .team-people > .person {
     flex: 0 0 auto;
     width: clamp(280px, 32vw, 380px);
     scroll-snap-align: start;
+    /* Hover-Karte muss ueber Nachbarn UND ueber Fade (z-index:2) liegen */
+    z-index: 1;
+  }
+  .team-people > .person:hover {
+    z-index: 3;
   }
   @media (max-width: 700px) {
     .team-people { gap: 16px; }
@@ -1546,6 +1553,9 @@
     /* Flex-Spalte: alle Sektionen auf gleicher Hoehe, CTA verankert unten */
     display: flex;
     flex-direction: column;
+    /* Sauberer Compositor-Layer verhindert Sub-Pixel-Flimmer beim Hover-Lift */
+    will-change: transform;
+    backface-visibility: hidden;
   }
   .person:hover {
     transform: translateY(-8px);
