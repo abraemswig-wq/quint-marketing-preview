@@ -3,117 +3,34 @@
    ═══════════════════════════════════════════════════════════════════ */
 
 /* -----------------------------------------------------------------
-   Banner (fixed bottom, slides in)
-   ----------------------------------------------------------------- */
-.cookie-banner {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  z-index: 9999;
-  background: rgba(13, 39, 71, 0.98);
-  backdrop-filter: saturate(150%) blur(20px);
-  border-top: 1px solid rgba(232, 155, 177, 0.25);
-  box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.4);
-  color: #F4EFE7;
-  padding: 24px 32px calc(24px + env(safe-area-inset-bottom, 0px));
-  transform: translateY(100%);
-  transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
-  font-family: "Familjen Grotesk", system-ui, sans-serif;
-  font-size: 14px;
-  line-height: 1.55;
-}
-.cookie-banner.is-visible { transform: translateY(0); }
-@media (max-width: 640px) {
-  .cookie-banner { padding: 20px 22px calc(20px + env(safe-area-inset-bottom, 0px)); }
-}
-
-.cookie-banner-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: center;
-}
-@media (max-width: 800px) {
-  .cookie-banner-inner { grid-template-columns: 1fr; gap: 16px; }
-}
-
-.cookie-banner-title {
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  margin: 0 0 6px;
-  color: #F4EFE7;
-}
-.cookie-banner-body {
-  margin: 0;
-  color: rgba(244, 239, 231, 0.78);
-  max-width: 640px;
-  font-size: 14px;
-}
-.cookie-banner-body a {
-  color: #E89BB1;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.cookie-banner-body a:hover { color: #D87A95; }
-
-.cookie-banner-actions {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-@media (max-width: 800px) {
-  .cookie-banner-actions { flex-direction: column; align-items: stretch; }
-}
-
-/* -----------------------------------------------------------------
-   Buttons (Banner + Modal shared)
+   Buttons — alle gleichrangig (kein Dark Pattern, kein Pink-Hervorheben)
+   Vgl. OLG Koeln 6 U 149/22 zur Telekom-Consent-Gestaltung
    ----------------------------------------------------------------- */
 .cookie-btn {
   font-family: "Familjen Grotesk", system-ui, sans-serif;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.01em;
-  padding: 12px 22px;
+  padding: 12px 20px;
   border-radius: 999px;
-  border: none;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+  transition: background 0.2s, border-color 0.2s;
   white-space: nowrap;
+  background: transparent;
+  color: #F4EFE7;
+  border: 1.5px solid rgba(244, 239, 231, 0.4);
+  flex: 1 1 auto;
+  min-width: 140px;
+  text-align: center;
+}
+.cookie-btn:hover {
+  background: rgba(244, 239, 231, 0.08);
+  border-color: rgba(244, 239, 231, 0.7);
 }
 .cookie-btn:focus-visible {
   outline: 2px solid #E89BB1;
   outline-offset: 3px;
 }
-.cookie-btn-primary {
-  background: #E89BB1;
-  color: #143C6B;
-  box-shadow: 0 6px 20px rgba(232, 155, 177, 0.25);
-}
-.cookie-btn-primary:hover {
-  background: #D87A95;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(232, 155, 177, 0.35);
-}
-.cookie-btn-ghost {
-  background: transparent;
-  color: #F4EFE7;
-  border: 1.5px solid rgba(244, 239, 231, 0.4);
-}
-.cookie-btn-ghost:hover {
-  background: rgba(244, 239, 231, 0.08);
-  border-color: rgba(244, 239, 231, 0.7);
-}
-.cookie-btn-link {
-  background: transparent;
-  color: rgba(244, 239, 231, 0.72);
-  padding: 12px 8px;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.cookie-btn-link:hover { color: #E89BB1; }
 
 /* -----------------------------------------------------------------
    Settings Modal
@@ -197,6 +114,14 @@
   color: rgba(244, 239, 231, 0.65);
   line-height: 1.55;
   margin: 0;
+}
+.cookie-cat-desc code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  color: rgba(244, 239, 231, 0.85);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1px 6px;
+  border-radius: 4px;
 }
 .cookie-cat-fixed {
   font-size: 11px;

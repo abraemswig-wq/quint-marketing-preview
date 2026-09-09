@@ -3,15 +3,23 @@
    ═══════════════════════════════════════════════════════════════════
    Standard: alle nicht-notwendigen Kategorien DENIED bis Zustimmung
    Speicherung: localStorage 'quint-consent' als JSON
-   Google Consent Mode v2 integriert (analytics_storage, ad_storage, etc.)
+   Google Consent Mode v2 integriert
    Widerruf: über data-cookie-settings Attribute oder /datenschutz.html Link
+
+   Design-Vorgaben (Feedback Weise Datenschutz 2026-09-08):
+   - Erster Layer zeigt direkt die konkreten Kategorien mit Toggles
+   - Nur Kategorien, die tatsaechlich aktiv sind (kein "Platzhalter fuer
+     zukuenftige Ads" mehr — Marketing ist raus)
+   - Alle Buttons visuell gleichrangig (kein Dark Pattern, kein Pink-
+     Hervorheben von "Alle akzeptieren"; vgl. OLG Koeln 6 U 149/22)
+   - Erst-Consent-Modal ist NICHT per Backdrop-Klick schliessbar
    ═══════════════════════════════════════════════════════════════════ */
 
 (function() {
   'use strict';
 
   const STORAGE_KEY = 'quint-consent';
-  const CONSENT_VERSION = 1;
+  const CONSENT_VERSION = 2; // v2: Marketing-Kategorie entfernt, Layer-Redesign
   const DEFAULT_DENIED = {
     analytics_storage: 'denied',
     ad_storage: 'denied',
@@ -48,57 +56,30 @@
       consent: consent
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(record));
-    // Custom-Event für andere Scripts (z.B. GA4-Loader)
     window.dispatchEvent(new CustomEvent('quint:consent', { detail: consent }));
   }
 
-  /* Banner erstellen und einfügen */
-  function buildBanner() {
-    const banner = document.createElement('div');
-    banner.className = 'cookie-banner';
-    banner.setAttribute('role', 'dialog');
-    banner.setAttribute('aria-labelledby', 'cookie-banner-title');
-    banner.setAttribute('aria-describedby', 'cookie-banner-body');
-    banner.innerHTML = `
-      <div class="cookie-banner-inner">
-        <div class="cookie-banner-content">
-          <h2 id="cookie-banner-title" class="cookie-banner-title">Cookies &amp; Reichweiten-Messung</h2>
-          <p id="cookie-banner-body" class="cookie-banner-body">
-            Wir nutzen technisch notwendige Cookies für den Betrieb. Für die anonymisierte Reichweiten-Messung
-            (Google Analytics 4) und optionale Funktionen brauchen wir deine Einwilligung. Du kannst jederzeit
-            im Footer widerrufen. Details in unserer
-            <a href="datenschutz.html">Datenschutzerklärung</a>.
-          </p>
-        </div>
-        <div class="cookie-banner-actions">
-          <button type="button" class="cookie-btn cookie-btn-primary" data-consent="accept-all">
-            Alle akzeptieren
-          </button>
-          <button type="button" class="cookie-btn cookie-btn-ghost" data-consent="reject-all">
-            Nur notwendige
-          </button>
-          <button type="button" class="cookie-btn cookie-btn-link" data-consent="open-settings">
-            Einstellungen
-          </button>
-        </div>
-      </div>
-    `;
-    return banner;
-  }
-
-  /* Settings-Modal (Feineinstellung pro Kategorie) */
-  function buildSettings() {
+  /* Consent-Modal (Erst-Consent + Widerruf beide gleich). initial=true
+     verhindert das Schliessen ueber Backdrop-Klick. */
+  function buildConsent(initial) {
     const modal = document.createElement('div');
     modal.className = 'cookie-settings-modal';
     modal.setAttribute('role', 'dialog');
     modal.setAttribute('aria-labelledby', 'cookie-settings-title');
     modal.setAttribute('aria-modal', 'true');
+    if (initial) modal.classList.add('is-initial');
+
+    const backdropAction = initial ? '' : 'data-consent="close-settings"';
+
     modal.innerHTML = `
-      <div class="cookie-settings-backdrop" data-consent="close-settings"></div>
+      <div class="cookie-settings-backdrop" ${backdropAction}></div>
       <div class="cookie-settings-panel">
-        <h2 id="cookie-settings-title" class="cookie-settings-title">Cookie-Einstellungen</h2>
+        <h2 id="cookie-settings-title" class="cookie-settings-title">Cookies &amp; Reichweiten-Messung</h2>
         <p class="cookie-settings-intro">
-          Wähle selbst, welche Kategorien du zulässt. Technisch notwendige Cookies sind für den Betrieb der Website nötig.
+          Diese Seite setzt technisch notwendige Cookies für den Betrieb. Für die
+          anonymisierte Reichweiten-Messung mit Google Analytics 4 brauchen wir
+          deine Einwilligung. Wähle unten, was du zulassen möchtest. Details in
+          unserer <a href="datenschutz.html">Datenschutzerklärung</a>.
         </p>
 
         <div class="cookie-cat">
@@ -107,8 +88,8 @@
             <span class="cookie-cat-toggle cookie-cat-fixed">Immer aktiv</span>
           </div>
           <p class="cookie-cat-desc">
-            Session-Handling, Speicherung deiner Cookie-Auswahl, Sicherheits-Cookies.
-            Ohne diese funktioniert die Seite nicht.
+            Speicherung deiner Cookie-Auswahl (localStorage-Eintrag „quint-consent") und
+            Session-Handling. Ohne diese Cookies funktioniert die Seite nicht.
           </p>
         </div>
 
@@ -121,29 +102,21 @@
             </label>
           </div>
           <p class="cookie-cat-desc">
-            Google Analytics 4 mit IP-Anonymisierung. Hilft uns zu verstehen, welche Inhalte gelesen werden.
-            Datentransfer USA (Angemessenheitsbeschluss EU-USA Data Privacy Framework).
-          </p>
-        </div>
-
-        <div class="cookie-cat">
-          <div class="cookie-cat-head">
-            <span class="cookie-cat-name">Marketing / Personalisierung</span>
-            <label class="cookie-cat-toggle">
-              <input type="checkbox" name="marketing" />
-              <span class="cookie-toggle-slider"></span>
-            </label>
-          </div>
-          <p class="cookie-cat-desc">
-            Aktuell nicht aktiv. Platzhalter für zukünftige Ads/Retargeting (Meta Pixel, Google Ads).
+            Google Analytics 4 (Anbieter: Google Ireland Ltd.) mit IP-Anonymisierung.
+            Wir sehen, welche Inhalte gelesen werden — nie einzelne Personen.
+            Datenübermittlung USA auf Grundlage des EU-US Data Privacy Framework.
+            Cookies: <code>_ga</code>, <code>_ga_&lt;ID&gt;</code>. Speicherdauer bis 2 Jahre.
           </p>
         </div>
 
         <div class="cookie-settings-actions">
-          <button type="button" class="cookie-btn cookie-btn-primary" data-consent="save-settings">
+          <button type="button" class="cookie-btn" data-consent="reject-all">
+            Nur notwendige
+          </button>
+          <button type="button" class="cookie-btn" data-consent="save-settings">
             Auswahl speichern
           </button>
-          <button type="button" class="cookie-btn cookie-btn-ghost" data-consent="accept-all">
+          <button type="button" class="cookie-btn" data-consent="accept-all">
             Alle akzeptieren
           </button>
         </div>
@@ -152,42 +125,22 @@
     return modal;
   }
 
-  /* Zeigt Banner ODER Settings, je nach Aktion */
-  function showBanner() {
-    if (document.querySelector('.cookie-banner')) return;
-    const banner = buildBanner();
-    document.body.appendChild(banner);
-    requestAnimationFrame(() => banner.classList.add('is-visible'));
-    banner.addEventListener('click', handleAction);
-  }
-
-  function hideBanner() {
-    const banner = document.querySelector('.cookie-banner');
-    if (banner) {
-      banner.classList.remove('is-visible');
-      setTimeout(() => banner.remove(), 300);
-    }
-  }
-
-  function showSettings(initial) {
-    let modal = document.querySelector('.cookie-settings-modal');
-    if (modal) return;
-    modal = buildSettings();
+  function showConsent(initial) {
+    if (document.querySelector('.cookie-settings-modal')) return;
+    const modal = buildConsent(initial);
     document.body.appendChild(modal);
     document.body.style.overflow = 'hidden';
-    // Aktuellen Stand in Checkboxen laden
+    // Aktuellen Stand in Checkbox laden (bei Widerruf)
     const stored = getStored();
     if (stored) {
-      modal.querySelector('input[name="analytics"]').checked = stored.consent.analytics_storage === 'granted';
-      modal.querySelector('input[name="marketing"]').checked = stored.consent.ad_storage === 'granted';
-    } else if (initial) {
-      // Erstes Öffnen: alles unchecked (Opt-In)
+      const cb = modal.querySelector('input[name="analytics"]');
+      if (cb) cb.checked = stored.consent.analytics_storage === 'granted';
     }
     requestAnimationFrame(() => modal.classList.add('is-visible'));
     modal.addEventListener('click', handleAction);
   }
 
-  function hideSettings() {
+  function hideConsent() {
     const modal = document.querySelector('.cookie-settings-modal');
     if (modal) {
       modal.classList.remove('is-visible');
@@ -205,70 +158,64 @@
     if (action === 'accept-all') {
       applyConsent({
         analytics_storage: 'granted',
-        ad_storage: 'granted',
-        ad_user_data: 'granted',
-        ad_personalization: 'granted',
+        ad_storage: 'denied',        // aktuell keine Ads
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
         functionality_storage: 'granted',
         security_storage: 'granted',
-        personalization_storage: 'granted'
+        personalization_storage: 'denied'
       }, 'accept-all');
-      hideBanner();
-      hideSettings();
+      hideConsent();
     }
     else if (action === 'reject-all') {
       applyConsent(DEFAULT_DENIED, 'reject-all');
-      hideBanner();
-      hideSettings();
-    }
-    else if (action === 'open-settings') {
-      showSettings(true);
-    }
-    else if (action === 'close-settings') {
-      hideSettings();
+      hideConsent();
     }
     else if (action === 'save-settings') {
       const modal = document.querySelector('.cookie-settings-modal');
-      const analytics = modal.querySelector('input[name="analytics"]').checked;
-      const marketing = modal.querySelector('input[name="marketing"]').checked;
+      const cb = modal.querySelector('input[name="analytics"]');
+      const analytics = cb && cb.checked;
       applyConsent({
         analytics_storage: analytics ? 'granted' : 'denied',
-        ad_storage: marketing ? 'granted' : 'denied',
-        ad_user_data: marketing ? 'granted' : 'denied',
-        ad_personalization: marketing ? 'granted' : 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
         functionality_storage: 'granted',
         security_storage: 'granted',
-        personalization_storage: marketing ? 'granted' : 'denied'
+        personalization_storage: 'denied'
       }, 'settings');
-      hideBanner();
-      hideSettings();
+      hideConsent();
+    }
+    else if (action === 'close-settings') {
+      // Nur beim Widerruf-Layer erlaubt (siehe buildConsent)
+      hideConsent();
     }
     else if (action === 'reopen') {
-      showSettings(false);
+      showConsent(false);
     }
   }
 
-  /* Öffentliche API: Widerrufs-Link im Footer nutzt data-consent="reopen" */
+  /* Öffentliche API */
   window.QuintCookieConsent = {
-    reopen: () => showSettings(false),
+    reopen: () => showConsent(false),
     reset: () => { localStorage.removeItem(STORAGE_KEY); location.reload(); },
     getConsent: () => getStored()
   };
 
-  /* Beim Laden: wenn noch keine Wahl getroffen → Banner zeigen */
+  /* Beim Laden: wenn noch keine Wahl getroffen → Modal zeigen */
   function init() {
     const stored = getStored();
     if (stored) {
-      // Vorherige Wahl wieder anwenden (Consent Mode Update)
       gtag('consent', 'update', stored.consent);
     } else {
-      // Erste Sitzung: Banner zeigen (leicht verzögert für UX)
-      setTimeout(showBanner, 400);
+      // Erste Sitzung: Modal zeigen (leicht verzögert für UX)
+      setTimeout(() => showConsent(true), 400);
     }
 
     // Reopen-Links im Footer o.ä. verdrahten
     document.addEventListener('click', (e) => {
       const t = e.target.closest('[data-cookie-settings]');
-      if (t) { e.preventDefault(); showSettings(false); }
+      if (t) { e.preventDefault(); showConsent(false); }
     });
   }
 

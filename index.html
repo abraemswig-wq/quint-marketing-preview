@@ -1852,70 +1852,6 @@
     font-weight: 700;
   }
 
-  /* NEWSLETTER-STUB (im CTA-Block) */
-  .newsletter-stub {
-    margin: 64px auto 0;
-    max-width: 540px;
-    padding: 36px 32px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 24px;
-  }
-  .newsletter-stub h3 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    letter-spacing: -0.015em;
-    color: var(--cream);
-  }
-  .newsletter-stub h3 .italic { color: var(--pink); }
-  .newsletter-stub p {
-    color: rgba(244,239,231,0.7);
-    font-size: 14.5px;
-    margin-bottom: 24px;
-  }
-  .newsletter-stub form {
-    display: flex; gap: 8px;
-    flex-wrap: wrap;
-  }
-  .newsletter-stub input[type="email"] {
-    flex: 1;
-    min-width: 200px;
-    padding: 14px 18px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.08);
-    color: var(--cream);
-    border: 1px solid rgba(255,255,255,0.15);
-    font-family: inherit;
-    font-size: 14px;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .newsletter-stub input[type="email"]::placeholder { color: rgba(244,239,231,0.45); }
-  .newsletter-stub input[type="email"]:focus {
-    outline: none;
-    border-color: var(--pink);
-    background: rgba(255,255,255,0.12);
-  }
-  .newsletter-stub button {
-    background: var(--pink);
-    color: var(--navy);
-    border: 0;
-    padding: 14px 22px;
-    border-radius: 999px;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: transform 0.2s, background 0.2s;
-  }
-  .newsletter-stub button:hover { background: var(--cream); transform: translateY(-2px); }
-  .newsletter-stub .small {
-    display: block;
-    margin-top: 14px;
-    font-size: 12px;
-    color: rgba(244,239,231,0.5);
-  }
-
   /* JOURNAL TEASER */
   .journal-teaser {
     padding: 140px 0;
@@ -3063,17 +2999,6 @@
       <li><span class="cta-check">✓</span> Du gehst raus mit einer klareren Frage als der, mit der du reingekommen bist</li>
     </ul>
 
-    <!-- Newsletter-Stub: Soft-Conversion vor Erstgespräch -->
-    <div class="newsletter-stub" data-scroll-reveal>
-      <h3>Noch nicht bereit?<br/><span class="italic">Quint-Notizen.</span></h3>
-      <p>Einmal im Monat eine kurze E-Mail mit Marken-Beobachtungen aus unseren drei Welten. Kein Newsletter-Bullshit. Jederzeit abbestellbar.</p>
-      <form action="mailto:hallo@quint-marketing.com" method="post" enctype="text/plain" data-newsletter>
-        <label for="newsletter-email" class="sr-only" style="position: absolute; left: -9999px;">E-Mail</label>
-        <input type="email" id="newsletter-email" name="email" placeholder="deine@email.de" required />
-        <button type="submit" data-spring>Abonnieren →</button>
-      </form>
-      <span class="small">Bei erfolgreichem Versand bekommst du eine Begrüßungs-Mail. Wir nutzen die Adresse für nichts anderes.</span>
-    </div>
   </div>
   <div class="cta-ball" aria-hidden="true"></div>
 </section>
