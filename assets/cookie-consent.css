@@ -3,29 +3,29 @@
    ═══════════════════════════════════════════════════════════════════ */
 
 /* -----------------------------------------------------------------
-   Buttons — alle gleichrangig (kein Dark Pattern, kein Pink-Hervorheben)
-   Vgl. OLG Koeln 6 U 149/22 zur Telekom-Consent-Gestaltung
+   Buttons — alle drei identisch (kein Dark Pattern)
+   Solide Fuellfarbe in Cream mit Navy-Text, exakt gleiche Groesse.
+   Vgl. OLG Koeln 6 U 149/22 zur Telekom-Consent-Gestaltung.
    ----------------------------------------------------------------- */
 .cookie-btn {
   font-family: "Familjen Grotesk", system-ui, sans-serif;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.01em;
-  padding: 12px 20px;
+  padding: 13px 20px;
   border-radius: 999px;
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s;
+  transition: background 0.2s;
   white-space: nowrap;
-  background: transparent;
-  color: #F4EFE7;
-  border: 1.5px solid rgba(244, 239, 231, 0.4);
-  flex: 1 1 auto;
+  background: #F4EFE7;
+  color: #143C6B;
+  border: none;
+  flex: 1 1 0;
   min-width: 140px;
   text-align: center;
 }
 .cookie-btn:hover {
-  background: rgba(244, 239, 231, 0.08);
-  border-color: rgba(244, 239, 231, 0.7);
+  background: #FFFFFF;
 }
 .cookie-btn:focus-visible {
   outline: 2px solid #E89BB1;
