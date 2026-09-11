@@ -247,7 +247,7 @@
 
 <!-- Preload Above-the-Fold-Assets (Loader-Maennchen + Hero-Maennchen + Logo) -->
 <link rel="preload" as="image" href="assets/quint-chase-hero-navy-v4-poster.webp" fetchpriority="high">
-<link rel="preload" as="video" href="assets/quint-chase-hero-navy-v4.mp4" type="video/mp4">
+<link rel="preload" as="image" href="https://quint-marketing.com/img/quint-chase-hero-navy-v4.webp" fetchpriority="high" crossorigin>
 <link rel="preload" as="image" href="assets/Dackel-Po.svg" type="image/svg+xml" fetchpriority="high">
 <link rel="preload" as="image" href="assets/loader-dackel-wag.webp" fetchpriority="high">
 <link rel="preload" as="image" href="assets/quint-logo-claim-white.png" fetchpriority="high">
@@ -2398,17 +2398,13 @@
 
 <header class="hero" id="top">
   <div class="hero-wappen" aria-hidden="true">
-    <!-- Chasing-The-Ball Brand-Animation (Higgsfield-generiert):
-         Autoplay + loop + muted + playsinline (iOS-Autoplay-Anforderung).
-         Poster als Fallback beim Laden UND bei prefers-reduced-motion. -->
-    <video class="hero-chase-video"
-           autoplay muted loop playsinline
-           poster="assets/quint-chase-hero-navy-v4-poster.webp"
-           preload="metadata"
-           aria-label="Ein Dackel-Welpe jagt einen pinken Ball vor weißem Studio-Hintergrund — Quint Chasing The Ball">
-      <source src="assets/quint-chase-hero-navy-v4.mp4" type="video/mp4" />
-      <img src="assets/quint-chase-hero-navy-v4-poster.jpg" alt="Dackel-Welpe mit pinkem Ball" />
-    </video>
+    <!-- Chasing-The-Ball Brand-Animation (animiertes WebP, gehostet auf REHAB-FIVE-Server).
+         Animiertes Bild statt <video>, damit die Datei ueber den ads.rehab-five/quint-Server
+         ausgeliefert wird (der akzeptiert kein mp4). Loop laeuft nativ im Browser. -->
+    <img class="hero-chase-video"
+         src="https://quint-marketing.com/img/quint-chase-hero-navy-v4.webp"
+         alt="Ein Dackel-Welpe jagt einen pinken Ball vor weißem Studio-Hintergrund — Quint Chasing The Ball"
+         decoding="async" />
   </div>
   <div class="wrap">
     <div class="hero-content">
@@ -3058,22 +3054,18 @@
     }, delay);
   });
 
-  // HERO CHASE-VIDEO — pausieren bei prefers-reduced-motion oder Save-Data
+  // HERO CHASE-ANIMATION — statisches Poster bei prefers-reduced-motion oder Save-Data.
+  // Fuer das animierte WebP gibt es keinen Play/Pause-Hook - stattdessen tauschen wir
+  // die Quelle gegen das Poster-Standbild, wenn der Nutzer reduzierte Motion signalisiert
+  // oder Save-Data aktiv hat.
   (function() {
-    const video = document.querySelector('.hero-chase-video');
-    if (!video) return;
+    const heroImg = document.querySelector('.hero-chase-video');
+    if (!heroImg) return;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const saveData = navigator.connection && navigator.connection.saveData;
     if (reduceMotion || saveData) {
-      video.pause();
-      video.removeAttribute('autoplay');
-      video.setAttribute('preload', 'none');
+      heroImg.src = 'assets/quint-chase-hero-navy-v4-poster.webp';
     }
-    // Video pausieren wenn Tab nicht sichtbar (Battery-Save)
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) { video.pause(); }
-      else if (!reduceMotion && !saveData) { video.play().catch(() => {}); }
-    });
   })();
 </script>
 
