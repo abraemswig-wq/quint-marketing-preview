@@ -7,7 +7,10 @@
  * Wir nutzen ES-Module-Import direkt aus dem CDN, kein Build-Step.
  */
 
-import { animate, inView, stagger, spring } from "https://cdn.jsdelivr.net/npm/motion@10.18/+esm";
+// Motion One 10.18 wird als klassisches <script> (UMD) VOR diesem Modul geladen
+// und setzt window.Motion. Kein Third-Party-CDN mehr — self-hosted.
+const { animate, inView, stagger, spring } = window.Motion || {};
+if (!animate) { console.warn("[Quint] Motion One nicht geladen — Animationen fallen zurueck auf CSS."); }
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
